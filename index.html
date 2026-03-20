@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type='text'] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0072ff;
+            color: white;
+            cursor: pointer;
+        }
+        #weather {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <a href="https://wa.me/447514327059?text=I%27d%20like%20to%20discuss%20my%20HRBP%20assessment%20results">BOOK A CALL</a>
+    <h1>Weather Dashboard</h1>
+    <input type="text" id="cityInput" placeholder="Enter city name" />
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weather"></div>
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('cityInput').value;
+            const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&current_weather=true`);
+            const data = await response.json();
+            if (data.current_weather) {
+                const { temperature, weathercode } = data.current_weather;
+                document.getElementById('weather').innerHTML = `<h2>${city} Weather</h2><p>Temperature: ${temperature}°C</p><p>Conditions: ${weathercode}</p>`;
+            } else {
+                document.getElementById('weather').innerHTML = `<p>Error: Could not retrieve weather data for ${city}.</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
