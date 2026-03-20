@@ -1,1 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HRBP Model Assessments</title>
+  <style>
+    :root{
+      --green:#103b2f;
+      --green-2:#18483a;
+      --green-3:#215b49;
+      --cream:#f7f8f2;
+      --soft:#eef3ee;
+      --mint:#dcece5;
+      --line:#d8dfd9;
+      --text:#183328;
+      --muted:#5c7068;
+      --gold:#f2c14e;
+      --white:#ffffff;
+      --danger:#8f2d2d;
+      --shadow:0 16px 40px rgba(0,0,0,.12);
+      --radius:24px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--green);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    .shell{
+      max-width:1220px;
+      margin:0 auto;
+      padding:18px 14px 40px;
+    }
+
+    .page{
+      background:var(--cream);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .page-inner{
+      padding:34px 34px 30px;
+    }
+
+    .cover{
+      background:linear-gradient(180deg,#0d2f25 0%, #103b2f 56%, #18483a 100%);
+      color:#fff;
+    }
+
+    .cover .page-inner{
+      padding:48px 38px 42px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    h1,h2,h3,h4,p{margin:0;}
+
+    .hero-title{
+      font-size:58px;
+      line-height:.98;
+      text-transform:uppercase;
+      letter-spacing:.01em;
+      color:#ffffff !important;
+      max-width:840px;
+      margin-bottom:16px;
+      font-weight:800;
+    }
+
+    .hero-title .accent{
+      display:block;
+      color:var(--gold) !important;
+    }
+
+    .hero-text{
+      max-width:800px;
+      font-size:21px;
+      color:#edf6f1;
+      margin-bottom:26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:20px;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:22px;
+      padding:20px 20px 18px;
+    }
+
+    .glass h3{
+      color:#ffffff !important;
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    .glass ul{
+      margin:0;
+      padding-left:18px;
+      color:#eef7f2;
+    }
+
+    .glass li{margin:8px 0;}
+
+    .stat-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:20px;
+      padding:18px;
+      color:#eaf4ef;
+    }
+
+    .stat strong{
+      display:block;
+      color:var(--gold);
+      font-size:30px;
+      margin-bottom:6px;
+    }
+
+    .cover-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+
+    .cover-foot{
+      margin-top:18px;
+      font-size:14px;
+      color:#d9e7e1;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:18px;
+      padding-bottom:12px;
+      border-bottom:2px solid var(--line);
+    }
+
+    .section-head h2{
+      font-size:34px;
+      line-height:1.05;
+      color:var(--green);
+    }
+
+    .section-head p{
+      max-width:620px;
+      font-size:15px;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .card h3,.card h4{color:var(--green);margin-bottom:8px;}
+    .card p{font-size:14px;color:#43584f;}
+
+    .pill{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--mint);
+      color:var(--green);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .btn, .link-btn, .ghost-btn{
+      display:inline-block;
+      text-decoration:none;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      border-radius:999px;
+      transition:transform .15s ease, background .15s ease;
+      border:none;
+      cursor:pointer;
+      font-family:inherit;
+    }
+
+    .btn:hover, .link-btn:hover, .ghost-btn:hover{transform:translateY(-1px);}
+
+    .btn{
+      background:var(--gold);
+      color:#173328;
+      padding:15px 28px;
+      font-size:15px;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
+
+    .link-btn{
+      background:var(--green);
+      color:#fff;
+      padding:12px 18px;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .ghost-btn{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.25);
+      padding:14px 24px;
+      font-size:14px;
+    }
+
+    .intro-steps .card{height:100%;}
+
+    .step-number{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:var(--green);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .form-header{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field label{
+      font-size:14px;
+      font-weight:700;
+      color:var(--green);
+    }
+
+    .field input{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:13px 14px;
+      font-size:14px;
+      color:var(--text);
+      outline:none;
+    }
+
+    .field input:focus{
+      border-color:var(--green-3);
+      box-shadow:0 0 0 3px rgba(33,91,73,.10);
+    }
+
+    .section-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .nav-chip{
+      background:var(--soft);
+      border:1px solid var(--line);
+      color:var(--green);
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .assessment-section{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      padding:20px;
+      margin-bottom:18px;
+      scroll-margin-top:20px;
+    }
+
+    .assessment-section h3{
+      color:var(--green);
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .assessment-section .section-copy{
+      color:var(--muted);
+      font-size:15px;
+      margin-bottom:18px;
+      max-width:920px;
+    }
+
+    .question-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background:var(--cream);
+      margin-bottom:14px;
+    }
+
+    .question-top{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+
+    .question-label{
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .scale-head{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:8px;
+      padding:10px 14px 0;
+    }
+
+    .scale-head span{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .scale-options{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:8px;
+      padding:12px 14px 14px;
+    }
+
+    .option{
+      position:relative;
+    }
+
+    .option input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .option label{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:56px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--green);
+      font-size:13px;
+      font-weight:800;
+      text-align:center;
+      padding:8px;
+      cursor:pointer;
+      transition:all .15s ease;
+    }
+
+    .option input:checked + label{
+      background:var(--green);
+      color:#fff;
+      border-color:var(--green);
+      box-shadow:0 8px 18px rgba(16,59,47,.18);
+    }
+
+    .option label:hover{
+      border-color:var(--green-3);
+    }
+
+    .assessment-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      margin-top:10px;
+    }
+
+    .warning{
+      display:none;
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:#fff2f2;
+      border:1px solid #efc3c3;
+      color:var(--danger);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .results-wrap{
+      display:none;
+    }
+
+    .results-wrap.show{
+      display:block;
+    }
+
+    .score-hero{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .score-ring-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .ring{
+      --size:190px;
+      width:var(--size);
+      height:var(--size);
+      border-radius:50%;
+      background:conic-gradient(var(--green) calc(var(--score) * 1%), #dfe8e2 0);
+      display:grid;
+      place-items:center;
+      position:relative;
+      margin-bottom:14px;
+    }
+
+    .ring::after{
+      content:"";
+      position:absolute;
+      inset:14px;
+      background:#fff;
+      border-radius:50%;
+    }
+
+    .ring-content{
+      position:relative;
+      z-index:1;
+    }
+
+    .ring-score{
+      font-size:42px;
+      font-weight:900;
+      color:var(--green);
+      line-height:1;
+    }
+
+    .ring-label{
+      margin-top:4px;
+      font-size:14px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .overview-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .overview-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .maturity-badge{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--mint);
+      color:var(--green);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .benchmark-bar{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .benchmark-band{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 10px;
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .benchmark-band.active{
+      background:var(--green);
+      color:#fff;
+      border-color:var(--green);
+    }
+
+    .result-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      margin-top:18px;
+    }
+
+    .result-card h3{
+      color:var(--green);
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .score-box{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:var(--soft);
+    }
+
+    .score-box strong{
+      display:block;
+      font-size:30px;
+      color:var(--green);
+      margin-bottom:4px;
+    }
+
+    .score-box span{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .bar-list{
+      margin-top:16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .bar-row{
+      display:grid;
+      grid-template-columns:220px 1fr 60px;
+      gap:12px;
+      align-items:center;
+    }
+
+    .bar-row label{
+      font-size:14px;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .bar{
+      height:14px;
+      border-radius:999px;
+      background:#dfe8e2;
+      overflow:hidden;
+      border:1px solid #d2ddd6;
+    }
+
+    .bar > span{
+      display:block;
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--green),var(--green-3));
+      border-radius:999px;
+    }
+
+    .bar-row strong{
+      text-align:right;
+      color:var(--green);
+      font-size:14px;
+    }
+
+    .result-copy{
+      margin-top:16px;
+      color:#43584f;
+      font-size:15px;
+    }
+
+    .rec-list{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:#43584f;
+    }
+
+    .rec-list li{
+      margin:8px 0;
+    }
+
+    .cta{
+      background:linear-gradient(180deg,#10382d 0%, #184d3f 100%);
+      color:#ffffff;
+      text-align:center;
+    }
+
+    .cta .page-inner{
+      padding:44px 28px 46px;
+    }
+
+    .cta h2{
+      color:#ffffff !important;
+      font-size:44px;
+      line-height:1;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .cta p{
+      max-width:760px;
+      margin:0 auto 24px;
+      color:#e9f4ef;
+      font-size:19px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .cta-card{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:16px;
+      text-align:left;
+    }
+
+    .cta-card h4{
+      color:#ffffff !important;
+      margin-bottom:8px;
+      font-size:18px;
+    }
+
+    .cta-card p{
+      margin:0;
+      color:#dbe9e3;
+      font-size:14px;
+    }
+
+    .footnote{
+      margin-top:16px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .space{height:16px}
+
+    @media (max-width: 1100px){
+      .hero-grid,
+      .score-hero,
+      .grid-4,
+      .grid-3,
+      .cta-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .form-header{
+        grid-template-columns:1fr;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-head p{
+        text-align:left;
+      }
+
+      .score-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .bar-row{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 760px){
+      .shell{
+        padding:12px 10px 30px;
+      }
+
+      .page-inner,
+      .cover .page-inner,
+      .cta .page-inner{
+        padding:22px 18px;
+      }
+
+      .hero-title{
+        font-size:34px;
+      }
+
+      .hero-text{
+        font-size:16px;
+      }
+
+      .hero-grid,
+      .score-hero,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .cta-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-head h2{
+        font-size:28px;
+      }
+
+      .question-top{
+        padding:14px 14px 12px;
+      }
+
+      .scale-head{
+        display:none;
+      }
+
+      .scale-options{
+        grid-template-columns:1fr;
+      }
+
+      .option label{
+        min-height:48px;
+      }
+
+      .score-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cta h2{
+        font-size:32px;
+      }
+
+      .cta p{
+        font-size:16px;
+      }
+    }
+
+    @media print{
+      body{background:#fff}
+      .shell{max-width:none;padding:0}
+      .page{box-shadow:none;border:none;border-radius:0;margin:0 0 10mm}
+      .assessment-actions,.section-nav,.cover-actions{display:none !important}
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace BOOK_A_CALL_LINK with your actual URL -->
+
+  <div class="shell">
+
+    <section class="page cover">
+      <div class="page-inner">
+        <div class="eyebrow">HRBP assessment</div>
+        <h1 class="hero-title">
+          <span class="accent">Start Your Journey</span>
+          Towards a Better HRBP Model
+        </h1>
+        <p class="hero-text">
+          Diagnose how effective and strategically aligned your HRBP model is across five key areas: Strategic Impact, HR Structure, Systems of Work, Stakeholder Relations, and Skills.
+        </p>
+
+        <div class="hero-grid">
+          <div class="glass">
+            <h3>What this assessment helps you do</h3>
+            <ul>
+              <li>Complete a structured HRBP model assessment</li>
+              <li>Instantly get results and practical recommendations</li>
+              <li>View benchmark-style maturity positioning across all five areas</li>
+              <li>Discover actionable insights to strengthen business impact</li>
+            </ul>
+
+            <div class="cover-actions">
+              <a class="btn" href="#strategic-impact">Start Assessment</a>
+              <a class="ghost-btn" href="#results">View Results Area</a>
+            </div>
+          </div>
+
+          <div class="stat-stack">
+            <div class="stat">
+              <strong>5</strong>
+              focus areas assessed
+            </div>
+            <div class="stat">
+              <strong>40</strong>
+              statements scored on a 5-point scale
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              instant results dashboard with recommendations
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-foot">
+          Designed in dark green with near-white inner pages for a clean, professional assessment experience.
+        </div>
+      </div>
+    </section>
+
+    <section class="page intro-steps">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p>Complete the assessment, review your results, and use the recommendations to strengthen your HRBP operating model.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div class="step-number">1</div>
+            <h3>Complete the assessment</h3>
+            <p>Diagnose the quality of your HRBP model implementation across Strategic Impact, HR Structure, Systems of Work, Stakeholder Relations, and Skills.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">2</div>
+            <h3>Instantly get results &amp; recommendations</h3>
+            <p>Receive a detailed results view showing how effective and strategically aligned your model is, and where you can improve.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">3</div>
+            <h3>Benchmark your results</h3>
+            <p>See how your scores map to practical maturity bands, with a benchmark-style view across all five focus areas.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">4</div>
+            <h3>Discover actionable insights</h3>
+            <p>Use the recommendations to better position your HR team as a strategic partner driving business performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>What Do You Get?</h2>
+          <p>A practical assessment experience with a clear results report and improvement guidance.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="pill">Valuable insights</div>
+            <p>
+              You will receive a detailed report of your results across five focus areas: Strategic Impact, HR Structure,
+              Systems of Work, Stakeholder Relations, and Skills. This helps you understand how well your HR practices support
+              business strategy and contribute to organizational success.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="pill">Practical recommendations</div>
+            <p>
+              Your results highlight strengths, improvement areas, maturity positioning, and strategic opportunities to boost performance.
+              Based on these results, your learning consultants can design a customized learning journey to upskill HRBPs and maximize impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="assessment">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Assessment</h2>
+          <p>Rate each statement from Strongly Disagree to Strongly Agree. All questions are required for results.</p>
+        </div>
+
+        <div class="form-header">
+          <div class="field">
+            <label for="participantName">Prepared for</label>
+            <input id="participantName" type="text" placeholder="Enter participant name" />
+          </div>
+          <div class="field">
+            <label for="organizationName">Organization</label>
+            <input id="organizationName" type="text" placeholder="Enter organization name" />
+          </div>
+          <div class="field">
+            <label for="assessmentDate">Assessment date</label>
+            <input id="assessmentDate" type="text" placeholder="Auto-filled on submit" />
+          </div>
+        </div>
+
+        <div class="section-nav" id="sectionNav">
+          <a class="nav-chip" href="#strategic-impact">1. Strategic Impact</a>
+          <a class="nav-chip" href="#hr-structure">2. HR Structure</a>
+          <a class="nav-chip" href="#systems-of-work">3. Systems of Work</a>
+          <a class="nav-chip" href="#stakeholder-relations">4. Stakeholder Relations</a>
+          <a class="nav-chip" href="#skills">5. Skills</a>
+        </div>
+
+        <form id="assessmentForm">
+
+          <section class="assessment-section" id="strategic-impact">
+            <h3>1. Strategic Impact</h3>
+            <p class="section-copy">The HR strategy must be aligned with the business, translated into the HRBP Operating Model, and provide clear measures of success.</p>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR function contributes to long-term business goals*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="strategic-impact-q0-0" name="strategic-impact-q0" value="1"><label for="strategic-impact-q0-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q0-1" name="strategic-impact-q0" value="2"><label for="strategic-impact-q0-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q0-2" name="strategic-impact-q0" value="3"><label for="strategic-impact-q0-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q0-3" name="strategic-impact-q0" value="4"><label for="strategic-impact-q0-3">Agree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q0-4" name="strategic-impact-q0" value="5"><label for="strategic-impact-q0-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR is contributing to the long-term sustainability of the organization*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="strategic-impact-q1-0" name="strategic-impact-q1" value="1"><label for="strategic-impact-q1-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q1-1" name="strategic-impact-q1" value="2"><label for="strategic-impact-q1-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q1-2" name="strategic-impact-q1" value="3"><label for="strategic-impact-q1-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q1-3" name="strategic-impact-q1" value="4"><label for="strategic-impact-q1-3">Agree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q1-4" name="strategic-impact-q1" value="5"><label for="strategic-impact-q1-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR is meeting the expectations of the business*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="strategic-impact-q2-0" name="strategic-impact-q2" value="1"><label for="strategic-impact-q2-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q2-1" name="strategic-impact-q2" value="2"><label for="strategic-impact-q2-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q2-2" name="strategic-impact-q2" value="3"><label for="strategic-impact-q2-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q2-3" name="strategic-impact-q2" value="4"><label for="strategic-impact-q2-3">Agree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q2-4" name="strategic-impact-q2" value="5"><label for="strategic-impact-q2-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR strategy enables business performance*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="strategic-impact-q3-0" name="strategic-impact-q3" value="1"><label for="strategic-impact-q3-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q3-1" name="strategic-impact-q3" value="2"><label for="strategic-impact-q3-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q3-2" name="strategic-impact-q3" value="3"><label for="strategic-impact-q3-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q3-3" name="strategic-impact-q3" value="4"><label for="strategic-impact-q3-3">Agree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q3-4" name="strategic-impact-q3" value="5"><label for="strategic-impact-q3-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR strategies are closely integrated with business objectives*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="strategic-impact-q4-0" name="strategic-impact-q4" value="1"><label for="strategic-impact-q4-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q4-1" name="strategic-impact-q4" value="2"><label for="strategic-impact-q4-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q4-2" name="strategic-impact-q4" value="3"><label for="strategic-impact-q4-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q4-3" name="strategic-impact-q4" value="4"><label for="strategic-impact-q4-3">Agree</label></div>
+                <div class="option"><input type="radio" id="strategic-impact-q4-4" name="strategic-impact-q4" value="5"><label for="strategic-impact-q4-4">Strongly Agree</label></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="assessment-section" id="hr-structure">
+            <h3>2. HR Structure</h3>
+            <p class="section-copy">The HRBP Operating Model and structure should be well aligned to key HR objectives to enable effective execution of the HR strategy.</p>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The operating model reflects the strategic priorities of the business*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="hr-structure-q0-0" name="hr-structure-q0" value="1"><label for="hr-structure-q0-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q0-1" name="hr-structure-q0" value="2"><label for="hr-structure-q0-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q0-2" name="hr-structure-q0" value="3"><label for="hr-structure-q0-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q0-3" name="hr-structure-q0" value="4"><label for="hr-structure-q0-3">Agree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q0-4" name="hr-structure-q0" value="5"><label for="hr-structure-q0-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The operating model aligns with the business model*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="hr-structure-q1-0" name="hr-structure-q1" value="1"><label for="hr-structure-q1-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q1-1" name="hr-structure-q1" value="2"><label for="hr-structure-q1-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q1-2" name="hr-structure-q1" value="3"><label for="hr-structure-q1-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q1-3" name="hr-structure-q1" value="4"><label for="hr-structure-q1-3">Agree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q1-4" name="hr-structure-q1" value="5"><label for="hr-structure-q1-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The operating model defines clear accountabilities*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="hr-structure-q2-0" name="hr-structure-q2" value="1"><label for="hr-structure-q2-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q2-1" name="hr-structure-q2" value="2"><label for="hr-structure-q2-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q2-2" name="hr-structure-q2" value="3"><label for="hr-structure-q2-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q2-3" name="hr-structure-q2" value="4"><label for="hr-structure-q2-3">Agree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q2-4" name="hr-structure-q2" value="5"><label for="hr-structure-q2-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The operating model is adequately resourced and financially viable, ensuring cost-effective delivery*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="hr-structure-q3-0" name="hr-structure-q3" value="1"><label for="hr-structure-q3-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q3-1" name="hr-structure-q3" value="2"><label for="hr-structure-q3-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q3-2" name="hr-structure-q3" value="3"><label for="hr-structure-q3-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q3-3" name="hr-structure-q3" value="4"><label for="hr-structure-q3-3">Agree</label></div>
+                <div class="option"><input type="radio" id="hr-structure-q3-4" name="hr-structure-q3" value="5"><label for="hr-structure-q3-4">Strongly Agree</label></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="assessment-section" id="systems-of-work">
+            <h3>3. Systems of Work</h3>
+            <p class="section-copy">HR processes, technologies, data, and governance should jointly enable HR to work effectively within the HRBP Model.</p>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR services are accessible and easy to use*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q0-0" name="systems-of-work-q0" value="1"><label for="systems-of-work-q0-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q0-1" name="systems-of-work-q0" value="2"><label for="systems-of-work-q0-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q0-2" name="systems-of-work-q0" value="3"><label for="systems-of-work-q0-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q0-3" name="systems-of-work-q0" value="4"><label for="systems-of-work-q0-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q0-4" name="systems-of-work-q0" value="5"><label for="systems-of-work-q0-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR policies, practices, and information is easy to access and understand*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q1-0" name="systems-of-work-q1" value="1"><label for="systems-of-work-q1-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q1-1" name="systems-of-work-q1" value="2"><label for="systems-of-work-q1-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q1-2" name="systems-of-work-q1" value="3"><label for="systems-of-work-q1-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q1-3" name="systems-of-work-q1" value="4"><label for="systems-of-work-q1-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q1-4" name="systems-of-work-q1" value="5"><label for="systems-of-work-q1-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR services create a positive experience for employees*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q2-0" name="systems-of-work-q2" value="1"><label for="systems-of-work-q2-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q2-1" name="systems-of-work-q2" value="2"><label for="systems-of-work-q2-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q2-2" name="systems-of-work-q2" value="3"><label for="systems-of-work-q2-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q2-3" name="systems-of-work-q2" value="4"><label for="systems-of-work-q2-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q2-4" name="systems-of-work-q2" value="5"><label for="systems-of-work-q2-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">Employees are satisfied with HR services*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q3-0" name="systems-of-work-q3" value="1"><label for="systems-of-work-q3-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q3-1" name="systems-of-work-q3" value="2"><label for="systems-of-work-q3-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q3-2" name="systems-of-work-q3" value="3"><label for="systems-of-work-q3-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q3-3" name="systems-of-work-q3" value="4"><label for="systems-of-work-q3-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q3-4" name="systems-of-work-q3" value="5"><label for="systems-of-work-q3-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR services are of a high quality*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q4-0" name="systems-of-work-q4" value="1"><label for="systems-of-work-q4-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q4-1" name="systems-of-work-q4" value="2"><label for="systems-of-work-q4-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q4-2" name="systems-of-work-q4" value="3"><label for="systems-of-work-q4-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q4-3" name="systems-of-work-q4" value="4"><label for="systems-of-work-q4-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q4-4" name="systems-of-work-q4" value="5"><label for="systems-of-work-q4-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR resolves all queries in a professional and timely manner*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q5-0" name="systems-of-work-q5" value="1"><label for="systems-of-work-q5-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q5-1" name="systems-of-work-q5" value="2"><label for="systems-of-work-q5-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q5-2" name="systems-of-work-q5" value="3"><label for="systems-of-work-q5-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q5-3" name="systems-of-work-q5" value="4"><label for="systems-of-work-q5-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q5-4" name="systems-of-work-q5" value="5"><label for="systems-of-work-q5-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR utilizes data to inform decision-making in the organization*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q6-0" name="systems-of-work-q6" value="1"><label for="systems-of-work-q6-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q6-1" name="systems-of-work-q6" value="2"><label for="systems-of-work-q6-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q6-2" name="systems-of-work-q6" value="3"><label for="systems-of-work-q6-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q6-3" name="systems-of-work-q6" value="4"><label for="systems-of-work-q6-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q6-4" name="systems-of-work-q6" value="5"><label for="systems-of-work-q6-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">In the organization, technology is integrated into HR services*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q7-0" name="systems-of-work-q7" value="1"><label for="systems-of-work-q7-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q7-1" name="systems-of-work-q7" value="2"><label for="systems-of-work-q7-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q7-2" name="systems-of-work-q7" value="3"><label for="systems-of-work-q7-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q7-3" name="systems-of-work-q7" value="4"><label for="systems-of-work-q7-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q7-4" name="systems-of-work-q7" value="5"><label for="systems-of-work-q7-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR department communicates systematically and collaborates effectively across the organization*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="systems-of-work-q8-0" name="systems-of-work-q8" value="1"><label for="systems-of-work-q8-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q8-1" name="systems-of-work-q8" value="2"><label for="systems-of-work-q8-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q8-2" name="systems-of-work-q8" value="3"><label for="systems-of-work-q8-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q8-3" name="systems-of-work-q8" value="4"><label for="systems-of-work-q8-3">Agree</label></div>
+                <div class="option"><input type="radio" id="systems-of-work-q8-4" name="systems-of-work-q8" value="5"><label for="systems-of-work-q8-4">Strongly Agree</label></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="assessment-section" id="stakeholder-relations">
+            <h3>4. Stakeholder Relations</h3>
+            <p class="section-copy">Relationships with key stakeholders must be built and maintained with trust and credibility, to enable the success of the HRBP Model and implementation of HR initiatives.</p>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR continuously seeks and incorporates feedback from stakeholders*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q0-0" name="stakeholder-relations-q0" value="1"><label for="stakeholder-relations-q0-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q0-1" name="stakeholder-relations-q0" value="2"><label for="stakeholder-relations-q0-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q0-2" name="stakeholder-relations-q0" value="3"><label for="stakeholder-relations-q0-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q0-3" name="stakeholder-relations-q0" value="4"><label for="stakeholder-relations-q0-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q0-4" name="stakeholder-relations-q0" value="5"><label for="stakeholder-relations-q0-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR's partnership with business directly impacts business goals*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q1-0" name="stakeholder-relations-q1" value="1"><label for="stakeholder-relations-q1-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q1-1" name="stakeholder-relations-q1" value="2"><label for="stakeholder-relations-q1-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q1-2" name="stakeholder-relations-q1" value="3"><label for="stakeholder-relations-q1-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q1-3" name="stakeholder-relations-q1" value="4"><label for="stakeholder-relations-q1-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q1-4" name="stakeholder-relations-q1" value="5"><label for="stakeholder-relations-q1-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR displays an adequate understanding of the business*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q2-0" name="stakeholder-relations-q2" value="1"><label for="stakeholder-relations-q2-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q2-1" name="stakeholder-relations-q2" value="2"><label for="stakeholder-relations-q2-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q2-2" name="stakeholder-relations-q2" value="3"><label for="stakeholder-relations-q2-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q2-3" name="stakeholder-relations-q2" value="4"><label for="stakeholder-relations-q2-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q2-4" name="stakeholder-relations-q2" value="5"><label for="stakeholder-relations-q2-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR plays an integral role within the organization as a strategic partner*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q3-0" name="stakeholder-relations-q3" value="1"><label for="stakeholder-relations-q3-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q3-1" name="stakeholder-relations-q3" value="2"><label for="stakeholder-relations-q3-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q3-2" name="stakeholder-relations-q3" value="3"><label for="stakeholder-relations-q3-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q3-3" name="stakeholder-relations-q3" value="4"><label for="stakeholder-relations-q3-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q3-4" name="stakeholder-relations-q3" value="5"><label for="stakeholder-relations-q3-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR is highly responsive to changes within the organization*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q4-0" name="stakeholder-relations-q4" value="1"><label for="stakeholder-relations-q4-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q4-1" name="stakeholder-relations-q4" value="2"><label for="stakeholder-relations-q4-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q4-2" name="stakeholder-relations-q4" value="3"><label for="stakeholder-relations-q4-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q4-3" name="stakeholder-relations-q4" value="4"><label for="stakeholder-relations-q4-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q4-4" name="stakeholder-relations-q4" value="5"><label for="stakeholder-relations-q4-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The current HR business partnering model facilitates effective collaboration within the organization*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="stakeholder-relations-q5-0" name="stakeholder-relations-q5" value="1"><label for="stakeholder-relations-q5-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q5-1" name="stakeholder-relations-q5" value="2"><label for="stakeholder-relations-q5-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q5-2" name="stakeholder-relations-q5" value="3"><label for="stakeholder-relations-q5-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q5-3" name="stakeholder-relations-q5" value="4"><label for="stakeholder-relations-q5-3">Agree</label></div>
+                <div class="option"><input type="radio" id="stakeholder-relations-q5-4" name="stakeholder-relations-q5" value="5"><label for="stakeholder-relations-q5-4">Strongly Agree</label></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="assessment-section" id="skills">
+            <h3>5. Skills</h3>
+            <p class="section-copy">The HR team should have the right skills available and at the right level of proficiency to deliver on the HR strategy within the HRBP Model.</p>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR skill requirements are well described in job specifications and performance contracts*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q0-0" name="skills-q0" value="1"><label for="skills-q0-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q0-1" name="skills-q0" value="2"><label for="skills-q0-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q0-2" name="skills-q0" value="3"><label for="skills-q0-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q0-3" name="skills-q0" value="4"><label for="skills-q0-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q0-4" name="skills-q0" value="5"><label for="skills-q0-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The skills required to deliver on HR’s strategic priorities are clear*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q1-0" name="skills-q1" value="1"><label for="skills-q1-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q1-1" name="skills-q1" value="2"><label for="skills-q1-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q1-2" name="skills-q1" value="3"><label for="skills-q1-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q1-3" name="skills-q1" value="4"><label for="skills-q1-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q1-4" name="skills-q1" value="5"><label for="skills-q1-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR team members show commitment to development initiatives*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q2-0" name="skills-q2" value="1"><label for="skills-q2-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q2-1" name="skills-q2" value="2"><label for="skills-q2-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q2-2" name="skills-q2" value="3"><label for="skills-q2-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q2-3" name="skills-q2" value="4"><label for="skills-q2-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q2-4" name="skills-q2" value="5"><label for="skills-q2-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR skills development receives adequate investment of time and resources*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q3-0" name="skills-q3" value="1"><label for="skills-q3-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q3-1" name="skills-q3" value="2"><label for="skills-q3-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q3-2" name="skills-q3" value="3"><label for="skills-q3-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q3-3" name="skills-q3" value="4"><label for="skills-q3-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q3-4" name="skills-q3" value="5"><label for="skills-q3-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR currently has the right skills to deliver on the HR strategy and business expectations*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q4-0" name="skills-q4" value="1"><label for="skills-q4-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q4-1" name="skills-q4" value="2"><label for="skills-q4-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q4-2" name="skills-q4" value="3"><label for="skills-q4-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q4-3" name="skills-q4" value="4"><label for="skills-q4-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q4-4" name="skills-q4" value="5"><label for="skills-q4-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The breadth of skills within HR is appropriate for the work that needs to be done*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q5-0" name="skills-q5" value="1"><label for="skills-q5-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q5-1" name="skills-q5" value="2"><label for="skills-q5-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q5-2" name="skills-q5" value="3"><label for="skills-q5-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q5-3" name="skills-q5" value="4"><label for="skills-q5-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q5-4" name="skills-q5" value="5"><label for="skills-q5-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR team has the relevant skills at the required proficiency level for their roles*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q6-0" name="skills-q6" value="1"><label for="skills-q6-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q6-1" name="skills-q6" value="2"><label for="skills-q6-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q6-2" name="skills-q6" value="3"><label for="skills-q6-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q6-3" name="skills-q6" value="4"><label for="skills-q6-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q6-4" name="skills-q6" value="5"><label for="skills-q6-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR team effectively applies their skills*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q7-0" name="skills-q7" value="1"><label for="skills-q7-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q7-1" name="skills-q7" value="2"><label for="skills-q7-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q7-2" name="skills-q7" value="3"><label for="skills-q7-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q7-3" name="skills-q7" value="4"><label for="skills-q7-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q7-4" name="skills-q7" value="5"><label for="skills-q7-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team creates an environment conducive to development*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q8-0" name="skills-q8" value="1"><label for="skills-q8-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q8-1" name="skills-q8" value="2"><label for="skills-q8-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q8-2" name="skills-q8" value="3"><label for="skills-q8-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q8-3" name="skills-q8" value="4"><label for="skills-q8-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q8-4" name="skills-q8" value="5"><label for="skills-q8-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team actively champions the people agenda*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q9-0" name="skills-q9" value="1"><label for="skills-q9-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q9-1" name="skills-q9" value="2"><label for="skills-q9-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q9-2" name="skills-q9" value="3"><label for="skills-q9-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q9-3" name="skills-q9" value="4"><label for="skills-q9-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q9-4" name="skills-q9" value="5"><label for="skills-q9-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">HR leadership builds trusting relationships with key stakeholders*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q10-0" name="skills-q10" value="1"><label for="skills-q10-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q10-1" name="skills-q10" value="2"><label for="skills-q10-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q10-2" name="skills-q10" value="3"><label for="skills-q10-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q10-3" name="skills-q10" value="4"><label for="skills-q10-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q10-4" name="skills-q10" value="5"><label for="skills-q10-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team sets a clear direction for HR*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q11-0" name="skills-q11" value="1"><label for="skills-q11-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q11-1" name="skills-q11" value="2"><label for="skills-q11-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q11-2" name="skills-q11" value="3"><label for="skills-q11-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q11-3" name="skills-q11" value="4"><label for="skills-q11-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q11-4" name="skills-q11" value="5"><label for="skills-q11-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team makes clear decisions to move HR forward*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q12-0" name="skills-q12" value="1"><label for="skills-q12-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q12-1" name="skills-q12" value="2"><label for="skills-q12-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q12-2" name="skills-q12" value="3"><label for="skills-q12-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q12-3" name="skills-q12" value="4"><label for="skills-q12-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q12-4" name="skills-q12" value="5"><label for="skills-q12-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team manages conflict effectively*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q13-0" name="skills-q13" value="1"><label for="skills-q13-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q13-1" name="skills-q13" value="2"><label for="skills-q13-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q13-2" name="skills-q13" value="3"><label for="skills-q13-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q13-3" name="skills-q13" value="4"><label for="skills-q13-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q13-4" name="skills-q13" value="5"><label for="skills-q13-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team exhibits a high level of professional integrity and ethical behavior*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q14-0" name="skills-q14" value="1"><label for="skills-q14-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q14-1" name="skills-q14" value="2"><label for="skills-q14-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q14-2" name="skills-q14" value="3"><label for="skills-q14-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q14-3" name="skills-q14" value="4"><label for="skills-q14-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q14-4" name="skills-q14" value="5"><label for="skills-q14-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-top"><div class="question-label">The HR leadership team actively listens and uses feedback from team members and stakeholders*</div></div>
+              <div class="scale-head"><span>Strongly Disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly Agree</span></div>
+              <div class="scale-options">
+                <div class="option"><input type="radio" id="skills-q15-0" name="skills-q15" value="1"><label for="skills-q15-0">Strongly Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q15-1" name="skills-q15" value="2"><label for="skills-q15-1">Disagree</label></div>
+                <div class="option"><input type="radio" id="skills-q15-2" name="skills-q15" value="3"><label for="skills-q15-2">Neutral</label></div>
+                <div class="option"><input type="radio" id="skills-q15-3" name="skills-q15" value="4"><label for="skills-q15-3">Agree</label></div>
+                <div class="option"><input type="radio" id="skills-q15-4" name="skills-q15" value="5"><label for="skills-q15-4">Strongly Agree</label></div>
+              </div>
+            </div>
+
+          </section>
+
+        </form>
+
+        <div class="assessment-actions">
+          <button type="button" class="btn" id="submitAssessment">Get Results</button>
+          <button type="button" class="link-btn" id="resetAssessment">Reset Assessment</button>
+        </div>
+
+        <div class="warning" id="warningBox">
+          Please answer all questions before generating your results.
+        </div>
+      </div>
+    </section>
+
+    <section class="page results-wrap" id="results">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Your Results</h2>
+          <p>Your benchmark-style view and recommendations appear here after you complete the assessment.</p>
+        </div>
+
+        <div class="score-hero">
+          <div class="score-ring-card">
+            <div class="ring" id="overallRing" style="--score:0;">
+              <div class="ring-content">
+                <div class="ring-score" id="overallScore">0%</div>
+                <div class="ring-label">Overall score</div>
+              </div>
+            </div>
+            <div class="maturity-badge" id="overallBand">Not scored</div>
+          </div>
+
+          <div class="overview-card">
+            <div class="overview-top">
+              <div>
+                <div class="pill">Assessment summary</div>
+                <h3 id="summaryHeadline" style="font-size:30px;color:var(--green);margin-bottom:6px;">Complete the assessment to see your summary</h3>
+                <p id="summaryText" style="color:var(--muted);font-size:15px;max-width:700px;">
+                  Your overall effectiveness, maturity band, and next-step guidance will appear here.
+                </p>
+              </div>
+            </div>
+
+            <div class="score-grid" id="overviewMiniScores"></div>
+
+            <div class="space"></div>
+
+            <div class="pill">Benchmark position</div>
+            <p style="font-size:14px;color:var(--muted);margin-bottom:12px;">
+              This view positions your result against practical maturity bands. Replace the ranges with your own benchmark dataset if needed.
+            </p>
+            <div class="benchmark-bar" id="benchmarkBar"></div>
+
+            <div class="footnote">
+              Prepared for: <strong id="displayParticipant">—</strong> &nbsp;|&nbsp;
+              Organization: <strong id="displayOrganization">—</strong> &nbsp;|&nbsp;
+              Submitted: <strong id="displayDate">—</strong>
+            </div>
+          </div>
+        </div>
+
+        <div id="detailedResults"></div>
+      </div>
+    </section>
+
+    <section class="page cta">
+      <div class="page-inner">
+        <div class="eyebrow">Next step</div>
+        <h2>Ready to Improve Your HRBP Operating Model?</h2>
+        <p>
+          Use your results to identify strengths, close capability gaps, and build a more strategic HRBP function aligned to business performance.
+        </p>
+
+        <a class="btn" href="BOOK_A_CALL_LINK">Book a Call</a>
+
+        <div class="cta-grid">
+          <div class="cta-card">
+            <h4>Strategic alignment</h4>
+            <p>Clarify how HR goals connect to business priorities, outcomes, and success measures.</p>
+          </div>
+          <div class="cta-card">
+            <h4>Operating model fit</h4>
+            <p>Strengthen accountabilities, execution capacity, and role clarity across the HRBP model.</p>
+          </div>
+          <div class="cta-card">
+            <h4>Service and systems</h4>
+            <p>Improve HR services, technology use, governance, and evidence-based decision-making.</p>
+          </div>
+          <div class="cta-card">
+            <h4>Capability building</h4>
+            <p>Develop the skills, leadership capacity, and stakeholder credibility needed for long-term impact.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const sections = [
+      {
+        id: "strategic-impact",
+        title: "1. Strategic Impact",
+        subMetrics: [
+          { label: "Strategic Value", questionIndexes: [0,1,2] },
+          { label: "Strategic Alignment", questionIndexes: [3,4] }
+        ]
+      },
+      {
+        id: "hr-structure",
+        title: "2. HR Structure",
+        subMetrics: [
+          { label: "Operating Model Fit", questionIndexes: [0,1] },
+          { label: "Execution Capacity", questionIndexes: [2,3] }
+        ]
+      },
+      {
+        id: "systems-of-work",
+        title: "3. Systems of Work",
+        subMetrics: [
+          { label: "HR Service Delivery", questionIndexes: [0,1,2,3,4,5] },
+          { label: "Evidence-based Practice", questionIndexes: [6] },
+          { label: "Technology Enabled", questionIndexes: [7] },
+          { label: "Ways of Work", questionIndexes: [8] }
+        ]
+      },
+      {
+        id: "stakeholder-relations",
+        title: "4. Stakeholder Relations",
+        subMetrics: [
+          { label: "Relationship Management", questionIndexes: [0,5] },
+          { label: "Strategic Partnership", questionIndexes: [1,3] },
+          { label: "Proactive Collaboration", questionIndexes: [2,4] }
+        ]
+      },
+      {
+        id: "skills",
+        title: "5. Skills",
+        subMetrics: [
+          { label: "Skill Identification", questionIndexes: [0,1] },
+          { label: "Skill Development", questionIndexes: [2,3] },
+          { label: "Access to Skills", questionIndexes: [4,5,6,7] },
+          { label: "Leadership Capacity", questionIndexes: [8,9,10,11,12,13,14,15] }
+        ]
+      }
+    ];
+
+    const categoryContent = {
+      "strategic-impact": {
+        whatIs: "Strategic Impact",
+        lowText: "Your score indicates a potential misalignment between the HR strategy and the business’s broader goals. This can create a disconnect between HR initiatives and their perceived relevance to organizational success. It may also mean that stakeholders and team members do not clearly understand the value HR brings to the business.",
+        midText: "Your score suggests parts of the HR strategy are aligned to business priorities, but the connection is not yet fully consistent, visible, or well understood across the organization. HR is contributing value, but the strategic story and measurement discipline need to become clearer.",
+        highText: "Your score indicates HR is strongly aligned to business priorities and is positioned to create visible strategic value. The focus now should be on sustaining this alignment, deepening measurement, and ensuring the impact of HR remains clear and credible across the business.",
+        lowRecs: [
+          "Engage key business stakeholders to understand the organizational strategy and how HR can contribute.",
+          "Validate strategic HR objectives with stakeholders to sense-check alignment and identify gaps.",
+          "Use practical strategy tools to map business objectives to HR goals, initiatives, and measures.",
+          "Review and reprioritize HR initiatives that do not clearly support business strategy.",
+          "Define measurable objectives and metrics that demonstrate HR’s business impact.",
+          "Create a communication plan so HR goals are visible, understandable, and aligned."
+        ],
+        midRecs: [
+          "Tighten the connection between strategic HR priorities and measurable business outcomes.",
+          "Improve how HR communicates its strategic intent and contribution to stakeholders.",
+          "Refine the measures used to show progress, value, and business impact.",
+          "Regularly test HR priorities against changing business conditions and stakeholder expectations."
+        ],
+        highRecs: [
+          "Continue linking strategic HR initiatives to measurable business outcomes.",
+          "Strengthen executive visibility of HR’s impact through regular reporting and business storytelling.",
+          "Use strategic review cycles to keep HR priorities aligned as business needs evolve.",
+          "Share success cases that show how HR directly enables performance and sustainability."
+        ]
+      },
+
+      "hr-structure": {
+        whatIs: "HR Structure",
+        lowText: "Your score shows there are gaps preventing optimal execution within the HR structure. These gaps often stem from a mismatch between the HRBP operating model and the business model, which creates friction between HR practices and business needs. Roles, capabilities, or accountabilities may not yet be strong enough to deliver the HR strategy effectively.",
+        midText: "Your score suggests the HRBP operating model is partially fit for purpose, but there are still structural gaps affecting execution quality, accountabilities, and capacity. The model is working in places, but not yet with enough consistency to fully enable strategic delivery.",
+        highText: "Your score indicates the HRBP operating model is broadly aligned to strategic priorities and execution needs. Roles and accountabilities are clearer, but continued refinement will help ensure the model remains scalable, responsive, and financially viable.",
+        lowRecs: [
+          "Reassess the current HR operating model and identify strategic priorities that are not well represented.",
+          "Gather feedback from business stakeholders to identify pain points in HR execution and service delivery.",
+          "Clarify roles, decision rights, and accountabilities across the HRBP model.",
+          "Ensure the operating model is adequately resourced to deliver strategic and operational work.",
+          "Review and streamline processes to remove bottlenecks and improve decision-making."
+        ],
+        midRecs: [
+          "Refine role clarity and resource allocation across the operating model.",
+          "Test whether the current structure supports both strategic and operational demands.",
+          "Strengthen accountability routines and communication around roles and expectations.",
+          "Use stakeholder feedback to fine-tune execution capacity and service design."
+        ],
+        highRecs: [
+          "Periodically review the model to ensure it remains aligned to evolving business strategy.",
+          "Use performance and stakeholder data to optimize operating model decisions.",
+          "Build succession and resource resilience so execution capacity remains strong over time.",
+          "Keep role clarity and accountability visible through ongoing communication and leadership routines."
+        ]
+      },
+
+      "systems-of-work": {
+        whatIs: "Systems of Work",
+        lowText: "Your score indicates that the systems of work within your HR function are not yet sufficiently matured, implemented, or integrated to support execution well. Ease of interaction, service quality, data use, technology enablement, or governance may still be limiting HR’s effectiveness and forcing too much manual intervention.",
+        midText: "Your score suggests some elements of the HR system are working, but the full ecosystem is not yet consistently integrated or mature. HR services, data use, technology, and governance show promise, but they are not yet operating together at the level needed for strong execution.",
+        highText: "Your score indicates that HR services, technology, data use, and governance are working well together to support execution. The priority now is continuous improvement, wider adoption, and ensuring the user experience remains strong as the organization evolves.",
+        lowRecs: [
+          "Regularly analyze HR service feedback to identify recurring issues and improvement opportunities.",
+          "Improve the accessibility, consistency, and quality of HR services for employees and managers.",
+          "Increase digital adoption so HR teams and employees can use technology more effectively.",
+          "Strengthen governance structures to improve communication, visibility, and operational guardrails.",
+          "Create a continuous improvement process for HR workflows, service delivery, and technology use."
+        ],
+        midRecs: [
+          "Focus on integrating data, services, and technology into a more joined-up HR operating experience.",
+          "Improve governance routines and the visibility of people risks and service performance.",
+          "Reduce manual work by simplifying workflows and increasing process standardization.",
+          "Build stronger adoption habits for HR systems and evidence-based decision-making."
+        ],
+        highRecs: [
+          "Keep monitoring service quality, technology adoption, and data maturity to sustain performance.",
+          "Invest in ongoing process simplification and user experience improvements.",
+          "Use HR data more proactively to support business decisions and identify risks earlier.",
+          "Treat governance as an enabler of speed, consistency, and confidence in execution."
+        ]
+      },
+
+      "stakeholder-relations": {
+        whatIs: "Stakeholder Relations",
+        lowText: "Your score indicates there is room to improve stakeholder relationships, and this is currently limiting HR’s ability to execute its initiatives successfully. HR may not yet be seen as a fully credible strategic partner, and business understanding or responsiveness may not be visible enough to create strong trust.",
+        midText: "Your score suggests stakeholder relationships are developing, but HR’s position as a strategic partner is not yet fully established across the organization. There is evidence of partnership, but it needs to become deeper, more visible, and more proactive.",
+        highText: "Your score indicates HR has built a strong foundation of trust, credibility, and strategic partnership with stakeholders. The next step is to deepen these relationships further and maintain visibility of HR’s business contribution as organizational needs continue to shift.",
+        lowRecs: [
+          "Focus on deepening relationships with stakeholders critical to HR’s strategic initiatives.",
+          "Establish clearer mechanisms for communicating HR’s business impact and outcomes.",
+          "Hold regular alignment meetings with a cross-section of stakeholders to gather feedback and identify needs.",
+          "Improve business understanding so HR can translate needs into relevant, high-value action.",
+          "Take the lead on emerging business challenges to demonstrate foresight and strategic value."
+        ],
+        midRecs: [
+          "Make HR’s contribution more visible through stronger stakeholder communication and better outcome reporting.",
+          "Move from reactive engagement to more proactive partnership and joint problem-solving.",
+          "Create a more systematic rhythm for gathering, acting on, and responding to stakeholder feedback.",
+          "Strengthen the business fluency of HRBPs so they can engage with more confidence and credibility."
+        ],
+        highRecs: [
+          "Protect and deepen trusted relationships with stakeholders through regular strategic dialogue.",
+          "Keep demonstrating how HR translates business needs into measurable outcomes.",
+          "Use high-trust relationships to expand HR’s role in strategic decision-making.",
+          "Continue listening, adapting, and responding quickly to changing organizational needs."
+        ]
+      },
+
+      "skills": {
+        whatIs: "Skills",
+        lowText: "Your score shows there are skills-related challenges affecting HR strategy execution and operational efficiency. This often means the team does not yet have a consistent approach to defining required skills, assessing current capability, building leadership capacity, or closing critical skill gaps in a structured way.",
+        midText: "Your score suggests the organization has some useful skills foundations in place, but capability building is not yet fully systematic or aligned to future needs. Development activity is happening, but it may not yet be sharp enough to support the full ambition of the HRBP model.",
+        highText: "Your score indicates the HR team has a solid capability base, and leadership is helping create the conditions for growth, trust, and development. The focus should now be on sustaining future readiness, increasing skills visibility, and ensuring critical capability remains aligned to business strategy.",
+        lowRecs: [
+          "Identify priority skill areas and implement targeted development initiatives.",
+          "Create better visibility of skills across the HR team to support deployment and development.",
+          "Build a stronger talent and succession pipeline for short- to medium-term continuity.",
+          "Improve knowledge-sharing mechanisms through workshops, peer learning, and internal communities.",
+          "Strengthen leadership development around ethics, conflict resolution, direction-setting, and feedback use."
+        ],
+        midRecs: [
+          "Improve the alignment between strategic skill needs and development investments.",
+          "Make skill mapping and capability planning more visible and consistent across the team.",
+          "Develop clearer learning pathways for HRBP capability growth and leadership readiness.",
+          "Use stretch assignments, mentoring, and cross-functional work to accelerate development."
+        ],
+        highRecs: [
+          "Continue refreshing capability maps to reflect changing strategic and operating model needs.",
+          "Use internal capability data to deploy talent more effectively across projects and priorities.",
+          "Strengthen succession, leadership depth, and specialist capability for future resilience.",
+          "Keep investing in a development culture that balances performance, growth, and integrity."
+        ]
+      }
+    };
+
+    const maturityBands = [
+      { label: "Foundational", min: 0, max: 39 },
+      { label: "Developing", min: 40, max: 54 },
+      { label: "Progressing", min: 55, max: 69 },
+      { label: "Strong", min: 70, max: 84 },
+      { label: "Leading", min: 85, max: 100 }
+    ];
+
+    const warningBox = document.getElementById("warningBox");
+    const resultsWrap = document.getElementById("results");
+    const overviewMiniScores = document.getElementById("overviewMiniScores");
+    const benchmarkBar = document.getElementById("benchmarkBar");
+    const detailedResults = document.getElementById("detailedResults");
+
+    function getAnswer(sectionId, qIndex){
+      const selected = document.querySelector(`input[name="${sectionId}-q${qIndex}"]:checked`);
+      return selected ? Number(selected.value) : null;
+    }
+
+    function avg(values){
+      return values.reduce((a,b) => a+b, 0) / values.length;
+    }
+
+    function pctFromAvg(value){
+      return Math.round(((value - 1) / 4) * 100);
+    }
+
+    function getBand(score){
+      return maturityBands.find(b => score >= b.min && score <= b.max) || maturityBands[0];
+    }
+
+    function validateAssessment(){
+      for(const section of sections){
+        const questionCount = document.querySelectorAll(`input[name^="${section.id}-q"]`).length / 5;
+        for(let i = 0; i < questionCount; i++){
+          if(getAnswer(section.id, i) === null){
+            return { valid:false, sectionId: section.id };
+          }
+        }
+      }
+      return { valid:true };
+    }
+
+    function getSectionResults(section){
+      const questionCount = document.querySelectorAll(`input[name^="${section.id}-q"]`).length / 5;
+      const answers = Array.from({length: questionCount}, (_, idx) => getAnswer(section.id, idx));
+      const sectionAvg = avg(answers);
+      const sectionPct = pctFromAvg(sectionAvg);
+
+      const subResults = section.subMetrics.map(metric => {
+        const metricAnswers = metric.questionIndexes.map(i => answers[i]);
+        const metricAvg = avg(metricAnswers);
+        return {
+          label: metric.label,
+          score: pctFromAvg(metricAvg)
+        };
+      });
+
+      return {
+        id: section.id,
+        title: section.title,
+        average: sectionAvg,
+        percentage: sectionPct,
+        answers,
+        subResults
+      };
+    }
+
+    function getNarrative(sectionId, score){
+      const content = categoryContent[sectionId];
+      if(score < 40){
+        return { text: content.lowText, recommendations: content.lowRecs };
+      }
+      if(score < 70){
+        return { text: content.midText, recommendations: content.midRecs };
+      }
+      return { text: content.highText, recommendations: content.highRecs };
+    }
+
+    function getOverallNarrative(score){
+      if(score < 40){
+        return "Your results show the HRBP model is still largely tactical and needs stronger alignment, clearer structure, better systems, and focused capability development.";
+      }
+      if(score < 55){
+        return "Your results suggest there are useful foundations in place, but important gaps are holding back strategic HRBP impact and execution consistency.";
+      }
+      if(score < 70){
+        return "Your results show a developing HRBP model with visible strengths, though greater integration, clarity, and capability building would improve overall impact.";
+      }
+      if(score < 85){
+        return "Your results indicate a strong HRBP model that is creating value. The next step is targeted refinement to increase strategic influence and execution maturity.";
+      }
+      return "Your results indicate a highly mature and strategically aligned HRBP model with strong foundations for sustained business impact and continuous improvement.";
+    }
+
+    function renderBenchmarkBar(score){
+      const band = getBand(score);
+      benchmarkBar.innerHTML = maturityBands.map(item => `
+        <div class="benchmark-band ${item.label === band.label ? "active" : ""}">
+          ${item.label}<br><small>${item.min}%–${item.max}%</small>
+        </div>
+      `).join("");
+    }
+
+    function renderOverviewMiniScores(results){
+      overviewMiniScores.innerHTML = results.map(item => `
+        <div class="score-box">
+          <strong>${item.percentage}%</strong>
+          <span>${item.title.replace(/^\d+\.\s/, "")}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderDetailedResults(sectionResults){
+      detailedResults.innerHTML = sectionResults.map(result => {
+        const content = categoryContent[result.id];
+        const narrative = getNarrative(result.id, result.percentage);
+        const band = getBand(result.percentage);
+
+        return `
+          <article class="result-card">
+            <div class="pill">What is ${content.whatIs}?</div>
+            <h3>${content.whatIs}</h3>
+
+            <div class="score-grid">
+              <div class="score-box">
+                <strong>${result.percentage}%</strong>
+                <span>Overall score</span>
+              </div>
+              <div class="score-box">
+                <strong>${band.label}</strong>
+                <span>Maturity band</span>
+              </div>
+              <div class="score-box">
+                <strong>${result.subResults.length}</strong>
+                <span>Benchmark areas</span>
+              </div>
+              <div class="score-box">
+                <strong>${result.answers.length}</strong>
+                <span>Statements scored</span>
+              </div>
+            </div>
+
+            <div class="bar-list">
+              ${result.subResults.map(sub => `
+                <div class="bar-row">
+                  <label>${sub.label}</label>
+                  <div class="bar"><span style="width:${sub.score}%"></span></div>
+                  <strong>${sub.score}%</strong>
+                </div>
+              `).join("")}
+            </div>
+
+            <div class="result-copy">
+              <p>${narrative.text}</p>
+            </div>
+
+            <div class="space"></div>
+
+            <div class="pill">Recommendations</div>
+            <ul class="rec-list">
+              ${narrative.recommendations.map(rec => `<li>${rec}</li>`).join("")}
+            </ul>
+
+            <div class="space"></div>
+
+            <a class="link-btn" href="BOOK_A_CALL_LINK">Book a Call</a>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function submitAssessment(){
+      const validation = validateAssessment();
+      if(!validation.valid){
+        warningBox.style.display = "block";
+        document.getElementById(validation.sectionId).scrollIntoView({ behavior:"smooth", block:"start" });
+        return;
+      }
+
+      warningBox.style.display = "none";
+
+      const sectionResults = sections.map(getSectionResults);
+      const overallAvg = avg(sectionResults.map(r => r.average));
+      const overallPct = pctFromAvg(overallAvg);
+      const overallBand = getBand(overallPct);
+      const now = new Date();
+      const dateText = now.toLocaleDateString(undefined, {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }) + ", " + now.toLocaleTimeString(undefined, {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+
+      const participantName = document.getElementById("participantName").value.trim() || "Participant";
+      const organizationName = document.getElementById("organizationName").value.trim() || "Organization";
+      document.getElementById("assessmentDate").value = dateText;
+
+      document.getElementById("overallRing").style.setProperty("--score", overallPct);
+      document.getElementById("overallScore").textContent = overallPct + "%";
+      document.getElementById("overallBand").textContent = overallBand.label;
+      document.getElementById("summaryHeadline").textContent = overallBand.label + " HRBP Model";
+      document.getElementById("summaryText").textContent = getOverallNarrative(overallPct);
+
+      document.getElementById("displayParticipant").textContent = participantName;
+      document.getElementById("displayOrganization").textContent = organizationName;
+      document.getElementById("displayDate").textContent = dateText;
+
+      renderOverviewMiniScores(sectionResults);
+      renderBenchmarkBar(overallPct);
+      renderDetailedResults(sectionResults);
+
+      resultsWrap.classList.add("show");
+      resultsWrap.scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+
+    function resetAssessment(){
+      document.getElementById("assessmentForm").reset();
+      document.getElementById("participantName").value = "";
+      document.getElementById("organizationName").value = "";
+      document.getElementById("assessmentDate").value = "";
+      warningBox.style.display = "none";
+      resultsWrap.classList.remove("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.getElementById("submitAssessment").addEventListener("click", submitAssessment);
+    document.getElementById("resetAssessment").addEventListener("click", resetAssessment);
+  </script>
+</body>
+</html>
