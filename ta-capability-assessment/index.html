@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talent Acquisition Capability Assessment Guide</title>
+  <style>
+    :root{--green:#123f35;--green-2:#1a5648;--gold:#f2d14c;--paper:#f7f6f0;--ink:#17312b;--muted:#4d655f;--line:#d9ddd6;--card:#fff;--soft:#dfece8;--soft-gold:#fff2c8;--soft-blue:#dceff6;--shadow:0 14px 34px rgba(0,0,0,.10)}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,var(--green) 0 230px,#e9eee8 230px 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    .page{max-width:1140px;margin:0 auto;padding:18px 14px 42px}
+    .cover{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;border-radius:28px;padding:52px 34px 36px;box-shadow:var(--shadow);margin-bottom:14px}
+    .cover h1{margin:0 0 14px;font-size:clamp(38px,6vw,62px);line-height:1.05;color:var(--gold);font-weight:900;letter-spacing:-1px;max-width:920px}
+    .cover p{margin:0;max-width:860px;font-size:21px;color:#fff}
+    .hero-grid,.grid-2,.grid-3,.grid-4,.grid-6{display:grid;gap:16px;margin-top:18px}.hero-grid{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-6{grid-template-columns:repeat(3,1fr)}
+    .hero-card,.card,.mini{border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .hero-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);min-height:155px}
+    .hero-card h3,.dark h3{margin:0 0 8px;color:#fff;font-size:20px}.hero-card p,.dark p,.dark li{color:#fff;font-size:16px}
+    .section{background:var(--paper);border-radius:24px;padding:28px 26px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .section h2{margin:0 0 12px;font-size:34px;line-height:1.15;color:var(--green)}
+    .section h3{margin:0 0 10px;font-size:23px;color:var(--green)}
+    .section p,.section li{font-size:18px;color:var(--ink)}
+    .section ul{margin:0;padding-left:22px}.section li{margin-bottom:10px}
+    .card{background:var(--card);border:1px solid var(--line)}
+    .dark{background:var(--green-2);border:none}.note{background:var(--soft);border-left:6px solid var(--green)}.warn{background:var(--soft-gold);border-left:6px solid #c89e05}.soft-blue{background:var(--soft-blue)}
+    .pill{display:inline-block;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:800;background:var(--soft);color:var(--green);letter-spacing:.2px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;min-height:230px}
+    .step .num{width:40px;height:40px;border-radius:999px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+    th,td{text-align:left;vertical-align:top;padding:14px 12px;border-bottom:1px solid var(--line);font-size:16px}
+    th{background:var(--green);color:#fff} tr:last-child td{border-bottom:none}.mini-table th{background:var(--green-2)}
+    .footer{text-align:center;color:var(--green);font-size:15px;padding-top:8px}
+    a.cta{display:inline-block;margin-top:10px;padding:14px 20px;background:var(--gold);color:var(--green);border-radius:999px;text-decoration:none;font-weight:800}
+    .checklist li{list-style:"✓  "}
+    @media (max-width:980px){.hero-grid,.grid-2,.grid-3,.grid-4,.grid-6{grid-template-columns:1fr}.cover p,.section p,.section li,th,td{font-size:16px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="cover">
+      <h1>Talent Acquisition Capability Assessment Guide</h1>
+      <p>
+        A practical guide for HR and Talent Acquisition teams to assess what “good” looks like when recruiting
+        new employees who can work responsibly, effectively, and confidently with AI.
+      </p>
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h3>Why this guide exists</h3>
+          <p>When TA capability gaps stay unresolved, organizations keep paying through manual work, agency fees, burnout, slow hiring, and missed growth opportunities.</p>
+        </div>
+        <div class="hero-card">
+          <h3>What this guide helps you do</h3>
+          <p>Move from reactive hiring to a repeatable method for spotting AI-ready talent, testing evidence, and making safer hiring decisions.</p>
+        </div>
+        <div class="hero-card">
+          <h3>What “AI-ready” means</h3>
+          <p>Not just tool use. It means strong judgment, data awareness, digital agility, ethical behavior, execution discipline, and the ability to apply AI to real business work.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The capability model for hiring AI-ready employees</h2>
+      <p>
+        Use a T-shaped view. The horizontal bar covers the shared capabilities every modern hire should show.
+        The vertical bar covers deeper specialist strengths needed for the role.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Core capabilities</h3>
+          <ul>
+            <li><strong>Business acumen:</strong> understands how the role creates value.</li>
+            <li><strong>Data literacy:</strong> can read evidence, question assumptions, and use metrics carefully.</li>
+            <li><strong>Digital agility:</strong> adapts quickly to systems, tools, and workflow changes.</li>
+            <li><strong>AI fluency:</strong> knows where AI helps, where it fails, and how to use it safely.</li>
+            <li><strong>People advocacy:</strong> works fairly, ethically, and communicates well with people.</li>
+            <li><strong>Execution excellence:</strong> follows through with quality, consistency, and ownership.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Specialist capabilities</h3>
+          <ul>
+            <li>Role-specific technical knowledge</li>
+            <li>Problem solving in the real work context</li>
+            <li>Workflow design or process improvement</li>
+            <li>Customer, stakeholder, or operational awareness</li>
+            <li>Ability to translate AI outputs into business action</li>
+          </ul>
+        </div>
+
+        <div class="card note">
+          <h3>Leadership signals</h3>
+          <ul>
+            <li>Influences with evidence, not hype</li>
+            <li>Explains trade-offs clearly</li>
+            <li>Escalates risk early</li>
+            <li>Can challenge unrealistic expectations</li>
+            <li>Uses AI to improve quality, not just speed</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What to look for in an AI-ready candidate</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Positive evidence</h3>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>What good evidence sounds like</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>AI fluency</strong></td>
+                <td>Can explain how they use AI for drafting, analysis, synthesis, research, or workflow support and where they still verify manually.</td>
+              </tr>
+              <tr>
+                <td><strong>Data literacy</strong></td>
+                <td>Uses metrics, patterns, and evidence to make decisions instead of relying on gut feel alone.</td>
+              </tr>
+              <tr>
+                <td><strong>Digital agility</strong></td>
+                <td>Adopts new tools quickly and can improve the process around the tool, not just click through it.</td>
+              </tr>
+              <tr>
+                <td><strong>Business acumen</strong></td>
+                <td>Connects hiring decisions or work outputs to cost, speed, customer impact, or growth.</td>
+              </tr>
+              <tr>
+                <td><strong>Execution excellence</strong></td>
+                <td>Can show repeatable methods, prioritization, ownership, and clean follow-through.</td>
+              </tr>
+              <tr>
+                <td><strong>Ethics and judgment</strong></td>
+                <td>Can describe privacy, fairness, bias, confidentiality, and human review in AI-supported work.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card warn">
+          <h3>Red flags</h3>
+          <ul class="checklist">
+            <li>Talks about AI only in buzzwords and cannot explain a real workflow.</li>
+            <li>Cannot describe what should never be left to AI.</li>
+            <li>Cannot explain how they verify AI output for accuracy.</li>
+            <li>Uses “faster” as the only benefit and ignores quality, fairness, or risk.</li>
+            <li>Has no examples of learning a new tool independently.</li>
+            <li>Cannot connect their work to business results.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5-step assessment method for HR teams</h2>
+      <div class="grid-6">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Define excellence</h3>
+          <p>Write down what AI-ready performance looks like in your own business context, by role family and level.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Diagnose the risk</h3>
+          <p>Identify where poor hiring would create the most damage: delay, rework, mis-hires, weak adoption, poor candidate experience, or compliance risk.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Score evidence</h3>
+          <p>Use a consistent 0-3 rubric during screening, interview, task review, and references so scores are evidence-based.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Prioritize gaps</h3>
+          <p>Separate must-haves from trainable gaps. Fix high-impact gaps first. Do not overpay for “nice-to-have” capability.</p>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <h3>Interpret the pattern</h3>
+          <p>Look for clusters: strong ideas but weak execution, fast executor with low judgment, or balanced future-ready contributor.</p>
+        </div>
+        <div class="step dark">
+          <div class="num" style="background:#fff;color:var(--green)">✓</div>
+          <h3>Use the tool</h3>
+          <p>Open the companion assessment tool to score candidates and generate a recommendation with feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The scoring rubric HR should use</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Score</th>
+            <th>Level</th>
+            <th>Meaning in hiring</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>0</strong></td>
+            <td>Not present</td>
+            <td>No usable evidence. The candidate cannot demonstrate the capability in a consistent or credible way.</td>
+          </tr>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Novice</td>
+            <td>Some awareness exists, but capability is basic, inconsistent, or dependent on guidance.</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>Developing</td>
+            <td>The capability is real and useful, but still lacks depth, scale, or reliability under pressure.</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>Exemplary</td>
+            <td>The candidate shows strong, repeatable evidence, clear judgment, and practical value in real scenarios.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid-2">
+        <div class="card note">
+          <h3>Scoring bias checks</h3>
+          <ul>
+            <li><strong>Halo effect:</strong> one strong answer should not lift every score.</li>
+            <li><strong>Leniency bias:</strong> effort is not the same as capability.</li>
+            <li><strong>Aspirational scoring:</strong> score what the person showed, not what you hope they can become.</li>
+            <li><strong>Recency bias:</strong> do not let one recent story outweigh the full evidence set.</li>
+            <li><strong>Overweighting one interviewer:</strong> use panel calibration for critical hires.</li>
+          </ul>
+        </div>
+        <div class="card soft-blue">
+          <h3>Good evidence sources</h3>
+          <ul>
+            <li>Resume and portfolio proof</li>
+            <li>Structured interview examples</li>
+            <li>Short work simulation or case task</li>
+            <li>Tool demonstration or workflow explanation</li>
+            <li>Reference checks tied to the scored dimensions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How to test AI capability in recruitment without creating risk</h2>
+      <table class="mini-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>What HR should test</th>
+            <th>Good prompt or check</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resume screen</td>
+            <td>Evidence of tool use, process improvement, analytics, automation, documentation, or systems adoption</td>
+            <td>Look for outcomes, not AI buzzwords.</td>
+          </tr>
+          <tr>
+            <td>Phone screen</td>
+            <td>Basic AI fluency and role context</td>
+            <td>“Tell me about one task where AI improved speed or quality, and how you checked the result.”</td>
+          </tr>
+          <tr>
+            <td>Structured interview</td>
+            <td>Judgment, ethics, and business thinking</td>
+            <td>“When would you choose not to use AI, even if it saved time?”</td>
+          </tr>
+          <tr>
+            <td>Work sample</td>
+            <td>Ability to use AI with human oversight</td>
+            <td>Give a short scenario and ask for both the AI-assisted approach and the quality-control steps.</td>
+          </tr>
+          <tr>
+            <td>Final panel</td>
+            <td>Cross-functional communication and stakeholder trust</td>
+            <td>“How would you explain an AI-supported recommendation to a skeptical manager?”</td>
+          </tr>
+          <tr>
+            <td>Reference checks</td>
+            <td>Repeatability of behavior</td>
+            <td>Ask whether the candidate balanced speed with judgment and whether they improved ways of working.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Friction points that often signal TA capability gaps</h2>
+      <p>Use these patterns to decide where your hiring process is weak and where stronger AI-ready hiring standards would help most.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Friction point</th>
+            <th>Business impact</th>
+            <th>Likely gap to strengthen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Unclear scope, rework, delayed hiring starts</td>
+            <td>Business teams wait too long to hire and re-open requirements.</td>
+            <td>Business acumen and role-intake discipline</td>
+          </tr>
+          <tr>
+            <td>Low candidate volume or high agency dependency</td>
+            <td>Higher cost, weaker pipeline control, slower growth.</td>
+            <td>Talent intelligence and sourcing strategy</td>
+          </tr>
+          <tr>
+            <td>Slow cycles and recruiter overload</td>
+            <td>Late hiring and more manual work.</td>
+            <td>Digital agility, AI fluency, and smarter screening</td>
+          </tr>
+          <tr>
+            <td>Drop-off at interview or offer stage</td>
+            <td>Reduced acceptance rate and wasted process effort.</td>
+            <td>People advocacy, candidate communication, and closing skill</td>
+          </tr>
+          <tr>
+            <td>Poor decisions and low leadership trust</td>
+            <td>TA loses credibility and gets involved too late.</td>
+            <td>Data literacy, insight reporting, and stakeholder influence</td>
+          </tr>
+          <tr>
+            <td>Quality collapse during hiring spikes</td>
+            <td>More mis-hires, burnout, and inconsistent standards.</td>
+            <td>Execution excellence, automation, and scalable workflow design</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Decision rules for hiring AI-ready talent</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Must-have now</h3>
+          <ul>
+            <li>Basic AI fluency</li>
+            <li>Digital agility</li>
+            <li>Sound judgment and data awareness</li>
+            <li>Strong communication and ethics</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Can be trained</h3>
+          <ul>
+            <li>Advanced prompt design</li>
+            <li>Specific tool stack knowledge</li>
+            <li>Workflow automation depth</li>
+            <li>Sector-specific use cases</li>
+          </ul>
+        </div>
+        <div class="card warn">
+          <h3>Do not compromise on</h3>
+          <ul>
+            <li>Privacy and confidentiality</li>
+            <li>Bias awareness and fairness</li>
+            <li>Ability to verify AI output</li>
+            <li>Willingness to learn continuously</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Final takeaway</h2>
+      <div class="grid-2">
+        <div class="card dark">
+          <h3>Simple message</h3>
+          <p>AI-ready hiring is not about hiring the person who mentions the most tools. It is about hiring the person who can create better work, make smarter decisions, and manage AI responsibly.</p>
+        </div>
+        <div class="card note">
+          <h3>Next step</h3>
+          <p>Use the companion assessment tool to score candidates, generate feedback, and create a more consistent hiring standard across your HR and TA team.</p>
+          <a class="cta" href="ta_ai_candidate_assessment_tool.html">Open the Assessment Tool</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">Created as a practical HR guide for assessing AI-ready recruitment capability.</div>
+  </div>
+</body>
+</html>
