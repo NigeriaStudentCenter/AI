@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Next Evolution of the HRBP Model</title>
+  <style>
+    :root{
+      --green:#103b2f;
+      --green-2:#18483a;
+      --green-3:#215b49;
+      --cream:#f7f8f2;
+      --soft:#eef3ee;
+      --mint:#dcece5;
+      --line:#d8dfd9;
+      --text:#183328;
+      --muted:#5c7068;
+      --gold:#f2c14e;
+      --white:#ffffff;
+      --shadow:0 16px 40px rgba(0,0,0,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--green);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    .shell{
+      max-width:1160px;
+      margin:0 auto;
+      padding:20px 14px 44px;
+    }
+
+    .page{
+      background:var(--cream);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .page-inner{
+      padding:34px 34px 30px;
+    }
+
+    .cover{
+      background:linear-gradient(180deg,#0d2f25 0%, #103b2f 56%, #18483a 100%);
+      color:var(--white);
+    }
+
+    .cover .page-inner{
+      padding:46px 38px 40px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    h1,h2,h3,h4,p{
+      margin:0;
+    }
+
+    .hero-title{
+      font-size:58px;
+      line-height:.98;
+      text-transform:uppercase;
+      letter-spacing:.01em;
+      color:#ffffff !important;
+      max-width:820px;
+      margin-bottom:16px;
+      font-weight:800;
+    }
+
+    .hero-title .accent{
+      display:block;
+      color:var(--gold) !important;
+    }
+
+    .hero-text{
+      max-width:780px;
+      font-size:21px;
+      color:#edf6f1;
+      margin-bottom:24px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:20px;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:22px;
+      padding:20px 20px 18px;
+    }
+
+    .glass h3{
+      color:#ffffff !important;
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    .glass ul{
+      margin:0;
+      padding-left:18px;
+      color:#eef7f2;
+    }
+
+    .glass li{
+      margin:8px 0;
+    }
+
+    .stat-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:20px;
+      padding:18px;
+      color:#eaf4ef;
+    }
+
+    .stat strong{
+      display:block;
+      color:var(--gold);
+      font-size:30px;
+      margin-bottom:6px;
+    }
+
+    .cover-foot{
+      margin-top:22px;
+      font-size:14px;
+      color:#d9e7e1;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:18px;
+      padding-bottom:12px;
+      border-bottom:2px solid var(--line);
+    }
+
+    .section-head h2{
+      font-size:34px;
+      line-height:1.05;
+      color:var(--green);
+    }
+
+    .section-head p{
+      max-width:560px;
+      font-size:15px;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .card{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .card h3,
+    .card h4{
+      color:var(--green);
+      margin-bottom:8px;
+    }
+
+    .card p{
+      font-size:14px;
+      color:#43584f;
+    }
+
+    .pill{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--mint);
+      color:var(--green);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .stack{
+      display:grid;
+      gap:10px;
+    }
+
+    .mini{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+    }
+
+    .mini strong{
+      display:block;
+      color:var(--green);
+      margin-bottom:4px;
+    }
+
+    .mini span{
+      display:block;
+      color:#465b52;
+      font-size:14px;
+    }
+
+    .comparison{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare-col{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .compare-col h3{
+      color:var(--green);
+      margin-bottom:10px;
+    }
+
+    .compare-col ul{
+      margin:0;
+      padding-left:18px;
+      color:#43584f;
+    }
+
+    .compare-col li{
+      margin:8px 0;
+    }
+
+    .roles{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .role{
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .role h3{
+      font-size:22px;
+      color:var(--green);
+      margin-bottom:6px;
+    }
+
+    .role .sub{
+      display:block;
+      margin-bottom:12px;
+      color:var(--muted);
+      font-style:italic;
+      font-size:14px;
+    }
+
+    .role ul{
+      margin:0;
+      padding-left:18px;
+      color:#43584f;
+    }
+
+    .role li{
+      margin:8px 0;
+    }
+
+    .question-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .question{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .num{
+      width:34px;
+      height:34px;
+      flex:0 0 34px;
+      border-radius:50%;
+      background:var(--green);
+      color:#ffffff;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .question strong{
+      display:block;
+      margin-bottom:4px;
+      color:var(--green);
+    }
+
+    .question p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .resource{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      background:linear-gradient(180deg,#eff5f0 0%, #ffffff 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .resource h4{
+      color:var(--green);
+      margin-bottom:4px;
+      font-size:18px;
+    }
+
+    .resource p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .btn,
+    .link-btn{
+      display:inline-block;
+      text-decoration:none;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      border-radius:999px;
+      transition:transform .15s ease;
+    }
+
+    .btn:hover,
+    .link-btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn{
+      background:var(--gold);
+      color:#173328;
+      padding:15px 28px;
+      font-size:15px;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
+
+    .link-btn{
+      background:var(--green);
+      color:#ffffff;
+      padding:12px 18px;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .cta{
+      background:linear-gradient(180deg,#10382d 0%, #184d3f 100%);
+      color:#ffffff;
+      text-align:center;
+    }
+
+    .cta .page-inner{
+      padding:44px 28px 46px;
+    }
+
+    .cta h2{
+      color:#ffffff !important;
+      font-size:44px;
+      line-height:1;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .cta p{
+      max-width:760px;
+      margin:0 auto 24px;
+      color:#e9f4ef;
+      font-size:19px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .cta-card{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:16px;
+      text-align:left;
+    }
+
+    .cta-card h4{
+      color:#ffffff !important;
+      margin-bottom:8px;
+      font-size:18px;
+    }
+
+    .cta-card p{
+      margin:0 0 12px;
+      color:#dbe9e3;
+      font-size:14px;
+    }
+
+    .note{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:#fff7da;
+      border:1px solid #ead183;
+      color:#5f4a15;
+      font-size:14px;
+    }
+
+    .space{
+      height:16px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .cta-grid,
+      .roles,
+      .grid-2,
+      .comparison{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .section-head p{
+        text-align:left;
+      }
+
+      .hero-title{
+        font-size:44px;
+      }
+
+      .hero-text{
+        font-size:18px;
+      }
+    }
+
+    @media (max-width: 720px){
+      .shell{
+        padding:12px 10px 32px;
+      }
+
+      .page-inner,
+      .cover .page-inner,
+      .cta .page-inner{
+        padding:22px 18px;
+      }
+
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .cta-grid,
+      .roles,
+      .grid-2,
+      .comparison{
+        grid-template-columns:1fr;
+      }
+
+      .hero-title{
+        font-size:34px;
+      }
+
+      .hero-text{
+        font-size:16px;
+      }
+
+      .section-head h2{
+        font-size:28px;
+      }
+
+      .cta h2{
+        font-size:32px;
+      }
+
+      .cta p{
+        font-size:16px;
+      }
+
+      .resource{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media print{
+      body{
+        background:#ffffff;
+      }
+
+      .shell{
+        max-width:none;
+        padding:0;
+      }
+
+      .page{
+        box-shadow:none;
+        border:none;
+        border-radius:0;
+        margin:0 0 10mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    REPLACE THESE PLACEHOLDERS WITH YOUR OWN LINKS:
+    INSERT_COMPANION_ARTICLE_LINK
+    INSERT_HRBP_ASSESSMENT_LINK
+    INSERT_DATA_GUIDE_LINK
+    INSERT_AI_RISK_GUIDE_LINK
+    INSERT_IMPLEMENTATION_LINK
+    INSERT_CAPABILITY_LINK
+    INSERT_MAIN_CTA_LINK
+    INSERT_RESOURCE_1_LINK
+    INSERT_RESOURCE_2_LINK
+    INSERT_RESOURCE_3_LINK
+    INSERT_RESOURCE_4_LINK
+  -->
+
+  <div class="shell">
+
+    <section class="page cover">
+      <div class="page-inner">
+        <div class="eyebrow">Strategic HR guide</div>
+        <h1 class="hero-title">
+          <span class="accent">The Next Evolution</span>
+          of the HRBP Model
+        </h1>
+        <p class="hero-text">
+          An ideal HRBP function connects HR with business strategy and helps organizations make better people decisions. In reality, many HRBPs still spend too much time coordinating processes, solving operational issues, and reacting to requests. AI changes this.
+        </p>
+
+        <div class="hero-grid">
+          <div class="glass">
+            <h3>Find out</h3>
+            <ul>
+              <li>How AI enhances your HRBP impact instead of adding complexity</li>
+              <li>The four AI-enabled HRBP role profiles</li>
+              <li>Practical guidance on redesigning HR workflows around AI</li>
+            </ul>
+          </div>
+
+          <div class="stat-stack">
+            <div class="stat">
+              <strong>3</strong>
+              key operating model shifts
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              AI-enabled HRBP role profiles
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              critical redesign decisions for HR leaders
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-foot">
+          Dark green outer design, near-white inner pages, and clean hyperlink placeholders for your own URLs.
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Introduction</h2>
+          <p>
+            The HRBP model was designed for strategic impact. In most organizations, however, it still delivers too much administrative support.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="pill">Why this matters now</div>
+          <p style="margin-bottom:14px;">
+            This gap has existed for decades, not because HR lacked ambition, but because the infrastructure needed to truly close it did not exist. Shared services were meant to take work off HRBPs’ plates so they could focus on workforce strategy, leadership advisory, and the people decisions that move the business forward.
+          </p>
+          <p style="margin-bottom:14px;">
+            Organizations built self-service portals, created Centers of Expertise, and automated parts of the work. But coordination, exceptions, and escalations still followed HRBPs everywhere, keeping a truly strategic HRBP function just out of reach.
+          </p>
+          <p style="margin-bottom:14px;">
+            Agentic AI changes that. Unlike traditional HR automation, it does not just complete fixed tasks. It can coordinate actions, manage workflows, handle routine exceptions, and escalate only when human judgment is needed. For the first time, the administrative layer that has always followed HRBPs has somewhere else to go.
+          </p>
+          <p>
+            But there is a catch: without deliberate role redesign, Agentic AI does not liberate HRBPs. It simply accelerates the status quo. The organizations getting this wrong are not failing to adopt AI. They are adopting it without redesigning the job around it.
+          </p>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="card">
+          <div class="pill">What this guide helps you decide</div>
+          <div class="question-list">
+            <div class="question">
+              <div class="num">1</div>
+              <div>
+                <strong>What should HRBPs stop owning?</strong>
+                <p>Identify the coordination, administrative work, and repeatable issues that no longer need to sit with the HRBP role.</p>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="num">2</div>
+              <div>
+                <strong>What should HRBPs step into?</strong>
+                <p>Shift the role toward workforce strategy, leadership advisory, workflow design, governance, and higher-value decision support.</p>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="num">3</div>
+              <div>
+                <strong>Is your current team ready to make the transition?</strong>
+                <p>Assess whether your HRBP team has the capability, confidence, and support needed to succeed in an AI-augmented model.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          The question is no longer whether to move to an AI-augmented HRBP model. It is whether you do it intentionally — or get redesigned by default.
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>To understand the full organizational blueprint and how all three layers work
+together, read our companion article</h4>
+            <p>.</p>
+          </div>
+          <a href="https://bsoedu.org/article-hrs-ai-first-operating-model/" class="link-btn" data-link-placeholder="INSERT_COMPANION_ARTICLE_LINK">Read Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Agentic AI vs Traditional Automation</h2>
+          <p>
+            Traditional automation follows fixed instructions. Agentic AI works toward a goal, coordinates actions, adapts to context, and escalates when needed.
+          </p>
+        </div>
+
+        <div class="comparison">
+          <div class="compare-col">
+            <div class="pill">Traditional automation</div>
+            <h3>Do exactly what I programmed</h3>
+            <ul>
+              <li>Follows fixed sequences</li>
+              <li>Handles simple and repetitive steps well</li>
+              <li>Breaks when context changes</li>
+              <li>Leaves exceptions and coordination back with HRBPs</li>
+            </ul>
+          </div>
+
+          <div class="compare-col">
+            <div class="pill">Agentic AI</div>
+            <h3>Here is the goal. Work out the path</h3>
+            <ul>
+              <li>Coordinates tasks across people, rules, and systems</li>
+              <li>Adapts when things change</li>
+              <li>Escalates only when thresholds or risks require it</li>
+              <li>Moves HRBPs further up the value chain</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          Start with one high-volume HR process with many handoffs. That is often the best place to see how AI changes the HRBP role.
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>The New HR Operating Model</h2>
+          <p>
+            The traditional model evolves into an AI-enabled structure where service, design, data, and strategy work together more effectively.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="pill">Layer 1</div>
+            <h3>Strategic Layer</h3>
+            <p>HRBPs focus on workforce strategy, leadership support, organizational priorities, and business decisions.</p>
+          </div>
+
+          <div class="card">
+            <div class="pill">Layer 2</div>
+            <h3>AI-Powered Service Layer</h3>
+            <p>Routine requests, queries, and repeatable processes are handled with more speed, consistency, and scale.</p>
+          </div>
+
+          <div class="card">
+            <div class="pill">Layer 3</div>
+            <h3>Design, Data &amp; Governance Layer</h3>
+            <p>Specialist teams shape workflows, define rules, manage risk, and ensure AI works responsibly.</p>
+          </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>HRBP Impact Assessment</h4>
+            <p>Discover how well your HR practices support the broader
+business strategy and contribute to organizational success.</p>
+          </div>
+          <a href="https://nigeriastudentcenter.github.io/AI/" class="link-btn" data-link-placeholder="INSERT_HRBP_ASSESSMENT_LINK">Start Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Three Types of Agentic AI Entering HR</h2>
+          <p>
+            Agentic AI will not arrive in one single form. It enters HR through different use cases, and each one changes how HRBPs work.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="pill">Type 1</div>
+            <h3>Workflow Orchestration Agents</h3>
+            <p>These agents manage complex, multi-step processes across systems and teams.</p>
+            <div class="stack" style="margin-top:10px">
+              <div class="mini">
+                <strong>Impact on HRBP</strong>
+                <span>Less manual chasing, scheduling, and coordination.</span>
+              </div>
+              <div class="mini">
+                <strong>New focus</strong>
+                <span>Designing workflows, escalation points, and service logic.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">Type 2</div>
+            <h3>Decision Support Agents</h3>
+            <p>These agents analyze data, identify patterns, and propose options faster than manual review.</p>
+            <div class="stack" style="margin-top:10px">
+              <div class="mini">
+                <strong>Impact on HRBP</strong>
+                <span>More insight arrives earlier in the decision process.</span>
+              </div>
+              <div class="mini">
+                <strong>New focus</strong>
+                <span>Validating AI insight with human judgment and business context.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">Type 3</div>
+            <h3>Advisory &amp; Coaching Agents</h3>
+            <p>These agents support managers and employees with policy, guidance, and structured advice.</p>
+            <div class="stack" style="margin-top:10px">
+              <div class="mini">
+                <strong>Impact on HRBP</strong>
+                <span>Routine advisory work becomes scalable and more immediate.</span>
+              </div>
+              <div class="mini">
+                <strong>New focus</strong>
+                <span>Handling sensitive, complex, and high-stakes human issues.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>How the HRBP Model Changes</h2>
+          <p>
+            AI does not remove the need for HRBPs. It changes what they should spend time on and where they create the most value.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="pill">Shift 1</div>
+            <h3>From Shared Services to AI-Powered Service</h3>
+            <div class="stack">
+              <div class="mini">
+                <strong>Before</strong>
+                <span>High ticket volume, repeated case handling, and constant handoffs.</span>
+              </div>
+              <div class="mini">
+                <strong>After</strong>
+                <span>AI handles routine service at scale and escalates only where needed.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">Shift 2</div>
+            <h3>From COEs to Design &amp; Governance Hubs</h3>
+            <div class="stack">
+              <div class="mini">
+                <strong>Before</strong>
+                <span>Program ownership and periodic policy checks.</span>
+              </div>
+              <div class="mini">
+                <strong>After</strong>
+                <span>COEs design workflows, set rules, manage data, and embed governance into the system.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="pill">Shift 3</div>
+            <h3>From Reactive HRBP to AI-Enabled HRBP</h3>
+            <div class="stack">
+              <div class="mini">
+                <strong>Before</strong>
+                <span>Strategy, admin, issue solving, and coordination all mixed together.</span>
+              </div>
+              <div class="mini">
+                <strong>After</strong>
+                <span>More time for strategy, leadership advisory, judgment, and organizational design.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>Employee data guide placeholder</h4>
+            <p>An essential manual for HR professionals to safeguard employee
+privacy while utilizing AI tools.</p>
+          </div>
+          <a href="https://bsoedu.org/protecting-employee-data-guide/" class="link-btn" data-link-placeholder="INSERT_DATA_GUIDE_LINK">Read Now</a>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>AI risk Mitigation </h4>
+            <p>Make informed, ethical decisions and implement AI solutions.</p>
+          </div>
+          <a href="https://bsoedu.org/ai-risk-mitigation-cheat-sheet/" class="link-btn" data-link-placeholder="INSERT_AI_RISK_GUIDE_LINK">Read Now</a>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>Implementation roadmap</h4>
+            <p>The roadmap you need to successfully implement or optimize your
+HRBP model and drive HR transformation.</p>
+          </div>
+          <a href="https://bsoedu.org/hrbp-model-implementation-roadmap/" class="link-btn" data-link-placeholder="INSERT_IMPLEMENTATION_LINK">Read Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>The Four AI-Enabled HRBP Role Profiles</h2>
+          <p>
+            Many HRBPs may begin in one profile, but future impact comes from building strength across all four.
+          </p>
+        </div>
+
+        <div class="roles">
+          <div class="role">
+            <div class="pill">Profile 1</div>
+            <h3>Intelligent Workforce Strategist</h3>
+            <span class="sub">From supporting workforce planning to shaping how the workforce enables strategy.</span>
+            <ul>
+              <li>Uses data and scenario thinking to guide leaders</li>
+              <li>Understands workforce trade-offs and future capability needs</li>
+              <li>Turns insight into practical business decisions</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="pill">Profile 2</div>
+            <h3>AI Systems Designer &amp; Workforce Architect</h3>
+            <span class="sub">From managing processes to designing how humans and AI work together.</span>
+            <ul>
+              <li>Redesigns HR workflows around outcomes</li>
+              <li>Defines handoffs, thresholds, and escalation logic</li>
+              <li>Improves the employee and manager experience</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="pill">Profile 3</div>
+            <h3>AI Governance &amp; Decision Quality Steward</h3>
+            <span class="sub">From compliance support to protecting trust in people decisions.</span>
+            <ul>
+              <li>Sets guardrails for fair and explainable use</li>
+              <li>Checks for risk, drift, bias, and weak logic</li>
+              <li>Clarifies where human accountability remains</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="pill">Profile 4</div>
+            <h3>High-Stakes Human &amp; Organizational Advisor</h3>
+            <span class="sub">From issue handling to navigating complexity where judgment matters most.</span>
+            <ul>
+              <li>Supports leaders in sensitive and ambiguous situations</li>
+              <li>Handles conflict, trust, change, and power dynamics</li>
+              <li>Provides human judgment where AI cannot replace nuance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="resource">
+          <div>
+            <h4>Capability framework</h4>
+            <p>
+Successfully develop strategic HRBPs competencies.</p>
+          </div>
+          <a href="https://bsoedu.org/9-step-hrbp-capability-framework/" class="link-btn" data-link-placeholder="INSERT_CAPABILITY_LINK">Read Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2>Where Do You Go From Here?</h2>
+          <p>
+            The HRBP model is not disappearing. It is being given the chance to become more strategic than it has ever been before.
+          </p>
+        </div>
+
+        <div class="question-list">
+          <div class="question">
+            <div class="num">1</div>
+            <div>
+              <strong>What are your HRBPs really spending time on today?</strong>
+              <p>Map the real work, not just the role description.</p>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="num">2</div>
+            <div>
+              <strong>Which parts of that work could AI own by default in the next 12 months?</strong>
+              <p>Start with repetitive, process-heavy, coordination-based activity.</p>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="num">3</div>
+            <div>
+              <strong>What does that free HRBPs to do, and are they ready to do it well?</strong>
+              <p>Technology only creates value when capability and role design move with it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page cta">
+      <div class="page-inner">
+        <div class="eyebrow">Next step</div>
+        <h2>Is Your HR Team Ready for AI?  Find Out in 2 Minutes</h2>
+        <p>
+          AI should not just make HR faster. It should make HRBPs more strategic, more trusted, and more capable of shaping better people decisions.
+        </p>
+
+        <a href="https://forms.office.com/r/5TpgmAPSHS" class="btn" data-link-placeholder="INSERT_MAIN_CTA_LINK">Take your assessment now</a>
+
+        <div class="cta-grid">
+          <div class="cta-card">
+            <h4>HR Agent Readiness Assessment</h4>
+            <p>Rate how ready your organization is to design, deploy, and scale AI agents. And get report. </p>
+            <a href="https://forms.office.com/r/Yb6ysbW4EL" class="link-btn" data-link-placeholder="INSERT_RESOURCE_1_LINK">Take assessment</a>
+          </div>
+
+          <div class="cta-card">
+            <h4>Get the AI for HR Syllabus</h4>
+            <p>Fill in your name and email address and we’ll send  the AI for HR Syllabus straight to your inbox.</p>
+            <a href="https://forms.office.com/r/TBfYEQitDh" class="link-btn" data-link-placeholder="INSERT_RESOURCE_2_LINK">Complete here</a>
+          </div>
+
+          <div class="cta-card">
+            <h4>Get Other HR Course Details</h4>
+            <p>Choose the HR course you want to learn more about, and we’ll send the course details to your email.</p>
+            <a href="https://forms.office.com/r/ugLCCubyUV" class="link-btn" data-link-placeholder="INSERT_RESOURCE_3_LINK">Complete here</a>
+          </div>
+
+          <div class="cta-card">
+            <h4>Book A Call </h4>
+            <p>Reach out to us on whatsApp.</p>
+          <a href="https://wa.me/447514327059?text=Hello%20John%2C%20I%E2%80%99m%20interested%20in%20booking%20a%20call.%20Please%20share%20the%20next%20available%20slot." target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#f2d14c; color:#123f35; text-decoration:none; font-weight:800; padding:14px 22px; border-radius:999px; font-family:Arial,Helvetica,sans-serif;">
+ Click here for a Call on WhatsApp
+</a>
+          </div>
+        </div>
+
+        <div class="cover-foot" style="margin-top:18px;">
+        
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
