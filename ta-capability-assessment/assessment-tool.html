@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Ready Candidate Assessment Tool</title>
+  <style>
+    :root{--green:#123f35;--green-2:#1a5648;--gold:#f2d14c;--paper:#f7f6f0;--ink:#17312b;--muted:#4d655f;--line:#d9ddd6;--soft:#dfece8;--soft-blue:#dceff6;--soft-gold:#fff2c8;--soft-red:#f8dddd;--shadow:0 14px 34px rgba(0,0,0,.10)}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,var(--green) 0 220px,#e9eee8 220px 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+    .page{max-width:1180px;margin:0 auto;padding:18px 14px 42px}
+    .cover{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;border-radius:28px;padding:50px 34px 34px; box-shadow:var(--shadow); margin-bottom:14px}
+    .cover h1{margin:0 0 12px; font-size:clamp(38px,6vw,60px); line-height:1.05;color:var(--gold); font-weight:900; letter-spacing:-1px}
+    .cover p{margin:0;max-width:900px;font-size:20px}
+    .hero-grid,.grid-2,.grid-3,.grid-4{display:grid;gap:16px;margin-top:18px}.hero-grid{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}
+    .hero-card,.card{border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .hero-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);min-height:142px}
+    .hero-card h3{margin:0 0 8px;color:#fff;font-size:20px}.hero-card p{color:#fff;font-size:16px}
+    .section{background:var(--paper);border-radius:24px;padding:28px 26px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .section h2{margin:0 0 12px;font-size:34px;color:var(--green);line-height:1.15}.section h3{margin:0 0 8px;font-size:22px;color:var(--green)}
+    .section p,.section li,.section label,.section select,.section input,.section textarea,th,td{font-size:16px;color:var(--ink)}
+    .card{background:#fff;border:1px solid var(--line)}
+    .note{background:var(--soft);border-left:6px solid var(--green)}.warn{background:var(--soft-gold);border-left:6px solid #c89e05}.danger{background:var(--soft-red);border-left:6px solid #c22}.soft-blue{background:var(--soft-blue)}
+    table{width:100%; border-collapse:collapse; margin-top:14px; background:#fff; border-radius:18px; overflow:hidden;box-shadow:var(--shadow)}
+    th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{background:var(--green);color:#fff} tr:last-child td{border-bottom:none}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px}
+    input,select,textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff;font-family:inherit}
+    textarea{min-height:90px; resize:vertical}
+    .capability{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+    .capability h4{margin:0 0 6px;font-size:20px;color:var(--green)}.hint{color:var(--muted);font-size:14px;margin:6px 0 12px}
+    .score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+    .score-grid label{display:block; border:1px solid var(--line); border-radius:14px; padding:12px; background:#fff; cursor:pointer;transition:.18s ease;min-height:92px}
+    .score-grid input{display:none}.score-grid label:hover{border-color:var(--green)}.score-grid input:checked + span{display:block; background:var(--soft); border-radius:10px; margin:-6px; padding:6px}
+    .score-title{font-weight:800;display:block;margin-bottom:4px;color:var(--green)}.score-desc{font-size:13px;color:var(--muted)}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    button{border:none; border-radius:999px; padding:14px 22px; font-size:16px; font-weight:800; cursor:pointer}
+    .primary{background:var(--gold); color:var(--green)}.secondary{background:var(--green); color:#fff}.ghost{background:#fff; color:var(--green); border:1px solid var(--line)}
+    .result{display:none;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:16px;box-shadow:var(--shadow)}
+    .meter{height:16px;background:#e4e9e2;border-radius:999px;overflow:hidden;margin:10px 0 14px}.meter > div{height:100%;background:linear-gradient(90deg,var(--green),var(--gold));width:0%}
+    .tag{display:inline-block;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.2px;background:var(--soft); color:var(--green)}
+    .feedback-list, .risk-list, .strength-list{padding-left:20px;margin:0}.footer{text-align:center;color:var(--green);font-size:15px;padding-top:8px}.small{font-size:14px;color:var(--muted)}
+    @media (max-width:980px){.hero-grid,.grid-2,.grid-3,.grid-4,.form-grid,.score-grid{grid-template-columns:1fr}}
+    @media print{body{background:#fff}.cover,.section{box-shadow:none}.actions{display:none}.result{display:block !important}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="cover">
+      <h1>AI-Ready Candidate Assessment Tool</h1>
+      <p>
+        Use this tool to score whether a candidate is ready to work with AI in a real business setting.
+        It combines role-fit, digital capability, judgment, and hiring risk into one structured decision.
+      </p>
+
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h3>Rubric</h3>
+          <p>Each capability is scored from 0 to 3: Not Present, Novice, Developing, or Exemplary.</p>
+        </div>
+        <div class="hero-card">
+          <h3>Use cases</h3>
+          <p>Screening, panel interviews, hiring calibration, final recommendation, or recruiter training.</p>
+        </div>
+        <div class="hero-card">
+          <h3>Output</h3>
+          <p>You will get a score, readiness band, strengths, risks, and a recommended hiring decision.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Candidate and role information</h2>
+      <div class="form-grid">
+        <div class="field">
+          <label for="candidateName">Candidate name</label>
+          <input id="candidateName" placeholder="Enter candidate name" />
+        </div>
+        <div class="field">
+          <label for="roleTitle">Role title</label>
+          <input id="roleTitle" placeholder="Enter role title" />
+        </div>
+        <div class="field">
+          <label for="roleFamily">Role family</label>
+          <select id="roleFamily">
+            <option value="general">General / Mixed role</option>
+            <option value="operations">Operations / Administration</option>
+            <option value="commercial">Commercial / Sales / Marketing</option>
+            <option value="technical">Technical / Product / Data</option>
+            <option value="people">HR / TA / L&D / People Operations</option>
+            <option value="leadership">Manager / Lead / Senior role</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="aiExposure">Expected AI exposure in the role</label>
+          <select id="aiExposure">
+            <option value="1">Low</option>
+            <option value="2" selected>Medium</option>
+            <option value="3">High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="decisionOwner">Assessor / panel lead</label>
+          <input id="decisionOwner" placeholder="Enter assessor name" />
+        </div>
+        <div class="field">
+          <label for="notes">Decision notes</label>
+          <textarea id="notes" placeholder="Add any contextual notes, concerns, or evidence summaries"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How to score</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Score</th>
+            <th>Level</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>0</strong></td><td>Not Present</td><td>No reliable evidence of the capability.</td></tr>
+          <tr><td><strong>1</strong></td><td>Novice</td><td>Awareness exists, but performance is basic, inconsistent, or unproven.</td></tr>
+          <tr><td><strong>2</strong></td><td>Developing</td><td>Useful evidence exists, but it still lacks depth, scale, or reliability.</td></tr>
+          <tr><td><strong>3</strong></td><td>Exemplary</td><td>Strong, repeatable, role-relevant evidence with good judgment and clear value.</td></tr>
+        </tbody>
+      </table>
+      <div class="grid-2">
+        <div class="card note">
+          <h3>Bias guardrails</h3>
+          <ul>
+            <li>Score what was evidenced, not what you hope is true.</li>
+            <li>One strong story should not inflate every category.</li>
+            <li>Do not confuse confidence with competence.</li>
+            <li>Use multiple evidence points for high-stakes roles.</li>
+          </ul>
+        </div>
+        <div class="card warn">
+          <h3>Important</h3>
+          <p>Low scores in ethics, privacy, or judgment can override a good overall score for sensitive roles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Capability assessment</h2>
+      <div id="capabilities"></div>
+
+      <div class="actions">
+        <button class="primary" onclick="calculateResults()">Calculate score and feedback</button>
+        <button class="secondary" onclick="window.print()">Print / Save as PDF</button>
+        <button class="ghost" onclick="resetTool()">Reset tool</button>
+      </div>
+
+      <div id="result" class="result">
+        <h2 style="margin-top:0">Assessment result</h2>
+        <p><strong>Candidate:</strong> <span id="outName">—</span> &nbsp; | &nbsp; <strong>Role:</strong> <span id="outRole">—</span></p>
+        <span id="bandTag" class="tag">Band pending</span>
+        <div class="meter"><div id="meterFill"></div></div>
+        <p><strong>Weighted score:</strong> <span id="scoreText">0%</span></p>
+        <p id="summaryText"></p>
+
+        <div class="grid-3">
+          <div class="card note">
+            <h3>Top strengths</h3>
+            <ul id="strengths" class="strength-list"></ul>
+          </div>
+          <div class="card warn">
+            <h3>Main development gaps</h3>
+            <ul id="gaps" class="feedback-list"></ul>
+          </div>
+          <div class="card danger">
+            <h3>Risk flags</h3>
+            <ul id="risks" class="risk-list"></ul>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card soft-blue">
+            <h3>Recommendation</h3>
+            <p id="decisionText"></p>
+          </div>
+          <div class="card">
+            <h3>Pattern read</h3>
+            <p id="patternText"></p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Interview follow-up questions</h3>
+          <ul id="followUps" class="feedback-list"></ul>
+        </div>
+
+        <p class="small" style="margin-top:12px">
+          Use this result with panel judgment, references, work samples, and role-specific requirements. It is a structured aid, not a fully automated hiring decision.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">Created as a structured HR assessment tool for hiring AI-ready employees.</div>
+  </div>
+
+  <script>
+    const capabilities = [
+      {
+        id:'business',
+        label:'Business Acumen',
+        weight:2,
+        evidence:'Understands the role, priorities, trade-offs, and how their work creates value.',
+        checks:'Look for role-context thinking, prioritization, commercial awareness, and ability to challenge unrealistic assumptions.',
+        followUp:'Ask how they would use talent, time, or AI differently if business priorities changed suddenly.'
+      },
+      {
+        id:'data',
+        label:'Data Literacy',
+        weight:2,
+        evidence:'Uses evidence, metrics, and patterns to make decisions rather than relying only on instinct.',
+        checks:'Look for examples using conversion, throughput, quality, accuracy, productivity, or trend analysis.',
+        followUp:'Ask for one example where the candidate changed direction because the data disagreed with their first view.'
+      },
+      {
+        id:'digital',
+        label:'Digital Agility',
+        weight:2,
+        evidence:'Learns tools quickly, adapts to new systems, and improves workflow efficiency.',
+        checks:'Look for evidence of tool adoption, workflow redesign, self-learning, or scaling work without extra headcount.',
+        followUp:'Ask about a time they had to learn a new system quickly and how they became productive.'
+      },
+      {
+        id:'ai',
+        label:'AI Fluency',
+        weight:2.5,
+        evidence:'Knows what AI is good at, where it fails, and how to use it practically in the role.',
+        checks:'Look for prompting, verification, workflow design, and ability to explain AI limitations clearly.',
+        followUp:'Ask what tasks they would never hand fully to AI and why.'
+      },
+      {
+        id:'people',
+        label:'People Advocacy and Communication',
+        weight:1.5,
+        evidence:'Communicates clearly, works fairly, and protects trust, inclusion, and candidate or customer experience.',
+        checks:'Look for fairness, clarity, empathy, inclusion, and the ability to explain complex outputs simply.',
+        followUp:'Ask how they would explain an AI-supported recommendation to a skeptical stakeholder.'
+      },
+      {
+        id:'execution',
+        label:'Execution Excellence',
+        weight:2,
+        evidence:'Follows a repeatable process, manages deadlines, and delivers quality consistently.',
+        checks:'Look for standards, QA steps, ownership, time discipline, and evidence of dependable follow-through.',
+        followUp:'Ask how they prevent errors when moving fast.'
+      },
+      {
+        id:'selection',
+        label:'Role-Relevant Technical or Functional Fit',
+        weight:2,
+        evidence:'Has the specific specialist depth needed for the role.',
+        checks:'Look for work samples, tool depth, domain knowledge, and problem-solving in real scenarios.',
+        followUp:'Ask for a brief case example from the actual work of the role.'
+      },
+      {
+        id:'learning',
+        label:'Learning Agility',
+        weight:1.5,
+        evidence:'Shows curiosity, self-development, and the ability to upskill as technology changes.',
+        checks:'Look for recent learning, experimentation, iteration, and willingness to improve.',
+        followUp:'Ask what they learned recently that changed how they work.'
+      },
+      {
+        id:'judgment',
+        label:'Judgment, Ethics, and Risk Awareness',
+        weight:2.5,
+        evidence:'Understands privacy, confidentiality, bias, fairness, and when human review is required.',
+        checks:'Look for practical risk control, not just policy language.',
+        followUp:'Ask how they would check an AI-generated output for fairness, privacy, and accuracy before acting on it.'
+      },
+      {
+        id:'stakeholder',
+        label:'Stakeholder Influence',
+        weight:1.5,
+        evidence:'Can shape thinking, handle trade-offs, and earn trust through evidence and communication.',
+        checks:'Look for examples of influencing managers, peers, customers, or leaders without formal authority.',
+        followUp:'Ask how they would handle a manager who wants speed at the expense of quality or risk control.'
+      }
+    ];
+
+    const scoreLabels = [
+      {value:0, title:'0 — Not Present', desc:'No reliable evidence shown.'},
+      {value:1, title:'1 — Novice', desc:'Basic awareness, but inconsistent or unproven.'},
+      {value:2, title:'2 — Developing', desc:'Useful evidence exists, but still needs depth or reliability.'},
+      {value:3, title:'3 — Exemplary', desc:'Strong, repeatable, role-relevant evidence.'}
+    ];
+
+    function renderCapabilities(){
+      const host = document.getElementById('capabilities');
+      host.innerHTML = capabilities.map(cap => `
+        <div class="capability">
+          <h4>${cap.label}</h4>
+          <p><strong>Evidence to look for:</strong> ${cap.evidence}</p>
+          <p class="hint"><strong>Interview or panel checks:</strong> ${cap.checks}</p>
+          <div class="score-grid">
+            ${scoreLabels.map(opt => `
+              <label>
+                <input type="radio" name="${cap.id}" value="${opt.value}">
+                <span>
+                  <span class="score-title">${opt.title}</span>
+                  <span class="score-desc">${opt.desc}</span>
+                </span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getScore(id){
+      const checked = document.querySelector(`input[name="${id}"]:checked`);
+      return checked ? parseInt(checked.value,10) : 0;
+    }
+
+    function calculateResults(){
+      const aiExposure = parseInt(document.getElementById('aiExposure').value,10);
+      const roleFamily = document.getElementById('roleFamily').value;
+      let total = 0, max = 0;
+      const entries = capabilities.map(cap => {
+        let weight = cap.weight;
+        if(roleFamily === 'technical' && ['data','digital','ai','selection'].includes(cap.id)) weight += 0.5;
+        if(roleFamily === 'people' && ['people','stakeholder','business','judgment'].includes(cap.id)) weight += 0.4;
+        if(roleFamily === 'leadership' && ['business','stakeholder','judgment'].includes(cap.id)) weight += 0.5;
+        if(aiExposure === 3 && ['ai','digital','judgment'].includes(cap.id)) weight += 0.5;
+        const score = getScore(cap.id);
+        total += score * weight;
+        max += 3 * weight;
+        return {...cap, score, weight};
+      });
+
+      const percentage = Math.round((total / max) * 100);
+
+      let band = 'Not ready';
+      let summary = 'The candidate does not yet show enough reliable evidence for an AI-enabled role.';
+      let decision = 'Do not hire for an AI-exposed role yet. Reconsider only if the role has low AI exposure and strong training support.';
+      let tagColor = 'background:#f8dddd;color:#9a1c1c;';
+      if(percentage >= 90){
+        band = 'Future-ready accelerator';
+        summary = 'The candidate shows strong, repeatable evidence across role-fit, AI use, judgment, and execution.';
+        decision = 'Strong hire. Suitable for roles where AI-enabled productivity, responsible judgment, and scalable execution matter.';
+        tagColor = 'background:#dff2e6;color:#1c6a46;';
+      } else if(percentage >= 75){
+        band = 'Strong AI-ready hire';
+        summary = 'The candidate is well-positioned to perform in an AI-enabled environment with limited onboarding support.';
+        decision = 'Hire. Build a focused onboarding plan around any weaker dimensions, but overall readiness is strong.';
+        tagColor = 'background:#e3eee6;color:#123f35;';
+      } else if(percentage >= 60){
+        band = 'Role-capable with support';
+        summary = 'The candidate has solid potential, but some important dimensions still need coaching or structured onboarding.';
+        decision = 'Conditional hire. Suitable where the manager can support ramp-up and the missing capabilities are trainable.';
+        tagColor = 'background:#fff2c8;color:#8a5d00;';
+      } else if(percentage >= 40){
+        band = 'Emerging';
+        summary = 'Some useful signals exist, but the candidate would likely struggle in a role with medium or high AI exposure.';
+        decision = 'Hold or reject for high-exposure roles. Consider only if the role is junior, lower risk, and heavily coached.';
+        tagColor = 'background:#fff2c8;color:#8a5d00;';
+      }
+
+      const sortedLow = [...entries].sort((a,b) => a.score - b.score);
+      const sortedHigh = [...entries].sort((a,b) => b.score - a.score);
+
+      const strengths = sortedHigh.filter(x => x.score >= 2).slice(0,4).map(x => `${x.label}: ${strengthText(x.id, x.score)}`);
+      const gaps = sortedLow.filter(x => x.score <= 1).slice(0,5).map(x => `${x.label}: ${gapText(x.id)}`);
+      const risks = [];
+
+      const scoreMap = Object.fromEntries(entries.map(x => [x.id, x.score]));
+
+      if(scoreMap.judgment <= 1) risks.push('Risk: low judgment, ethics, or privacy awareness for AI-supported work.');
+      if(scoreMap.ai <= 1 && aiExposure >= 2) risks.push('Risk: limited AI fluency for a role that expects medium or high AI exposure.');
+      if(scoreMap.digital <= 1) risks.push('Risk: low digital agility may lead to slow adoption and higher manual workload.');
+      if(scoreMap.people <= 1) risks.push('Risk: communication or fairness concerns may damage stakeholder trust.');
+      if(scoreMap.selection <= 1) risks.push('Risk: specialist role-fit is too weak for the demands of the job.');
+      if(scoreMap.execution <= 1) risks.push('Risk: low execution discipline may create rework, delays, or quality inconsistency.');
+      if(risks.length === 0) risks.push('No major red flags based on the scored evidence. Continue to verify through references and work samples.');
+
+      let pattern = 'Balanced profile.';
+      if(scoreMap.execution >= 2 && scoreMap.digital <= 1){
+        pattern = 'Manual machine pattern: disciplined effort exists, but the candidate may rely too much on manual work and may not scale well with technology.';
+      } else if(scoreMap.business >= 2 && (scoreMap.ai <= 1 || scoreMap.digital <= 1)){
+        pattern = 'Strategic but stalled pattern: good thinking is present, but speed and execution through digital tools may lag.';
+      } else if(scoreMap.digital >= 2 && scoreMap.business <= 1){
+        pattern = 'Efficient executor pattern: the candidate can use tools well, but may need more context, prioritization, and business judgment.';
+      } else if(scoreMap.execution <= 1 && scoreMap.digital <= 1){
+        pattern = 'Firefighter pattern: this profile is at high risk of reactive work, rework, and low predictability.';
+      } else if(scoreMap.execution >= 2 && scoreMap.digital >= 2 && scoreMap.business >= 2 && scoreMap.ai >= 2 && scoreMap.judgment >= 2){
+        pattern = 'Future-ready pattern: this candidate is likely to combine execution, digital agility, AI fluency, and judgment in a way that scales.';
+      }
+
+      const followUps = sortedLow.slice(0,4).map(x => x.followUp);
+
+      document.getElementById('outName').textContent = document.getElementById('candidateName').value || '—';
+      document.getElementById('outRole').textContent = document.getElementById('roleTitle').value || '—';
+      document.getElementById('bandTag').textContent = band;
+      document.getElementById('bandTag').style = tagColor;
+      document.getElementById('meterFill').style.width = percentage + '%';
+      document.getElementById('scoreText').textContent = percentage + '%';
+      document.getElementById('summaryText').textContent = summary;
+      document.getElementById('decisionText').textContent = decision;
+      document.getElementById('patternText').textContent = pattern;
+
+      fillList('strengths', strengths.length ? strengths : ['No clear strengths were evidenced strongly enough in this assessment.']);
+      fillList('gaps', gaps.length ? gaps : ['No major development gaps based on the chosen scores.']);
+      fillList('risks', risks);
+      fillList('followUps', followUps.length ? followUps : ['Use references and a short task to deepen evidence where needed.']);
+
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function fillList(id, items){
+      const ul = document.getElementById(id);
+      ul.innerHTML = items.map(x => `<li>${x}</li>`).join('');
+    }
+
+    function strengthText(id, score){
+      const map = {
+        business:'connects work to business priorities and role impact',
+        data:'uses evidence and metrics credibly',
+        digital:'adapts quickly to systems and tool changes',
+        ai:'applies AI practically and verifies output responsibly',
+        people:'communicates clearly and protects trust',
+        execution:'delivers with ownership, pace, and consistency',
+        selection:'shows strong role-specific depth',
+        learning:'learns quickly and adapts to change',
+        judgment:'balances innovation with risk control and ethics',
+        stakeholder:'influences others with evidence and clarity'
+      };
+      return map[id] || 'strong evidence shown';
+    }
+
+    function gapText(id){
+      const map = {
+        business:'needs stronger business context, prioritization, and value thinking',
+        data:'needs stronger evidence handling, metrics use, or analytical discipline',
+        digital:'needs stronger comfort with tools, systems, and workflow change',
+        ai:'needs practical AI usage, verification habits, and clearer understanding of limits',
+        people:'needs stronger communication, fairness, or stakeholder empathy',
+        execution:'needs stronger structure, ownership, and dependable follow-through',
+        selection:'needs stronger role-specific capability for this job',
+        learning:'needs stronger curiosity, adaptability, and self-development evidence',
+        judgment:'needs stronger privacy, ethics, fairness, or risk awareness',
+        stakeholder:'needs stronger influence, challenge, and trust-building skill'
+      };
+      return map[id] || 'needs further development';
+    }
+
+    function resetTool(){
+      document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+      document.querySelectorAll('input:not([type="radio"]), textarea').forEach(el => el.value = '');
+      document.getElementById('roleFamily').value = 'general';
+      document.getElementById('aiExposure').value = '2';
+      document.getElementById('result').style.display = 'none';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    renderCapabilities();
+  </script>
+</body>
+</html>
