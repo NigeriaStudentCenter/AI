@@ -1,1 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR AI Readiness | How to Lead the Transformation</title>
+  <meta name="description" content="A de-branded, responsive HTML page on HR AI readiness with dark green styling and near-white inner sections." />
+  <style>
+    :root{
+      --green-950:#0b2f26;
+      --green-900:#103a30;
+      --green-800:#145041;
+      --green-700:#1c6a57;
+      --green-600:#2f8a72;
+      --mint-100:#eef6f2;
+      --mint-200:#e5f1eb;
+      --mint-300:#d4e9df;
+      --cream:#f9fbf8;
+      --white:#ffffff;
+      --ink:#173129;
+      --muted:#587268;
+      --gold:#dcbf6b;
+      --line:#d8e5de;
+      --shadow:0 14px 40px rgba(9,33,27,.12);
+      --radius:20px;
+      --radius-sm:14px;
+      --max:1200px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(60,120,102,.25), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(220,191,107,.14), transparent 25%),
+        var(--green-950);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .shell{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter: blur(10px);
+      background:rgba(11,47,38,.86);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+      color:#fff;
+    }
+
+    .brand{
+      font-weight:700;
+      letter-spacing:.4px;
+      font-size:14px;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:#fff;
+      background:rgba(255,255,255,.08);
+      font-size:13px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero{
+      padding:48px 0 22px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:
+        linear-gradient(140deg, rgba(10,40,32,.94), rgba(16,58,48,.92)),
+        var(--green-900);
+      min-height:430px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 90%);
+      opacity:.28;
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:30px;
+      padding:42px;
+      align-items:stretch;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      color:#dff4ec;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 58px);
+      line-height:1.05;
+      color:#ffffff !important;
+      max-width:760px;
+    }
+
+    .hero p{
+      margin:0;
+      color:#dcebe5;
+      max-width:760px;
+      font-size:18px;
+    }
+
+    .hero-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .hero-stat{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:18px 16px;
+      color:#fff;
+    }
+
+    .hero-stat .num{
+      font-size:34px;
+      line-height:1;
+      font-weight:800;
+      margin-bottom:8px;
+      color:#fff;
+    }
+
+    .hero-stat .label{
+      font-size:13px;
+      color:#dcebe5;
+    }
+
+    .hero-side{
+      display:flex;
+      align-items:stretch;
+    }
+
+    .summary-panel{
+      width:100%;
+      background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(245,250,247,.98));
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.4);
+      align-self:stretch;
+    }
+
+    .summary-panel h3{
+      margin:0 0 16px;
+      font-size:22px;
+      color:var(--green-900);
+    }
+
+    .summary-list{
+      display:grid;
+      gap:12px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .summary-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+
+    .dot{
+      flex:0 0 34px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .section{
+      padding:22px 0;
+    }
+
+    .card{
+      background:var(--cream);
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.34);
+      box-shadow:var(--shadow);
+      padding:34px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:24px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(28px, 4vw, 40px);
+      line-height:1.1;
+      color:var(--green-900);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width:700px;
+    }
+
+    .toc{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+    }
+
+    .toc a{
+      display:block;
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      transition:.2s ease;
+      min-height:132px;
+    }
+
+    .toc a:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 25px rgba(18,59,48,.08);
+    }
+
+    .toc .kicker{
+      display:inline-block;
+      margin-bottom:10px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+      color:var(--green-700);
+      background:var(--mint-100);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .toc strong{
+      display:block;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--green-900);
+      margin-bottom:8px;
+    }
+
+    .toc span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .intro-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .intro-box p{
+      margin:0 0 16px;
+      color:var(--ink);
+      font-size:17px;
+    }
+
+    .intro-box p:last-child{margin-bottom:0}
+
+    .quote-box{
+      background:linear-gradient(135deg, var(--green-900), var(--green-800));
+      color:#fff;
+      border-radius:22px;
+      padding:28px;
+      min-height:100%;
+    }
+
+    .quote-box .small{
+      font-size:12px;
+      opacity:.8;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .quote-box h3{
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.12;
+      color:#fff !important;
+    }
+
+    .quote-box p{
+      margin:0;
+      color:#e1f1ea;
+    }
+
+    .stats-row{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:16px;
+    }
+
+    .mini-stat{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      text-align:left;
+    }
+
+    .mini-stat .n{
+      font-size:34px;
+      font-weight:800;
+      line-height:1;
+      color:var(--green-900);
+      margin-bottom:10px;
+    }
+
+    .mini-stat .t{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .image-frame{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:14px;
+      overflow:hidden;
+    }
+
+    .image-caption{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .zones{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .zone{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .zone .band{
+      padding:14px 18px;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    .zone.strength .band{background:#dff4ec;color:#0e4d3d}
+    .zone.focus .band{background:#f4edd8;color:#7a5f16}
+    .zone.risk .band{background:#f7e3e2;color:#8c3c38}
+
+    .zone .body{
+      padding:18px;
+      color:var(--ink);
+    }
+
+    .zone ul{
+      margin:12px 0 0 18px;
+      padding:0;
+    }
+
+    .zone li{margin:0 0 8px}
+
+    .radar-wrap{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .svg-card,
+    .legend-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+    }
+
+    .legend-grid{
+      display:grid;
+      gap:14px;
+      margin-top:6px;
+    }
+
+    .legend-item{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:12px;
+      align-items:center;
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .swatch{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+    }
+
+    .sw1{background:#2f8a72}
+    .sw2{background:#dcbf6b}
+    .sw3{background:#ce6e67}
+
+    .priority{
+      font-size:13px;
+      font-weight:700;
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .p-strong{background:#dff4ec;color:#0e4d3d}
+    .p-watch{background:#f4edd8;color:#7a5f16}
+    .p-risk{background:#f7e3e2;color:#8c3c38}
+
+    .pillars{
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:16px;
+      margin-top:24px;
+    }
+
+    .pillar{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+    }
+
+    .pillar .top{
+      padding:18px;
+      color:#fff;
+      background:linear-gradient(135deg, var(--green-900), var(--green-700));
+      min-height:110px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .pillar .icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:rgba(255,255,255,.12);
+      display:grid;
+      place-items:center;
+      font-size:20px;
+    }
+
+    .pillar .top strong{
+      font-size:20px;
+      line-height:1.2;
+    }
+
+    .pillar .content{
+      padding:18px;
+      display:grid;
+      gap:14px;
+    }
+
+    .pillar h4{
+      margin:0;
+      font-size:14px;
+      color:var(--green-800);
+      text-transform:uppercase;
+      letter-spacing:.4px;
+    }
+
+    .pillar ul{
+      margin:0 0 0 18px;
+      padding:0;
+      color:var(--ink);
+      font-size:14px;
+    }
+
+    .roadmap{
+      margin-top:24px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th, td{
+      padding:16px 18px;
+      text-align:left;
+      vertical-align:top;
+      border-bottom:1px solid var(--line);
+      font-size:14px;
+    }
+
+    th{
+      background:#f1f7f3;
+      color:var(--green-900);
+      font-size:13px;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+
+    tr:last-child td{border-bottom:none}
+
+    .footer{
+      color:#dcebe5;
+      text-align:center;
+      padding:30px 0 54px;
+      font-size:14px;
+    }
+
+    .footer a{
+      color:#fff;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    @media (max-width: 1100px){
+      .hero-inner,
+      .two-col,
+      .radar-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .stats-row,
+      .toc,
+      .pillars{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .zones{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 720px){
+      .topbar-inner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .nav{
+        justify-content:flex-start;
+      }
+
+      .hero-inner,
+      .card{
+        padding:22px;
+      }
+
+      .hero-grid,
+      .stats-row,
+      .toc,
+      .pillars{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:36px;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      th, td{
+        padding:14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">HR AI Readiness</div>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#belief-gap">Belief vs Readiness</a>
+        <a href="#data-reveals">Data</a>
+        <a href="#readiness-radar">Radar</a>
+        <a href="#must-win">Must-Win Areas</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero shell" id="overview">
+    <div class="hero-card">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">HR Transformation • AI Readiness</div>
+          <h1>Is HR Ready for AI?<br>How to Lead the Transformation</h1>
+          <p>
+            HR leaders increasingly believe AI will reshape the function, but belief alone does not create readiness.
+            The real challenge is turning scattered experimentation into repeatable, trusted, and scalable practice.
+          </p>
+
+          <div class="hero-grid">
+            <div class="hero-stat">
+              <div class="num">65%</div>
+              <div class="label">show buy-in, awareness, and advocacy for AI use</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">29%</div>
+              <div class="label">feel technology and infrastructure are ready for scale</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">35%</div>
+              <div class="label">feel the right AI skills exist for responsible day-to-day use</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="summary-panel">
+            <h3>Contents</h3>
+            <ul class="summary-list">
+              <li>
+                <div class="dot">1</div>
+                <div>
+                  <strong>Is HR Ready for AI? The Gap Between Belief and Readiness</strong><br>
+                  Why confidence and curiosity are not enough without structure.
+                </div>
+              </li>
+              <li>
+                <div class="dot">2</div>
+                <div>
+                  <strong>What the data reveals about AI readiness</strong><br>
+                  Where momentum exists, and where readiness is still fragile.
+                </div>
+              </li>
+              <li>
+                <div class="dot">3</div>
+                <div>
+                  <strong>HR AI readiness radar: Strengths, focus areas & risks</strong><br>
+                  A practical way to understand readiness across five pillars.
+                </div>
+              </li>
+              <li>
+                <div class="dot">4</div>
+                <div>
+                  <strong>5 must-win areas for HR’s AI transformation</strong><br>
+                  The priorities that move HR from experiments to sustainable impact.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section shell">
+    <div class="card">
+      <div class="section-head">
+        <h2>Navigate this page</h2>
+        <p>
+          This page is designed as a de-branded, tighter summary build for GitHub Pages using your preferred dark green outer styling and near-white inner panels.
+        </p>
+      </div>
+
+      <div class="toc">
+        <a href="#belief-gap">
+          <div class="kicker">Section 1</div>
+          <strong>The gap between belief and readiness</strong>
+          <span>Why strong belief in AI does not yet equal scalable HR capability.</span>
+        </a>
+        <a href="#data-reveals">
+          <div class="kicker">Section 2</div>
+          <strong>What the data reveals</strong>
+          <span>Strengths, attention areas, and readiness risks in one view.</span>
+        </a>
+        <a href="#readiness-radar">
+          <div class="kicker">Section 3</div>
+          <strong>Readiness radar</strong>
+          <span>A simple visual model across strategy, governance, technology, people, and skills.</span>
+        </a>
+        <a href="#must-win">
+          <div class="kicker">Section 4</div>
+          <strong>5 must-win areas</strong>
+          <span>The pillars HR should prioritize to move from pilots to impact.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="belief-gap">
+    <div class="card">
+      <div class="section-head">
+        <h2>Is HR Ready for AI?<br>The Gap Between Belief and Readiness</h2>
+        <p>
+          HR does not mainly have an AI adoption problem. It has a readiness problem: many teams see AI’s value,
+          but lack aligned priorities, practical governance, and role-based capability building.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="intro-box">
+          <p>
+            HR teams are already using AI for drafting job ads, supporting learning content, generating insights,
+            and reducing administrative work. Yet in many organizations, that activity is still scattered and inconsistent.
+          </p>
+          <p>
+            When there is no shared view of where AI should create value, no clear guardrails for responsible use,
+            and no structured pathway for building skills, AI remains a set of isolated experiments instead of becoming an HR capability.
+          </p>
+          <p>
+            The result is a familiar pattern: enthusiasm is high, but repeatable impact is still hard to achieve.
+          </p>
+        </div>
+
+        <div class="quote-box">
+          <div class="small">Core message</div>
+          <h3>Belief is ahead of readiness.</h3>
+          <p>
+            HR is increasingly motivated to adopt AI, but most teams still need stronger strategy,
+            cleaner systems, practical governance, and deeper everyday fluency before adoption can scale with confidence.
+          </p>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="mini-stat">
+          <div class="n">65%</div>
+          <div class="t">show strong buy-in, awareness, and advocacy for AI use</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">66%</div>
+          <div class="t">have early governance elements such as oversight or risk processes</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">29%</div>
+          <div class="t">feel data, tools, and infrastructure are ready to support AI at scale</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">30%</div>
+          <div class="t">have clear purpose, expected value, and priority HR use cases for AI</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">35%</div>
+          <div class="t">feel the right skills and development opportunities exist for AI integration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="data-reveals">
+    <div class="card">
+      <div class="section-head">
+        <h2>What the data reveals about AI readiness</h2>
+        <p>
+          Across teams and geographies, the same picture keeps appearing: interest is strong, but the ability to embed,
+          govern, and scale AI across HR work is still uneven.
+        </p>
+      </div>
+
+      <div class="image-frame">
+        <img
+          src="https://www.aihr.com/wp-content/uploads/HR-Thinks-Its-Ready-for-AI-Blog.png"
+          alt="HR AI readiness summary infographic"
+          loading="lazy"
+        />
+      </div>
+      <div class="image-caption">
+        Main article infographic embedded from the source page. For GitHub Pages, you can keep this external image or replace it with a downloaded local copy later.
+      </div>
+
+      <div class="zones">
+        <div class="zone strength">
+          <div class="band">Strengths</div>
+          <div class="body">
+            HR’s mindset is strong and leadership support is increasingly visible.
+            Teams largely understand that AI can improve decision-making, efficiency, and employee experience.
+            <ul>
+              <li>Strong curiosity and openness to experimentation</li>
+              <li>Growing leadership sponsorship</li>
+              <li>Early governance foundations beginning to appear</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zone focus">
+          <div class="band">Focus areas</div>
+          <div class="body">
+            The challenge is not only believing in AI, but embedding it into daily work in a structured, repeatable way.
+            <ul>
+              <li>Data and tool readiness remain patchy</li>
+              <li>Confidence is inconsistent across roles</li>
+              <li>Upskilling often exists, but not at team-wide depth</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zone risk">
+          <div class="band">Readiness risks</div>
+          <div class="body">
+            The weakest areas sit around clarity, capability, and connection between business goals and actual AI use.
+            <ul>
+              <li>Use cases are not always prioritized</li>
+              <li>Technical confidence is often low</li>
+              <li>Skills gaps prevent trusted, scalable adoption</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="readiness-radar">
+    <div class="card">
+      <div class="section-head">
+        <h2>HR AI readiness radar:<br>Strengths, focus areas & risks</h2>
+        <p>
+          The readiness model works across five connected pillars: Strategy, Governance, Technology, People, and Skills.
+          Progress in one pillar supports progress in the others.
+        </p>
+      </div>
+
+      <div class="radar-wrap">
+        <div class="svg-card">
+          <svg viewBox="0 0 520 520" width="100%" aria-label="Illustrative HR AI readiness radar">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#103a30"></stop>
+                <stop offset="100%" stop-color="#2f8a72"></stop>
+              </linearGradient>
+            </defs>
+
+            <circle cx="260" cy="260" r="175" fill="#f8fbf9" stroke="#d8e5de" stroke-width="1"/>
+            <circle cx="260" cy="260" r="125" fill="none" stroke="#d8e5de" stroke-width="1"/>
+            <circle cx="260" cy="260" r="75" fill="none" stroke="#d8e5de" stroke-width="1"/>
+
+            <line x1="260" y1="40" x2="260" y2="480" stroke="#d8e5de"/>
+            <line x1="40" y1="260" x2="480" y2="260" stroke="#d8e5de"/>
+            <line x1="104" y1="104" x2="416" y2="416" stroke="#d8e5de"/>
+            <line x1="416" y1="104" x2="104" y2="416" stroke="#d8e5de"/>
+
+            <polygon
+              points="260,150 356,200 330,345 190,350 150,225"
+              fill="rgba(47,138,114,.18)"
+              stroke="url(#g1)"
+              stroke-width="4"
+            ></polygon>
+
+            <circle cx="260" cy="150" r="6" fill="#103a30"></circle>
+            <circle cx="356" cy="200" r="6" fill="#103a30"></circle>
+            <circle cx="330" cy="345" r="6" fill="#103a30"></circle>
+            <circle cx="190" cy="350" r="6" fill="#103a30"></circle>
+            <circle cx="150" cy="225" r="6" fill="#103a30"></circle>
+
+            <circle cx="260" cy="260" r="48" fill="#ffffff" stroke="#d8e5de"></circle>
+            <text x="260" y="250" text-anchor="middle" font-size="17" font-weight="700" fill="#103a30">AI</text>
+            <text x="260" y="272" text-anchor="middle" font-size="17" font-weight="700" fill="#103a30">READINESS</text>
+
+            <text x="260" y="24" text-anchor="middle" font-size="18" font-weight="700" fill="#103a30">Strategy</text>
+            <text x="452" y="206" text-anchor="start" font-size="18" font-weight="700" fill="#103a30">Governance</text>
+            <text x="388" y="462" text-anchor="middle" font-size="18" font-weight="700" fill="#103a30">Technology</text>
+            <text x="132" y="462" text-anchor="middle" font-size="18" font-weight="700" fill="#103a30">People</text>
+            <text x="56" y="206" text-anchor="start" font-size="18" font-weight="700" fill="#103a30">Skills</text>
+          </svg>
+          <div class="image-caption">
+            Illustrative de-branded radar rebuilt in SVG for a tight GitHub-friendly layout.
+          </div>
+        </div>
+
+        <div class="legend-card">
+          <h3 style="margin:0 0 16px; color:#103a30; font-size:24px;">How to read the radar</h3>
+          <p style="margin:0 0 18px; color:#587268;">
+            The article frames readiness in three broad zones: areas of strength, areas needing attention, and readiness risks.
+          </p>
+
+          <div class="legend-grid">
+            <div class="legend-item">
+              <span class="swatch sw1"></span>
+              <div>
+                <strong>Area of strength</strong><br>
+                Early momentum already exists and can be accelerated.
+              </div>
+              <span class="priority p-strong">Maximize</span>
+            </div>
+
+            <div class="legend-item">
+              <span class="swatch sw2"></span>
+              <div>
+                <strong>Needs attention</strong><br>
+                Foundations exist, but consistency and scale are not there yet.
+              </div>
+              <span class="priority p-watch">Strengthen</span>
+            </div>
+
+            <div class="legend-item">
+              <span class="swatch sw3"></span>
+              <div>
+                <strong>Readiness risk</strong><br>
+                Gaps here directly slow down practical, trusted adoption.
+              </div>
+              <span class="priority p-risk">Prioritize</span>
+            </div>
+          </div>
+
+          <div style="margin-top:18px; background:#f8fbf9; border:1px solid #d8e5de; border-radius:16px; padding:16px;">
+            <strong style="display:block; color:#103a30; margin-bottom:8px;">Typical pattern shown by the article</strong>
+            <div style="color:#587268;">
+              People and mindset are comparatively stronger. Technology readiness, strategic clarity,
+              and practical skill depth are where many teams still need the most work.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="must-win">
+    <div class="card">
+      <div class="section-head">
+        <h2>5 must-win areas for HR’s AI transformation</h2>
+        <p>
+          To move from fragmented experimentation to integrated and responsible AI use, HR needs to strengthen five connected pillars.
+        </p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <div class="top">
+            <div class="icon">🎯</div>
+            <strong>Strategy</strong>
+          </div>
+          <div class="content">
+            <div>
+              <h4>What readiness looks like</h4>
+              <ul>
+                <li>Shared reason for adopting AI</li>
+                <li>Clear success measures tied to outcomes</li>
+                <li>Priority use cases with visible value</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What to do now</h4>
+              <ul>
+                <li>Reconnect AI to business and HR goals</li>
+                <li>Define how value will be measured</li>
+                <li>Align leaders around a common direction</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="top">
+            <div class="icon">🛡️</div>
+            <strong>Governance</strong>
+          </div>
+          <div class="content">
+            <div>
+              <h4>What readiness looks like</h4>
+              <ul>
+                <li>Clear and practical AI guidelines</li>
+                <li>Defined risk and escalation pathways</li>
+                <li>Shared accountability across functions</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What to do now</h4>
+              <ul>
+                <li>Map AI risks in HR processes</li>
+                <li>Create short, usable guidance</li>
+                <li>Build a regular oversight rhythm</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="top">
+            <div class="icon">⚙️</div>
+            <strong>Technology</strong>
+          </div>
+          <div class="content">
+            <div>
+              <h4>What readiness looks like</h4>
+              <ul>
+                <li>Accessible, quality HR data</li>
+                <li>Tools linked to real use cases</li>
+                <li>Systems ready for secure integration</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What to do now</h4>
+              <ul>
+                <li>Audit systems and data quality</li>
+                <li>Partner with IT on integration</li>
+                <li>Define tool selection criteria</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="top">
+            <div class="icon">👥</div>
+            <strong>People</strong>
+          </div>
+          <div class="content">
+            <div>
+              <h4>What readiness looks like</h4>
+              <ul>
+                <li>Visible leadership endorsement</li>
+                <li>Real examples of AI helping HR work</li>
+                <li>Psychological safety to learn and test</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What to do now</h4>
+              <ul>
+                <li>Tailor messages by HR role</li>
+                <li>Identify champions and early adopters</li>
+                <li>Share small wins across the function</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="top">
+            <div class="icon">📘</div>
+            <strong>Skills</strong>
+          </div>
+          <div class="content">
+            <div>
+              <h4>What readiness looks like</h4>
+              <ul>
+                <li>Confident everyday use of AI tools</li>
+                <li>Learning pathways that build over time</li>
+                <li>Responsible-use knowledge built in</li>
+              </ul>
+            </div>
+            <div>
+              <h4>What to do now</h4>
+              <ul>
+                <li>Use modular, role-based learning</li>
+                <li>Add hands-on labs and micro-learning</li>
+                <li>Track and celebrate growth</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="roadmap">
+        <table>
+          <thead>
+            <tr>
+              <th>Pillar</th>
+              <th>Immediate focus</th>
+              <th>Practical next move</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Strategy</strong></td>
+              <td>Clarify why AI matters in HR</td>
+              <td>Define 3–5 priority use cases and how success will be measured.</td>
+            </tr>
+            <tr>
+              <td><strong>Governance</strong></td>
+              <td>Move from vague concern to usable guardrails</td>
+              <td>Create a short responsible-use guide for HR and define escalation routes.</td>
+            </tr>
+            <tr>
+              <td><strong>Technology</strong></td>
+              <td>Strengthen data and systems foundations</td>
+              <td>Run a practical audit of current HR data, systems, access, and integration gaps.</td>
+            </tr>
+            <tr>
+              <td><strong>People</strong></td>
+              <td>Turn belief into advocacy</td>
+              <td>Show real examples of AI improving work and appoint champions in each HR area.</td>
+            </tr>
+            <tr>
+              <td><strong>Skills</strong></td>
+              <td>Build fluency, not one-off training</td>
+              <td>Launch short, role-based practice pathways with repeat exposure and feedback.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer shell">
+    Built as a de-branded HTML page for GitHub Pages using dark green outer styling and near-white inner sections.
+    Replace external image URLs with local assets later if you want full control over hosting performance.
+  </footer>
+
+</body>
+</html>
