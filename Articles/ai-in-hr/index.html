@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in HR | Simple Guide</title>
+  <style>
+    :root{
+      --green-950:#082f26;
+      --green-900:#0b3d2e;
+      --green-800:#145443;
+      --green-700:#1d6b56;
+      --green-100:#eef4ef;
+      --paper:#f7f8f2;
+      --ink:#153126;
+      --muted:#5f7269;
+      --line:#d9e3dc;
+      --blue:#5a63ff;
+      --blue-2:#7d82ff;
+      --cyan:#2bb7ea;
+      --purple:#32236f;
+      --gold:#f2ab00;
+      --shadow:0 12px 34px rgba(8,47,38,.10);
+      --radius:22px;
+      --radius-sm:16px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--green-950),var(--green-900) 180px,var(--paper) 180px,var(--paper));
+      line-height:1.55;
+    }
+    .page{
+      width:min(100%,var(--max));
+      margin:0 auto;
+      padding:24px 18px 60px;
+    }
+    .hero{
+      background:linear-gradient(135deg,var(--green-950),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+      display:grid;
+      gap:28px;
+      grid-template-columns:1.15fr .85fr;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    h1,h2,h3,h4,p{margin:0}
+    h1{
+      font-size:clamp(2rem,4.2vw,4rem);
+      line-height:1.05;
+      color:#fff;
+      margin-bottom:14px;
+    }
+    .hero p{
+      color:#e5f1e9;
+      font-size:1.02rem;
+      max-width:62ch;
+    }
+    .hero-quick{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+    .pill{
+      background:#fff;
+      color:var(--green-900);
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      font-size:.94rem;
+    }
+    .hero-art{
+      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      padding:22px;
+      min-height:320px;
+      position:relative;
+      overflow:hidden;
+    }
+    .screen{
+      position:absolute;
+      inset:28px 28px 66px 28px;
+      background:#dbe6de;
+      border-radius:18px;
+      border:6px solid rgba(17,64,52,.55);
+    }
+    .screen:before{
+      content:"";
+      position:absolute;
+      left:18px; right:18px; top:18px;
+      height:18px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--cyan) 0 18%, transparent 18% 25%, var(--blue-2) 25% 52%, transparent 52% 58%, var(--cyan) 58% 88%, transparent 88%);
+      opacity:.75;
+    }
+    .lines{
+      position:absolute;
+      left:24px; right:24px; top:62px; bottom:24px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .card-lines{
+      background:rgba(255,255,255,.45);
+      border-radius:16px;
+      padding:16px;
+      display:grid;
+      gap:10px;
+      align-content:start;
+    }
+    .line{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--blue-2));opacity:.8}
+    .line.short{width:65%}
+    .line.mid{width:82%}
+    .bubble{
+      position:absolute;
+      border-radius:22px;
+      padding:12px 14px;
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 10px 20px rgba(0,0,0,.12);
+    }
+    .bubble.one{top:18px; right:24px; background:var(--blue)}
+    .bubble.two{bottom:28px; left:18px; background:var(--gold); color:#2c2508}
+    .bubble.three{bottom:90px; right:16px; background:var(--cyan); color:#083d48}
+
+    .section{
+      margin-top:22px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+    }
+    .section-header{
+      display:grid;
+      gap:10px;
+      margin-bottom:22px;
+    }
+    .kicker{
+      color:var(--green-700);
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    h2{
+      font-size:clamp(1.5rem,2.7vw,2.4rem);
+      line-height:1.12;
+      color:var(--green-900);
+    }
+    .lede{color:var(--muted);max-width:75ch}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 8px 24px rgba(8,47,38,.06);
+    }
+    .card h3,.card h4{color:var(--green-900)}
+    .card p{color:var(--muted);margin-top:8px}
+    .mini{font-size:.9rem}
+
+    .pyramid{display:grid;gap:14px;margin-top:8px}
+    .layer{
+      position:relative;
+      color:#fff;
+      border-radius:24px;
+      padding:18px 18px 18px 84px;
+      overflow:hidden;
+    }
+    .layer:before{
+      content:attr(data-step);
+      position:absolute;
+      left:18px; top:50%; transform:translateY(-50%);
+      width:48px; height:48px; border-radius:50%;
+      display:grid; place-items:center;
+      font-weight:800;
+      background:rgba(255,255,255,.22);
+      border:2px solid rgba(255,255,255,.25);
+    }
+    .layer small{display:block;color:rgba(255,255,255,.82);margin-top:4px}
+    .layer.individual{background:linear-gradient(90deg,#7581d7,#6f7bd1)}
+    .layer.team{background:linear-gradient(90deg,#5b61f2,#626eff)}
+    .layer.enterprise{background:linear-gradient(90deg,#efab08,#f2b31c); color:#2f2607}
+    .layer.enterprise small{color:#5f4f12}
+
+    .ai-types .type-num,
+    .usecase .num,
+    .persona .type-num,
+    .risk-badge{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:0 0 auto;
+    }
+    .stack{display:flex;gap:12px;align-items:flex-start}
+    .type-num{background:linear-gradient(180deg,var(--blue),var(--blue-2));color:#fff}
+    .num{background:linear-gradient(180deg,var(--cyan),#68cced);color:#07323e}
+    .risk-badge{background:linear-gradient(180deg,var(--gold),#ffc63d);color:#543c00}
+
+    .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .usecase{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+    .usecase h3{font-size:1.02rem}
+    .usecase p{margin-top:8px;color:var(--muted)}
+
+    .two-column-focus{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .focus-panel{
+      border-radius:24px;
+      padding:20px;
+      min-height:100%;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .focus-panel.automate{background:linear-gradient(180deg,#fff9ec,#fff)}
+    .focus-panel.human{background:linear-gradient(180deg,#f3f2ff,#fff)}
+    .focus-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .focus-title .badge{padding:8px 12px;border-radius:999px;font-weight:800;font-size:.86rem}
+    .automate .badge{background:#ffefc7;color:#745000}
+    .human .badge{background:#e5e3ff;color:#31266f}
+    ul.clean{margin:0;padding-left:20px;color:var(--muted)}
+    ul.clean li{margin:10px 0}
+
+    .risk-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+    .framework{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:22px;
+    }
+    .safe-bar,.ground-bar{
+      text-align:center;
+      font-weight:800;
+      color:var(--green-900);
+      border-radius:999px;
+      padding:10px 14px;
+      background:#edf4ee;
+      border:1px solid var(--line);
+      margin-bottom:16px;
+    }
+    .framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+    .box{
+      border-radius:18px;
+      padding:16px;
+      color:#fff;
+      font-weight:700;
+      min-height:100px;
+    }
+    .box.external{background:linear-gradient(180deg,#7682d9,#6470d4)}
+    .box.internal{background:linear-gradient(180deg,#5b61f2,#5660e8)}
+    .box.data{background:linear-gradient(180deg,#2bb7ea,#2da9d4);grid-column:1 / -1}
+    .triangle{
+      margin-top:8px;
+      background:linear-gradient(180deg,#fff,#f5f7f6);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:16px;
+    }
+    .triangle .row{
+      border-radius:14px;
+      padding:12px 14px;
+      margin:10px auto;
+      text-align:center;
+      font-weight:700;
+      color:#fff;
+      background:var(--purple);
+    }
+    .triangle .row.r2{width:84%;background:#4937a3}
+    .triangle .row.r3{width:66%;background:#6553c2}
+    .triangle .row.r1{width:100%}
+
+    .personas{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .persona{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+    .persona .type-num{margin-bottom:12px}
+
+    .skills-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    .skill-stack{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px}
+    .skill-bar{
+      color:#fff;font-weight:800;text-align:center;border-radius:999px;padding:18px 18px;margin:14px auto;
+    }
+    .skill-bar.base{width:100%;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+    .skill-bar.tech{width:78%;background:var(--purple)}
+    .skill-bar.advanced{width:54%;background:var(--gold);color:#3d2c00}
+    .skill-note{font-size:.92rem;color:var(--muted);margin-top:8px;text-align:center}
+
+    .tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .tool{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+    .tool-tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:.8rem;font-weight:800;background:#eef4ef;color:var(--green-900);margin-bottom:12px}
+
+    .footer-note{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.92rem;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+    .cta-strip{
+      margin-top:22px;
+      padding:24px;
+      border-radius:24px;
+      background:linear-gradient(135deg,var(--green-900),var(--green-700));
+      color:#fff;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .cta-strip p{color:#e8f4ee;max-width:64ch}
+    .cta-btn{
+      text-decoration:none;
+      background:#fff;
+      color:var(--green-900);
+      font-weight:800;
+      padding:14px 18px;
+      border-radius:999px;
+      display:inline-block;
+    }
+
+    @media (max-width: 1024px){
+      .hero,.grid-4,.personas,.tool-grid,.grid-3,.use-grid,.risk-layout,.skills-wrap,.grid-2,.two-column-focus{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 760px){
+      .hero,.grid-4,.personas,.tool-grid,.grid-3,.use-grid,.risk-layout,.skills-wrap,.grid-2,.two-column-focus{grid-template-columns:1fr}
+      .page{padding:16px 12px 44px}
+      .section{padding:22px 18px}
+      .hero{padding:24px 18px}
+      .hero-art{min-height:280px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Simple HR Guide</span>
+        <h1>AI in HR</h1>
+        <p>
+          A tighter, simpler guide to how AI can help HR teams work faster, make better decisions, and still keep people at the center.
+        </p>
+        <div class="hero-quick">
+          <span class="pill">Automate routine work</span>
+          <span class="pill">Support better decisions</span>
+          <span class="pill">Keep human judgment</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="screen">
+          <div class="lines">
+            <div class="card-lines">
+              <div class="line"></div>
+              <div class="line mid"></div>
+              <div class="line short"></div>
+              <div class="line"></div>
+            </div>
+            <div class="card-lines">
+              <div class="line mid"></div>
+              <div class="line"></div>
+              <div class="line short"></div>
+              <div class="line mid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bubble one">Draft faster</div>
+        <div class="bubble two">Human review</div>
+        <div class="bubble three">Better support</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">1. What it means</div>
+        <h2>What is AI in HR?</h2>
+        <p class="lede">
+          AI in HR means using tools like machine learning, natural language processing, predictive analytics, automation, and generative AI to help with HR work that normally takes time, judgment, and repeated manual effort.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>What it can help with</h3>
+          <p>
+            HR can use AI to support recruitment, onboarding, payroll and benefits administration, policy writing, employee support, workforce planning, learning, retention, and reporting.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Why teams use it</h3>
+          <p>
+            The main value is speed, structure, and better insight. AI can handle repetitive work, help surface patterns in data, and free HR teams to focus more on people, strategy, and difficult decisions.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:22px; margin-bottom:14px;">
+        <div class="kicker">Recreated infographic</div>
+        <h2 style="font-size:1.55rem;">AI in HR application levels</h2>
+        <p class="lede">As the impact gets bigger, the risk and need for human oversight also increase.</p>
+      </div>
+      <div class="pyramid">
+        <div class="layer individual" data-step="1">
+          <strong>Individual</strong>
+          <small>AI helps one person save time and improve quality in daily work.</small>
+        </div>
+        <div class="layer team" data-step="2">
+          <strong>Team</strong>
+          <small>AI helps HR teams work better together, improve workflows, and unlock new capabilities.</small>
+        </div>
+        <div class="layer enterprise" data-step="3">
+          <strong>Enterprise</strong>
+          <small>AI supports larger decisions and business outcomes at scale, so the stakes are higher.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ai-types">
+      <div class="section-header">
+        <div class="kicker">2. Main types</div>
+        <h2>Types of AI used in HR</h2>
+        <p class="lede">These are the main categories mentioned in the source article, rewritten in simpler English.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card stack"><div class="type-num">1</div><div><h3>Generative AI</h3><p>Creates new content like job descriptions, emails, learning content, summaries, and first drafts.</p></div></div>
+        <div class="card stack"><div class="type-num">2</div><div><h3>Conversational AI</h3><p>Chatbots and virtual assistants answer questions and guide employees or candidates any time of day.</p></div></div>
+        <div class="card stack"><div class="type-num">3</div><div><h3>AI voice tools</h3><p>Voice assistants handle spoken questions, route requests, and improve access to HR support.</p></div></div>
+        <div class="card stack"><div class="type-num">4</div><div><h3>Machine learning</h3><p>Learns from data to predict turnover, match candidates, spot trends, and improve decisions over time.</p></div></div>
+        <div class="card stack"><div class="type-num">5</div><div><h3>Natural language processing</h3><p>Understands text and speech. Useful for survey analysis, interview notes, performance comments, and sentiment analysis.</p></div></div>
+        <div class="card stack"><div class="type-num">6</div><div><h3>Automation AI</h3><p>Handles repeat admin work like resume screening, payroll steps, tracking, and compliance tasks.</p></div></div>
+        <div class="card stack"><div class="type-num">7</div><div><h3>AI agents</h3><p>More autonomous systems that can take action with limited supervision, such as guiding onboarding or scheduling learning.</p></div></div>
+        <div class="card">
+          <h3>Simple rule</h3>
+          <p>Use lighter AI for speed and support. Use stronger AI only where you have clear guardrails, good data, and human review.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">3. Recreated infographic</div>
+        <h2>How AI is used in HR</h2>
+        <p class="lede">These are the main areas of use highlighted on the original page, simplified and tightened.</p>
+      </div>
+      <div class="use-grid">
+        <div class="usecase"><div class="stack"><div class="num">1</div><div><h3>Recruitment and hiring</h3><p>Write job ads, screen CVs, match candidates, create sourcing strings, and support interview prep.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">2</div><div><h3>Onboarding and offboarding</h3><p>Send forms, share policies, schedule training, manage exits, and handle access changes.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">3</div><div><h3>Workforce planning</h3><p>Spot skills gaps, predict turnover, forecast demand, and plan succession more clearly.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">4</div><div><h3>HR chatbots and assistants</h3><p>Answer common questions about leave, benefits, policies, and everyday HR procedures.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">5</div><div><h3>Learning and development</h3><p>Recommend learning paths, personalize content, and give learners targeted support.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">6</div><div><h3>HR analytics</h3><p>Find patterns in people data, support reporting, and improve decisions with clearer evidence.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">7</div><div><h3>Talent management</h3><p>Track performance trends, support development, identify future leaders, and reduce retention risk.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">8</div><div><h3>AI-based coaching</h3><p>Offer feedback, practice support, and between-session guidance for learning and growth.</p></div></div></div>
+        <div class="usecase"><div class="stack"><div class="num">9</div><div><h3>HR business partnering</h3><p>Support stronger planning, better communication, and more strategic work with the business.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">4. Recreated infographic</div>
+        <h2>What to automate, and what to keep human</h2>
+        <p class="lede">The best approach is usually: AI prepares, people decide.</p>
+      </div>
+      <div class="two-column-focus">
+        <div class="focus-panel automate">
+          <div class="focus-title"><span class="badge">Automate more</span><h3>Good low-risk use cases</h3></div>
+          <ul class="clean">
+            <li>Interview scheduling, reminders, and follow-ups</li>
+            <li>Ticket triage and routing to the right HR person</li>
+            <li>Onboarding and offboarding workflows</li>
+            <li>Employee self-service for common policy questions</li>
+            <li>First drafts of job descriptions, policies, and internal messages</li>
+            <li>Meeting note and survey comment summaries with human review</li>
+          </ul>
+        </div>
+        <div class="focus-panel human">
+          <div class="focus-title"><span class="badge">Keep human-led</span><h3>High-stakes decisions</h3></div>
+          <ul class="clean">
+            <li>Hiring and promotion decisions</li>
+            <li>Performance outcomes and pay-impact decisions</li>
+            <li>Disciplinary actions and terminations</li>
+            <li>Employee relations and sensitive investigations</li>
+            <li>Accommodation needs and wellbeing conversations</li>
+            <li>Culture, trust-building, and leadership coaching</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">5. Risks and guardrails</div>
+        <h2>Main AI risks in HR</h2>
+        <p class="lede">The source article groups risks into three broad areas and recommends strong oversight.</p>
+      </div>
+
+      <div class="risk-layout">
+        <div class="framework">
+          <div class="safe-bar">Simple risk framework</div>
+          <div class="framework-grid">
+            <div class="box external">1. External environment<br><span class="mini">Laws, regulation, public trust, and outside expectations.</span></div>
+            <div class="box internal">2. Internal environment<br><span class="mini">Culture, values, ethics, leadership choices, and readiness.</span></div>
+            <div class="box data">3. Data governance<br><span class="mini">How data is collected, protected, documented, explained, and audited.</span></div>
+          </div>
+          <div class="triangle">
+            <div class="row r1">Policy and philosophy</div>
+            <div class="row r2">Practice, process, and systems</div>
+            <div class="row r3">Individual behavior</div>
+          </div>
+          <div class="safe-bar" style="margin-top:16px">Identify → Mitigate → Monitor → Audit</div>
+        </div>
+
+        <div class="grid-1">
+          <div class="card stack"><div class="risk-badge">A</div><div><h3>Inherent risks</h3><p>Bias, low transparency, and unpredictable outputs can lead to unfair or weak decisions.</p></div></div>
+          <div class="card stack"><div class="risk-badge">B</div><div><h3>Application risks</h3><p>Even good tools can be misused when people apply them without enough context, empathy, or alignment to company values.</p></div></div>
+          <div class="card stack"><div class="risk-badge">C</div><div><h3>Compliance risks</h3><p>HR must protect sensitive data, document decisions, and stay aligned with employment and privacy law.</p></div></div>
+          <div class="card">
+            <h3>Actions for HR</h3>
+            <p>Train teams, reduce bias, review important outputs, use explainable tools where possible, tell people how AI is used, collect only needed data, secure it well, and involve legal and compliance teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">6. Adoption</div>
+        <h2>The 4 AI adoption personas in HR</h2>
+        <p class="lede">Different HR team members adopt AI at different speeds. This simple model helps leaders support each group better.</p>
+      </div>
+      <div class="personas">
+        <div class="persona"><div class="type-num">1</div><h3>Skeptical avoider</h3><p>Does not use AI much and does not yet see enough value. Needs simple, low-risk examples.</p></div>
+        <div class="persona"><div class="type-num">2</div><h3>Reluctant user</h3><p>Uses AI only a little. Often unsure how it works or how to fit it into daily work. Needs guided wins.</p></div>
+        <div class="persona"><div class="type-num">3</div><h3>Active explorer</h3><p>Already experiments with AI for research, writing, or automation. Needs more hands-on practice and room to test.</p></div>
+        <div class="persona"><div class="type-num">4</div><h3>Adoption champion</h3><p>Uses AI widely, shares results, and helps others adopt it. Can become an internal role model.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">7. Skills for the future</div>
+        <h2>AI skills HR professionals need</h2>
+        <p class="lede">Not everyone needs the same depth, but most HR people will need a base level of AI literacy.</p>
+      </div>
+      <div class="skills-wrap">
+        <div class="skill-stack">
+          <div class="skill-bar base">Base skills</div>
+          <div class="skill-note">AI basics, ethics, basic data literacy, prompt design, curiosity, and problem-solving</div>
+          <div class="skill-bar tech">Technical skills</div>
+          <div class="skill-note">Machine learning concepts, system setup, and stronger data understanding</div>
+          <div class="skill-bar advanced">Advanced skills</div>
+          <div class="skill-note">More specialized work such as cybersecurity or building advanced AI solutions</div>
+        </div>
+        <div class="grid-1">
+          <div class="card"><h3>Business acumen</h3><p>Understand the business so HR solutions connect to real priorities.</p></div>
+          <div class="card"><h3>Communication and listening</h3><p>Explain AI clearly, build trust, and handle change with empathy.</p></div>
+          <div class="card"><h3>Using technology well</h3><p>Know how to bring AI into workflows in ways that improve quality and scale.</p></div>
+          <div class="card"><h3>Problem-solving and curiosity</h3><p>Ask good questions, test responsibly, and keep learning as tools change.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">8. Tools</div>
+        <h2>Common AI tools mentioned for HR</h2>
+        <p class="lede">The source page highlights several widely used tools that support different HR tasks.</p>
+      </div>
+      <div class="tool-grid">
+        <div class="tool"><span class="tool-tag">Drafting</span><h3>ChatGPT</h3><p>Useful for first drafts, everyday HR writing, common question handling, and productivity support.</p></div>
+        <div class="tool"><span class="tool-tag">Research</span><h3>Perplexity</h3><p>Helpful for faster research with cited answers, policy comparisons, and quick background reading.</p></div>
+        <div class="tool"><span class="tool-tag">Google workflow</span><h3>Gemini</h3><p>Supports teams using Google Workspace for drafting, summaries, and document refinement.</p></div>
+        <div class="tool"><span class="tool-tag">Microsoft workflow</span><h3>Microsoft Copilot</h3><p>Works inside Word, Excel, Teams, and Outlook to summarize, draft, and automate common tasks.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">9. Bottom line</div>
+        <h2>Will AI replace HR?</h2>
+        <p class="lede">
+          The article’s answer is no. AI will change HR and automate some admin-heavy work, but work that depends on judgment, trust, empathy, and relationship-building stays deeply human.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>Higher risk of automation</h3><p>Roles centered mostly on repetitive admin work are more exposed.</p></div>
+        <div class="card"><h3>Moderate risk</h3><p>Roles mixing process work with judgment will change, but not disappear easily.</p></div>
+        <div class="card"><h3>Lower risk</h3><p>Roles requiring strategy, influence, problem-solving, and people leadership remain more protected.</p></div>
+      </div>
+
+      <div class="cta-strip">
+        <div>
+          <h3 style="color:#fff; margin-bottom:8px;">Simple takeaway</h3>
+          <p>Use AI to remove friction, not to remove accountability. Let AI handle drafts, patterns, and routine flow. Let people handle fairness, trust, and final decisions.</p>
+        </div>
+        <a class="cta-btn" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top</a>
+      </div>
+
+      <div class="footer-note">
+        This page is a simplified, independently rewritten HTML recreation based on a public article about AI in HR. Source branding has been removed, and the diagrams have been rebuilt in HTML/CSS rather than reusing branded infographic images.
+      </div>
+    </section>
+  </div>
+</body>
+</html>
