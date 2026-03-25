@@ -347,6 +347,7 @@
     }
 
     .video-wrap{
+      width:100%;
       background:#fff;
       border:1px solid var(--line);
       border-radius:24px;
@@ -354,12 +355,12 @@
       box-shadow:var(--shadow);
     }
 
-    video{
-      width:100%;
-      height:auto;
+    .video-wrap iframe{
       display:block;
+      width:100%;
+      aspect-ratio:16 / 9;
+      border:0;
       background:#000;
-      aspect-ratio:16/9;
     }
 
     .video-note{
@@ -455,13 +456,13 @@
       .hero-inner,
       .panel,
       .cta-panel{padding:22px}
-      .hero-actions,
       .hero-stats,
       .value-grid,
       .link-grid,
       .offer-grid,
       .partner-grid{grid-template-columns:1fr}
       .section-head{flex-direction:column;align-items:flex-start}
+      .video-wrap{border-radius:18px}
       h1{font-size:36px}
       .hero-copy{font-size:16px}
     }
@@ -492,8 +493,8 @@
             capability assessments, training, and AI agent build support that members can use immediately.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://youtu.be/PHq14f6fLB8">Watch the recording</a>
-            <a class="btn btn-secondary" href="https://forms.cloud.microsoft/r/5TpgmAPSHS">Open the assessments</a>
+            <a class="btn btn-primary" href="https://youtu.be/PHq14f6fLB8" target="_blank" rel="noopener">Watch the recording</a>
+            <a class="btn btn-secondary" href="https://forms.cloud.microsoft/r/5TpgmAPSHS" target="_blank" rel="noopener">Open the assessments</a>
           </div>
           <div class="hero-stats">
             <div class="stat">
@@ -536,7 +537,7 @@
             </li>
             <li>
               <div class="num">4</div>
-              <div><strong>Convert interest into action</strong><br>A strong CTA directs the organisation to a meeting, pilot, or co-branded offer.</div>
+              <div><strong>Train</strong><br>Build AI Agents, Support and Consults</div>
             </li>
           </ul>
         </aside>
@@ -580,32 +581,35 @@
         <p>
           This recording demonstrates the quality of thinking, the practical nature of the framework,
           and the kind of conversation we can lead for HR communities and member organisations.
-       </p>
+        </p>
+      </div>
+
       <div class="video-wrap">
-  <iframe
-    src="https://www.youtube.com/embed/PHq14f6fLB8"
-    title="What does it take to lead the transformation for AI readiness?"
-    loading="lazy"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
-  <div class="video-note">
-    Watch the recording to learn how to accelerate your function’s readiness for an AI-enabled future.
-  </div>
-</div>
+        <iframe
+          src="https://www.youtube.com/embed/PHq14f6fLB8"
+          title="What does it take to lead the transformation for AI readiness?"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+        <div class="video-note">
+          Watch the recording to learn how to accelerate your function’s readiness for an AI-enabled future.
+        </div>
+      </div>
 
-<div style="height:16px"></div>
+      <div style="height:16px"></div>
 
-<div class="value-grid">
-  <div class="card">
-    <div class="mini-eyebrow">Recording title</div>
+      <div class="value-grid">
+        <div class="card">
+          <div class="mini-eyebrow">Recording title</div>
           <h3>What does it take to lead the transformation for AI readiness?</h3>
           <p>
             Drawing on insights from 334 global HR teams, this session explores readiness gaps across strategy clarity,
             governance confidence, technology infrastructure, people adoption, and applied AI skills.
           </p>
         </div>
+
         <div class="card">
           <div class="mini-eyebrow">Why it is useful</div>
           <ul class="ticks">
@@ -645,8 +649,7 @@
           <p>
             Help HR professionals understand where they currently stand across strategy, governance, technology, people, and skills.
           </p>
-          <!-- Replace the URL below with your live AI readiness test page -->
-          <a class="btn btn-primary" href="https://YOUR-GITHUB-PAGES-URL/ai-readiness-test/" target="_blank" rel="noopener">Open AI readiness test</a>
+          <a class="btn btn-primary" href="https://forms.cloud.microsoft/r/5TpgmAPSHS" target="_blank" rel="noopener">Open AI readiness test</a>
         </article>
 
         <article class="card link-card">
@@ -655,8 +658,7 @@
           <p>
             Show organisations how ready they are to move beyond basic AI use into agent design, workflow orchestration, and governed deployment.
           </p>
-          <!-- Replace the URL below with your live AI agent readiness page -->
-          <a class="btn btn-primary" href="https://YOUR-GITHUB-PAGES-URL/ai-agent-readiness/" target="_blank" rel="noopener">Open AI agents readiness</a>
+          <a class="btn btn-primary" href="https://forms.cloud.microsoft/r/Yb6ysbW4EL" target="_blank" rel="noopener">Open AI agents readiness</a>
         </article>
       </div>
     </div>
@@ -747,9 +749,8 @@
           We can support you with thought leadership, co-branded assessment tools, targeted training, and practical AI agent build support that creates value for members and a commercial path for the organisation.
         </p>
         <div class="hero-actions" style="margin-top:18px; margin-bottom:0;">
-          <!-- Replace the href values below with your preferred booking/contact links -->
-          <a class="btn btn-primary" href="mailto:YOUR-EMAIL@DOMAIN.COM">Request a partnership conversation</a>
-          <a class="btn btn-secondary" href="https://YOUR-BOOKING-LINK.COM" target="_blank" rel="noopener">Book a strategy call</a>
+          <a class="btn btn-primary" href="mailto:john@bsoedu.org">Request a partnership conversation</a>
+        <a class="btn btn-secondary" href="https://wa.me/447514327059?text=Hello%20John%2C%20I%20would%20like%20to%20book%20a%20call%20to%20discuss%20AI%20readiness%2C%20HR%20training%2C%20and%20AI%20agent%20support." target="_blank" rel="noopener">Book a strategy call</a>
         </div>
       </div>
 
@@ -766,7 +767,7 @@
   </section>
 
   <footer class="footer shell">
-    Built as a mobile-first HTML page for GitHub Pages. Replace the placeholder video and links, then publish it in its own folder with its own <strong>index.html</strong>.
+    Built as a mobile-first HTML page for GitHub Pages. Replace the placeholder links, then publish it in its own folder with its own <strong>index.html</strong>.
   </footer>
 </body>
 </html>
