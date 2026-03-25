@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Employee Onboarding | Simple Guide</title>
+  <meta name="description" content="A tight, simple guide to how AI can improve employee onboarding through automation, personalization, support, and better visibility." />
+  <style>
+    :root{
+      --green-950:#082f26;
+      --green-900:#0b3d2e;
+      --green-800:#145443;
+      --green-700:#1f6b57;
+      --green-100:#eef5f0;
+      --paper:#f7f8f2;
+      --white:#ffffff;
+      --ink:#163127;
+      --muted:#617369;
+      --line:#d8e2db;
+      --blue:#5e67ff;
+      --blue-2:#7d84ff;
+      --cyan:#2cb8ea;
+      --gold:#f2b11c;
+      --purple:#3b2f86;
+      --shadow:0 14px 34px rgba(8,47,38,.10);
+      --radius:24px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(180deg,var(--green-950),var(--green-900) 180px,var(--paper) 180px,var(--paper));
+      line-height:1.55;
+    }
+
+    .page{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      padding:24px 18px 56px;
+    }
+
+    h1,h2,h3,h4,p{margin:0}
+    a{text-decoration:none}
+
+    .hero{
+      background:linear-gradient(135deg,var(--green-950),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:34px 28px;
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:26px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.12);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    h1{
+      font-size:clamp(2rem,4vw,3.8rem);
+      line-height:1.04;
+      color:#fff;
+      margin-bottom:14px;
+    }
+
+    .hero p{
+      color:#e5f1ea;
+      max-width:64ch;
+      font-size:1rem;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fff;
+      color:var(--green-900);
+      font-weight:700;
+      font-size:.94rem;
+    }
+
+    .hero-art{
+      min-height:320px;
+      border-radius:28px;
+      position:relative;
+      overflow:hidden;
+      padding:18px;
+      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .art-shell{
+      position:absolute;
+      inset:24px;
+      border-radius:24px;
+      background:#dfe8e1;
+      border:5px solid rgba(15,63,51,.55);
+      overflow:hidden;
+    }
+
+    .art-head{
+      height:58px;
+      background:linear-gradient(90deg,#edf4ef,#d7e6dc);
+      border-bottom:1px solid rgba(0,0,0,.06);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:0 16px;
+    }
+
+    .dot{width:11px;height:11px;border-radius:50%;background:var(--cyan)}
+    .dot:nth-child(2){background:var(--blue)}
+    .dot:nth-child(3){background:var(--gold)}
+
+    .art-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      padding:16px;
+    }
+
+    .art-card{
+      background:rgba(255,255,255,.65);
+      border-radius:16px;
+      padding:14px;
+      display:grid;
+      gap:10px;
+      min-height:95px;
+    }
+
+    .bar{
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--cyan),var(--blue-2));
+    }
+
+    .bar.short{width:58%}
+    .bar.mid{width:78%}
+
+    .bubble{
+      position:absolute;
+      z-index:2;
+      padding:11px 14px;
+      border-radius:18px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(0,0,0,.12);
+    }
+
+    .bubble.one{top:14px;right:18px;background:var(--blue);color:#fff}
+    .bubble.two{bottom:22px;left:18px;background:var(--gold);color:#382901}
+    .bubble.three{bottom:88px;right:16px;background:var(--cyan);color:#073845}
+
+    .section{
+      margin-top:22px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:28px 24px;
+    }
+
+    .section-header{
+      display:grid;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .kicker{
+      color:var(--green-700);
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    h2{
+      font-size:clamp(1.45rem,2.6vw,2.35rem);
+      line-height:1.12;
+      color:var(--green-900);
+    }
+
+    .lede{
+      color:var(--muted);
+      max-width:78ch;
+    }
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+
+    .card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 8px 24px rgba(8,47,38,.06);
+    }
+
+    .card h3,.card h4{color:var(--green-900)}
+    .card p{margin-top:8px;color:var(--muted)}
+
+    .stack{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .num,
+    .step-num,
+    .tag-icon{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      flex:0 0 auto;
+    }
+
+    .num{background:linear-gradient(180deg,var(--blue),var(--blue-2));color:#fff}
+    .step-num{background:linear-gradient(180deg,var(--cyan),#70ceed);color:#06323d}
+    .tag-icon{background:linear-gradient(180deg,var(--gold),#ffc744);color:#4c3800}
+
+    .feature-band{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:4px;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .compare-box{
+      border-radius:24px;
+      border:1px solid var(--line);
+      padding:20px;
+      min-height:100%;
+    }
+
+    .compare-box h3{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .compare-box.manual{background:linear-gradient(180deg,#fff8e9,#fff)}
+    .compare-box.ai{background:linear-gradient(180deg,#f1f0ff,#fff)}
+
+    .badge{
+      display:inline-block;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+    }
+
+    .manual .badge{background:#ffefc7;color:#725000}
+    .ai .badge{background:#e6e4ff;color:#342a75}
+
+    ul.clean{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    ul.clean li{margin:9px 0}
+
+    .benefit-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .use-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .use-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:18px;
+    }
+
+    .use-card p{margin-top:8px;color:var(--muted)}
+    .example{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:#f4f7f5;
+      border:1px dashed #c8d7cd;
+      color:#466258;
+      font-size:.94rem;
+    }
+
+    .flow{
+      display:grid;
+      gap:14px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:52px 1fr;
+      gap:14px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:16px;
+    }
+
+    .flow-step p{color:var(--muted);margin-top:6px}
+
+    .software-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+    }
+
+    .tool{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .tool-label{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#eef4ef;
+      color:var(--green-900);
+      font-size:.8rem;
+      font-weight:800;
+    }
+
+    .tool p{margin-top:8px;color:var(--muted)}
+    .tool ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .summary-strip{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-700));
+      color:#fff;
+      border-radius:26px;
+      padding:24px;
+    }
+
+    .cta-card p{color:#e5f1ea;margin-top:10px}
+    .mini-note{
+      color:var(--muted);
+      font-size:.92rem;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      margin-top:18px;
+    }
+
+    .highlight-list .card{
+      min-height:100%;
+    }
+
+    .footer-jump{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 16px;
+      border-radius:999px;
+      background:#fff;
+      color:var(--green-900);
+      font-weight:800;
+    }
+
+    @media (max-width:1100px){
+      .hero,
+      .benefit-grid,
+      .software-grid,
+      .grid-4,
+      .summary-strip{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:820px){
+      .hero,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .benefit-grid,
+      .use-grid,
+      .feature-band,
+      .compare,
+      .software-grid,
+      .summary-strip{
+        grid-template-columns:1fr;
+      }
+
+      .page{padding:16px 12px 42px}
+      .section{padding:22px 18px}
+      .hero{padding:24px 18px}
+      .hero-art{min-height:280px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="top">
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Simple HR Guide</span>
+        <h1>AI in Employee Onboarding</h1>
+        <p>
+          A tighter, simpler guide to how AI can make onboarding faster, more personal, and easier to manage without removing the human side of welcome, support, and trust.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Less admin work</span>
+          <span class="pill">Better new hire support</span>
+          <span class="pill">Faster time to productivity</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="bubble one">24/7 answers</div>
+        <div class="bubble two">Track progress</div>
+        <div class="bubble three">Personalized path</div>
+
+        <div class="art-shell">
+          <div class="art-head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="art-grid">
+            <div class="art-card">
+              <div class="bar"></div>
+              <div class="bar mid"></div>
+              <div class="bar short"></div>
+            </div>
+            <div class="art-card">
+              <div class="bar mid"></div>
+              <div class="bar"></div>
+              <div class="bar short"></div>
+            </div>
+            <div class="art-card">
+              <div class="bar short"></div>
+              <div class="bar"></div>
+              <div class="bar mid"></div>
+            </div>
+            <div class="art-card">
+              <div class="bar"></div>
+              <div class="bar short"></div>
+              <div class="bar mid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">1. What it is</div>
+        <h2>What does AI in onboarding mean?</h2>
+        <p class="lede">
+          AI in employee onboarding means using artificial intelligence to automate, personalize, and support tasks across preboarding and onboarding. It works with your HR systems, workflows, and content to make the experience more relevant and easier to manage.
+        </p>
+      </div>
+
+      <div class="feature-band">
+        <div class="card">
+          <h3>What it can do</h3>
+          <p>
+            It can collect documents, trigger workflows, answer common questions, recommend training, send reminders, and show where people are getting stuck.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What it should not do</h3>
+          <p>
+            It should not replace empathy, judgment, manager support, or sensitive conversations. The best model is usually: AI supports, people lead.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:24px;">
+        <div class="kicker">Rebuilt visual</div>
+        <h2 style="font-size:1.55rem;">Traditional onboarding vs AI-supported onboarding</h2>
+        <p class="lede">
+          Traditional onboarding tends to be manual and one-size-fits-all. AI-supported onboarding is more dynamic, scalable, and trackable.
+        </p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-box manual">
+          <h3><span class="badge">Traditional</span> Manual and manager-dependent</h3>
+          <ul class="clean">
+            <li>Fixed checklists, emails, and manual follow-ups</li>
+            <li>Can feel more hands-on in small teams</li>
+            <li>Harder to scale across locations and functions</li>
+            <li>Greater risk of missed steps and delays</li>
+            <li>Limited visibility into progress and bottlenecks</li>
+          </ul>
+        </div>
+
+        <div class="compare-box ai">
+          <h3><span class="badge">AI-powered</span> Dynamic and data-informed</h3>
+          <ul class="clean">
+            <li>Automates repeat tasks and routine questions</li>
+            <li>Personalizes journeys by role, level, or location</li>
+            <li>Improves consistency and compliance</li>
+            <li>Gives real-time visibility into progress</li>
+            <li>Still needs clean data, setup, and human oversight</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">2. Key benefits</div>
+        <h2>Why HR teams use AI in onboarding</h2>
+        <p class="lede">
+          The source article highlights these main benefits when AI is used thoughtfully in onboarding. :contentReference[oaicite:1]{index=1}
+        </p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="card stack">
+          <div class="num">1</div>
+          <div>
+            <h3>Less manual work</h3>
+            <p>Automates admin so HR can focus more on support, relationships, and judgment.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">2</div>
+          <div>
+            <h3>Faster routine tasks</h3>
+            <p>Speeds up forms, system setup, training enrollment, and repeated follow-up actions.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">3</div>
+          <div>
+            <h3>More consistency</h3>
+            <p>Helps deliver the right steps and reminders across teams, offices, and managers.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">4</div>
+          <div>
+            <h3>Better personalization</h3>
+            <p>Adapts onboarding by role, seniority, department, location, and learning pace.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">5</div>
+          <div>
+            <h3>Faster answers</h3>
+            <p>Gives new hires quick access to policy, payroll, IT, and benefits information.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">6</div>
+          <div>
+            <h3>Improved compliance</h3>
+            <p>Tracks required tasks and sends reminders so fewer steps are missed.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">7</div>
+          <div>
+            <h3>Better visibility</h3>
+            <p>Shows who has completed what, what is overdue, and where delays are building.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <div class="num">8</div>
+          <div>
+            <h3>Faster productivity</h3>
+            <p>Helps new hires get what they need sooner so they can contribute more quickly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">3. Practical use cases</div>
+        <h2>8 ways AI can improve employee onboarding</h2>
+        <p class="lede">
+          These are the eight use cases described in the source article, rewritten in simpler English and made tighter. :contentReference[oaicite:2]{index=2}
+        </p>
+      </div>
+
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">1</div>
+            <div>
+              <h3>Preboarding task automation</h3>
+              <p>Set up accounts, route documents, prepare forms, and send welcome steps before day one.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> ServiceNow is cited as supporting account setup, equipment tracking, paperwork, and guided support. :contentReference[oaicite:3]{index=3}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">2</div>
+            <div>
+              <h3>New hire question support</h3>
+              <p>Use chat assistants to answer common questions about leave, pay, policies, IT, and benefits.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Oracle’s onboarding assistant is described as providing step-by-step support and always-on answers. :contentReference[oaicite:4]{index=4}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">3</div>
+            <div>
+              <h3>Personalized onboarding plans</h3>
+              <p>Create different journeys for different roles instead of giving everyone the same checklist.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Workday is cited as tailoring plans by role, with Nissan mentioned as a customer example. :contentReference[oaicite:5]{index=5}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">4</div>
+            <div>
+              <h3>Learning recommendations</h3>
+              <p>Suggest the right learning content in the right order so new hires are not overloaded.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Workday’s Ecolab story is used in the article to show more timely learning completion. :contentReference[oaicite:6]{index=6}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">5</div>
+            <div>
+              <h3>Reminder and workflow nudges</h3>
+              <p>Send reminders to employees or managers when tasks are late or still incomplete.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Oracle documentation is cited for reminders and nudges tied to onboarding journeys. :contentReference[oaicite:7]{index=7}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">6</div>
+            <div>
+              <h3>Employee listening</h3>
+              <p>Analyze comments, pulse feedback, and patterns to spot confusion or disengagement early.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Culture Amp is cited for survey analysis, sentiment summaries, and trend spotting. :contentReference[oaicite:8]{index=8}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">7</div>
+            <div>
+              <h3>Progress tracking and bottlenecks</h3>
+              <p>Show completion, delays, overdue work, and pain points so HR can act earlier.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Oracle analytics and ServiceNow dashboards are cited for progress visibility and issue detection. :contentReference[oaicite:9]{index=9}</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">8</div>
+            <div>
+              <h3>Knowledge search and policy guidance</h3>
+              <p>Let new hires ask natural-language questions and receive answers from company documents.</p>
+            </div>
+          </div>
+          <div class="example"><strong>Example:</strong> Oracle and ServiceNow are cited as examples of guided knowledge search and document-based answers. :contentReference[oaicite:10]{index=10}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">4. Rollout</div>
+        <h2>10 steps to automate onboarding well</h2>
+        <p class="lede">
+          The article presents implementation as a build-measure-improve cycle rather than a one-time setup. :contentReference[oaicite:11]{index=11}
+        </p>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Assess your current process</h3>
+            <p>Start with a clear view of today’s journey before adding tools or automation.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Find high-value tasks</h3>
+            <p>Choose repetitive, frequent, error-prone work like document handling or access setup.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Separate automation from AI</h3>
+            <p>Use normal workflow rules for simple actions and AI for personalization or language tasks.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Audit your data and content</h3>
+            <p>Clean records and current documents matter because weak inputs create weak outputs.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">5</div>
+          <div>
+            <h3>Choose the right software stack</h3>
+            <p>Pick tools that fit your HR systems, security needs, and way of working.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">6</div>
+          <div>
+            <h3>Build role-based journeys</h3>
+            <p>Design onboarding paths for major job groups instead of trying to build everything at once.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">7</div>
+          <div>
+            <h3>Pilot in one area first</h3>
+            <p>Test with one team or one stage so you can fix problems before a wider rollout.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">8</div>
+          <div>
+            <h3>Train HR and managers</h3>
+            <p>People need to know how the system works, where it helps, and where judgment still matters.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">9</div>
+          <div>
+            <h3>Measure results</h3>
+            <p>Track task completion, satisfaction, early retention, and time to productivity.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">10</div>
+          <div>
+            <h3>Improve and scale</h3>
+            <p>Refine the content, workflow, and settings, then extend gradually to more roles and teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">5. Software stack</div>
+        <h2>Types of onboarding software to consider</h2>
+        <p class="lede">
+          The article groups onboarding software into five broad categories. The right mix depends on your current tech, budget, and biggest gaps. :contentReference[oaicite:12]{index=12}
+        </p>
+      </div>
+
+      <div class="software-grid">
+        <div class="tool">
+          <span class="tool-label">Core platform</span>
+          <h3>HRIS / HCM</h3>
+          <p>Manages employee data, onboarding triggers, documents, and links to payroll or benefits.</p>
+          <ul>
+            <li>Oracle HCM</li>
+            <li>Rippling</li>
+            <li>Workday</li>
+          </ul>
+        </div>
+
+        <div class="tool">
+          <span class="tool-label">Journey management</span>
+          <h3>Dedicated onboarding tools</h3>
+          <p>Run the end-to-end onboarding journey with workflows, task assignment, and progress tracking.</p>
+          <ul>
+            <li>BambooHR</li>
+            <li>ServiceNow</li>
+            <li>Workday Onboarding</li>
+          </ul>
+        </div>
+
+        <div class="tool">
+          <span class="tool-label">Always-on support</span>
+          <h3>Chatbots and assistants</h3>
+          <p>Answer new hire questions, guide next steps, and give instant access to policy content.</p>
+          <ul>
+            <li>Claude-based HR tools</li>
+            <li>Leena AI</li>
+            <li>Microsoft Copilot Studio</li>
+            <li>Moveworks</li>
+          </ul>
+        </div>
+
+        <div class="tool">
+          <span class="tool-label">Feedback</span>
+          <h3>Experience and listening tools</h3>
+          <p>Capture sentiment, pulse feedback, and early engagement risk signals.</p>
+          <ul>
+            <li>Culture Amp</li>
+            <li>Qualtrics</li>
+            <li>Workday Peakon</li>
+          </ul>
+        </div>
+
+        <div class="tool">
+          <span class="tool-label">IT setup</span>
+          <h3>Identity and access tools</h3>
+          <p>Automate account setup, device provisioning, and security credentials when a hire is created.</p>
+          <ul>
+            <li>Okta</li>
+            <li>Rippling</li>
+            <li>ServiceNow</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">6. Bottom line</div>
+        <h2>What matters most</h2>
+        <p class="lede">
+          The source article’s closing point is that AI in onboarding works best as a capability, not a shortcut: the goal is to remove friction, support people faster, and free HR for work that needs judgment, empathy, and human connection. :contentReference[oaicite:13]{index=13}
+        </p>
+      </div>
+
+      <div class="summary-strip">
+        <div class="grid-2 highlight-list">
+          <div class="card">
+            <h3>Best use of AI</h3>
+            <p>Use it for structure, speed, nudges, dashboards, personalization, and common answers.</p>
+          </div>
+          <div class="card">
+            <h3>Best use of people</h3>
+            <p>Keep people focused on welcome, trust, coaching, manager support, and sensitive needs.</p>
+          </div>
+          <div class="card">
+            <h3>Big success factor</h3>
+            <p>Clean data, strong content, change management, and clear ownership matter as much as the tool.</p>
+          </div>
+          <div class="card">
+            <h3>Simple rule</h3>
+            <p>Let AI prepare and guide. Let humans decide, reassure, and connect.</p>
+          </div>
+        </div>
+
+        <div class="cta-card">
+          <h3 style="color:#fff;">Simple takeaway</h3>
+          <p>
+            Good onboarding is still about helping a person feel ready, welcomed, informed, and supported. AI can make that easier to deliver at scale, but it should not make the experience feel colder.
+          </p>
+          <a href="#top" class="footer-jump">Back to top</a>
+        </div>
+      </div>
+
+      <div class="mini-note">
+   
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
