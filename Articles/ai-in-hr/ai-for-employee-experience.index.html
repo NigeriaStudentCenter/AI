@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Employee Experience | Simple Guide</title>
+  <meta name="description" content="A tight, simple guide to how AI can improve employee experience through faster support, personalization, accessibility, listening, and better service design." />
+  <style>
+    :root{
+      --green-950:#082f26;
+      --green-900:#0b3d2e;
+      --green-800:#145443;
+      --green-700:#1f6b57;
+      --green-600:#2e856d;
+      --paper:#f7f8f2;
+      --card:#ffffff;
+      --ink:#173127;
+      --muted:#617369;
+      --line:#d8e2db;
+      --blue:#5c67ff;
+      --blue2:#7e85ff;
+      --cyan:#2cb8ea;
+      --gold:#f2b11c;
+      --violet:#4a3da3;
+      --lav:#ecebff;
+      --mint:#eef5f0;
+      --shadow:0 14px 34px rgba(8,47,38,.10);
+      --radius:26px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--green-950),var(--green-900) 180px,var(--paper) 180px,var(--paper));
+      line-height:1.56;
+    }
+    .page{width:min(100%,var(--max));margin:0 auto;padding:24px 18px 56px}
+    h1,h2,h3,h4,p{margin:0}
+    .hero{
+      background:linear-gradient(135deg,var(--green-950),var(--green-800));
+      color:#fff;border-radius:32px;padding:34px 28px;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:center;
+    }
+    .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.12);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+    h1{font-size:clamp(2rem,4vw,3.8rem);line-height:1.04;color:#fff;margin-bottom:14px}
+    .hero p{color:#e5f1ea;max-width:64ch;font-size:1rem}
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .pill{padding:10px 14px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:700;font-size:.94rem}
+    .hero-art{min-height:330px;border-radius:28px;position:relative;overflow:hidden;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.14)}
+    .art-shell{position:absolute;inset:24px;border-radius:24px;background:#dfe8e1;border:5px solid rgba(15,63,51,.55);overflow:hidden}
+    .art-head{height:58px;background:linear-gradient(90deg,#edf4ef,#d7e6dc);border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:10px;padding:0 16px}
+    .dot{width:11px;height:11px;border-radius:50%;background:var(--cyan)} .dot:nth-child(2){background:var(--blue)} .dot:nth-child(3){background:var(--gold)}
+    .art-core{display:grid;place-items:center;height:calc(100% - 58px);position:relative}
+    .core-circle{width:150px;height:150px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:22px;box-shadow:0 14px 24px rgba(0,0,0,.12)}
+    .orbit{position:absolute;width:112px;min-height:56px;border-radius:18px;background:rgba(255,255,255,.82);padding:12px 10px;font-size:.86rem;font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center;box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .o1{top:26px;left:34px}.o2{top:32px;right:30px}.o3{left:22px;bottom:54px}.o4{right:18px;bottom:52px}.o5{bottom:14px;left:50%;transform:translateX(-50%)}
+    .section{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px 24px}
+    .section-header{display:grid;gap:10px;margin-bottom:20px}
+    .kicker{color:var(--green-700);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+    h2{font-size:clamp(1.45rem,2.6vw,2.35rem);line-height:1.12;color:var(--green-900)}
+    .lede{color:var(--muted);max-width:78ch}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(8,47,38,.06)}
+    .card h3,.card h4{color:var(--green-900)}
+    .card p{margin-top:8px;color:var(--muted)}
+    .stack{display:flex;gap:12px;align-items:flex-start}
+    .num,.tag-icon,.step-num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+    .num{background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff}
+    .tag-icon{background:linear-gradient(180deg,var(--gold),#ffc744);color:#4c3800}
+    .step-num{background:linear-gradient(180deg,var(--cyan),#70ceed);color:#06323d}
+    .takeaway{background:linear-gradient(180deg,#fff,#f3f7f4)}
+    .role-diagram{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .life-flow{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px}
+    .flow-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-start}
+    .flow-box{padding:12px 14px;border-radius:16px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--green-800),var(--green-600));min-width:132px;text-align:center}
+    .arrow{font-size:1.5rem;color:var(--green-700);font-weight:700}
+    .result-list{display:grid;gap:12px}
+    .result-chip{padding:12px 14px;border-radius:16px;background:var(--mint);border:1px solid var(--line);color:var(--green-900);font-weight:700}
+    .use-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .use-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px}
+    .use-card p{margin-top:8px;color:var(--muted)}
+    .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .pc-box{border-radius:24px;border:1px solid var(--line);padding:20px;min-height:100%}
+    .pc-box h3{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .pc-box.pros{background:linear-gradient(180deg,#eef9f2,#fff)}
+    .pc-box.cons{background:linear-gradient(180deg,#fff6ef,#fff)}
+    .badge{display:inline-block;padding:7px 11px;border-radius:999px;font-size:.82rem;font-weight:800}
+    .pros .badge{background:#dff4e5;color:#1d6b38}.cons .badge{background:#ffe6d5;color:#8a4b10}
+    ul.clean{margin:0;padding-left:18px;color:var(--muted)} ul.clean li{margin:9px 0}
+    .platform-layout{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .tool{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+    .tool-label{display:inline-block;margin-bottom:10px;padding:6px 10px;border-radius:999px;background:#eef4ef;color:var(--green-900);font-size:.8rem;font-weight:800}
+    .tool p{margin-top:8px;color:var(--muted)}
+    .tool ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .nine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .nine-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px;min-height:100%}
+    .mini-diagram{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px}
+    .ring-wrap{display:grid;place-items:center}
+    .ring{width:min(100%,760px);aspect-ratio:1/1;border-radius:50%;position:relative;background:radial-gradient(circle at center,#eef4ef 0 25%,transparent 26% 100%)}
+    .ring-center{position:absolute;inset:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:16px}
+    .bubble{position:absolute;width:150px;min-height:70px;border-radius:18px;padding:12px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 18px rgba(8,47,38,.08);font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center}
+    .b1{top:0;left:50%;transform:translate(-50%,0)} .b2{top:13%;right:7%} .b3{top:43%;right:0} .b4{bottom:12%;right:10%} .b5{bottom:0;left:50%;transform:translate(-50%,0)} .b6{bottom:12%;left:10%} .b7{top:43%;left:0} .b8{top:13%;left:7%} .b9{top:28%;left:50%;transform:translate(-50%,0);width:170px;background:var(--lav)}
+    .steps{display:grid;gap:14px}
+    .flow-step{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}
+    .flow-step p{color:var(--muted);margin-top:6px}
+    .cta-card{background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;border-radius:26px;padding:24px}
+    .cta-card p{color:#e5f1ea;margin-top:10px}
+    .summary-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .footer-jump{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:800;text-decoration:none}
+    .mini-note{color:var(--muted);font-size:.92rem;padding-top:18px;border-top:1px solid var(--line);margin-top:18px}
+    @media (max-width:1100px){.hero,.platform-layout,.grid-4,.summary-grid{grid-template-columns:1fr 1fr}.nine-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:860px){.hero,.grid-2,.grid-3,.grid-4,.role-diagram,.use-grid,.pros-cons,.platform-layout,.nine-grid,.summary-grid{grid-template-columns:1fr}.page{padding:16px 12px 42px}.section{padding:22px 18px}.hero{padding:24px 18px}.hero-art{min-height:300px}.ring{aspect-ratio:auto;height:680px}.bubble{width:132px;font-size:.88rem}.ring-center{width:130px;height:130px}}
+    @media (max-width:560px){.ring{height:760px}.bubble{width:122px;padding:10px}}
+  </style>
+</head>
+<body>
+  <div class="page" id="top">
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Simple HR Guide</span>
+        <h1>AI for Employee Experience</h1>
+        <p>
+          A tighter, simpler guide to how AI can make work easier, faster, and more personal for employees while keeping trust, privacy, and human judgment in place.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Less friction</span>
+          <span class="pill">Better support</span>
+          <span class="pill">Smarter personalization</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-shell">
+          <div class="art-head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="art-core">
+            <div class="core-circle">AI for Employee Experience</div>
+            <div class="orbit o1">Onboarding</div>
+            <div class="orbit o2">Support</div>
+            <div class="orbit o3">Learning</div>
+            <div class="orbit o4">Wellbeing</div>
+            <div class="orbit o5">Communication</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">1. Quick view</div>
+        <h2>What AI changes in employee experience</h2>
+        <p class="lede">
+          AI can reduce delays, answer common questions, tailor support, and help HR spot problems earlier. Used well, it gives employees faster help and gives HR more time for work that needs empathy, judgment, and coaching.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card takeaway"><h3>Faster self-service</h3><p>Employees get answers more quickly instead of waiting for manual support.</p></div>
+        <div class="card takeaway"><h3>More relevant experiences</h3><p>Messages, learning, and support can be adjusted by role, need, and context.</p></div>
+        <div class="card takeaway"><h3>Earlier risk signals</h3><p>HR can identify disengagement, overload, or service problems sooner.</p></div>
+        <div class="card takeaway"><h3>More time for people work</h3><p>Automation removes repetitive tasks so HR and managers can focus on humans.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">2. Rebuilt visual</div>
+        <h2>AI’s role across the employee journey</h2>
+        <p class="lede">This recreates the article’s core idea: AI uses employee data, feedback, and interactions to reduce friction and improve support across key moments at work.</p>
+      </div>
+      <div class="role-diagram">
+        <div class="life-flow">
+          <div class="flow-row">
+            <div class="flow-box">Feedback</div>
+            <div class="arrow">→</div>
+            <div class="flow-box">Interactions</div>
+            <div class="arrow">→</div>
+            <div class="flow-box">Work data</div>
+          </div>
+          <div style="height:18px"></div>
+          <div class="flow-row">
+            <div class="flow-box" style="background:linear-gradient(90deg,var(--blue),var(--blue2))">AI analysis</div>
+            <div class="arrow">→</div>
+            <div class="flow-box" style="background:linear-gradient(90deg,var(--violet),#6758cb)">Personalized action</div>
+          </div>
+        </div>
+        <div class="result-list">
+          <div class="result-chip">Role-based onboarding help</div>
+          <div class="result-chip">Ticket routing and quick answers</div>
+          <div class="result-chip">Personalized learning paths</div>
+          <div class="result-chip">Wellbeing and workload signals</div>
+          <div class="result-chip">Clearer communication and manager support</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">3. Practical examples</div>
+        <h2>Common examples of AI for employee experience</h2>
+        <p class="lede">These examples are rewritten in simpler English and tightened for a quick-read format.</p>
+      </div>
+      <div class="use-grid">
+        <div class="use-card"><div class="stack"><div class="tag-icon">1</div><div><h3>Onboarding copilot</h3><p>Builds first-week plans, sets reminders, assigns buddies, and flags access needs so new hires settle in faster.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">2</div><div><h3>Policy Q&amp;A assistant</h3><p>Answers common HR questions around the clock and passes sensitive cases to a real person.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">3</div><div><h3>Skills-based learning</h3><p>Recommends training based on role, goals, gaps, and business priorities.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">4</div><div><h3>Performance prep helper</h3><p>Pulls together goals, notes, and feedback so review conversations start from a stronger summary.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">5</div><div><h3>Manager check-in assistant</h3><p>Suggests talking points based on workload, progress, and team signals.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">6</div><div><h3>Workload and wellbeing monitoring</h3><p>Spots possible overload early and points employees or managers to support options.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">7</div><div><h3>Targeted internal communication</h3><p>Adapts messages by role, location, or team so people get what matters to them.</p></div></div></div>
+        <div class="use-card"><div class="stack"><div class="tag-icon">8</div><div><h3>Smart ticket routing</h3><p>Reads HR and IT requests, ranks urgency, and sends them to the right person faster.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">4. Benefits and risks</div>
+        <h2>Pros and cons of using AI for employee experience</h2>
+        <p class="lede">The article frames AI as useful but not neutral: the upside is speed, relevance, and insight; the downside is privacy, bias, trust, and over-automation if governance is weak.</p>
+      </div>
+      <div class="pros-cons">
+        <div class="pc-box pros">
+          <h3><span class="badge">Pros</span>What AI can improve</h3>
+          <ul class="clean">
+            <li>Automates repetitive questions and admin work</li>
+            <li>Personalizes learning, communication, and support at scale</li>
+            <li>Provides always-on help for hybrid and global workforces</li>
+            <li>Finds patterns in feedback and service data faster</li>
+            <li>Helps HR move from reactive support to proactive support</li>
+          </ul>
+        </div>
+        <div class="pc-box cons">
+          <h3><span class="badge">Cons</span>What can go wrong</h3>
+          <ul class="clean">
+            <li>Privacy and compliance risks from employee data use</li>
+            <li>Bias or incorrect answers from weak data or weak models</li>
+            <li>Trust issues if employees do not understand how AI is used</li>
+            <li>Integration and maintenance work across systems</li>
+            <li>Too much automation can make sensitive moments feel impersonal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">5. Platform types</div>
+        <h2>Types of AI platforms that support employee experience</h2>
+        <p class="lede">Instead of naming vendors, this version groups the article’s platform ideas into four simple categories.</p>
+      </div>
+      <div class="platform-layout">
+        <div class="tool">
+          <span class="tool-label">Support</span>
+          <h3>Employee help platforms</h3>
+          <p>Best for quick answers, knowledge search, ticket deflection, and everyday self-service.</p>
+          <ul>
+            <li>Knowledge assistants</li>
+            <li>Chat support</li>
+            <li>Request routing</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <span class="tool-label">Communication</span>
+          <h3>Engagement and communication tools</h3>
+          <p>Best for tailored updates, message targeting, and connecting distributed workforces.</p>
+          <ul>
+            <li>Targeted announcements</li>
+            <li>Personalized intranet feeds</li>
+            <li>Campaign support</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <span class="tool-label">Core HR</span>
+          <h3>Integrated HR platforms</h3>
+          <p>Best for linking experience work to learning, workforce data, planning, and lifecycle processes.</p>
+          <ul>
+            <li>Analytics</li>
+            <li>Workflow automation</li>
+            <li>Talent and learning links</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <span class="tool-label">Specialized</span>
+          <h3>Niche EX tools</h3>
+          <p>Best for targeted needs such as policy bots, performance support, or continuous feedback.</p>
+          <ul>
+            <li>Feedback analysis</li>
+            <li>Review-cycle support</li>
+            <li>Focused policy help</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">6. Rebuilt infographic</div>
+        <h2>9 ways AI can improve employee experience</h2>
+        <p class="lede">This circular layout recreates the article’s visual summary in HTML/CSS rather than reusing the original graphic.</p>
+      </div>
+      <div class="mini-diagram">
+        <div class="ring-wrap">
+          <div class="ring">
+            <div class="ring-center">Better Employee Experience</div>
+            <div class="bubble b1">Automate routine support</div>
+            <div class="bubble b2">Personalize learning</div>
+            <div class="bubble b3">Improve service quality</div>
+            <div class="bubble b4">Prevent burnout</div>
+            <div class="bubble b5">Strengthen listening</div>
+            <div class="bubble b6">Improve accessibility</div>
+            <div class="bubble b7">Personalize key moments</div>
+            <div class="bubble b8">Support managers</div>
+            <div class="bubble b9">Deliver relevant communication</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:18px"></div>
+      <div class="nine-grid">
+        <div class="nine-card"><div class="stack"><div class="num">1</div><div><h3>Automate routine support</h3><p>Use chatbots and assistants for common questions, simple requests, and better routing.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">2</div><div><h3>Personalize learning</h3><p>Recommend training and reskilling based on role, skills gaps, and goals.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">3</div><div><h3>Deliver relevant communication</h3><p>Tailor messages by team, location, function, or shift pattern.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">4</div><div><h3>Support managers with copilots</h3><p>Help managers prepare for check-ins, performance talks, and coaching moments.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">5</div><div><h3>Personalize key moments</h3><p>Improve onboarding, promotions, transfers, returns from leave, and other big transitions.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">6</div><div><h3>Improve accessibility and inclusion</h3><p>Use transcription, simplification, and multilingual support to remove barriers.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">7</div><div><h3>Strengthen feedback loops</h3><p>Read open-text comments and sentiment trends faster than manual review.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">8</div><div><h3>Balance workload and reduce burnout risk</h3><p>Spot patterns in meetings, overtime, and task spread before strain becomes severe.</p></div></div></div>
+        <div class="nine-card"><div class="stack"><div class="num">9</div><div><h3>Improve HR and IT service over time</h3><p>Find repeat problems and suggest content or process fixes instead of only reacting to tickets.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">7. Rollout</div>
+        <h2>10 steps to implement AI for employee experience</h2>
+        <p class="lede">This is a tighter implementation path based on the article’s low-risk pilot approach.</p>
+      </div>
+      <div class="steps">
+        <div class="flow-step"><div class="step-num">1</div><div><h3>Choose one high-friction problem</h3><p>Start with one issue such as benefits questions or policy help.</p></div></div>
+        <div class="flow-step"><div class="step-num">2</div><div><h3>Set measurable success targets</h3><p>Track speed, accuracy, first-contact resolution, satisfaction, or ticket reduction.</p></div></div>
+        <div class="flow-step"><div class="step-num">3</div><div><h3>Map data and source systems</h3><p>List approved content sources and label sensitive information clearly.</p></div></div>
+        <div class="flow-step"><div class="step-num">4</div><div><h3>Select a low-risk pilot tool</h3><p>Test tools on real questions and compare security, accuracy, and integration fit.</p></div></div>
+        <div class="flow-step"><div class="step-num">5</div><div><h3>Put privacy and governance in place</h3><p>Define retention, access, audit logs, and escalation rules for sensitive topics.</p></div></div>
+        <div class="flow-step"><div class="step-num">6</div><div><h3>Build prompts and guardrails</h3><p>Tell the system to use plain language, cite trusted sources, and admit uncertainty.</p></div></div>
+        <div class="flow-step"><div class="step-num">7</div><div><h3>Train champions and stakeholders</h3><p>Show HR, managers, and support teams what the tool can and cannot do.</p></div></div>
+        <div class="flow-step"><div class="step-num">8</div><div><h3>Launch to a small group first</h3><p>Pilot with HR or one business unit and collect weekly feedback.</p></div></div>
+        <div class="flow-step"><div class="step-num">9</div><div><h3>Measure and improve continuously</h3><p>Compare pilot data to your targets and fix weak topics quickly.</p></div></div>
+        <div class="flow-step"><div class="step-num">10</div><div><h3>Scale gradually</h3><p>Expand to nearby use cases only after the first workflow is stable and trusted.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">8. Bottom line</div>
+        <h2>What matters most</h2>
+        <p class="lede">AI improves employee experience best when it removes friction without removing humanity.</p>
+      </div>
+      <div class="summary-grid">
+        <div class="grid-2">
+          <div class="card"><h3>Use AI for</h3><p>Speed, summaries, self-service, routing, personalization, and finding patterns in feedback.</p></div>
+          <div class="card"><h3>Keep humans focused on</h3><p>Trust, empathy, coaching, sensitive conversations, and final people decisions.</p></div>
+          <div class="card"><h3>Big success factor</h3><p>Good data, clear rules, source control, privacy safeguards, and steady change management.</p></div>
+          <div class="card"><h3>Simple rule</h3><p>Let AI prepare and guide. Let people support, judge, and connect.</p></div>
+        </div>
+        <div class="cta-card">
+          <h3 style="color:#fff;">Simple takeaway</h3>
+          <p>
+            Start with one common employee pain point, make the process faster and clearer, measure the result, and only then expand. The goal is a better work experience, not more technology for its own sake.
+          </p>
+          <a href="#top" class="footer-jump">Back to top</a>
+        </div>
+      </div>
+      <div class="mini-note">
+   
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
