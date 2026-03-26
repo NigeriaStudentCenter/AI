@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Employee Engagement | Simple Guide</title>
+  <meta name="description" content="A tight, simple guide to how AI can help HR teams improve employee engagement through better listening, personalized action, faster support, and practical manager enablement." />
+  <style>
+    :root{
+      --green-950:#082f26;
+      --green-900:#0b3d2e;
+      --green-800:#145443;
+      --green-700:#1f6b57;
+      --green-600:#2d866c;
+      --paper:#f7f8f2;
+      --card:#ffffff;
+      --ink:#173127;
+      --muted:#617369;
+      --line:#d8e2db;
+      --blue:#5c67ff;
+      --blue2:#7e85ff;
+      --cyan:#2cb8ea;
+      --gold:#f2b11c;
+      --violet:#493ea1;
+      --mint:#eef5f0;
+      --lav:#efedff;
+      --shadow:0 14px 34px rgba(8,47,38,.10);
+      --radius:26px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--green-950),var(--green-900) 180px,var(--paper) 180px,var(--paper));line-height:1.56}
+    .page{width:min(100%,var(--max));margin:0 auto;padding:24px 18px 56px}
+    h1,h2,h3,h4,p{margin:0}
+    a{text-decoration:none}
+    .hero{background:linear-gradient(135deg,var(--green-950),var(--green-800));color:#fff;border-radius:32px;padding:34px 28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.14fr .86fr;gap:26px;align-items:center}
+    .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.12);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+    h1{font-size:clamp(2rem,4vw,3.8rem);line-height:1.04;color:#fff;margin-bottom:14px}
+    .hero p{color:#e5f1ea;max-width:64ch;font-size:1rem}
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .pill{padding:10px 14px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:700;font-size:.94rem}
+    .hero-art{min-height:340px;border-radius:28px;position:relative;overflow:hidden;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.14)}
+    .art-shell{position:absolute;inset:24px;border-radius:24px;background:#dfe8e1;border:5px solid rgba(15,63,51,.55);overflow:hidden}
+    .art-head{height:58px;background:linear-gradient(90deg,#edf4ef,#d7e6dc);border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:10px;padding:0 16px}
+    .dot{width:11px;height:11px;border-radius:50%;background:var(--cyan)}
+    .dot:nth-child(2){background:var(--blue)}
+    .dot:nth-child(3){background:var(--gold)}
+    .art-core{position:relative;height:calc(100% - 58px);padding:18px}
+    .center-node{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:158px;height:158px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:22px;box-shadow:0 14px 24px rgba(0,0,0,.14)}
+    .orbit{position:absolute;min-width:118px;min-height:58px;border-radius:18px;background:rgba(255,255,255,.84);padding:12px;font-size:.86rem;font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center;box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .o1{top:18px;left:18px}.o2{top:18px;right:18px}.o3{left:10px;top:50%;transform:translateY(-50%)}.o4{right:10px;top:50%;transform:translateY(-50%)}.o5{bottom:18px;left:50%;transform:translateX(-50%)}
+    .section{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px 24px}
+    .section-header{display:grid;gap:10px;margin-bottom:20px}
+    .kicker{color:var(--green-700);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+    h2{font-size:clamp(1.45rem,2.6vw,2.35rem);line-height:1.12;color:var(--green-900)}
+    .lede{color:var(--muted);max-width:78ch}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(8,47,38,.06)}
+    .card h3,.card h4{color:var(--green-900)}
+    .card p{margin-top:8px;color:var(--muted)}
+    .stack{display:flex;gap:12px;align-items:flex-start}
+    .num,.tag-icon,.step-num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+    .num{background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff}
+    .tag-icon{background:linear-gradient(180deg,var(--gold),#ffc744);color:#4c3800}
+    .step-num{background:linear-gradient(180deg,var(--cyan),#70ceed);color:#06323d}
+    .definition-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    .compare-box{border-radius:24px;border:1px solid var(--line);padding:20px;min-height:100%}
+    .compare-box.engagement{background:linear-gradient(180deg,#f2f1ff,#fff)}
+    .compare-box h3{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .badge{display:inline-block;padding:7px 11px;border-radius:999px;font-size:.82rem;font-weight:800;background:#e6e4ff;color:#342a75}
+    ul.clean{margin:0;padding-left:18px;color:var(--muted)}
+    ul.clean li{margin:9px 0}
+    .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ring-panel{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px}
+    .ring-wrap{display:grid;place-items:center}
+    .ring{width:min(100%,760px);height:620px;position:relative}
+    .ring-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:160px;height:160px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:18px}
+    .bubble{position:absolute;width:160px;min-height:78px;border-radius:18px;padding:12px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 18px rgba(8,47,38,.08);font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center}
+    .b1{top:0;left:50%;transform:translate(-50%,0)}
+    .b2{top:18%;right:6%}
+    .b3{top:50%;right:0;transform:translateY(-50%)}
+    .b4{bottom:18%;right:6%}
+    .b5{bottom:0;left:50%;transform:translate(-50%,0)}
+    .b6{bottom:18%;left:6%}
+    .b7{top:50%;left:0;transform:translateY(-50%)}
+    .six-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .use-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px}
+    .use-card p{margin-top:8px;color:var(--muted)}
+    .sub-note{margin-top:12px;padding:12px 14px;border-radius:16px;background:#f4f7f5;border:1px dashed #c8d7cd;color:#466258;font-size:.94rem}
+    .tools-risk{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .tools-box,.risk-box{border-radius:24px;border:1px solid var(--line);padding:20px;background:#fff}
+    .tools-box{background:linear-gradient(180deg,#eef4ff,#fff)}
+    .risk-box{background:linear-gradient(180deg,#fff5ec,#fff)}
+    .tools-box h3,.risk-box h3{margin-bottom:12px}
+    .action-steps{display:grid;gap:14px}
+    .flow-step{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}
+    .flow-step p{color:var(--muted);margin-top:6px}
+    .capability-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .cap-pyramid{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px}
+    .tier{color:#fff;font-weight:800;text-align:center;border-radius:18px;padding:16px;margin:12px auto}
+    .tier.base{width:100%;background:linear-gradient(90deg,var(--green-800),var(--green-600))}
+    .tier.mid{width:76%;background:linear-gradient(90deg,var(--blue),var(--blue2))}
+    .tier.top{width:52%;background:linear-gradient(90deg,var(--violet),#6c5fcd)}
+    .cta-card{background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;border-radius:26px;padding:24px}
+    .cta-card p{color:#e5f1ea;margin-top:10px}
+    .footer-jump{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:800}
+    .mini-note{color:var(--muted);font-size:.92rem;padding-top:18px;border-top:1px solid var(--line);margin-top:18px}
+    @media (max-width:1100px){.hero,.definition-layout,.capability-layout{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}}
+    @media (max-width:860px){.hero,.grid-2,.grid-3,.definition-layout,.six-grid,.tools-risk,.capability-layout{grid-template-columns:1fr}.page{padding:16px 12px 42px}.section{padding:22px 18px}.hero{padding:24px 18px}.hero-art{min-height:300px}.ring{height:760px}.bubble{width:138px;font-size:.88rem}.ring-center{width:140px;height:140px}}
+    @media (max-width:560px){.ring{height:820px}.bubble{width:126px;padding:10px}}
+  </style>
+</head>
+<body>
+  <div class="page" id="top">
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Simple HR Guide</span>
+        <h1>AI in Employee Engagement</h1>
+        <p>
+          A tighter, simpler guide to how AI can help HR teams understand engagement signals faster, support better manager action, and close the gap between feedback and visible change.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Better listening</span>
+          <span class="pill">Faster action</span>
+          <span class="pill">More relevant support</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-shell">
+          <div class="art-head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="art-core">
+            <div class="center-node">AI + Engagement</div>
+            <div class="orbit o1">Feedback themes</div>
+            <div class="orbit o2">Manager action</div>
+            <div class="orbit o3">Chat support</div>
+            <div class="orbit o4">Learning paths</div>
+            <div class="orbit o5">Pulse signals</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">1. What it is</div>
+        <h2>What AI in employee engagement means</h2>
+        <p class="lede">
+          AI in employee engagement means using artificial intelligence to analyze engagement signals, personalize support, and help HR and managers act faster on what employees are experiencing at work.
+        </p>
+      </div>
+
+      <div class="definition-layout">
+        <div class="card">
+          <h3>What it focuses on</h3>
+          <p>
+            It focuses on the ongoing relationship between employees and their work: how connected, motivated, supported, and committed they feel day to day.
+          </p>
+        </div>
+        <div class="compare-box engagement">
+          <h3><span class="badge">Focus</span>Engagement vs. broader experience</h3>
+          <ul class="clean">
+            <li><strong>Employee engagement:</strong> motivation, connection, recognition, workload, leadership, and intent to stay.</li>
+            <li><strong>Employee experience:</strong> the wider journey from recruitment to offboarding, including systems, support, and workplace moments.</li>
+            <li><strong>Simple rule:</strong> engagement is a focused slice of the broader employee experience.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">2. Benefits</div>
+        <h2>3 practical benefits of AI in employee engagement</h2>
+        <p class="lede">
+          The biggest gains are better insight from messy feedback, more relevant interventions, and more capacity for HR and managers.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="card stack">
+          <div class="num">1</div>
+          <div>
+            <h3>Deeper insight from open comments</h3>
+            <p>AI can read large volumes of unstructured feedback and turn scattered comments into clear themes, sentiment shifts, and priority issues.</p>
+          </div>
+        </div>
+        <div class="card stack">
+          <div class="num">2</div>
+          <div>
+            <h3>More relevant interventions</h3>
+            <p>It can tailor nudges, resources, and development support by role, tenure, behavior, and feedback instead of sending the same generic action to everyone.</p>
+          </div>
+        </div>
+        <div class="card stack">
+          <div class="num">3</div>
+          <div>
+            <h3>More time for people work</h3>
+            <p>When routine admin, scheduling, summaries, or policy drafting move faster, managers and HR have more room for conversations, coaching, and follow-through.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">3. Rebuilt infographic</div>
+        <h2>6 use cases for AI in employee engagement</h2>
+        <p class="lede">
+          This visual recreates the article’s six-use-case summary in HTML/CSS rather than copying the original graphic.
+        </p>
+      </div>
+
+      <div class="ring-panel">
+        <div class="ring-wrap">
+          <div class="ring">
+            <div class="ring-center">6 Engagement Use Cases</div>
+            <div class="bubble b1">Open-text feedback themes</div>
+            <div class="bubble b2">Bias checks in communications</div>
+            <div class="bubble b3">Self-service HR answers</div>
+            <div class="bubble b4">Fairer performance summaries</div>
+            <div class="bubble b5">AI-supported skills paths</div>
+            <div class="bubble b6">Continuous listening signals</div>
+            <div class="bubble b7">Manager-ready actions</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:18px"></div>
+
+      <div class="six-grid">
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">1</div>
+            <div>
+              <h3>Turn open-text feedback into weekly themes</h3>
+              <p>Use text analysis to group comments into themes like workload, growth, recognition, leadership, collaboration, or tools and process issues.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Run it on one feedback source first, protect anonymity with minimum group sizes, and convert the top one or two themes into a manager action each cycle.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">2</div>
+            <div>
+              <h3>Check company communications for bias</h3>
+              <p>Review job ads, policy language, manager templates, and high-reach internal messages before they are published.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Keep a human reviewer in the loop and limit checks to formal outbound content, not private employee messages.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">3</div>
+            <div>
+              <h3>Answer recurring employee questions</h3>
+              <p>Use self-service assistants for factual, repeatable questions about leave, payroll, benefits, expenses, or policy basics.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Start with the top 10 to 15 common tickets and escalate health, conflict, accommodations, or performance matters to a person.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">4</div>
+            <div>
+              <h3>Make performance reviews faster but fairer</h3>
+              <p>Use AI to summarize data from goals, check-ins, peer input, and self-reflection into a draft summary for manager review.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Use the same prompt for everyone, do not let AI assign the final rating, and compare patterns across teams each review cycle.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">5</div>
+            <div>
+              <h3>Create personalized learning paths</h3>
+              <p>Map current skills to role needs and recommend learning content to close gaps as roles evolve.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Pilot with one role family, let employees review and edit their profile, and keep recommendations as suggestions rather than mandates.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack">
+            <div class="tag-icon">6</div>
+            <div>
+              <h3>Spot disengagement before it spreads</h3>
+              <p>Use short pulse surveys and ongoing listening to find issues sooner than annual engagement surveys can.</p>
+            </div>
+          </div>
+          <div class="sub-note"><strong>How to use it:</strong> Track a small set of core themes over time and share the top two or three recurring shifts with leadership every cycle.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">4. Guardrails</div>
+        <h2>What to keep in place while using AI</h2>
+        <p class="lede">
+          Guardrails matter more than flashy features.
+        </p>
+      </div>
+
+      <div class="tools-risk">
+        <div class="tools-box">
+          <h3>Good operating rules</h3>
+          <ul class="clean">
+            <li>Set a minimum group size before showing results.</li>
+            <li>Tell employees what data is being used and why.</li>
+            <li>Use AI to support decisions, not to evaluate individuals.</li>
+            <li>Keep humans in the loop for interpretation and action.</li>
+            <li>Review outputs regularly and refine the theme set over time.</li>
+          </ul>
+        </div>
+
+        <div class="risk-box">
+          <h3>What to avoid</h3>
+          <ul class="clean">
+            <li>Using raw comments or AI output in individual performance decisions.</li>
+            <li>Over-monitoring private messages or informal employee spaces.</li>
+            <li>Launching without a feedback baseline or a clear purpose.</li>
+            <li>Treating dashboards as the intervention instead of the starting point.</li>
+            <li>Keeping insights hidden without visible follow-up actions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">5. Rollout plan</div>
+        <h2>A practical action plan for rolling out AI in engagement</h2>
+        <p class="lede">
+          Implementation works best as a change-management exercise, not just a technology rollout.
+        </p>
+      </div>
+
+      <div class="action-steps">
+        <div class="flow-step"><div class="step-num">1</div><div><h3>Start with one use case</h3><p>Choose one low-risk, high-value use case with existing feedback data and a visible action gap.</p></div></div>
+        <div class="flow-step"><div class="step-num">2</div><div><h3>Define success upfront</h3><p>Write down the decision this will help you make faster and track a small number of success measures from the beginning.</p></div></div>
+        <div class="flow-step"><div class="step-num">3</div><div><h3>Set guardrails in writing</h3><p>Document group size rules, retention limits, and what AI will never be used for, then share that clearly with employees.</p></div></div>
+        <div class="flow-step"><div class="step-num">4</div><div><h3>Pilot for four to six weeks</h3><p>Test with one or two teams, gather structured feedback, and refine the prompts, report format, and workflow before scaling.</p></div></div>
+        <div class="flow-step"><div class="step-num">5</div><div><h3>Enable managers to act</h3><p>Managers need a plain-language insight plus one clear next action they can take quickly, not just another dashboard.</p></div></div>
+        <div class="flow-step"><div class="step-num">6</div><div><h3>Measure outcomes, not just usage</h3><p>Check whether AI-led insights actually led to action and whether teams that acted improved on stable engagement measures.</p></div></div>
+        <div class="flow-step"><div class="step-num">7</div><div><h3>Review quarterly and improve</h3><p>Look at repeating themes, missed context, and where people still need to override the system, then update the taxonomy and workflow.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">6. Capability building</div>
+        <h2>How HR can build the capability to use AI well</h2>
+        <p class="lede">
+          Tools are easier than judgment. HR needs practical fluency, prompt discipline, and ethical decision-making to apply AI well.
+        </p>
+      </div>
+
+      <div class="capability-layout">
+        <div class="cap-pyramid">
+          <div class="tier base">Base skills: AI basics, privacy, ethics, plain-language prompting</div>
+          <div class="tier mid">Applied skills: theme design, manager enablement, feedback workflows</div>
+          <div class="tier top">Judgment: when to automate, when to escalate, when to override</div>
+        </div>
+
+        <div class="cta-card">
+          <h3 style="color:#fff;">Simple takeaway</h3>
+          <p>
+            AI can reduce noise in engagement work, but it does not create engagement by itself. The value comes from turning messy feedback into useful action while keeping trust, empathy, and human judgment in place.
+          </p>
+          <a href="#top" class="footer-jump">Back to top</a>
+        </div>
+      </div>
+
+      <div class="mini-note">
+      
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
