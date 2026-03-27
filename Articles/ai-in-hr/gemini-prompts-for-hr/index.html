@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Prompts for HR | Simple Guide</title>
+  <meta name="description" content="A tight, simple guide to Gemini prompts for HR, including prompt-building rules, best practices, and 21 reusable prompt ideas across hiring, performance, learning, rewards, communication, and HR operations." />
+  <style>
+    :root{
+      --green-950:#082f26;
+      --green-900:#0b3d2e;
+      --green-800:#145443;
+      --green-700:#1f6b57;
+      --green-600:#2d866c;
+      --paper:#f7f8f2;
+      --card:#ffffff;
+      --ink:#173127;
+      --muted:#617369;
+      --line:#d8e2db;
+      --blue:#5c67ff;
+      --blue2:#7e85ff;
+      --cyan:#2cb8ea;
+      --gold:#f2b11c;
+      --violet:#493ea1;
+      --mint:#eef5f0;
+      --lav:#efedff;
+      --sand:#fff7ec;
+      --shadow:0 14px 34px rgba(8,47,38,.10);
+      --radius:26px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--green-950),var(--green-900) 180px,var(--paper) 180px,var(--paper));line-height:1.56}
+    .page{width:min(100%,var(--max));margin:0 auto;padding:24px 18px 56px}
+    h1,h2,h3,h4,p{margin:0}
+    a{text-decoration:none}
+    .hero{background:linear-gradient(135deg,var(--green-950),var(--green-800));color:#fff;border-radius:32px;padding:34px 28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.14fr .86fr;gap:26px;align-items:center}
+    .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.12);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+    h1{font-size:clamp(2rem,4vw,3.8rem);line-height:1.04;color:#fff;margin-bottom:14px}
+    .hero p{color:#e5f1ea;max-width:64ch;font-size:1rem}
+    .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .pill{padding:10px 14px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:700;font-size:.94rem}
+    .hero-art{min-height:350px;border-radius:28px;position:relative;overflow:hidden;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.14)}
+    .art-shell{position:absolute;inset:24px;border-radius:24px;background:#dfe8e1;border:5px solid rgba(15,63,51,.55);overflow:hidden}
+    .art-head{height:58px;background:linear-gradient(90deg,#edf4ef,#d7e6dc);border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:10px;padding:0 16px}
+    .dot{width:11px;height:11px;border-radius:50%;background:var(--cyan)}
+    .dot:nth-child(2){background:var(--blue)}
+    .dot:nth-child(3){background:var(--gold)}
+    .art-core{position:relative;height:calc(100% - 58px);padding:18px}
+    .center-node{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:168px;height:168px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:24px;box-shadow:0 14px 24px rgba(0,0,0,.14)}
+    .orbit{position:absolute;min-width:122px;min-height:60px;border-radius:18px;background:rgba(255,255,255,.84);padding:12px;font-size:.86rem;font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center;box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .o1{top:16px;left:16px}.o2{top:16px;right:16px}.o3{left:10px;top:50%;transform:translateY(-50%)}.o4{right:10px;top:50%;transform:translateY(-50%)}.o5{bottom:16px;left:18px}.o6{bottom:16px;right:18px}
+    .section{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px 24px}
+    .section-header{display:grid;gap:10px;margin-bottom:20px}
+    .kicker{color:var(--green-700);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+    h2{font-size:clamp(1.45rem,2.6vw,2.35rem);line-height:1.12;color:var(--green-900)}
+    .lede{color:var(--muted);max-width:78ch}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(8,47,38,.06)}
+    .card h3,.card h4{color:var(--green-900)}
+    .card p{margin-top:8px;color:var(--muted)}
+    .stack{display:flex;gap:12px;align-items:flex-start}
+    .num,.tag-icon,.step-num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+    .num{background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff}
+    .tag-icon{background:linear-gradient(180deg,var(--gold),#ffc744);color:#4c3800}
+    .step-num{background:linear-gradient(180deg,var(--cyan),#70ceed);color:#06323d}
+    .split{display:grid;grid-template-columns:1.02fr .98fr;gap:18px}
+    .builder{background:linear-gradient(180deg,#f2f1ff,#fff);border-radius:24px;border:1px solid var(--line);padding:20px}
+    .builder-list{display:grid;gap:10px;margin-top:14px}
+    .builder-row{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;padding:10px 12px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+    .builder-no{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:var(--lav);color:var(--violet)}
+    ul.clean{margin:0;padding-left:18px;color:var(--muted)}
+    ul.clean li{margin:9px 0}
+    .warn-box{background:linear-gradient(180deg,var(--sand),#fff);border-radius:24px;border:1px solid var(--line);padding:20px}
+    .ring-panel{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px}
+    .ring-wrap{display:grid;place-items:center}
+    .ring{width:min(100%,860px);height:700px;position:relative}
+    .ring-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:176px;height:176px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;padding:18px}
+    .bubble{position:absolute;width:176px;min-height:86px;border-radius:18px;padding:12px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 18px rgba(8,47,38,.08);font-weight:700;color:var(--green-900);display:grid;place-items:center;text-align:center}
+    .b1{top:0;left:50%;transform:translate(-50%,0)}
+    .b2{top:14%;right:8%}
+    .b3{top:42%;right:0}
+    .b4{bottom:14%;right:8%}
+    .b5{bottom:0;left:50%;transform:translate(-50%,0)}
+    .b6{bottom:14%;left:8%}
+    .b7{top:42%;left:0}
+    .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .use-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px}
+    .use-card p{margin-top:8px;color:var(--muted)}
+    .sub-note{margin-top:12px;padding:12px 14px;border-radius:16px;background:#f4f7f5;border:1px dashed #c8d7cd;color:#466258;font-size:.94rem}
+    .best-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .best-box,.dont-box{border-radius:24px;border:1px solid var(--line);padding:20px;background:#fff}
+    .best-box{background:linear-gradient(180deg,#eef9f2,#fff)}
+    .dont-box{background:linear-gradient(180deg,#fff5ec,#fff)}
+    .prompt-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .group-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px}
+    .group-card h3{display:flex;align-items:center;gap:10px}
+    .group-card p{margin-top:8px;color:var(--muted)}
+    .chip-wrap{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--mint);color:var(--green-900);font-weight:700;font-size:.9rem;border:1px solid var(--line)}
+    .steps{display:grid;gap:14px}
+    .flow-step{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:16px}
+    .flow-step p{color:var(--muted);margin-top:6px}
+    .summary-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}
+    .cta-card{background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;border-radius:26px;padding:24px}
+    .cta-card p{color:#e5f1ea;margin-top:10px}
+    .footer-jump{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:999px;background:#fff;color:var(--green-900);font-weight:800}
+    .mini-note{color:var(--muted);font-size:.92rem;padding-top:18px;border-top:1px solid var(--line);margin-top:18px}
+    @media (max-width:1100px){.hero,.split,.summary-grid{grid-template-columns:1fr}.use-grid,.prompt-groups{grid-template-columns:1fr 1fr}}
+    @media (max-width:860px){.hero,.grid-2,.grid-3,.grid-4,.split,.use-grid,.best-grid,.prompt-groups,.summary-grid{grid-template-columns:1fr}.page{padding:16px 12px 42px}.section{padding:22px 18px}.hero{padding:24px 18px}.hero-art{min-height:320px}.ring{height:900px}.bubble{width:142px;font-size:.88rem}.ring-center{width:146px;height:146px}}
+    @media (max-width:560px){.ring{height:980px}.bubble{width:126px;padding:10px}}
+  </style>
+</head>
+<body>
+  <div class="page" id="top">
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Simple HR Guide</span>
+        <h1>Gemini Prompts for HR</h1>
+        <p>
+          A tighter, simpler guide to writing better Gemini prompts for HR, with a reusable prompt builder, prompt-safety rules, and 21 prompt ideas across hiring, performance, learning, rewards, communication, and HR operations.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Less rework</span>
+          <span class="pill">Better prompts</span>
+          <span class="pill">Safer HR outputs</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-shell">
+          <div class="art-head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="art-core">
+            <div class="center-node">Prompt Builder</div>
+            <div class="orbit o1">Persona</div>
+            <div class="orbit o2">Task</div>
+            <div class="orbit o3">Context</div>
+            <div class="orbit o4">Constraints</div>
+            <div class="orbit o5">Format</div>
+            <div class="orbit o6">Quality check</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">1. Core idea</div>
+        <h2>What makes a strong HR prompt</h2>
+        <p class="lede">
+          The article’s main message is simple: Gemini gives better HR outputs when the prompt clearly defines the role, the task, the context, the format, the limits, and the final quality checks. It also warns against entering sensitive employee information and reminds readers that humans stay responsible for decisions and final approval.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="builder">
+          <h3>Reusable HR prompt builder</h3>
+          <div class="builder-list">
+            <div class="builder-row"><div class="builder-no">1</div><div><strong>Persona:</strong> Tell Gemini what “hat” to wear, such as recruiter, HRBP, L&amp;D specialist, or rewards analyst.</div></div>
+            <div class="builder-row"><div class="builder-no">2</div><div><strong>Objective and task:</strong> State the outcome and use a clear action word like draft, rewrite, summarize, compare, critique, or create.</div></div>
+            <div class="builder-row"><div class="builder-no">3</div><div><strong>Context:</strong> Add level, location, audience, policies, role details, and any must-haves that stop guesswork.</div></div>
+            <div class="builder-row"><div class="builder-no">4</div><div><strong>Format:</strong> Ask for a usable output such as a checklist, rubric, email, table, outline, or script.</div></div>
+            <div class="builder-row"><div class="builder-no">5</div><div><strong>Constraints:</strong> Add tone, length, inclusive language rules, region notes, and safety limits like “do not give legal advice.”</div></div>
+            <div class="builder-row"><div class="builder-no">6</div><div><strong>Clarify and check:</strong> Ask for clarifying questions first, then ask Gemini to flag risky assumptions, bias, missing details, and compliance concerns.</div></div>
+          </div>
+        </div>
+
+        <div class="warn-box">
+          <h3>Common prompt mistakes to avoid</h3>
+          <ul class="clean">
+            <li>Being vague, such as “write a job description,” which usually produces generic output.</li>
+            <li>Leaving out level, location, scope, audience, or policy context, which creates rework.</li>
+            <li>Skipping guardrails, which increases the risk of biased, inconsistent, or risky wording.</li>
+            <li>Not asking for a format, which often leads to long paragraphs instead of usable outputs.</li>
+            <li>Entering sensitive personal details, medical information, or employee relations specifics.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">2. Best practices</div>
+        <h2>How to prompt better in real HR work</h2>
+        <p class="lede">
+          The article highlights four habits that improve output quality fastest: prompt chaining, asking Gemini to state assumptions, telling it what to avoid when bias is possible, and using a mini rubric to review quality.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card"><h3>Use prompt chaining</h3><p>Break higher-stakes work into draft → critique → revise instead of trying to get the final version in one attempt.</p></div>
+        <div class="card"><h3>Ask for assumptions</h3><p>Tell Gemini to state assumptions explicitly so you can correct the right thing earlier.</p></div>
+        <div class="card"><h3>Add “what to avoid”</h3><p>Call out risk phrases, biased language, protected characteristics, or undefined ideas like “culture fit.”</p></div>
+        <div class="card"><h3>Use a mini rubric</h3><p>Check whether the output is clear, inclusive, compliant, practical, and complete before you use it.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">3. Rebuilt infographic</div>
+        <h2>7 prompt categories HR can reuse</h2>
+        <p class="lede">
+          This rebuilt visual turns the article’s long prompt library into a simpler prompt map you can browse quickly.
+        </p>
+      </div>
+
+      <div class="ring-panel">
+        <div class="ring-wrap">
+          <div class="ring">
+            <div class="ring-center">HR Prompt Library</div>
+            <div class="bubble b1">Recruitment and selection</div>
+            <div class="bubble b2">Performance management</div>
+            <div class="bubble b3">Learning and development</div>
+            <div class="bubble b4">Rewards</div>
+            <div class="bubble b5">Participation and communication</div>
+            <div class="bubble b6">HR operations</div>
+            <div class="bubble b7">Safety checks and prompt builder</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">4. High-value examples</div>
+        <h2>7 prompt types most HR teams will use often</h2>
+        <p class="lede">
+          The source article includes 21 examples. This tighter version highlights the most broadly useful ones and keeps the rest grouped below.
+        </p>
+      </div>
+
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">1</div><div><h3>Inclusive job description prompt</h3><p>Create a clear, inclusive job post with must-haves, nice-to-haves, ATS keywords, and a bias review checklist.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> The article uses this to show how context, format, and bias checks can turn a generic draft into a more usable recruiting output.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">2</div><div><h3>Structured interview plan prompt</h3><p>Build behavior-based questions, a time-boxed interview flow, and a scoring rubric linked to defined competencies.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> It reduces vague interviewing and makes decision quality and fairness easier to defend.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">3</div><div><h3>Performance review summary template prompt</h3><p>Generate a neutral template that asks for evidence, not opinion, and supports more consistent review writing.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> The article treats this as a way to make reviews more structured and less bias-prone.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">4</div><div><h3>Development plan or learning path prompt</h3><p>Create a role-based development plan with weekly actions, milestones, and manager check-ins.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> It turns vague “development goals” into specific practice, reflection, and follow-up steps.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">5</div><div><h3>Compensation philosophy or rewards communication prompt</h3><p>Explain pay and benefits clearly in plain language, with FAQs and employee-friendly summaries.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> The article uses these prompts to show how AI can improve clarity without inventing commitments.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">6</div><div><h3>Pulse survey and manager action plan prompt</h3><p>Draft short surveys plus a 30-day manager plan so feedback leads to visible follow-up.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> The article emphasizes actionability, anonymity, and avoiding leading questions.</div>
+        </div>
+
+        <div class="use-card">
+          <div class="stack"><div class="tag-icon">7</div><div><h3>SOP and checklist prompt</h3><p>Document HR processes in clear steps with owners, exceptions, escalation points, and a simple checklist.</p></div></div>
+          <div class="sub-note"><strong>Why it matters:</strong> This is one of the easiest low-risk ways to start using Gemini in HR operations.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">5. All prompt groups</div>
+        <h2>The full 21-prompt set, grouped by HR function</h2>
+        <p class="lede">
+          The article’s 21 examples are organized across six HR areas. This section keeps the full coverage but presents it more compactly.
+        </p>
+      </div>
+
+      <div class="prompt-groups">
+        <div class="group-card">
+          <h3><span class="num">1</span>Recruitment and selection</h3>
+          <p>Five prompts focused on hiring quality, candidate communication, and decision consistency.</p>
+          <div class="chip-wrap">
+            <span class="chip">Inclusive job description</span>
+            <span class="chip">Structured interview plan</span>
+            <span class="chip">Outreach email sequence</span>
+            <span class="chip">Offer letter review checklist</span>
+            <span class="chip">Rejection templates</span>
+          </div>
+        </div>
+
+        <div class="group-card">
+          <h3><span class="num">2</span>Performance management</h3>
+          <p>Five prompts designed to make goals, reviews, calibration, development conversations, and improvement plans more structured and fair.</p>
+          <div class="chip-wrap">
+            <span class="chip">SMART goals and OKRs</span>
+            <span class="chip">Review summary template</span>
+            <span class="chip">Calibration prep pack</span>
+            <span class="chip">Development conversation script</span>
+            <span class="chip">PIP outline</span>
+          </div>
+        </div>
+
+        <div class="group-card">
+          <h3><span class="num">3</span>Learning and development</h3>
+          <p>Five prompts for turning learning needs into structured, practical action.</p>
+          <div class="chip-wrap">
+            <span class="chip">IDP template</span>
+            <span class="chip">6-week learning path</span>
+            <span class="chip">Training session plan</span>
+            <span class="chip">Manager coaching guide</span>
+            <span class="chip">Training needs analysis</span>
+          </div>
+        </div>
+
+        <div class="group-card">
+          <h3><span class="num">4</span>Rewards</h3>
+          <p>Four prompts aimed at making pay and benefits communication more transparent and consistent.</p>
+          <div class="chip-wrap">
+            <span class="chip">Compensation philosophy</span>
+            <span class="chip">Promotion or pay-review justification</span>
+            <span class="chip">Benefits enrollment email</span>
+            <span class="chip">Total rewards statement outline</span>
+          </div>
+        </div>
+
+        <div class="group-card">
+          <h3><span class="num">5</span>Participation and communication</h3>
+          <p>One prompt focused on pulse surveys and the manager follow-up that should come with them.</p>
+          <div class="chip-wrap">
+            <span class="chip">Pulse survey and manager action plan</span>
+          </div>
+        </div>
+
+        <div class="group-card">
+          <h3><span class="num">6</span>HR operations and administration</h3>
+          <p>One prompt focused on documenting repeatable processes clearly so errors drop and ownership is easier to see.</p>
+          <div class="chip-wrap">
+            <span class="chip">SOP and checklist</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">6. Usage rules</div>
+        <h2>What to do and what to avoid</h2>
+        <p class="lede">
+          The article keeps returning to the same safety message: use Gemini to improve drafting and structure, not to hand off accountability.
+        </p>
+      </div>
+
+      <div class="best-grid">
+        <div class="best-box">
+          <h3>What to do</h3>
+          <ul class="clean">
+            <li>Use placeholders when information is sensitive.</li>
+            <li>Ask clarifying questions before drafting if anything important is missing.</li>
+            <li>Ask Gemini to list assumptions, bias risks, and missing details after each draft.</li>
+            <li>Use prompt chaining for anything that affects employee decisions or experience.</li>
+            <li>Build a reusable prompt library so your quality improves over time.</li>
+          </ul>
+        </div>
+
+        <div class="dont-box">
+          <h3>What not to do</h3>
+          <ul class="clean">
+            <li>Do not enter personally identifying or sensitive employee details.</li>
+            <li>Do not accept outputs without human review.</li>
+            <li>Do not leave out legal, compliance, or inclusivity guardrails.</li>
+            <li>Do not confuse a polished draft with a fully approved HR decision.</li>
+            <li>Do not keep rewriting vague prompts when the real problem is missing context.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">7. Action plan</div>
+        <h2>How to start using Gemini prompts in HR</h2>
+        <p class="lede">
+          The article’s closing advice is to start with low-risk, high-repeat work such as job descriptions, manager emails, and meeting or process templates, then save what works into a personal prompt library.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="flow-step"><div class="step-num">1</div><div><h3>Pick one low-risk HR task</h3><p>Start with work like a job description draft, an onboarding email, a performance template, or an SOP.</p></div></div>
+        <div class="flow-step"><div class="step-num">2</div><div><h3>Use the builder structure</h3><p>Set persona, task, context, format, constraints, and a final quality check instead of typing a vague instruction.</p></div></div>
+        <div class="flow-step"><div class="step-num">3</div><div><h3>Run a draft → critique → revise chain</h3><p>This gives more reliable results than trying to get the final version in a single request.</p></div></div>
+        <div class="flow-step"><div class="step-num">4</div><div><h3>Review for bias, assumptions, and missing details</h3><p>Keep a human eye on the output, especially for anything that shapes employee experience or decisions.</p></div></div>
+        <div class="flow-step"><div class="step-num">5</div><div><h3>Save the best prompts</h3><p>Build a prompt library that reflects your organization’s tone, standards, and recurring workflows.</p></div></div>
+        <div class="flow-step"><div class="step-num">6</div><div><h3>Expand only after the first prompts work well</h3><p>Once one workflow is stable, add more HR use cases without losing review discipline.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">8. Bottom line</div>
+        <h2>What matters most</h2>
+        <p class="lede">
+          Gemini becomes useful in HR when prompts are structured enough to reduce guesswork and safe enough to protect employees, fairness, and process quality.
+        </p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="grid-2">
+          <div class="card"><h3>Best use of Gemini</h3><p>Drafting, rewriting, summarizing, comparing, checking structure, and turning repeated HR work into clearer first versions.</p></div>
+          <div class="card"><h3>Best use of people</h3><p>Judgment, final approval, risk review, context interpretation, and decisions that affect employees.</p></div>
+          <div class="card"><h3>Big success factor</h3><p>Clear prompts with context and guardrails, plus consistent human review after every output.</p></div>
+          <div class="card"><h3>Simple rule</h3><p>Prompt with structure, review with care, and keep accountability human.</p></div>
+        </div>
+
+        <div class="cta-card">
+          <h3 style="color:#fff;">Simple takeaway</h3>
+          <p>
+            Start with one repeated HR task that takes too long, use the prompt builder, ask for assumptions and bias checks, and save the best version for next time. That is how a prompt habit turns into real productivity.
+          </p>
+          <a href="#top" class="footer-jump">Back to top</a>
+        </div>
+      </div>
+
+      <div class="mini-note">
+      
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
