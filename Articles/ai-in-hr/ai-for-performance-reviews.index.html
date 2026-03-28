@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Performance Reviews | Practical Guide for HR</title>
+  <meta name="description" content="A practical guide to using AI for performance reviews, including benefits, examples, tools, ethics, and a five-step implementation approach for HR teams." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --max:1220px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 540px,var(--green-50) 540px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{padding:26px 0 32px}
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:540px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(490px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.12rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background:var(--green-900);color:#fff;font-weight:800;font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;color:var(--green-950);margin-bottom:2px;font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;color:var(--muted);font-size:.86rem;line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:820px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.65rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5,.cards-6{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+    .cards-6{grid-template-columns:repeat(3,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .icon{
+      width:48px;height:48px;border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .example-card,
+    .tool-card,
+    .use-card,
+    .step-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .example-card::before,
+    .tool-card::before,
+    .use-card::before,
+    .step-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .example-card h3,
+    .tool-card h3,
+    .use-card h3,
+    .step-card h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.08rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .example-card p,
+    .tool-card p,
+    .use-card p,
+    .step-card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .tool-meta{
+      display:grid;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tool-line{
+      border-top:1px solid var(--line);
+      padding-top:10px;
+    }
+
+    .tool-line strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.92rem;
+    }
+
+    .tool-line span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .do-dont{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .strip{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .strip-title{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .strip.do .strip-title{
+      background:#eaf5ef;
+      color:var(--green-900);
+    }
+
+    .strip.dont .strip-title{
+      background:#fff4ea;
+      color:#8a4b10;
+    }
+
+    .tips{
+      display:grid;
+      gap:12px;
+    }
+
+    .tip{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .tip strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.95rem;
+    }
+
+    .tip span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .risk-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .risk{
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#fafcfb);
+      border:1px solid var(--line);
+    }
+
+    .risk-tag{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:800;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--warm);
+      color:var(--green-900);
+      margin-bottom:14px;
+    }
+
+    .risk h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.02rem;
+    }
+
+    .risk p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .guardrail{
+      display:inline-block;
+      font-size:.82rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 12px;
+    }
+
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .score{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .score strong{
+      display:block;
+      color:#fff;
+      font-size:1.1rem;
+      margin-bottom:6px;
+    }
+
+    .score span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,.cards-2,.cards-3,.cards-4,.cards-5,.cards-6,
+      .do-dont,.risk-grid,.score-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,.dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#examples">Examples</a>
+        <a href="#tools">Tools</a>
+        <a href="#uses">5 Uses</a>
+        <a href="#steps">5 Steps</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • PERFORMANCE REVIEWS & TALENT DECISIONS</div>
+            <h1>AI for Performance Reviews</h1>
+            <p>
+              A practical guide to using AI to make performance reviews more consistent,
+              less biased, more data-driven, and easier for managers to complete well.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#uses">See the 5 practical uses</a>
+              <a class="btn btn-secondary" href="#tools">Compare tool options</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Reduce subjectivity</strong>
+                <span>Use better evidence, clearer patterns, and more balanced review language.</span>
+              </div>
+              <div class="metric">
+                <strong>Improve review speed</strong>
+                <span>Cut time spent summarizing feedback and drafting first versions.</span>
+              </div>
+              <div class="metric">
+                <strong>Support better development</strong>
+                <span>Turn reviews into a stronger basis for growth, coaching, and alignment.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Performance Review Workflow</div>
+                <div class="dashboard-tag">AI-assisted</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Inputs</strong>
+                  <span>Manager notes, peer feedback, self-review, KPIs, OKRs, learning, engagement</span>
+                </div>
+                <div class="box">
+                  <strong>Analysis</strong>
+                  <span>Bias checks, trends, sentiment, goal progress, summary generation</span>
+                </div>
+                <div class="box">
+                  <strong>Drafting</strong>
+                  <span>Structured first draft, balanced language, measurable outcomes</span>
+                </div>
+                <div class="box">
+                  <strong>Final review</strong>
+                  <span>Manager judgment, context, fairness, coaching, action planning</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>Simple review flow</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Collect evidence</strong>
+                      <span>Bring together goals, feedback, data, and performance signals.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Analyze patterns</strong>
+                      <span>Use AI to spot bias, progress gaps, and important themes.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Draft and refine</strong>
+                      <span>Create a strong first draft, then improve it with manager context.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Coach and decide</strong>
+                      <span>Use the review to support growth, clarity, and fair talent decisions.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What AI for performance reviews means</h2>
+          <p>
+            AI in performance reviews means using AI tools to help detect bias, track goals,
+            analyze performance signals, summarize feedback, and support review writing so
+            evaluations become more objective, consistent, and easier to act on.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>Bias detection</h3>
+            <p>Highlight patterns in review language and scoring that may signal unfairness or inconsistency.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>Goal tracking</h3>
+            <p>Monitor progress against KPIs and OKRs with more timely, structured data.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>Feedback analysis</h3>
+            <p>Combine and summarize input from multiple sources into something managers can actually use.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>Draft support</h3>
+            <p>Help managers overcome blank-page syndrome while keeping the final review personal and accurate.</p>
+          </div>
+        </div>
+
+        <div class="score-grid">
+          <div class="score">
+            <strong>Fairness</strong>
+            <span>Use evidence and pattern detection to reduce avoidable subjectivity.</span>
+          </div>
+          <div class="score">
+            <strong>Speed</strong>
+            <span>Save time on summaries, draft writing, and repeated admin work.</span>
+          </div>
+          <div class="score">
+            <strong>Consistency</strong>
+            <span>Create more comparable review quality across managers and teams.</span>
+          </div>
+          <div class="score">
+            <strong>Trust</strong>
+            <span>Keep human oversight visible so employees know AI is support, not judgment.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY USE IT</div>
+          <h2>Why HR teams are bringing AI into reviews</h2>
+          <p>
+            Traditional reviews often suffer from infrequency, hindsight bias, uneven manager quality,
+            and too much focus on the past. AI helps by improving review timelines, surfacing data,
+            supporting 360 feedback, and creating a more balanced starting point for manager conversations.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="card">
+            <div class="icon">A</div>
+            <h3>Minimize bias</h3>
+            <p>Use AI to flag skewed language, repeated patterns, and possible inconsistencies across groups or managers.</p>
+          </div>
+          <div class="card">
+            <div class="icon">B</div>
+            <h3>Improve timelines and cycles</h3>
+            <p>Make reviews easier to prepare and keep feedback cycles closer to real work and recent evidence.</p>
+          </div>
+          <div class="card">
+            <div class="icon">C</div>
+            <h3>Support better alignment</h3>
+            <p>Connect employee performance more clearly to goals, outcomes, and broader team or business priorities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="examples">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">EXAMPLES</div>
+          <h2>4 ways AI supports the review process</h2>
+          <p>
+            These are the core examples highlighted in the source article, turned into a tighter publishing layout.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="example-card">
+            <div class="tag">EXAMPLE 01</div>
+            <h3>Bias detection</h3>
+            <p>Spot biased wording or scoring patterns so HR can intervene and create a fairer review process.</p>
+            <span class="note">Improves confidence in decisions</span>
+          </div>
+
+          <div class="example-card">
+            <div class="tag">EXAMPLE 02</div>
+            <h3>Progress tracking</h3>
+            <p>Monitor KPI and OKR progress in real time and prompt managers when achievements or gaps need discussion.</p>
+            <span class="note">Supports better timing and accuracy</span>
+          </div>
+
+          <div class="example-card">
+            <div class="tag">EXAMPLE 03</div>
+            <h3>Better feedback quality</h3>
+            <p>Analyze larger volumes of performance information so feedback becomes more consistent and less anecdotal.</p>
+            <span class="note">Reduces overreliance on memory</span>
+          </div>
+
+          <div class="example-card">
+            <div class="tag">EXAMPLE 04</div>
+            <h3>Automatic summary generation</h3>
+            <p>Condense input from peers, managers, customers, self-assessments, and goals into one readable overview.</p>
+            <span class="note">Saves time for managers and HR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">TOOL OPTIONS</div>
+          <h2>5 AI tools for performance reviews</h2>
+          <p>
+            The article compares a mix of full performance platforms and lighter review-generation tools.
+            This keeps that comparison but presents it in a cleaner card format.
+          </p>
+        </div>
+
+        <div class="cards-6">
+          <div class="tool-card">
+            <div class="tag">TOOL 01</div>
+            <h3>Betterworks</h3>
+            <p>Designed for larger organizations that want goal alignment and ongoing performance conversations.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Best for</strong>
+                <span>Mid-size to enterprise companies</span>
+              </div>
+              <div class="tool-line">
+                <strong>Highlights</strong>
+                <span>Goal alignment, feedback summaries, AI recommendations, generative AI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tag">TOOL 02</div>
+            <h3>Effy AI</h3>
+            <p>Focused on customizable feedback flows and AI-generated reports across multiple feedback sources.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Best for</strong>
+                <span>Larger-scale companies</span>
+              </div>
+              <div class="tool-line">
+                <strong>Highlights</strong>
+                <span>Custom forms, multi-source feedback, advanced NLP, scalable reporting</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tag">TOOL 03</div>
+            <h3>Lattice</h3>
+            <p>Combines goals, OKRs, peer feedback, and AI-driven analysis in a widely used performance platform.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Best for</strong>
+                <span>Small to large organizations</span>
+              </div>
+              <div class="tool-line">
+                <strong>Highlights</strong>
+                <span>Peer feedback summaries, OKR linkage, user-friendly review setup</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tag">TOOL 04</div>
+            <h3>Easy-Peasy.AI</h3>
+            <p>A simpler option for fast review generation, especially when multilingual drafting is useful.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Best for</strong>
+                <span>Companies of all sizes needing quick draft help</span>
+              </div>
+              <div class="tool-line">
+                <strong>Highlights</strong>
+                <span>Multilingual review generation, easy drafting, lightweight use</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tag">TOOL 05</div>
+            <h3>15Five</h3>
+            <p>Uses AI-assisted review writing, analytics, and more standardized criteria with strong integrations.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Best for</strong>
+                <span>Small to medium-sized businesses</span>
+              </div>
+              <div class="tool-line">
+                <strong>Highlights</strong>
+                <span>Predictive and generative AI, HRIS integrations, reporting and analytics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tag">CHOICE TIP</div>
+            <h3>How to choose</h3>
+            <p>Pick based on company size, existing HR systems, bias controls, reporting needs, and how much manager support you want built in.</p>
+            <div class="tool-meta">
+              <div class="tool-line">
+                <strong>Look for</strong>
+                <span>Explainability, integrations, review workflow fit, and strong human-oversight options</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="uses">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">PRACTICAL APPLICATIONS</div>
+          <h2>5 practical ways to use AI for performance reviews</h2>
+          <p>
+            The source article gives five concrete starting points. This version keeps them, but tightens the wording for a cleaner standalone page.
+          </p>
+        </div>
+
+        <div class="cards-6">
+          <div class="use-card">
+            <div class="tag">USE 01</div>
+            <h3>Generate feedback summaries</h3>
+            <p>Summarize survey responses, self-assessments, customer feedback, 360 input, KPIs, OKRs, and learning data into a first draft.</p>
+            <span class="note">Best time saver for managers</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag">USE 02</div>
+            <h3>Spot trends and sentiment</h3>
+            <p>Scan large sets of employee feedback to identify recurring themes such as burnout, stress, management concerns, or collaboration issues.</p>
+            <span class="note">Useful for theme detection at scale</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag">USE 03</div>
+            <h3>Auto-analyze OKR alignment</h3>
+            <p>Check whether individual performance matches personal goals and, where relevant, broader organizational objectives.</p>
+            <span class="note">Improves goal visibility</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag">USE 04</div>
+            <h3>Create prompts for balanced feedback</h3>
+            <p>Use AI to highlight where feedback may be biased and generate prompts that push managers toward objective, evidence-based wording.</p>
+            <span class="note">Supports fairer review language</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag">USE 05</div>
+            <h3>Train managers with scenarios</h3>
+            <p>Create practice scenarios around underperformance, bias, coaching, or difficult feedback conversations to improve manager capability.</p>
+            <span class="note">Good for manager upskilling</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag">WORKING RULE</div>
+            <h3>Use AI as support, not autopilot</h3>
+            <p>AI is strongest when it reduces admin and strengthens quality, while the manager still owns the final judgment and conversation.</p>
+            <span class="note">Keep the process human-led</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WRITING REVIEWS WITH AI</div>
+          <h2>Do’s and don’ts</h2>
+          <p>
+            AI can help managers start faster and write more clearly, but generic or unedited output will damage trust.
+          </p>
+        </div>
+
+        <div class="do-dont">
+          <div class="strip do">
+            <div class="strip-title">DO</div>
+            <div class="tips">
+              <div class="tip">
+                <strong>Use AI to overcome writer’s block</strong>
+                <span>Let it create a structured first draft so managers are not starting from zero.</span>
+              </div>
+              <div class="tip">
+                <strong>Customize the output</strong>
+                <span>Add specific examples, business context, measurable results, and coaching language.</span>
+              </div>
+              <div class="tip">
+                <strong>Use strong prompts</strong>
+                <span>Provide goals, peer feedback, results, and clear instructions for tone and structure.</span>
+              </div>
+              <div class="tip">
+                <strong>Test the right tool</strong>
+                <span>Try different options to see what best fits your review process and HR systems.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="strip dont">
+            <div class="strip-title">DON’T</div>
+            <div class="tips">
+              <div class="tip">
+                <strong>Do not rely only on AI output</strong>
+                <span>Managers still need to check fairness, relevance, and the employee’s real context.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not deliver generic feedback</strong>
+                <span>Employees notice when a review feels vague, templated, or detached from actual work.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not remove human judgment</strong>
+                <span>AI can support a decision, but it should not own the review conversation or final conclusion.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not ignore privacy and trust</strong>
+                <span>Be careful with sensitive data and be clear about how AI is being used.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">ETHICS & GOVERNANCE</div>
+          <h2>What HR needs to manage carefully</h2>
+          <p>
+            The article emphasizes that AI can help make reviews fairer, but only when organizations manage bias, transparency, privacy, and human oversight deliberately.
+          </p>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk">
+            <div class="risk-tag">RISK 01</div>
+            <h3>Bias in the data</h3>
+            <p>If biased or incomplete data goes in, biased or misleading output can come out, even when the tool looks polished.</p>
+            <span class="guardrail">Guardrail: audit data and outputs regularly.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 02</div>
+            <h3>Low transparency</h3>
+            <p>Employees may lose trust if they do not know how AI contributes to the review process or how their data is used.</p>
+            <span class="guardrail">Guardrail: be clear about usage, ownership, and limits.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 03</div>
+            <h3>Weak human oversight</h3>
+            <p>AI-generated insights should support decisions, not replace manager nuance, coaching skill, or contextual judgment.</p>
+            <span class="guardrail">Guardrail: require human review before finalizing reviews.</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">HR</div>
+            <h3>Who should lead</h3>
+            <p>
+              Responsibility is shared. HR, IT, legal, finance, people analytics, L&amp;D, and HRBPs all have a role depending on the size and maturity of the HR function.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">AI</div>
+            <h3>Best operating model</h3>
+            <p>
+              Use AI to reduce admin, reveal patterns, and improve draft quality, while managers keep ownership of context, fairness, and final decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">GET STARTED</div>
+          <h2>5 steps to start using AI for performance reviews</h2>
+          <p>
+            The article closes with a simple rollout sequence. This version keeps the same logic in a tighter implementation block.
+          </p>
+        </div>
+
+        <div class="cards-5">
+          <div class="step-card">
+            <div class="tag">STEP 01</div>
+            <h3>Audit the current review process</h3>
+            <p>Use employee and manager feedback to find bottlenecks, uneven quality, and places where the process breaks down.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="tag">STEP 02</div>
+            <h3>Identify repetitive tasks to automate</h3>
+            <p>Start with summaries, draft creation, trend analysis, and other work that is time-consuming but structured.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="tag">STEP 03</div>
+            <h3>Explore tools through a pilot</h3>
+            <p>Test one tool in one team before making a wider platform decision across the organization.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="tag">STEP 04</div>
+            <h3>Upskill HR and managers</h3>
+            <p>Assess readiness and train people on prompting, review quality, bias awareness, and ethical use.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="tag">STEP 05</div>
+            <h3>Monitor and modify</h3>
+            <p>Measure impact, collect feedback, and improve the workflow as people learn what actually helps.</p>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <h3>Good success measures</h3>
+            <ul class="mini-list">
+              <li>Manager time saved</li>
+              <li>Review completion rates</li>
+              <li>Employee trust and perceived fairness</li>
+              <li>Quality and specificity of review language</li>
+              <li>Stronger alignment to goals and development plans</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Best place to start</h3>
+            <ul class="mini-list">
+              <li>Feedback summarization</li>
+              <li>Balanced first-draft generation</li>
+              <li>Bias and wording checks</li>
+              <li>Manager training scenarios</li>
+              <li>Goal-alignment tracking</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Make reviews smarter without making them colder</h2>
+        <p>
+          The strongest approach is simple: use AI to reduce admin, improve fairness,
+          and support better conversations, while managers keep the final responsibility for judgment and growth.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#steps">Review the 5 steps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article pages</div>
+      <div>Path: Articles/ai-in-hr/ai-for-performance-reviews.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
