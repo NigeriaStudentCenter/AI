@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Compliance | Practical Guide for HR</title>
+  <meta name="description" content="A practical guide to AI in compliance for HR teams, including benefits, risks, implementation areas, tool options, and ethical guardrails." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 500px,var(--green-50) 500px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 32px;
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:470px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(460px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.15rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .signal{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .signal h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .signal-rows{
+      display:grid;
+      gap:10px;
+    }
+
+    .signal-row{
+      display:grid;
+      grid-template-columns:100px 1fr 40px;
+      gap:10px;
+      align-items:center;
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    .track{
+      height:10px;
+      background:#dfeadf;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--green-700),#8bc9aa);
+    }
+
+    .section{
+      padding:28px 0;
+    }
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:780px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.65rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cards-2,
+    .cards-3,
+    .cards-4{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{
+      background:linear-gradient(180deg,#ffffff,#f5fbf7);
+    }
+
+    .compare.warn{
+      background:linear-gradient(180deg,#ffffff,#fffaf5);
+    }
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .area-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .area{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .area::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .area-tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+    }
+
+    .area h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .area p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .tool-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .tool-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:12px;
+    }
+
+    .tool-card h3{
+      margin:0;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .tool-badge{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.76rem;
+      white-space:nowrap;
+    }
+
+    .tool-line{
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      margin-top:10px;
+    }
+
+    .tool-line strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.92rem;
+    }
+
+    .tool-line span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .risk-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .risk{
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#fafcfb);
+      border:1px solid var(--line);
+    }
+
+    .risk-tag{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:800;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--warm);
+      color:var(--green-900);
+      margin-bottom:14px;
+    }
+
+    .risk h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.02rem;
+    }
+
+    .risk p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .guardrail{
+      display:inline-block;
+      font-size:.82rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 12px;
+    }
+
+    .future-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .future{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .future strong{
+      display:block;
+      color:#fff;
+      font-size:1.15rem;
+      margin-bottom:6px;
+    }
+
+    .future span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.92rem;
+    }
+
+    .cta{
+      padding:10px 0 50px;
+    }
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .compare-grid,
+      .area-grid,
+      .tool-grid,
+      .risk-grid,
+      .future-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,
+      .panel,
+      .cta-card{
+        padding:24px 18px;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:1fr;
+      }
+
+      .signal-row{
+        grid-template-columns:1fr;
+      }
+
+      .mini-nav{
+        width:100%;
+      }
+
+      .mini-nav a{
+        flex:1 1 auto;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#pros-cons">Pros & Cons</a>
+        <a href="#areas">4 Areas</a>
+        <a href="#tools">Tools</a>
+        <a href="#ethics">Guardrails</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • COMPLIANCE & RISK MANAGEMENT</div>
+            <h1>AI in Compliance</h1>
+            <p>
+              A practical guide for HR teams using AI to monitor compliance, reduce manual admin,
+              detect risk earlier, improve audit readiness, and strengthen privacy and governance controls.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#areas">Explore the 4 implementation areas</a>
+              <a class="btn btn-secondary" href="#tools">Compare tool options</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Spot risks early</strong>
+                <span>Move from reactive checks to proactive alerts and monitoring.</span>
+              </div>
+              <div class="metric">
+                <strong>Reduce admin</strong>
+                <span>Automate routine reviews, reporting, and policy follow-up work.</span>
+              </div>
+              <div class="metric">
+                <strong>Stay audit-ready</strong>
+                <span>Keep documentation, controls, and evidence in better shape.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Compliance Monitoring Snapshot</div>
+                <div class="dashboard-tag">AI-assisted</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Documents</strong>
+                  <span>Track expirations, acknowledgements, and missing records</span>
+                </div>
+                <div class="box">
+                  <strong>Payroll</strong>
+                  <span>Flag overtime, leave, wage, and tax inconsistencies</span>
+                </div>
+                <div class="box">
+                  <strong>Privacy</strong>
+                  <span>Monitor access, retention, and handling of sensitive data</span>
+                </div>
+                <div class="box">
+                  <strong>Reporting</strong>
+                  <span>Generate audit-ready outputs and escalation alerts</span>
+                </div>
+              </div>
+
+              <div class="signal">
+                <h3>Priority risk signals</h3>
+                <div class="signal-rows">
+                  <div class="signal-row">
+                    <div>Overtime</div>
+                    <div class="track"><div class="fill" style="width:82%"></div></div>
+                    <div>82</div>
+                  </div>
+                  <div class="signal-row">
+                    <div>Data access</div>
+                    <div class="track"><div class="fill" style="width:74%"></div></div>
+                    <div>74</div>
+                  </div>
+                  <div class="signal-row">
+                    <div>Expiring docs</div>
+                    <div class="track"><div class="fill" style="width:88%"></div></div>
+                    <div>88</div>
+                  </div>
+                  <div class="signal-row">
+                    <div>Policy gaps</div>
+                    <div class="track"><div class="fill" style="width:69%"></div></div>
+                    <div>69</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What AI in compliance means for HR</h2>
+          <p>
+            AI in compliance helps HR move from manual, reactive checking to continuous, more proactive monitoring
+            across hiring, payroll, data privacy, documentation, safety, and employee records.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>Find issues sooner</h3>
+            <p>Flag risky patterns before they become fines, complaints, or audit failures.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>Standardize reviews</h3>
+            <p>Apply rules more consistently across large volumes of employee and policy data.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>Support data privacy</h3>
+            <p>Strengthen visibility into access, retention, and handling of sensitive information.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>Keep humans involved</h3>
+            <p>Use AI to inform decisions, while people still apply context, judgment, and ethical review.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pros-cons">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">PROS AND CONS</div>
+          <h2>The upside and the risk</h2>
+          <p>
+            AI can make compliance work faster and more scalable, but it also introduces bias, privacy, and governance risks if handled poorly.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare good">
+            <h3>Benefits</h3>
+            <ul class="mini-list">
+              <li>Automates repetitive checks, reporting, and audit prep</li>
+              <li>Improves consistency across records, payroll, and policy reviews</li>
+              <li>Detects compliance risk earlier using patterns and alerts</li>
+              <li>Reduces admin effort and frees up HR and legal capacity</li>
+              <li>Tracks legal and regulatory changes more continuously</li>
+            </ul>
+          </div>
+
+          <div class="compare warn">
+            <h3>Watchouts</h3>
+            <ul class="mini-list">
+              <li>Biased or weak training data can produce wrong flags</li>
+              <li>Sensitive employee data raises privacy and security exposure</li>
+              <li>Implementation, integration, and licensing can be expensive</li>
+              <li>Overreliance on automation can weaken human judgment</li>
+              <li>Models need ongoing testing, retraining, and governance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="areas">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">IMPLEMENTATION FRAMEWORK</div>
+          <h2>4 key operational areas to implement</h2>
+          <p>
+            A tighter version of the source article’s implementation advice, turned into a cleaner standalone layout.
+          </p>
+        </div>
+
+        <div class="area-grid">
+          <div class="area">
+            <div class="area-tag">AREA 01</div>
+            <h3>Automate compliance assurance basics</h3>
+            <p>
+              Use AI to monitor document validity, certifications, acknowledgements, payroll checks,
+              tax rules, leave rules, and access controls without relying on manual tracking.
+            </p>
+            <ul class="mini-list">
+              <li>Track expirations and renewals</li>
+              <li>Check wage, overtime, and leave compliance</li>
+              <li>Control privacy and record access</li>
+            </ul>
+          </div>
+
+          <div class="area">
+            <div class="area-tag">AREA 02</div>
+            <h3>Shift to predictive risk prevention</h3>
+            <p>
+              Use trend analysis and thresholds to identify likely violations before they happen,
+              such as fatigue patterns, repeated long shifts, or repeated approval exceptions.
+            </p>
+            <ul class="mini-list">
+              <li>Predict higher-risk scheduling patterns</li>
+              <li>Trigger alerts before breaches occur</li>
+              <li>Intervene earlier with managers and HR teams</li>
+            </ul>
+          </div>
+
+          <div class="area">
+            <div class="area-tag">AREA 03</div>
+            <h3>Implement smart, audit-ready reporting</h3>
+            <p>
+              Consolidate employee and compliance data into structured reports, dashboards,
+              and evidence trails so the organization is not scrambling before an audit.
+            </p>
+            <ul class="mini-list">
+              <li>Auto-generate defensible reports</li>
+              <li>Translate complex updates into HR actions</li>
+              <li>Centralize multi-jurisdiction tracking</li>
+            </ul>
+          </div>
+
+          <div class="area">
+            <div class="area-tag">AREA 04</div>
+            <h3>Improve training and awareness</h3>
+            <p>
+              Deliver role- and location-based compliance learning, reminders, and policy updates
+              so employees complete only the training that is relevant to them.
+            </p>
+            <ul class="mini-list">
+              <li>Assign targeted learning automatically</li>
+              <li>Increase completion with nudges and reminders</li>
+              <li>Create a documented trail of acknowledgement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">TOOL OPTIONS</div>
+          <h2>7 AI-powered compliance tools to consider</h2>
+          <p>
+            This keeps the article’s tool roundup, but in a tighter card layout that works well as a GitHub Pages reference page.
+          </p>
+        </div>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>Workday People Analytics</h3>
+              <span class="tool-badge">Enterprise analytics</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Organizations wanting AI-driven monitoring, anomaly detection, and reporting inside a broader HCM environment.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Links workforce, payroll, and privacy oversight in one ecosystem.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>ADP SmartCompliance</h3>
+              <span class="tool-badge">Post-payroll compliance</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Teams focused on payroll, tax, and post-payroll compliance across multiple jurisdictions.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Strong monitoring and broad rule coverage at scale.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>TriNet</h3>
+              <span class="tool-badge">SMB support</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Smaller and growing businesses that want embedded HR guidance and proactive compliance support.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Brings compliance help closer to everyday HR operations.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>BambooHR</h3>
+              <span class="tool-badge">Law tracking</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>HR teams needing clearer guidance on changing labor rules and handbook updates.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Useful for translating law changes into practical HR actions.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>ComplyAdvantage</h3>
+              <span class="tool-badge">Financial crime risk</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Organizations with stronger screening, sanctions, and adverse-media needs.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Focused on real-time risk intelligence and reducing false positives.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>LogicGate Risk Cloud</h3>
+              <span class="tool-badge">GRC platform</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Organizations wanting governance, risk, and compliance workflows connected together.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Helps link risks, controls, policies, and evidence in one place.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>Hyperproof</h3>
+              <span class="tool-badge">Audit evidence</span>
+            </div>
+            <div class="tool-line">
+              <strong>Best for</strong>
+              <span>Teams that want continuous evidence gathering, control mapping, and audit support.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Why it stands out</strong>
+              <span>Good fit for audit readiness and ongoing control monitoring.</span>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-top">
+              <h3>How to choose</h3>
+              <span class="tool-badge">Selection tip</span>
+            </div>
+            <div class="tool-line">
+              <strong>Look for</strong>
+              <span>Integration quality, explainability, evidence trails, access controls, and strong governance support.</span>
+            </div>
+            <div class="tool-line">
+              <strong>Avoid</strong>
+              <span>Tools that feel impressive in demos but do not clearly show ownership, auditability, or privacy controls.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ethics">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">ETHICAL USE</div>
+          <h2>Guardrails for responsible adoption</h2>
+          <p>
+            AI in compliance only works well when governance is strong and accountability is clear.
+          </p>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 01</div>
+            <h3>Be transparent</h3>
+            <p>Make it clear where AI is being used, what data it reviews, and when it influences important HR decisions.</p>
+            <span class="guardrail">Good practice: document use cases and decision boundaries.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 02</div>
+            <h3>Protect employee data</h3>
+            <p>Sensitive workforce data needs encryption, access controls, retention rules, and disciplined handling standards.</p>
+            <span class="guardrail">Good practice: enforce role-based access and secure retention policies.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 03</div>
+            <h3>Audit for bias</h3>
+            <p>Check outputs regularly across demographic groups so hidden bias is not reinforced through automation.</p>
+            <span class="guardrail">Good practice: review both inputs and outcomes on a recurring basis.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 04</div>
+            <h3>Keep humans in the loop</h3>
+            <p>AI should flag and inform, but humans still need to interpret context and approve major actions.</p>
+            <span class="guardrail">Good practice: require human sign-off for sensitive cases.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 05</div>
+            <h3>Check vendors carefully</h3>
+            <p>Look for strong security controls, independent certifications, and clear evidence of responsible AI practices.</p>
+            <span class="guardrail">Good practice: review certifications, controls, and data-processing terms.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 06</div>
+            <h3>Define escalation paths</h3>
+            <p>HR, legal, IT, and risk teams should know who owns what when a serious issue is flagged.</p>
+            <span class="guardrail">Good practice: set response roles before deployment.</span>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="section-head" style="margin-bottom:18px;">
+          <div class="kicker">WHAT’S NEXT</div>
+          <h2 style="font-size:clamp(1.35rem,2.6vw,2rem);">Where AI in compliance is heading</h2>
+          <p>
+            The direction is toward more predictive oversight, more connected systems, and more pressure for transparency in high-stakes HR use cases.
+          </p>
+        </div>
+
+        <div class="future-grid">
+          <div class="future">
+            <strong>From reactive to predictive</strong>
+            <span>Compliance work will increasingly focus on forecasting and prevention, not just late-stage review.</span>
+          </div>
+          <div class="future">
+            <strong>More embedded monitoring</strong>
+            <span>AI will sit inside HR and compliance systems rather than acting as a separate layer.</span>
+          </div>
+          <div class="future">
+            <strong>Stronger governance demands</strong>
+            <span>Organizations will need better transparency, documentation, and cross-functional ownership.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use AI to strengthen compliance, not just speed it up</h2>
+        <p>
+          The strongest approach is practical: start with one high-risk area, define success clearly,
+          keep humans involved, and build governance into the workflow from the beginning.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#tools">Review tools</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article</div>
+      <div>Path: Articles/ai-in-hr/ai-in-compliance.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
