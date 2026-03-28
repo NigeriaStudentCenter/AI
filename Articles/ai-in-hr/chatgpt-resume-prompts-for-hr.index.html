@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT Résumé Prompts for HR | Practical Guide</title>
+  <meta name="description" content="A practical guide to using ChatGPT résumé prompts for HR, including pros and cons, dos and don'ts, and 25 ready-to-adapt prompt ideas." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1220px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 520px,var(--green-50) 520px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{padding:26px 0 32px}
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:500px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .studio{
+      width:min(470px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .studio-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .studio-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .studio-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .studio-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.1rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .formula{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .formula h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .formula-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .formula-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .formula-step .num{
+      width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background:var(--green-900);color:#fff;font-weight:800;font-size:.9rem;
+    }
+
+    .formula-step strong{
+      display:block;color:var(--green-950);margin-bottom:2px;font-size:.94rem;
+    }
+
+    .formula-step span{
+      display:block;color:var(--muted);font-size:.86rem;line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:800px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.65rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .icon{
+      width:48px;height:48px;border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .do-dont{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .strip{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .strip-title{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .strip.do .strip-title{
+      background:#eaf5ef;
+      color:var(--green-900);
+    }
+
+    .strip.dont .strip-title{
+      background:#fff4ea;
+      color:#8a4b10;
+    }
+
+    .tips{
+      display:grid;
+      gap:12px;
+    }
+
+    .tip{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .tip strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.95rem;
+    }
+
+    .tip span{
+      display:block;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .category{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .category strong{
+      display:block;
+      font-size:1.15rem;
+      margin-bottom:6px;
+      color:#fff;
+    }
+
+    .category span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .prompt-group{
+      margin-top:22px;
+    }
+
+    .prompt-group h3{
+      margin:0 0 14px;
+      font-size:1.2rem;
+      color:var(--green-950);
+    }
+
+    .prompt-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .prompt-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .prompt-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .prompt-no{
+      display:inline-flex;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      background:var(--green-900);
+      color:#fff;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .prompt-card h4{
+      margin:0 0 8px;
+      color:var(--green-950);
+      font-size:1.04rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .prompt-card p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:.94rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .prompt-text{
+      display:block;
+      font-size:.9rem;
+      color:#234238;
+      background:#f3f8f5;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .check{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .check strong{
+      display:block;
+      color:#fff;
+      font-size:1.05rem;
+      margin-bottom:6px;
+    }
+
+    .check span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,.cards-2,.cards-3,.cards-4,.cards-5,
+      .compare-grid,.do-dont,.prompt-grid,.checklist{
+        grid-template-columns:1fr;
+      }
+
+      .category-grid,.hero-metrics,.studio-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.studio-grid,.category-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#pros-cons">Pros & Cons</a>
+        <a href="#dos-donts">Dos & Don’ts</a>
+        <a href="#prompts">25 Prompts</a>
+        <a href="#checklist">Checklist</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • RÉSUMÉ PROMPTS FOR HR PROFESSIONALS</div>
+            <h1>ChatGPT Résumé Prompts for HR</h1>
+            <p>
+              A practical guide to using ChatGPT to draft, tailor, sharpen, and polish HR résumés
+              without sounding generic, inflated, or overly AI-written.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#prompts">Jump to the 25 prompts</a>
+              <a class="btn btn-secondary" href="#dos-donts">See the do’s and don’ts</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Draft faster</strong>
+                <span>Turn rough experience notes into structured résumé content quickly.</span>
+              </div>
+              <div class="metric">
+                <strong>Target roles better</strong>
+                <span>Mirror job descriptions and surface stronger HR keywords.</span>
+              </div>
+              <div class="metric">
+                <strong>Polish language</strong>
+                <span>Improve phrasing, action verbs, clarity, and bullet quality.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="studio">
+              <div class="studio-top">
+                <div class="studio-title">Résumé Prompt Builder</div>
+                <div class="studio-tag">HR-focused</div>
+              </div>
+
+              <div class="studio-grid">
+                <div class="box">
+                  <strong>Role target</strong>
+                  <span>HR Generalist, HRBP, Recruiter, HRIS Analyst, L&amp;D, C&amp;B</span>
+                </div>
+                <div class="box">
+                  <strong>Proof points</strong>
+                  <span>Metrics, outcomes, systems used, scale, projects, certifications</span>
+                </div>
+                <div class="box">
+                  <strong>ATS match</strong>
+                  <span>Keywords, structure, headings, formatting, tool references</span>
+                </div>
+                <div class="box">
+                  <strong>Final polish</strong>
+                  <span>Readable tone, concise bullets, credible claims, human voice</span>
+                </div>
+              </div>
+
+              <div class="formula">
+                <h3>Simple prompt formula</h3>
+                <div class="formula-steps">
+                  <div class="formula-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Name the target role</strong>
+                      <span>Say exactly which HR role you are aiming for.</span>
+                    </div>
+                  </div>
+                  <div class="formula-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Add evidence</strong>
+                      <span>Give achievements, scope, tools, and measurable results.</span>
+                    </div>
+                  </div>
+                  <div class="formula-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Set the format</strong>
+                      <span>Ask for summary, skills, bullets, education, certifications, and page length.</span>
+                    </div>
+                  </div>
+                  <div class="formula-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Tailor to the job description</strong>
+                      <span>Paste the JD and ask for alignment without exaggeration.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What ChatGPT can do for an HR résumé</h2>
+          <p>
+            Used well, ChatGPT can help HR professionals create a cleaner first draft, improve ATS alignment,
+            sharpen action language, and tailor each version of a résumé to a different role or employer.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>Structure your experience</h3>
+            <p>Turn rough notes into sections such as summary, skills, experience, certifications, and education.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>Surface HR keywords</h3>
+            <p>Bring in role-relevant language for ATS systems, including tools, competencies, and HR specialties.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>Improve bullet quality</h3>
+            <p>Rewrite vague bullets into stronger action-result statements with clearer outcomes and metrics.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>Speed up customization</h3>
+            <p>Create different versions for HRBP, recruiter, HRIS, L&amp;D, and leadership roles more efficiently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pros-cons">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">PROS AND CONS</div>
+          <h2>The upside and the risk</h2>
+          <p>
+            ChatGPT is useful for speed, structure, phrasing, and ATS support, but it can also produce vague,
+            robotic, or exaggerated output if your prompt is weak or you skip editing.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare good">
+            <h3>Pros</h3>
+            <ul class="mini-list">
+              <li>Saves time by generating a strong draft quickly</li>
+              <li>Helps insert role-relevant ATS keywords naturally</li>
+              <li>Improves phrasing with clearer, more action-oriented language</li>
+              <li>Supports non-native English speakers with fluency and tone</li>
+            </ul>
+          </div>
+
+          <div class="compare warn">
+            <h3>Cons</h3>
+            <ul class="mini-list">
+              <li>Generic prompts produce generic résumés</li>
+              <li>Nuanced HR achievements can lose context</li>
+              <li>Over-polished language can sound obviously AI-written</li>
+              <li>Repeated template use can make many résumés sound alike</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dos-donts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">BEST PRACTICE</div>
+          <h2>How to use it well</h2>
+          <p>
+            Treat ChatGPT as a résumé partner, not a ghostwriter. Give it detail, verify the output,
+            and make sure the final version still sounds like you.
+          </p>
+        </div>
+
+        <div class="do-dont">
+          <div class="strip do">
+            <div class="strip-title">DO</div>
+            <div class="tips">
+              <div class="tip">
+                <strong>Offer detailed prompts</strong>
+                <span>Include target role, achievements, tools used, and the kind of company or industry.</span>
+              </div>
+              <div class="tip">
+                <strong>Use it for structure and clarity</strong>
+                <span>Let it organize headings, bullets, and a cleaner flow for your experience.</span>
+              </div>
+              <div class="tip">
+                <strong>Tailor every version</strong>
+                <span>Match the résumé to the job description instead of sending one generic draft everywhere.</span>
+              </div>
+              <div class="tip">
+                <strong>Create multiple versions</strong>
+                <span>Build distinct versions for HR Generalist, specialist, analyst, recruiter, or leadership roles.</span>
+              </div>
+              <div class="tip">
+                <strong>Double-check everything</strong>
+                <span>Review metrics, dates, acronyms, grammar, spelling, and tone before sending.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="strip dont">
+            <div class="strip-title">DON’T</div>
+            <div class="tips">
+              <div class="tip">
+                <strong>Do not copy and paste blindly</strong>
+                <span>Always rewrite enough to reflect your own voice and actual achievements.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not inflate results</strong>
+                <span>AI can hallucinate improvements, percentages, budgets, or timelines that never happened.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not ignore readability</strong>
+                <span>A résumé packed with buzzwords and clichés becomes harder to trust and harder to scan.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not rely on one draft</strong>
+                <span>Test different versions and get feedback from mentors or peers.</span>
+              </div>
+              <div class="tip">
+                <strong>Do not paste sensitive data</strong>
+                <span>Avoid entering private details or confidential company information into AI tools.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">READY-TO-ADAPT PROMPTS</div>
+          <h2>25 ChatGPT résumé prompts for HR</h2>
+          <p>
+            These are grouped into the same practical buckets as the source article:
+            build a new résumé, write role-specific versions, create summaries, align to a job description,
+            improve ATS fit, highlight tools and skills, and polish tone and bullet quality.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div class="category">
+            <strong>5</strong>
+            <span>New résumé draft prompts</span>
+          </div>
+          <div class="category">
+            <strong>5</strong>
+            <span>Role-specific résumé prompts</span>
+          </div>
+          <div class="category">
+            <strong>3</strong>
+            <span>Professional summary prompts</span>
+          </div>
+          <div class="category">
+            <strong>6</strong>
+            <span>JD, ATS, tools, and skills prompts</span>
+          </div>
+          <div class="category">
+            <strong>6</strong>
+            <span>Polish and bullet rewrite prompts</span>
+          </div>
+        </div>
+
+        <div class="prompt-group">
+          <h3>Build a new résumé</h3>
+          <div class="prompt-grid">
+            <div class="prompt-card">
+              <div class="prompt-no">1</div>
+              <h4>Career transition to HR</h4>
+              <p>Useful for moving from another function into an HR Coordinator or entry-level HR role.</p>
+              <span class="prompt-text">Write a one-page ATS-friendly résumé for a candidate transitioning from retail management into an HR Coordinator role. Highlight transferable skills like scheduling, team coaching, conflict resolution, and data accuracy. Include quantified results and a skills section.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">2</div>
+              <h4>HR Generalist draft</h4>
+              <p>For professionals with broad experience across ER, recruitment, and onboarding.</p>
+              <span class="prompt-text">Create a résumé for an HR Generalist with 3 years’ experience. Structure it with a summary, 10–12 core skills, reverse-chronological experience, certifications, and education. Emphasize outcomes like time to hire, turnover reduction, and onboarding satisfaction.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">3</div>
+              <h4>Recent HR graduate</h4>
+              <p>For internships, projects, coursework, and early talent acquisition exposure.</p>
+              <span class="prompt-text">Draft a résumé for a recent HR graduate targeting talent acquisition roles. Use internships and campus projects to show sourcing, screening, and interview coordination. Add a relevant projects section with metrics and tools used.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">4</div>
+              <h4>HR consultant profile</h4>
+              <p>For project-based work across multiple clients or sectors.</p>
+              <span class="prompt-text">Write a résumé for an HR consultant with cross-industry experience. Use a selected engagements section showing client type, scope, policy or ER work, and measurable impact such as audit improvements or risk reduction.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">5</div>
+              <h4>Remote DEI-focused role</h4>
+              <p>For inclusion, accessibility, remote collaboration, and distributed support.</p>
+              <span class="prompt-text">Generate a résumé for an HR professional seeking a remote role focused on DEI. Include remote readiness, time zones covered, DEI initiatives delivered, outcomes, and tools such as culture or engagement platforms.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt-group">
+          <h3>Write role-specific résumés</h3>
+          <div class="prompt-grid">
+            <div class="prompt-card">
+              <div class="prompt-no">6</div>
+              <h4>HR Business Partner</h4>
+              <p>For org design, manager coaching, change, and business-facing HR impact.</p>
+              <span class="prompt-text">Write a résumé for an HR Business Partner applying to a large tech company. Emphasize headcount supported, org design, manager coaching, performance cycles, and change management. Mirror keywords from the job description.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">7</div>
+              <h4>L&amp;D Specialist</h4>
+              <p>For program design, training delivery, and learning outcomes.</p>
+              <span class="prompt-text">Generate a résumé for a Learning and Development Specialist focused on leadership training. Include program design frameworks, delivery formats, audience size, completion rates, NPS, and behavior change metrics.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">8</div>
+              <h4>HRIS Analyst</h4>
+              <p>For Workday, SAP, reporting, integrations, and governance.</p>
+              <span class="prompt-text">Create a résumé for an HRIS Analyst with Workday and SAP SuccessFactors experience. Add modules supported, report libraries, data governance work, ticket volumes, upgrades, migrations, timelines, and outcomes.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">9</div>
+              <h4>Tech recruiter</h4>
+              <p>For req loads, pipelines, offer rates, and DEI metrics.</p>
+              <span class="prompt-text">Draft a résumé for a Recruiter specializing in tech hiring. Include requisition loads, offer acceptance rate, time to fill, sourcing channels, diversity slate ratios, structured interviewing, and interviewer training outcomes.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">10</div>
+              <h4>Compensation &amp; Benefits Manager</h4>
+              <p>For cycles, architecture, vendor oversight, and savings.</p>
+              <span class="prompt-text">Write a résumé for a Compensation and Benefits Manager in healthcare. Include merit and bonus cycles, job architecture, market pricing, vendor management, compliance, budget size, cost savings, and adoption rates.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt-group">
+          <h3>Create a professional summary</h3>
+          <div class="prompt-grid">
+            <div class="prompt-card">
+              <div class="prompt-no">11</div>
+              <h4>HR Manager summary</h4>
+              <p>For concise leadership and performance-management positioning.</p>
+              <span class="prompt-text">Write a 3-line professional summary for an HR Manager experienced in organizational change and performance management. Include team size led, functions covered, and one measurable outcome in plain language.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">12</div>
+              <h4>Early-career summary</h4>
+              <p>For new HR professionals targeting a Generalist path.</p>
+              <span class="prompt-text">Generate a concise summary for an early-career HR professional targeting an HR Generalist role. Include ER, TA, onboarding, HRIS basics, one standout achievement, and tools used. Keep it to 45–60 words.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">13</div>
+              <h4>VP of HR summary</h4>
+              <p>For strategic HR leadership across countries or business units.</p>
+              <span class="prompt-text">Write a leadership-focused summary for a VP of HR with global HR strategy experience. Note organization scale, countries covered, COE partnerships, and two strategic outcomes such as engagement gains or faster time to productivity.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt-group">
+          <h3>Align with the job description and ATS</h3>
+          <div class="prompt-grid">
+            <div class="prompt-card">
+              <div class="prompt-no">14</div>
+              <h4>Full JD rewrite</h4>
+              <p>For bringing the whole résumé closer to the target role.</p>
+              <span class="prompt-text">Rewrite my résumé to match this job description. Extract and include exact keywords for skills, tools, and competencies. Reorder bullets to mirror the job’s priorities and add measurable outcomes where missing.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">15</div>
+              <h4>Gap analysis against the JD</h4>
+              <p>For spotting missing or underplayed capabilities.</p>
+              <span class="prompt-text">Compare my résumé with this job posting. List missing or underplayed skills, certifications, and tools. Propose 5–7 new impact bullets based on my experience and tie each one to the role requirements.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">16</div>
+              <h4>Transferable skills map</h4>
+              <p>For moving from coordinator to business partner or specialist work.</p>
+              <span class="prompt-text">Identify transferable skills from my HR Coordinator role to this HRBP role. Map each task to a broader HRBP outcome and provide five revised bullets that show greater scope and strategic value.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">17</div>
+              <h4>ATS formatting check</h4>
+              <p>For simpler structure and ATS-friendly headings.</p>
+              <span class="prompt-text">Scan my résumé for ATS optimization. Standardize section headers, remove tables and text boxes, insert relevant keywords naturally, and return it in simple text-friendly formatting.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">18</div>
+              <h4>Bullet and skills restructure</h4>
+              <p>For shorter bullets and a stronger core skills block.</p>
+              <span class="prompt-text">Restructure my résumé with clear bullets of no more than two lines each. Put metrics early in each bullet, and add a core skills block with 10–14 HR keywords. Make dates, titles, and locations consistent.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">19</div>
+              <h4>Certification placement</h4>
+              <p>For SHRM, PHR, CIPD, or AI-related credentials.</p>
+              <span class="prompt-text">Check whether certifications such as SHRM-CP, PHR, CIPD, or relevant AI courses are important for this job description. Advise where they should appear and whether they should be added after my name.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt-group">
+          <h3>Highlight tools, skills, and AI experience</h3>
+          <div class="prompt-grid">
+            <div class="prompt-card">
+              <div class="prompt-no">20</div>
+              <h4>Skills section by category</h4>
+              <p>For grouping systems and tools more clearly.</p>
+              <span class="prompt-text">Update my Skills section to include the HR tools I use. Group them by HRIS, ATS, analytics, and learning platforms. Add proficiency levels and reflect the tools named in the job description.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">21</div>
+              <h4>Experience using AI in HR</h4>
+              <p>For showing practical AI use without overclaiming.</p>
+              <span class="prompt-text">Emphasize my experience using AI in HR workflows such as sourcing prompts, screening automation, or analytics support. Add three bullets with outcomes and include fairness or compliance safeguards where relevant.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">22</div>
+              <h4>Turn soft skills into business outcomes</h4>
+              <p>For coaching, conflict resolution, and change management.</p>
+              <span class="prompt-text">Highlight soft skills such as conflict resolution, coaching, and change management in business terms. Convert generic claims into measurable outcomes and place the strongest examples under the most relevant roles.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">23</div>
+              <h4>Direct, concise, confident tone</h4>
+              <p>For removing filler and weak phrasing.</p>
+              <span class="prompt-text">Polish my résumé language to be direct, concise, and confident. Replace passive phrasing with active verbs. Remove filler and ensure each bullet follows action, scope, and result.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">24</div>
+              <h4>Flow, grammar, and consistency</h4>
+              <p>For tense, punctuation, acronyms, and readability.</p>
+              <span class="prompt-text">Improve flow and grammar. Make tense consistent, align punctuation and spacing, and flag ambiguous acronyms. Replace each acronym with the full term first, then use the shortened version.</span>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-no">25</div>
+              <h4>STAR-style bullet rewrite</h4>
+              <p>For stronger result-led bullet points.</p>
+              <span class="prompt-text">Rewrite my bullets using action verbs and quantifiable results with a STAR-style approach. For each role, produce 4–6 bullets that lead with the result, then the action that created it.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="checklist">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">FINAL CHECK</div>
+          <h2>Before you send the résumé</h2>
+          <p>
+            The best ChatGPT-assisted résumé still needs human review, editing, and credibility checks.
+          </p>
+        </div>
+
+        <div class="checklist">
+          <div class="check">
+            <strong>Is it true?</strong>
+            <span>Verify every number, date, title, platform, and result.</span>
+          </div>
+          <div class="check">
+            <strong>Is it targeted?</strong>
+            <span>Make sure it clearly fits the exact HR role you are applying for.</span>
+          </div>
+          <div class="check">
+            <strong>Does it sound human?</strong>
+            <span>Remove robotic wording and keep your own voice visible.</span>
+          </div>
+          <div class="check">
+            <strong>Is it easy to scan?</strong>
+            <span>Use readable headings, short bullets, and clean ATS-safe formatting.</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">HR</div>
+            <h3>Best place to start</h3>
+            <p>
+              Start with the prompt that matches your immediate need: first draft, JD alignment,
+              ATS cleanup, role-specific rewrite, or final polish.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">AI</div>
+            <h3>What good looks like</h3>
+            <p>
+              A résumé that is clearer, stronger, and more targeted than before,
+              while still sounding credible, accurate, and unmistakably yours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use ChatGPT to strengthen your résumé, not replace your judgment</h2>
+        <p>
+          The winning approach is simple: give better inputs, verify the output,
+          tailor each version to the role, and keep the final result grounded in real experience.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#prompts">Review the prompts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article</div>
+      <div>Path: Articles/ai-in-hr/chatgpt-resume-prompts-for-hr.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
