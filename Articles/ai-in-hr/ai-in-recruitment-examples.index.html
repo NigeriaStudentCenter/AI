@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Recruitment Examples | Practical Guide for HR</title>
+  <meta name="description" content="A practical guide to AI in recruitment, including real-world examples, common use cases, hiring risks, and implementation guidance for HR teams." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warn:#fff6ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 500px,var(--green-50) 500px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 32px;
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.06;
+      color:#ffffff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:460px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(460px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.15rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .pipeline{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .pipeline h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .pipeline-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .pipeline-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .pipeline-step .num{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .pipeline-step strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:2px;
+      font-size:.94rem;
+    }
+
+    .pipeline-step span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .section{
+      padding:28px 0;
+    }
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:780px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.65rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cards-2,
+    .cards-3,
+    .cards-4,
+    .cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.05rem;
+      color:var(--green-950);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .use-case{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      background:linear-gradient(180deg,#fff,#f7faf8);
+    }
+
+    .use-case h3{
+      margin:0 0 8px;
+      color:var(--green-950);
+      font-size:1rem;
+    }
+
+    .use-case p{
+      margin:0;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .example-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .example{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .example::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .example-tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+    }
+
+    .example h3{
+      margin:0 0 8px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .example .sub{
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.9rem;
+      margin-bottom:10px;
+    }
+
+    .example p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .result{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      margin-right:8px;
+      margin-bottom:8px;
+    }
+
+    .risk-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .risk{
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#fafcfb);
+      border:1px solid var(--line);
+    }
+
+    .risk-tag{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:800;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--warn);
+      color:var(--green-900);
+      margin-bottom:14px;
+    }
+
+    .risk h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.02rem;
+    }
+
+    .risk p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .guardrail{
+      display:inline-block;
+      font-size:.82rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 12px;
+    }
+
+    .rules{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .rule{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .rule strong{
+      display:block;
+      color:#fff;
+      font-size:1.15rem;
+      margin-bottom:6px;
+    }
+
+    .rule span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cta{
+      padding:10px 0 50px;
+    }
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .cards-5,
+      .example-grid,
+      .risk-grid{
+        grid-template-columns:1fr;
+      }
+
+      .rules,
+      .hero-metrics{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,
+      .panel,
+      .cta-card{
+        padding:24px 18px;
+      }
+
+      .rules,
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:1fr;
+      }
+
+      .mini-nav{
+        width:100%;
+      }
+
+      .mini-nav a{
+        flex:1 1 auto;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#examples">10 Examples</a>
+        <a href="#risks">Bias Risks</a>
+        <a href="#rules">Guardrails</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • RECRUITMENT IN PRACTICE</div>
+            <h1>AI in Recruitment Examples</h1>
+            <p>
+              A practical page for HR teams showing how AI can support sourcing, screening,
+              candidate engagement, job ad writing, hiring analytics, and faster decision-making
+              without removing human judgment from the process.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#examples">See the 10 real-world examples</a>
+              <a class="btn btn-secondary" href="#risks">Review hiring risks</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Source faster</strong>
+                <span>Find stronger matches and passive talent more efficiently.</span>
+              </div>
+              <div class="metric">
+                <strong>Screen smarter</strong>
+                <span>Reduce repetitive admin and prioritize review time.</span>
+              </div>
+              <div class="metric">
+                <strong>Engage better</strong>
+                <span>Use automation for updates, scheduling, and candidate support.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">AI Recruitment Workflow</div>
+                <div class="dashboard-tag">Human-led</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Sourcing</strong>
+                  <span>Search job boards, talent pools, and passive candidate signals</span>
+                </div>
+                <div class="box">
+                  <strong>Screening</strong>
+                  <span>Rank profiles, flag fit, and reduce manual sorting</span>
+                </div>
+                <div class="box">
+                  <strong>Engagement</strong>
+                  <span>Automate updates, FAQs, reminders, and interview scheduling</span>
+                </div>
+                <div class="box">
+                  <strong>Insights</strong>
+                  <span>Track drop-off, quality, speed, and channel performance</span>
+                </div>
+              </div>
+
+              <div class="pipeline">
+                <h3>Typical AI-supported hiring flow</h3>
+                <div class="pipeline-steps">
+                  <div class="pipeline-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Attract</strong>
+                      <span>Improve job ads and target stronger channels.</span>
+                    </div>
+                  </div>
+                  <div class="pipeline-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Match</strong>
+                      <span>Prioritize candidates using skills, experience, and fit signals.</span>
+                    </div>
+                  </div>
+                  <div class="pipeline-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Engage</strong>
+                      <span>Answer questions, schedule interviews, and reduce silence.</span>
+                    </div>
+                  </div>
+                  <div class="pipeline-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Review</strong>
+                      <span>Use human judgment to validate recommendations and decide fairly.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What AI is doing in recruitment today</h2>
+          <p>
+            AI is being used across the hiring journey to help recruiters source talent, screen applications,
+            engage candidates, improve job ad quality, forecast hiring needs, and streamline onboarding-related tasks.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>Faster recruiter workflows</h3>
+            <p>Less manual sorting, less repetitive messaging, and more time for interviewing and relationship building.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>Better candidate journeys</h3>
+            <p>Chat support, updates, and smoother scheduling can reduce candidate drop-off and frustration.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>More data-backed decisions</h3>
+            <p>Teams can use patterns and performance signals to guide hiring actions with more consistency.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>Fairness still needs humans</h3>
+            <p>Even strong AI tools need human review, audits, and clear accountability to avoid unfair outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="use-cases">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">PRACTICAL USE CASES</div>
+          <h2>How HR teams can use AI in recruitment</h2>
+          <p>
+            These are the core recruitment applications reflected in the source article, tightened into a cleaner publishing layout.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="use-case">
+            <h3>Sourcing talent</h3>
+            <p>Scan job boards, talent communities, LinkedIn-style profiles, and internal pools to identify stronger matches faster.</p>
+          </div>
+          <div class="use-case">
+            <h3>Screening applications</h3>
+            <p>Sort and rank applicants by skills, experience, and relevant signals so recruiters spend less time on first-pass review.</p>
+          </div>
+          <div class="use-case">
+            <h3>Candidate engagement</h3>
+            <p>Use chatbots and automation for questions, reminders, updates, and interview scheduling.</p>
+          </div>
+          <div class="use-case">
+            <h3>Reducing biased wording</h3>
+            <p>Improve job ads by flagging exclusionary or gendered language and suggesting more inclusive alternatives.</p>
+          </div>
+          <div class="use-case">
+            <h3>Predicting likely success</h3>
+            <p>Use predictive signals to identify candidates who may be more likely to perform well or stay longer.</p>
+          </div>
+          <div class="use-case">
+            <h3>Writing better job ads</h3>
+            <p>Draft clearer, more attractive, and more inclusive role descriptions with generative AI support.</p>
+          </div>
+          <div class="use-case">
+            <h3>Optimizing ad placement</h3>
+            <p>Track which channels drive stronger applicants and shift spend toward better-performing sources.</p>
+          </div>
+          <div class="use-case">
+            <h3>Forecasting hiring needs</h3>
+            <p>Spot likely workforce gaps earlier by combining turnover, growth, and market trend data.</p>
+          </div>
+          <div class="use-case">
+            <h3>Onboarding and compliance support</h3>
+            <p>Guide candidates and new hires through paperwork, training, and basic compliance checks more efficiently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="examples">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">REAL-WORLD EXAMPLES</div>
+          <h2>10 AI in recruitment examples</h2>
+          <p>
+            A tightened visual summary of the company examples and outcomes highlighted in the source article.
+          </p>
+        </div>
+
+        <div class="example-grid">
+          <div class="example">
+            <div class="example-tag">EXAMPLE 01</div>
+            <h3>BrightSpring Health</h3>
+            <div class="sub">AI sourcing, matching, and outreach</div>
+            <p>Moved from heavier reliance on traditional channels toward AI-supported sourcing, screening, and engagement.</p>
+            <span class="result">281,740 candidates reviewed</span>
+            <span class="result">83% qualifier rate</span>
+            <span class="result">194% engagement lift</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 02</div>
+            <h3>Thrive</h3>
+            <div class="sub">AI screening and structured assessment</div>
+            <p>Shifted from manual screening to an AI-driven workflow with screening, assessment, and structured interviews.</p>
+            <span class="result">80% faster time to hire</span>
+            <span class="result">30% higher hire quality</span>
+            <span class="result">50% more manager confidence</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 03</div>
+            <h3>NAS Recruitment Innovation</h3>
+            <div class="sub">Job ad automation and channel analytics</div>
+            <p>Used AI-supported recruitment marketing technology to replace manual posting and improve access to niche talent channels.</p>
+            <span class="result">34% lower spend</span>
+            <span class="result">150% more qualified applications</span>
+            <span class="result">46% lower cost per application</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 04</div>
+            <h3>T-Mobile</h3>
+            <div class="sub">Inclusive job ad writing</div>
+            <p>Used AI language analytics to improve job ad wording and support more inclusive recruiting communications.</p>
+            <span class="result">17% more female applicants</span>
+            <span class="result">5 days faster to fill</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 05</div>
+            <h3>OC Tanner</h3>
+            <div class="sub">Automated onboarding journeys</div>
+            <p>Standardized early employee journeys with automated workflows and manager nudges starting before day one.</p>
+            <span class="result">$150k+ annual admin savings</span>
+            <span class="result">70% new hire engagement</span>
+            <span class="result">68% manager engagement</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 06</div>
+            <h3>Walmart</h3>
+            <div class="sub">Skills-based assessments and AI grading</div>
+            <p>Replaced heavier résumé-based screening with skills tests, scenario tasks, and AI-supported response scoring.</p>
+            <span class="result">50% faster hiring</span>
+            <span class="result">Attrition reduced to single digits</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 07</div>
+            <h3>Kimpton Hotels & Restaurants</h3>
+            <div class="sub">AI-supported background checks</div>
+            <p>Improved the speed of high-volume background checks with analytics and a more candidate-friendly portal.</p>
+            <span class="result">From 7–10 days to 1 day or less</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 08</div>
+            <h3>AdvanceWorks</h3>
+            <div class="sub">Integrated AI recruiting pipeline</div>
+            <p>Moved from siloed recruiting activity to an AI-enabled pipeline covering sourcing, tracking, collaboration, and ranking.</p>
+            <span class="result">20% productivity boost</span>
+            <span class="result">25% more positive candidate responses</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 09</div>
+            <h3>Chipotle</h3>
+            <div class="sub">Conversational AI recruiting assistant</div>
+            <p>Used a multilingual AI assistant to guide applicants, answer questions, and schedule interviews through chat.</p>
+            <span class="result">75% faster application-to-start</span>
+            <span class="result">Completion rate rose from 50% to 85%</span>
+          </div>
+
+          <div class="example">
+            <div class="example-tag">EXAMPLE 10</div>
+            <h3>MM Group</h3>
+            <div class="sub">Global talent intelligence platform</div>
+            <p>Used an AI-driven talent platform to support hiring and talent integration across multiple countries and sites.</p>
+            <span class="result">42% lower time to hire</span>
+            <span class="result">~30% higher applicant rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="risks">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHEN AI GETS IT WRONG</div>
+          <h2>Bias and risk examples in recruitment</h2>
+          <p>
+            AI can speed hiring up, but it can also inherit harmful patterns from past data or flawed assumptions if teams do not review it carefully.
+          </p>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk">
+            <div class="risk-tag">RISK 01</div>
+            <h3>Gender bias in résumé screening</h3>
+            <p>Systems trained on male-dominated historical data can favor male-coded language or penalize signals associated with women.</p>
+            <span class="guardrail">Guardrail: test outputs for gender skew and review training data.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 02</div>
+            <h3>Age and racial bias</h3>
+            <p>Hiring patterns in older data can unfairly filter out people from underrepresented backgrounds before human review happens.</p>
+            <span class="guardrail">Guardrail: audit adverse impact and validate screening logic regularly.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 03</div>
+            <h3>Accent and language bias</h3>
+            <p>Voice and video tools can misread accents, pronunciation, and non-native speech, producing unfairly low scores.</p>
+            <span class="guardrail">Guardrail: avoid over-reliance on speech scoring for high-stakes decisions.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 04</div>
+            <h3>Recency bias</h3>
+            <p>Algorithms may overvalue recent keywords, certifications, or profile updates and undervalue longer experience.</p>
+            <span class="guardrail">Guardrail: review ranking rules and do not treat recency as quality by default.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 05</div>
+            <h3>Similarity bias</h3>
+            <p>Models can prefer applicants who resemble past “successful” profiles and ignore non-traditional or transferable talent.</p>
+            <span class="guardrail">Guardrail: include broader definitions of capability and potential.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">RISK 06</div>
+            <h3>Legacy bias from historic hiring</h3>
+            <p>If old hiring decisions were unequal, predictive tools can quietly continue and amplify those same patterns.</p>
+            <span class="guardrail">Guardrail: treat historical hiring data as potentially biased, not automatically valid.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">RESPONSIBLE ADOPTION</div>
+          <h2>4 rules for using AI well in recruitment</h2>
+          <p>
+            The strongest recruitment setup combines speed and consistency with human accountability, fairness checks, and transparent decision-making.
+          </p>
+        </div>
+
+        <div class="rules">
+          <div class="rule">
+            <strong>Keep humans involved</strong>
+            <span>AI can support decisions, but recruiters and hiring managers still need final judgment.</span>
+          </div>
+          <div class="rule">
+            <strong>Audit regularly</strong>
+            <span>Review outcomes for bias, false signals, and unintended exclusion patterns.</span>
+          </div>
+          <div class="rule">
+            <strong>Protect candidate data</strong>
+            <span>Make privacy, access control, and responsible data handling part of the process.</span>
+          </div>
+          <div class="rule">
+            <strong>Be transparent</strong>
+            <span>Define who reviews AI recommendations and how fairness and accountability are maintained.</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">HR</div>
+            <h3>Best place to start</h3>
+            <p>
+              Start with one or two high-friction areas such as sourcing, screening, job ad writing, or interview scheduling.
+              Prove value first, then expand.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">AI</div>
+            <h3>What good looks like</h3>
+            <p>
+              Faster hiring, better consistency, smoother candidate journeys, clearer recruiter focus, and fairer decisions backed by human review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use AI to make recruitment better, not colder</h2>
+        <p>
+          The best use of AI in recruitment is not handing decisions over to software.
+          It is helping recruiters work faster, communicate better, and make more consistent decisions while keeping fairness and human judgment at the center.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#examples">Review the examples</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article </div>
+      <div>Path: Articles/ai-in-hr/ai-in-recruitment-examples.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
