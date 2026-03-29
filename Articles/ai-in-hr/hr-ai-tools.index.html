@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR AI Tools | Practical Guide for HR Leaders</title>
+  <meta name="description" content="A practical guide to 47 HR AI tools across recruiting, learning, scheduling, automation, chatbots, performance, wellbeing, and free AI tools, plus implementation guidance for HR leaders." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 580px,var(--green-50) 580px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.5rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:590px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(520px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.1rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background:var(--green-900);color:#fff;font-weight:800;font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;color:var(--green-950);margin-bottom:2px;font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;color:var(--muted);font-size:.86rem;line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:840px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.1rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .category-pill{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .category-pill strong{
+      display:block;
+      font-size:1.15rem;
+      margin-bottom:6px;
+      color:#fff;
+    }
+
+    .category-pill span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    details.group{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      overflow:hidden;
+      margin-top:18px;
+    }
+
+    details.group[open]{
+      box-shadow:var(--shadow);
+    }
+
+    details.group summary{
+      list-style:none;
+      cursor:pointer;
+      padding:22px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      font-weight:700;
+      color:var(--green-950);
+      background:linear-gradient(180deg,#fff,#f4f8f5);
+    }
+
+    details.group summary::-webkit-details-marker{display:none}
+
+    .summary-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .summary-number{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      font-weight:800;
+      flex:0 0 44px;
+    }
+
+    .summary-copy strong{
+      display:block;
+      font-size:1.06rem;
+      color:var(--green-950);
+    }
+
+    .summary-copy span{
+      display:block;
+      font-weight:400;
+      font-size:.94rem;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    .summary-right{
+      font-size:.88rem;
+      color:var(--green-800);
+      white-space:nowrap;
+    }
+
+    .group-body{
+      padding:0 22px 22px;
+      border-top:1px solid var(--line);
+      background:#fbfdfb;
+    }
+
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      padding-top:18px;
+    }
+
+    .tool-card{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .tool-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.10), transparent 70%);
+    }
+
+    .tool-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position:relative;
+      z-index:1;
+      margin-bottom:10px;
+    }
+
+    .tool-name{
+      font-weight:800;
+      color:var(--green-950);
+      font-size:1rem;
+    }
+
+    .tool-index{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      height:34px;
+      padding:0 10px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.84rem;
+    }
+
+    .tool-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.93rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .implement-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .implement-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .implement-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .implement-no{
+      display:inline-flex;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      background:var(--green-900);
+      color:#fff;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .implement-card h3{
+      margin:0 0 8px;
+      color:var(--green-950);
+      font-size:1.04rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .implement-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.94rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,
+      .stats-grid,
+      .category-grid,
+      .tool-grid,
+      .implement-grid,
+      .compare-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+      details.group summary{padding:18px}
+      .group-body{padding:0 18px 18px}
+      .summary-right{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#categories">Categories</a>
+        <a href="#tools">47 Tools</a>
+        <a href="#implement">Implementation</a>
+        <a href="#selection">Selection Tips</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • PRACTICAL TOOL LANDSCAPE FOR HR LEADERS</div>
+            <h1>47 HR AI Tools</h1>
+            <p>
+              A practical guide to HR AI tools across recruiting, learning, scheduling, leadership,
+              HR automation, chatbots, performance, wellbeing, and free AI tools — designed to help
+              HR leaders move from admin-heavy work toward more strategic impact.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#tools">Browse all 47 tools</a>
+              <a class="btn btn-secondary" href="#implement">See the implementation guide</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Reduce admin</strong>
+                <span>Use AI to automate repetitive work and free HR time for higher-value tasks.</span>
+              </div>
+              <div class="metric">
+                <strong>Improve decisions</strong>
+                <span>Use AI-assisted matching, analytics, and pattern detection to support smarter HR action.</span>
+              </div>
+              <div class="metric">
+                <strong>Keep people central</strong>
+                <span>Use AI as an assistant while keeping human judgment visible in important decisions.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">HR AI Tools Snapshot</div>
+                <div class="dashboard-tag">47 tools</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Recruiting</strong>
+                  <span>Sourcing, screening, scheduling, outreach, and interview support</span>
+                </div>
+                <div class="box">
+                  <strong>Learning</strong>
+                  <span>Personalized development, content matching, and skills growth</span>
+                </div>
+                <div class="box">
+                  <strong>Automation</strong>
+                  <span>Tickets, workflows, helpdesk tasks, approvals, and admin work</span>
+                </div>
+                <div class="box">
+                  <strong>People insights</strong>
+                  <span>Performance, engagement, wellbeing, and trend visibility</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>Simple adoption flow</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Start with one use case</strong>
+                      <span>Choose a clear HR pain point such as screening, helpdesk work, or scheduling.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Pilot one or two tools</strong>
+                      <span>Test fit, speed, user experience, and actual workflow impact.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Train and govern</strong>
+                      <span>Build AI fluency, set expectations, and protect privacy and fairness.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Scale what works</strong>
+                      <span>Expand only after you can show measurable value and safe operating practices.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What HR leaders need to know</h2>
+          <p>
+            HR AI tools are designed to help teams recruit faster, personalize development, automate repetitive work,
+            surface workforce insights, and improve employee support. The challenge is not only choosing tools,
+            but choosing the right tools for the right HR problems.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>47 tools</strong>
+            <span>Grouped into practical HR categories to make evaluation easier.</span>
+          </div>
+          <div class="stat">
+            <strong>8 categories</strong>
+            <span>From recruiting and L&amp;D through wellbeing and free AI tools.</span>
+          </div>
+          <div class="stat">
+            <strong>Start small</strong>
+            <span>Pilot one use case first instead of trying to transform everything at once.</span>
+          </div>
+          <div class="stat">
+            <strong>Human + AI</strong>
+            <span>The strongest approach uses AI as support, not a replacement for people judgment.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">CATEGORY MAP</div>
+          <h2>How the tool landscape is organized</h2>
+          <p>
+            The full list is grouped by the kind of HR work each tool is meant to improve,
+            which makes it easier to shortlist tools based on real use cases rather than vendor hype.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-pill">
+            <strong>7</strong>
+            <span>Recruiting tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>6</strong>
+            <span>Training &amp; development tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>5</strong>
+            <span>Employee scheduling tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>6</strong>
+            <span>Leadership development tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>9</strong>
+            <span>HR automation tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>6</strong>
+            <span>Chatbots &amp; virtual assistants</span>
+          </div>
+          <div class="category-pill">
+            <strong>6</strong>
+            <span>Performance &amp; engagement tools</span>
+          </div>
+          <div class="category-pill">
+            <strong>6</strong>
+            <span>Wellbeing + free AI tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">FULL TOOL LIST</div>
+          <h2>47 HR AI tools grouped by HR use case</h2>
+          <p>
+            Open each group to browse the tools. The descriptions are kept short so the page stays easy to scan on GitHub Pages.
+          </p>
+        </div>
+
+        <details class="group" open>
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">7</div>
+              <div class="summary-copy">
+                <strong>AI recruiting tools</strong>
+                <span>Sourcing, screening, scheduling, candidate engagement, and interview support</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Eightfold.ai</div><div class="tool-index">1</div></div><p>Talent intelligence software focused on skills-based matching between candidates and jobs.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Fetcher</div><div class="tool-index">2</div></div><p>Combines AI sourcing with personalized outreach to engage passive candidates more automatically.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Paradox</div><div class="tool-index">3</div></div><p>Conversational recruiting assistant for screening, scheduling, and answering candidate questions.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">SeekOut</div><div class="tool-index">4</div></div><p>Agentic talent intelligence platform for deep profile search, filtering, and personalized outreach.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Metaview</div><div class="tool-index">5</div></div><p>Uses AI to take interview notes, summarize insights, and score candidates against competencies.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Workable</div><div class="tool-index">6</div></div><p>Provides AI-suggested candidates, job description optimization, and assessments inside an ATS.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">iCIMS Talent Cloud</div><div class="tool-index">7</div></div><p>Offers candidate matching, diversity-oriented filtering, and pipeline automation features.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">6</div>
+              <div class="summary-copy">
+                <strong>AI tools for training and development</strong>
+                <span>Personalized learning, microlearning, skills gaps, and growth pathways</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">SC Training</div><div class="tool-index">8</div></div><p>Mobile-first learning platform that recommends microlearning based on behavior and skills gaps.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">360Learning</div><div class="tool-index">9</div></div><p>Supports compliance training, onboarding, frontline training, and collaborative learning.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Fuse Universal</div><div class="tool-index">10</div></div><p>Learning system designed to simplify learning access and improve knowledge flow.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Docebo</div><div class="tool-index">11</div></div><p>Curates course recommendations and helps administrators track engagement and skill mastery.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Cornerstone Learning</div><div class="tool-index">12</div></div><p>Matches learning content to job roles and performance signals for more personalized development.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Fuel50</div><div class="tool-index">13</div></div><p>Maps employee skills and career paths to recommend learning, mentors, and next-role options.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">5</div>
+              <div class="summary-copy">
+                <strong>AI employee scheduling tools</strong>
+                <span>Scheduling, labor planning, shift matching, and operational staffing support</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Deputy</div><div class="tool-index">14</div></div><p>Helps automate shift planning, time tracking, and labor optimization for hourly teams.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">When I Work</div><div class="tool-index">15</div></div><p>Supports staff scheduling, shift swaps, and communication for frontline workforces.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Sling</div><div class="tool-index">16</div></div><p>Designed to simplify schedule building, labor cost awareness, and shift coordination.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">ZoomShift</div><div class="tool-index">17</div></div><p>Supports scheduling, time-off visibility, and shift assignment for leaner teams.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Planday</div><div class="tool-index">18</div></div><p>Workforce planning tool built around smarter schedules, staffing levels, and operational agility.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">6</div>
+              <div class="summary-copy">
+                <strong>AI leadership development tools</strong>
+                <span>Coaching, leader growth, management capability, and development insights</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">BetterUp</div><div class="tool-index">19</div></div><p>Coaching and development platform that combines AI support with human coaching.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Torch</div><div class="tool-index">20</div></div><p>Leadership coaching platform aimed at manager and executive development with data-backed insight.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Sounding Board</div><div class="tool-index">21</div></div><p>Supports scalable coaching and leadership growth across organizations.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">CoachHub</div><div class="tool-index">22</div></div><p>Digital coaching platform for leadership capability building at scale.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">LEADx</div><div class="tool-index">23</div></div><p>Combines AI coaching ideas with management development content and nudges.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">SumTotal</div><div class="tool-index">24</div></div><p>Supports employee growth, leadership development, and talent capability planning.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">9</div>
+              <div class="summary-copy">
+                <strong>AI tools for HR automation</strong>
+                <span>Workflows, service delivery, tickets, approvals, admin reduction, and systems support</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Leena AI</div><div class="tool-index">25</div></div><p>Automates HR service delivery and handles repetitive tasks through an AI support layer.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Moveworks</div><div class="tool-index">26</div></div><p>AI assistant built to reduce repetitive support requests and improve workflow efficiency.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Darwinbox</div><div class="tool-index">27</div></div><p>HR platform with AI features for workflows, service delivery, and employee lifecycle tasks.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">HiBob</div><div class="tool-index">28</div></div><p>Modern HR platform that supports automation, people workflows, and employee experience management.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">UKG</div><div class="tool-index">29</div></div><p>Workforce suite with AI-assisted scheduling, workforce insights, and HR operations support.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Oracle Fusion HCM</div><div class="tool-index">30</div></div><p>Enterprise HCM platform with AI support across talent, HR workflows, and data-driven planning.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">SAP SuccessFactors</div><div class="tool-index">31</div></div><p>AI-enabled HR platform covering talent, performance, learning, and people operations.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Workday</div><div class="tool-index">32</div></div><p>Broad HCM suite with embedded AI modules for analytics, workflows, and talent decisions.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Zoho People</div><div class="tool-index">33</div></div><p>Helps streamline core HR processes with automation and employee self-service support.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">6</div>
+              <div class="summary-copy">
+                <strong>HR chatbots and virtual assistants</strong>
+                <span>Always-on employee help, questions, workflows, and conversational support</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Espressive</div><div class="tool-index">34</div></div><p>Virtual support assistant that handles employee questions and service requests with less manual intervention.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">ServiceNow HRSD</div><div class="tool-index">35</div></div><p>Supports HR service delivery through workflows, knowledge access, and virtual agent capability.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Phenom</div><div class="tool-index">36</div></div><p>AI-powered talent experience platform with conversational support for candidates and employees.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Drift</div><div class="tool-index">37</div></div><p>Conversational platform that can be adapted for recruiting interaction and employee-facing queries.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Aisera</div><div class="tool-index">38</div></div><p>AI service experience platform that supports HR help workflows and employee assistance.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Microsoft Copilot-based HR assistants</div><div class="tool-index">39</div></div><p>Can support HR productivity, drafting, summarization, and internal knowledge access inside Microsoft workflows.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">6</div>
+              <div class="summary-copy">
+                <strong>AI tools for performance management and employee engagement</strong>
+                <span>Goals, sentiment, listening, review quality, and manager insight</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Lattice</div><div class="tool-index">40</div></div><p>Supports goals, feedback, review cycles, and people insights with AI assistance.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">15Five</div><div class="tool-index">41</div></div><p>Combines performance, manager effectiveness, and employee experience with AI-aided workflows.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Betterworks</div><div class="tool-index">42</div></div><p>Helps connect goals, feedback, and performance conversations through more structured performance tooling.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Centrical</div><div class="tool-index">43</div></div><p>Frontline-focused platform that uses AI, gamification, and nudges to support performance and recognition.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Weeve AI</div><div class="tool-index">44</div></div><p>Employee listening platform using NLP to analyze sentiment and suggest interventions.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Culture Amp</div><div class="tool-index">45</div></div><p>Adds sentiment analysis and predictive signals to engagement and listening workflows.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">3</div>
+              <div class="summary-copy">
+                <strong>AI tools for employee wellbeing</strong>
+                <span>Mental health support, check-ins, and personalized wellbeing resources</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Headspace for Organizations</div><div class="tool-index">46</div></div><p>Includes an AI companion designed to help employees reflect and access personalized mindfulness content.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Unmind</div><div class="tool-index">47</div></div><p>AI-driven mental health and wellbeing platform offering content, tools, and training support.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Lyra Health</div><div class="tool-index">48</div></div><p>Combines AI and human expertise to deliver personalized mental health support and coaching.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>
+            <div class="summary-left">
+              <div class="summary-number">4</div>
+              <div class="summary-copy">
+                <strong>Free AI tools for HR</strong>
+                <span>Low-cost or free tools for drafting, research, internal knowledge, and training creation</span>
+              </div>
+            </div>
+            <div class="summary-right">Open section</div>
+          </summary>
+          <div class="group-body">
+            <div class="tool-grid">
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">ChatGPT</div><div class="tool-index">49</div></div><p>Useful for drafting job descriptions, emails, policy templates, recognition ideas, and general HR writing support.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">Perplexity</div><div class="tool-index">50</div></div><p>Research-oriented AI tool with cited answers that can speed up HR policy and benchmark research.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">NotebookLM</div><div class="tool-index">51</div></div><p>AI notebook assistant for organizing internal documents and querying knowledge contextually.</p></div>
+              <div class="tool-card"><div class="tool-head"><div class="tool-name">YouLearn.ai</div><div class="tool-index">52</div></div><p>Free tool for turning material into interactive training modules, quizzes, and micro-courses.</p></div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="implement">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">IMPLEMENTATION GUIDE</div>
+          <h2>How HR leaders should implement AI tools</h2>
+          <p>
+            The strongest rollout approach is not “buy more tools.” It is to choose a use case, test carefully,
+            train people well, and keep compliance and human oversight visible.
+          </p>
+        </div>
+
+        <div class="implement-grid">
+          <div class="implement-card">
+            <div class="implement-no">1</div>
+            <h3>Start with key use cases</h3>
+            <p>Pick one clear pain point such as interview scheduling or repetitive HR service requests, define success, and measure it carefully.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">2</div>
+            <h3>Prioritize impact and efficiency</h3>
+            <p>Choose tools that create visible value quickly and reduce effort in areas where HR is losing time.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">3</div>
+            <h3>Test, tweak, and train</h3>
+            <p>Use small pilots, compare options, gather feedback, and train users on both capability and limitation.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">4</div>
+            <h3>Audit your current stack first</h3>
+            <p>Many HR systems already include AI modules, so review what Workday-, BambooHR-, Zoho-, or Cornerstone-style platforms already offer before buying something new.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">5</div>
+            <h3>Stay compliant and secure</h3>
+            <p>Protect sensitive employee data, require privacy and security standards from vendors, and keep human oversight in decisions affecting people.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">6</div>
+            <h3>Upskill the HR team</h3>
+            <p>Build enough AI fluency for HR professionals to prompt well, interpret outputs, and use the tools responsibly.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">7</div>
+            <h3>Use AI as an assistant</h3>
+            <p>Let AI handle heavy lifting such as sourcing or summarizing, but keep final people decisions with people.</p>
+          </div>
+
+          <div class="implement-card">
+            <div class="implement-no">8</div>
+            <h3>Train employees too</h3>
+            <p>When tools are employee-facing, make sure workers understand how they work, what they help with, and how to use them confidently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="selection">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">SELECTION TIPS</div>
+          <h2>How to shortlist the right HR AI tools</h2>
+          <p>
+            A useful HR AI stack is shaped by workflow fit, not by the biggest vendor list.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare good">
+            <h3>What to look for</h3>
+            <ul class="mini-list">
+              <li>Clear fit with a real HR use case</li>
+              <li>Easy integration with your current HR systems</li>
+              <li>Strong privacy, security, and governance posture</li>
+              <li>Useful reporting and workflow visibility</li>
+              <li>Good user experience for HR and employees</li>
+              <li>Clear proof of time saved or service improved</li>
+            </ul>
+          </div>
+
+          <div class="compare warn">
+            <h3>What to avoid</h3>
+            <ul class="mini-list">
+              <li>Buying a tool without defining success first</li>
+              <li>Ignoring what your current stack already provides</li>
+              <li>Letting AI make sensitive decisions without review</li>
+              <li>Rolling out to everyone before piloting</li>
+              <li>Skipping training and expecting adoption to happen by itself</li>
+              <li>Using tools that feel impressive but do not solve a real HR problem</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-top:18px;">
+          <div class="stat">
+            <strong>Best first move</strong>
+            <span>Choose one process where HR is losing the most time or consistency.</span>
+          </div>
+          <div class="stat">
+            <strong>Best first pilot</strong>
+            <span>Recruiting admin, employee self-service, or repetitive HR service tasks.</span>
+          </div>
+          <div class="stat">
+            <strong>Best operating model</strong>
+            <span>Human-led decisions supported by AI-generated speed and insight.</span>
+          </div>
+          <div class="stat">
+            <strong>Best long-term mindset</strong>
+            <span>Start small, measure impact, and scale what is useful and trusted.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Build an HR AI stack that solves real work</h2>
+        <p>
+          The strongest HR teams will not be the ones with the most AI tools.
+          They will be the ones that choose the right tools, train people well,
+          protect trust, and keep AI focused on practical business value.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#tools">Browse the tool groups</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML articles</div>
+      <div>Path: Articles/ai-in-hr/hr-ai-tools.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
