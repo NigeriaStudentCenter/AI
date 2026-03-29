@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future of AI in HR | Practical Guide for HR Leaders</title>
+  <meta name="description" content="A practical guide to the future of AI in HR, including AI readiness, emerging technologies, organizational transformation, human skills, and ethical guardrails." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --max:1220px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:linear-gradient(180deg,var(--green-950) 0 560px,var(--green-50) 560px 100%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{padding:26px 0 32px}
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.08rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.9rem;
+    }
+
+    .hero-visual{
+      min-height:560px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(500px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.12rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;height:36px;border-radius:10px;
+      display:grid;place-items:center;
+      background:var(--green-900);color:#fff;font-weight:800;font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;color:var(--green-950);margin-bottom:2px;font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;color:var(--muted);font-size:.86rem;line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:840px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.65rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5,.cards-6{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+    .cards-6{grid-template-columns:repeat(3,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .icon{
+      width:48px;height:48px;border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;place-items:center;font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .pillar-card,
+    .trend-card,
+    .transform-card,
+    .skill-card,
+    .ethic-card,
+    .faq-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .pillar-card::before,
+    .trend-card::before,
+    .transform-card::before,
+    .skill-card::before,
+    .ethic-card::before,
+    .faq-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .pillar-card h3,
+    .trend-card h3,
+    .transform-card h3,
+    .skill-card h3,
+    .ethic-card h3,
+    .faq-card h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.08rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .pillar-card p,
+    .trend-card p,
+    .transform-card p,
+    .skill-card p,
+    .ethic-card p,
+    .faq-card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .risk-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .risk{
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#fafcfb);
+      border:1px solid var(--line);
+    }
+
+    .risk-tag{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:800;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--warm);
+      color:var(--green-900);
+      margin-bottom:14px;
+    }
+
+    .risk h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.02rem;
+    }
+
+    .risk p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .guardrail{
+      display:inline-block;
+      font-size:.82rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 12px;
+    }
+
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .score{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .score strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .score span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1100px){
+      .hero-grid,.cards-2,.cards-3,.cards-4,.cards-5,.cards-6,
+      .risk-grid,.score-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,.dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#readiness">Readiness</a>
+        <a href="#technologies">Technologies</a>
+        <a href="#transformation">Transformation</a>
+        <a href="#ethics">Ethics</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • THE NEXT PHASE OF HR LEADERSHIP</div>
+            <h1>Future of AI in HR</h1>
+            <p>
+              A practical guide for HR leaders preparing for the next phase of AI in HR:
+              building readiness, adopting smarter technologies, reshaping work, and keeping human judgment at the center.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#readiness">See the 5 readiness pillars</a>
+              <a class="btn btn-secondary" href="#technologies">Explore emerging technologies</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Get HR ready</strong>
+                <span>Build mindset, skills, governance, and measurable goals before scaling AI.</span>
+              </div>
+              <div class="metric">
+                <strong>Adopt new tools wisely</strong>
+                <span>Move beyond basic automation into more dynamic and human-like AI support.</span>
+              </div>
+              <div class="metric">
+                <strong>Protect trust</strong>
+                <span>Keep ethics, transparency, and human accountability visible as AI expands.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Future of AI in HR Snapshot</div>
+                <div class="dashboard-tag">Leader view</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Readiness</strong>
+                  <span>Culture, governance, technology, competencies, measurable goals</span>
+                </div>
+                <div class="box">
+                  <strong>Technologies</strong>
+                  <span>Agentic AI, conversational AI, voice-based AI workflows</span>
+                </div>
+                <div class="box">
+                  <strong>Transformation</strong>
+                  <span>New roles, digital culture, AI-supported change leadership</span>
+                </div>
+                <div class="box">
+                  <strong>Human edge</strong>
+                  <span>Empathy, judgment, ethics, blended human-AI workflows</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>Simple future-ready path</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Build capability</strong>
+                      <span>Train teams and define how AI should be used well.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Adopt practical tools</strong>
+                      <span>Focus on technologies that solve real HR problems.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Lead business change</strong>
+                      <span>Help the wider organization adapt to AI, not just HR.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Keep it human</strong>
+                      <span>Protect empathy, fairness, and ethical oversight as AI scales.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>What the future of AI in HR really looks like</h2>
+          <p>
+            The future of AI in HR is not just about faster admin. It is about combining better technology with stronger HR judgment,
+            more capable teams, and clearer governance so HR can become more strategic and more human-centered at the same time.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>From tools to capability</h3>
+            <p>Buying AI is not the same as being ready for AI. Readiness needs structure, skill, and leadership.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>From automation to orchestration</h3>
+            <p>The next phase includes tools that can guide workflows, conversations, and multi-step HR processes.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>From function to enterprise role</h3>
+            <p>HR will help shape how the wider organization adapts to AI, not just how HR itself uses it.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>From efficiency to trust</h3>
+            <p>Success will depend on fairness, explainability, empathy, and human accountability, not efficiency alone.</p>
+          </div>
+        </div>
+
+        <div class="score-grid">
+          <div class="score">
+            <strong>Readiness</strong>
+            <span>Mindset, skills, and structure matter before scale.</span>
+          </div>
+          <div class="score">
+            <strong>Technology</strong>
+            <span>Choose tools that solve real problems and fit the HR stack.</span>
+          </div>
+          <div class="score">
+            <strong>People</strong>
+            <span>Human skills become more important as AI takes more routine work.</span>
+          </div>
+          <div class="score">
+            <strong>Ethics</strong>
+            <span>Trust depends on transparency, fairness, and visible oversight.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="readiness">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AI READINESS</div>
+          <h2>Build readiness in HR teams across 5 pillars</h2>
+          <p>
+            A future-ready HR function needs more than tools. It needs a practical operating model that covers mindset, structure, skills, and outcomes.
+          </p>
+        </div>
+
+        <div class="cards-5">
+          <div class="pillar-card">
+            <div class="tag">PILLAR 01</div>
+            <h3>Culture</h3>
+            <p>Help teams see AI as a support tool, not a threat. Make experimentation safe and practical.</p>
+            <span class="note">Start with mindset and trust</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="tag">PILLAR 02</div>
+            <h3>Governance</h3>
+            <p>Define policies, ownership, bias checks, review processes, and accountability from the start.</p>
+            <span class="note">Strong governance creates confidence</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="tag">PILLAR 03</div>
+            <h3>Technology</h3>
+            <p>Choose AI that solves real problems, integrates well, and avoids creating disconnected workflows.</p>
+            <span class="note">Fit matters more than novelty</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="tag">PILLAR 04</div>
+            <h3>Competencies</h3>
+            <p>Build data literacy, prompt quality, interpretation skills, and role-specific confidence in daily work.</p>
+            <span class="note">Skills make adoption stick</span>
+          </div>
+
+          <div class="pillar-card">
+            <div class="tag">PILLAR 05</div>
+            <h3>Goals</h3>
+            <p>Set measurable targets tied to HR strategy and business outcomes instead of broad AI ambitions.</p>
+            <span class="note">Clear goals make progress visible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="technologies">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">EMERGING TECHNOLOGIES</div>
+          <h2>3 technologies HR leaders should understand now</h2>
+          <p>
+            The future of AI in HR goes beyond one-off prompts and simple automation. It includes more dynamic, workflow-level support across HR operations.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="trend-card">
+            <div class="tag">TREND 01</div>
+            <h3>Agentic AI</h3>
+            <p>
+              Tools that can manage multi-step workflows such as sourcing, outreach, scheduling, planning, and other process chains with less manual intervention.
+            </p>
+            <span class="note">Best for complex workflow support</span>
+          </div>
+
+          <div class="trend-card">
+            <div class="tag">TREND 02</div>
+            <h3>Conversational AI</h3>
+            <p>
+              HR chatbots and assistants that answer questions, guide employees, support candidates, and reduce service friction through text or speech.
+            </p>
+            <span class="note">Best for 24/7 interaction and self-service</span>
+          </div>
+
+          <div class="trend-card">
+            <div class="tag">TREND 03</div>
+            <h3>Voice AI</h3>
+            <p>
+              Voice-based tools that can support screening, surveys, summaries, and interaction analysis while requiring careful bias and privacy controls.
+            </p>
+            <span class="note">Best for voice-led workflows at scale</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">+</div>
+            <h3>What these tools can change</h3>
+            <p>
+              Recruitment, workforce planning, onboarding, employee support, and talent insights can all become faster and more adaptive when these technologies are applied well.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">!</div>
+            <h3>What to watch</h3>
+            <p>
+              The more autonomous the tool becomes, the more important data quality, integration, governance, explainability, and oversight become.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="transformation">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">ORGANIZATIONAL TRANSFORMATION</div>
+          <h2>How HR should help shape AI transformation across the business</h2>
+          <p>
+            HR’s role is bigger than internal tool adoption. HR should help the wider business adapt to AI through change leadership, culture building, and role redesign.
+          </p>
+        </div>
+
+        <div class="cards-6">
+          <div class="transform-card">
+            <div class="tag">MOVE 01</div>
+            <h3>Be a change champion</h3>
+            <p>Reduce fear with clear communication, small pilots, visible use cases, and practical success stories.</p>
+            <span class="note">Build confidence through examples</span>
+          </div>
+
+          <div class="transform-card">
+            <div class="tag">MOVE 02</div>
+            <h3>Build a digital culture</h3>
+            <p>Normalize experimentation, workshops, peer learning, and feedback so AI feels accessible instead of threatening.</p>
+            <span class="note">Culture speeds adoption</span>
+          </div>
+
+          <div class="transform-card">
+            <div class="tag">MOVE 03</div>
+            <h3>Work closely with IT and Legal</h3>
+            <p>Align on integrations, privacy, compliance, and risk before AI spreads into sensitive workflows.</p>
+            <span class="note">Cross-functional alignment reduces risk</span>
+          </div>
+
+          <div class="transform-card">
+            <div class="tag">MOVE 04</div>
+            <h3>Redefine roles and career paths</h3>
+            <p>Update responsibilities as AI changes work and create visible upskilling paths for HR teams and managers.</p>
+            <span class="note">Roles will evolve, not stand still</span>
+          </div>
+
+          <div class="transform-card">
+            <div class="tag">MOVE 05</div>
+            <h3>Personalize with data</h3>
+            <p>Use AI to recommend learning, spot disengagement, and support growth while avoiding surveillance-like approaches.</p>
+            <span class="note">Use data to support people, not control them</span>
+          </div>
+
+          <div class="transform-card">
+            <div class="tag">WORKING RULE</div>
+            <h3>Keep AI tied to business value</h3>
+            <p>Transformation works best when AI adoption clearly improves service, productivity, or talent outcomes rather than existing as a side experiment.</p>
+            <span class="note">Tie every initiative to a real outcome</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">HUMAN ADVANTAGE</div>
+          <h2>Strengthen the skills AI cannot replace well</h2>
+          <p>
+            As AI takes on more operational and analytical work, the future value of HR depends even more on empathy, judgment, discernment, and human-centered leadership.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="skill-card">
+            <div class="tag">SKILL 01</div>
+            <h3>Soft skills and culture work</h3>
+            <p>Freeing HR from repetitive work should create more capacity for coaching, trust-building, and real employee support.</p>
+            <span class="note">Human connection still matters most</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="tag">SKILL 02</div>
+            <h3>Human judgment</h3>
+            <p>Critical decisions like hiring, development, and terminations still require empathy, context, and ethical reasoning.</p>
+            <span class="note">Judgment remains indispensable</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="tag">SKILL 03</div>
+            <h3>Blended human-AI workflows</h3>
+            <p>Use AI to analyze patterns, then let HR professionals interpret meaning, decide next steps, and communicate well.</p>
+            <span class="note">The best model is collaboration</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="tag">SKILL 04</div>
+            <h3>Empathy-led leadership</h3>
+            <p>HR should use data to understand and support people, not reduce employees to dashboards and scores.</p>
+            <span class="note">Lead with empathy, not automation alone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ethics">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">ETHICS & OVERSIGHT</div>
+          <h2>Keep human oversight and ethics visible</h2>
+          <p>
+            The future of AI in HR depends on trust. That trust is built through transparency, fairness, policy, and visible human accountability.
+          </p>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 01</div>
+            <h3>Establish transparency</h3>
+            <p>Employees and candidates should understand when AI is involved and how it supports decision-making.</p>
+            <span class="guardrail">Explain use clearly and in plain language.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 02</div>
+            <h3>Tackle bias actively</h3>
+            <p>AI can inherit unfair patterns from historical data, so outputs need regular review and bias checks.</p>
+            <span class="guardrail">Audit both data and outcomes before scaling.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 03</div>
+            <h3>Maintain an ethical compass</h3>
+            <p>Create practical AI policies and train teams to raise concerns when a tool or output feels questionable.</p>
+            <span class="guardrail">Policy only works if people understand it.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 04</div>
+            <h3>Choose tools responsibly</h3>
+            <p>Favor tools that show fairness, explainability, and credibility rather than tools that only look impressive in demos.</p>
+            <span class="guardrail">Responsible selection saves rework later.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 05</div>
+            <h3>Stay current on regulation</h3>
+            <p>AI-related regulation is evolving, so HR needs an ongoing habit of legal review and policy refresh.</p>
+            <span class="guardrail">Treat AI governance as a living process.</span>
+          </div>
+
+          <div class="risk">
+            <div class="risk-tag">GUARDRAIL 06</div>
+            <h3>Keep humans in the loop</h3>
+            <p>AI can inform or guide, but major people decisions still need human interpretation and accountability.</p>
+            <span class="guardrail">Human review should stay visible at every critical point.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">FAQ-STYLE SUMMARY</div>
+          <h2>What HR leaders should keep in mind</h2>
+          <p>
+            The future of AI in HR is not one single tool. It is a combination of practical technologies, stronger human capability, and more responsible leadership across the function.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="faq-card">
+            <div class="tag">QUESTION 01</div>
+            <h3>What will HR look like as AI expands?</h3>
+            <p>
+              HR will spend less time on repetitive administration and more time on higher-value work such as judgment, coaching, strategic advice, workforce planning, and change leadership.
+            </p>
+            <span class="note">Think: less admin-heavy, more business-partner focused</span>
+          </div>
+
+          <div class="faq-card">
+            <div class="tag">QUESTION 02</div>
+            <h3>Is there one best AI tool for HR?</h3>
+            <p>
+              Usually not. HR tends to need a mix of tools across recruiting, learning, support, analytics, and compliance rather than one single platform for everything.
+            </p>
+            <span class="note">Think: choose a stack, not a silver bullet</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <h3>Best place to start</h3>
+            <ul class="mini-list">
+              <li>Define one meaningful HR problem first</li>
+              <li>Check readiness across the five pillars</li>
+              <li>Pilot a low-risk but useful AI workflow</li>
+              <li>Train the team in practical, role-based ways</li>
+              <li>Review fairness, privacy, and outcomes regularly</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>What success looks like</h3>
+            <ul class="mini-list">
+              <li>Less repetitive admin and faster workflow execution</li>
+              <li>Better service for employees and candidates</li>
+              <li>Stronger human judgment where it matters most</li>
+              <li>More confident HR teams and clearer AI governance</li>
+              <li>A more human-centered HR function, not a colder one</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Prepare HR for an AI future that stays human</h2>
+        <p>
+          The strongest path forward is practical: build readiness, adopt useful technology,
+          redesign work thoughtfully, and protect empathy, ethics, and accountability as AI becomes more embedded in HR.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#readiness">Review the 5 pillars</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article page</div>
+      <div>Path: Articles/ai-in-hr/future-of-ai-in-hr.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
