@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Courses for HR Professionals | Why One Practical Course Beats 11 Separate Courses</title>
+  <meta name="description" content="A marketing-focused comparison page showing why one practical AI for HR course can be a smarter choice than buying 11 separate AI courses for HR professionals." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --gold:#f2d27a;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.55rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:760px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .compare-stack{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .compare-stack h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .stack-grid{
+      display:grid;
+      gap:10px;
+    }
+
+    .stack-row{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:10px;
+      align-items:center;
+    }
+
+    .stack-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .stack-card strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.95rem;
+    }
+
+    .stack-card span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .vs{
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.82rem;
+    }
+
+    .highlight{
+      background:linear-gradient(135deg,#fff9eb,#f8efd2);
+      border:1px solid #ead8a0;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:900px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card,
+    .benefit-card,
+    .compare-card,
+    .domain-card,
+    .course-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .benefit-card::before,
+    .compare-card::before,
+    .domain-card::before,
+    .course-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .preferred{
+      border:1px solid #ead8a0;
+      background:linear-gradient(180deg,#fffdf5,#fbf3dc);
+    }
+
+    .card h3,
+    .benefit-card h3,
+    .compare-card h3,
+    .domain-card h3,
+    .course-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .benefit-card p,
+    .compare-card p,
+    .domain-card p,
+    .course-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .gold-tag{
+      background:#f8efd2;
+      color:#6a4d00;
+      border:1px solid #ead8a0;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .course-meta{
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+      display:grid;
+      gap:8px;
+    }
+
+    .meta-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#f3f8f5;
+      border:1px solid var(--line);
+      color:#264238;
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .course-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:.84rem;
+      font-weight:700;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--green-900);
+    }
+
+    .mini-btn.primary{
+      background:var(--green-900);
+      color:#fff;
+      border-color:var(--green-900);
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .full-width{
+      grid-column:1 / -1;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .cards-5,
+      .compare-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .stack-row{
+        grid-template-columns:1fr;
+      }
+
+      .vs{
+        display:none;
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#preferred">Why Our Course</a>
+        <a href="#comparison">11 Courses</a>
+        <a href="#coverage">What We Cover</a>
+        <a href="#decision">Why Choose Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • ONE PRACTICAL COURSE VS 11 SEPARATE COURSES</div>
+            <h1>Why buy 11 separate AI for HR courses when one practical course can cover them all?</h1>
+            <p>
+              The market now offers many AI courses for HR professionals. But most of them cover only one slice of the problem:
+              prompting, analytics, governance, recruiting, strategy, or automation. Our course is designed from a practitioner’s perspective
+              to cover all of these areas together — and then go further across the full HR function with guided learning, videos,
+              practical guides, examples, and learning with others.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#preferred">See why our course is preferred</a>
+              <a class="btn btn-secondary" href="#comparison">Compare the 11 courses</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>One course</strong>
+                <span>Instead of piecing together multiple providers and separate subscriptions.</span>
+              </div>
+              <div class="metric">
+                <strong>All HR areas</strong>
+                <span>Not just one niche topic like prompting, governance, or analytics alone.</span>
+              </div>
+              <div class="metric">
+                <strong>Practical delivery</strong>
+                <span>Learn through videos, guides, examples, exercises, and clear implementation ideas.</span>
+              </div>
+              <div class="metric">
+                <strong>Learn with others</strong>
+                <span>Build capability in a more engaging way than isolated course buying.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Fragmented learning vs one complete route</div>
+                <div class="dashboard-tag">Marketing view</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>11-course route</strong>
+                  <span>Different providers, different teaching styles, repeated spend, repeated onboarding, fragmented outcomes.</span>
+                </div>
+                <div class="box">
+                  <strong>Our course route</strong>
+                  <span>One learning journey, one structure, one practical method, broader HR coverage, and stronger continuity.</span>
+                </div>
+                <div class="box">
+                  <strong>Topic overlap</strong>
+                  <span>AI basics, prompt design, HR use cases, analytics, ethics, governance, strategy, automation, talent, and more.</span>
+                </div>
+                <div class="box">
+                  <strong>Added value</strong>
+                  <span>Videos, guides, peer learning, HR-wide application, and a more usable end-to-end perspective.</span>
+                </div>
+              </div>
+
+              <div class="compare-stack">
+                <h3>Two ways to learn</h3>
+                <div class="stack-grid">
+                  <div class="stack-row">
+                    <div class="stack-card">
+                      <strong>Buy many separate courses</strong>
+                      <span>Recruiting here, prompts there, governance elsewhere, analytics somewhere else.</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="stack-card highlight">
+                      <strong>Join one practical course</strong>
+                      <span>Learn the whole AI-for-HR picture in one connected, usable learning experience.</span>
+                    </div>
+                  </div>
+                  <div class="stack-row">
+                    <div class="stack-card">
+                      <strong>Manage multiple costs</strong>
+                      <span>One-off fees, annual memberships, member vs non-member prices, and platform switching.</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="stack-card highlight">
+                      <strong>One clearer investment</strong>
+                      <span>Better focus, less friction, broader practical value across the whole HR function.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHAT THE MARKET IS OFFERING</div>
+          <h2>11 separate AI-for-HR courses usually mean 11 separate pieces of the puzzle</h2>
+          <p>
+            The AIHR comparison article groups 11 courses around AI foundations, prompt design, generative AI, policy and governance, analytics,
+            talent applications, and automation. That is useful — but it also proves the point: the learning is fragmented across many providers,
+            price points, and formats. Our course is positioned to bring those capabilities together in one more coherent practitioner-led experience.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>11 courses</strong>
+            <span>Across multiple providers, formats, durations, and pricing models.</span>
+          </div>
+          <div class="stat">
+            <strong>$19.99 to $2,205+</strong>
+            <span>Depending on provider, membership, and public pricing snapshot.</span>
+          </div>
+          <div class="stat">
+            <strong>Mixed delivery</strong>
+            <span>Self-paced, live online, seminar, subscription, on-demand, and academy bundles.</span>
+          </div>
+          <div class="stat">
+            <strong>Fragmented coverage</strong>
+            <span>Many specialize in just one part of AI for HR instead of the whole HR picture.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="preferred">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY OUR COURSE IS PREFERRED</div>
+          <h2>What makes our single course the smarter choice</h2>
+          <p>
+            Instead of asking HR professionals to buy one course for prompting, another for governance, another for analytics, another for automation,
+            and another for strategy, our course is designed to cover all of these areas together — and do so in a way that is practical across the full HR function.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 01</div>
+            <h3>All 11 course themes in one route</h3>
+            <p>Our course is positioned to cover the same major AI capability areas the 11-course list covers — and much more across HR.</p>
+            <span class="note">One connected learning journey</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 02</div>
+            <h3>Built for all areas of HR</h3>
+            <p>Not only recruiting or analytics. We position the course across talent, L&amp;D, operations, people analytics, employee experience, performance, governance, and strategy.</p>
+            <span class="note">Wider HR application</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 03</div>
+            <h3>Learn with others</h3>
+            <p>People usually learn faster and apply more when they learn in a shared environment instead of moving alone from one disconnected course platform to another.</p>
+            <span class="note">Better momentum and accountability</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 04</div>
+            <h3>Practical formats, not just theory</h3>
+            <p>We position the course around videos, guides, practical examples, structured lessons, and usable implementation support — not only passive content.</p>
+            <span class="note">Designed for real use at work</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 05</div>
+            <h3>Less cost fragmentation</h3>
+            <p>One course can be easier to justify, easier to complete, and easier to apply than combining annual access, seminars, memberships, and stand-alone short courses.</p>
+            <span class="note">Cleaner buying decision</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 06</div>
+            <h3>From AI basics to HR implementation</h3>
+            <p>We position the learning from basic understanding to actual HR application, so people do not finish with knowledge only — they finish with clearer practice.</p>
+            <span class="note">More usable end result</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 07</div>
+            <h3>Marketing-friendly value</h3>
+            <p>Instead of saying “we have one more AI course,” we can confidently say: this one course covers the same terrain many people currently piece together across 11 different options.</p>
+            <span class="note">Stronger positioning</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 08</div>
+            <h3>Better for HR teams</h3>
+            <p>A unified course is often easier to deploy for teams than assigning different providers and different licenses across different AI topics.</p>
+            <span class="note">Simpler team rollout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="comparison">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">THE 11-COURSE COMPARISON</div>
+          <h2>What the 11 recommended courses cover — and why our course can be the better alternative</h2>
+          <p>
+            These course cards are presented from a buyer’s point of view: what each course focuses on, how long it takes, how it is priced publicly or in the source comparison,
+            and which part of the bigger AI-for-HR picture it represents.
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="course-card">
+            <div class="tag">1. AIHR</div>
+            <h3>Artificial Intelligence for HR Certificate Program</h3>
+            <p>A strong broad AIHR certificate covering AI in HR, prompt design, Gen AI, and AI strategy.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">35 hours</span>
+                <span class="pill">Self-paced</span>
+                <span class="pill">From $1,125</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Good for broad AIHR pathway</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.aihr.com/courses/artificial-intelligence-for-hr-certification/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">See our broader option</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">2. AIHR</div>
+            <h3>Gen AI Prompt Design for HR</h3>
+            <p>Focused specifically on prompt quality, prompt structure, and safe use of generative AI outputs.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">3.5 hours</span>
+                <span class="pill">Self-paced</span>
+                <span class="pill">Included in AIHR access</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Public AIHR Full Access: $1,850</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.aihr.com/courses/gen-ai-prompt-design-for-hr/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Get this inside one course</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">3. CHRMP</div>
+            <h3>Generative AI in HR Certification</h3>
+            <p>Focused on GenAI models, task automation, decision support, and personalized employee experiences.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">7 weeks</span>
+                <span class="pill">Online classroom</span>
+                <span class="pill">Source-listed: $429</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Good for GenAI-specific focus</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.chrmp.com/generative-ai-in-hr-certification/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">See our wider HR coverage</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">4. CIPD</div>
+            <h3>AI for Human Resources</h3>
+            <p>Practical AI and GenAI skills with attention to policy design and real-world HR application.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">2 consecutive days</span>
+                <span class="pill">Online</span>
+                <span class="pill">Source-listed: $1,285</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Short intensive format</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://shop.cipd.org/product?catalog=AI-for-Human-Resources" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Choose the fuller route</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">5. Coursera</div>
+            <h3>AI Applications in People Management</h3>
+            <p>Focuses on AI and machine learning in people management, blockchain for bias reduction, and HR data analysis.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">~9 hours</span>
+                <span class="pill">Self-paced</span>
+                <span class="pill">Included with Coursera Plus</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Public Coursera Plus snapshot: $239/year promo</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.coursera.org/learn/wharton-ai-applications-people-management" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Get HR-wide application</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">6. Coursera</div>
+            <h3>Generative AI for HR Professionals Specialization</h3>
+            <p>Covers GenAI for L&amp;D, recruitment, onboarding, performance reviews, workforce planning, and succession planning.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">3-course series</span>
+                <span class="pill">Self-paced</span>
+                <span class="pill">Included with Coursera Plus</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Public Coursera Plus snapshot: $239/year promo</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.coursera.org/specializations/generative-ai-for-human-resources" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Choose one complete course</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">7. HRPA</div>
+            <h3>HR Skill UP: Leveraging AI in the Workplace</h3>
+            <p>Focused on AI foundations, implementation, governance, ethics, and emerging trends.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">5 modules</span>
+                <span class="pill">Self-paced</span>
+                <span class="pill">$395 member / $495 non-member</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Strong governance primer</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.hrpa.ca/skillup/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Get governance + more</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">8. SHRM</div>
+            <h3>AI + HI Specialty Credential</h3>
+            <p>Positions AI alongside human intelligence, with strong attention to ethics, wellbeing, engagement, and business application.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">Live + applied learning</span>
+                <span class="pill">Specialty credential</span>
+                <span class="pill">From $1,855 member / $2,205 non-member</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Premium credential route</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.shrm.org/credentials/specialty-credentials/ai-hi-specialty-credential" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Choose the practical route</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">9. Udemy</div>
+            <h3>AI Governance &amp; Compliance for HR Professionals</h3>
+            <p>Focused on governance, compliance, recruitment risk, and building AI-safe HR processes.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">7 hours</span>
+                <span class="pill">On-demand video</span>
+                <span class="pill">Source-listed: $44.99</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Useful niche governance topic</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.udemy.com/course/ai-governance-compliance-for-hr-professionals/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Get governance inside one course</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">10. Udemy</div>
+            <h3>Complete Advanced AI Automation for HR</h3>
+            <p>Focused on HR automation workflows, prompts, ATS-related processes, and predictive analysis basics.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">1 hour</span>
+                <span class="pill">On-demand video</span>
+                <span class="pill">Source-listed: $19.99</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Very short, tactical course</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.udemy.com/course/ai-driven-hr-automation-recruitment-talent-compliance/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Learn automation in context</a>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="tag">11. Udemy</div>
+            <h3>Generative AI for HR Professionals</h3>
+            <p>Focused on responsible GenAI use in HR, data privacy, and ethical application.</p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">1 hour</span>
+                <span class="pill">On-demand video</span>
+                <span class="pill">Source-listed: $44.99</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Short ethics and GenAI overview</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn" href="https://www.udemy.com/course/gen-ai-for-hr/" target="_blank" rel="noopener">View course</a>
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Get the wider practical course</a>
+            </div>
+          </div>
+
+          <div class="course-card preferred full-width">
+            <div class="tag gold-tag">OUR PREFERRED OPTION</div>
+            <h3>Our single practical AI for HR course</h3>
+            <p>
+              Instead of selecting 11 different courses to cover 11 different topics, our course is positioned to give HR professionals one connected route
+              across AI basics, prompt design, HR automation, governance, analytics, talent management, workforce planning, recruiting, L&amp;D, employee experience,
+              performance, and strategic HR application — with practical videos, guides, examples, and learning with others.
+            </p>
+            <div class="course-meta">
+              <div class="meta-row">
+                <span class="pill">One journey</span>
+                <span class="pill">Practical HR-wide coverage</span>
+                <span class="pill">Videos + guides + examples</span>
+                <span class="pill">Learn with others</span>
+              </div>
+              <div class="meta-row">
+                <span class="pill">Designed to be preferred over fragmented learning</span>
+              </div>
+            </div>
+            <div class="course-actions">
+              <a class="mini-btn primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Explore our course</a>
+              <a class="mini-btn" href="https://bsoedu.org/" target="_blank" rel="noopener">Request details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="coverage">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHAT OUR COURSE COVERS</div>
+          <h2>More than the 11-course list — across the full HR function</h2>
+          <p>
+            This is the key marketing point: our course does not stop at AI literacy.
+            It is positioned as a broader practical AI-for-HR journey that can support the whole function.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="domain-card">
+            <div class="tag">HR AREA 01</div>
+            <h3>Talent acquisition</h3>
+            <p>AI for sourcing, screening, job descriptions, interview support, candidate communication, and recruiting productivity.</p>
+            <span class="note">Covers recruiting beyond one course</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 02</div>
+            <h3>Learning and development</h3>
+            <p>AI for personalized learning, skills mapping, content support, and training design across different learner needs.</p>
+            <span class="note">Covers L&amp;D in practical context</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 03</div>
+            <h3>People analytics</h3>
+            <p>AI for workforce insight, trend detection, dashboards, people data interpretation, and evidence-based decision-making.</p>
+            <span class="note">Covers analytics, not only tools</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 04</div>
+            <h3>Talent management</h3>
+            <p>AI for career pathing, mobility, succession thinking, retention analysis, and identifying future capability needs.</p>
+            <span class="note">Covers long-term talent strategy</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 05</div>
+            <h3>Performance and coaching</h3>
+            <p>AI for feedback, performance support, development suggestions, coaching prompts, and review preparation.</p>
+            <span class="note">Covers real manager use cases</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 06</div>
+            <h3>HR operations and service delivery</h3>
+            <p>AI for policies, FAQs, tickets, workflows, employee support, and time-saving operational HR tasks.</p>
+            <span class="note">Covers day-to-day HR efficiency</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 07</div>
+            <h3>Governance, privacy, and ethics</h3>
+            <p>AI policy, data privacy, responsible use, risk reduction, compliance thinking, and bias awareness.</p>
+            <span class="note">Covers safe adoption as well as capability</span>
+          </div>
+
+          <div class="domain-card">
+            <div class="tag">HR AREA 08</div>
+            <h3>AI strategy for HR leaders</h3>
+            <p>How HR leaders can evaluate tools, prioritize use cases, guide adoption, and connect AI to real business outcomes.</p>
+            <span class="note">Covers leadership, not just tool use</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decision">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">BUYER DECISION VIEW</div>
+          <h2>11 separate courses vs one preferred practical course</h2>
+          <p>
+            From a marketing perspective, this is the clearest buyer message:
+            many options in the market teach individual pieces of AI for HR, but our course is positioned as the more complete and more usable route.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare warn">
+            <h3>Buying 11 separate courses often means</h3>
+            <ul class="mini-list">
+              <li>Fragmented learning across many providers</li>
+              <li>Repeated spending across memberships, seminars, and short courses</li>
+              <li>Different teaching styles and different levels of depth</li>
+              <li>One topic learned here, another topic learned elsewhere, with no unified HR application</li>
+              <li>More switching, more admin, and less clarity on how it all fits together</li>
+            </ul>
+          </div>
+
+          <div class="compare good">
+            <h3>Choosing our single course means</h3>
+            <ul class="mini-list">
+              <li>One connected learning journey across all major AI-for-HR areas</li>
+              <li>A practical route that covers the 11-course themes and more</li>
+              <li>Broader HR-wide application beyond one narrow specialization</li>
+              <li>Learning with others, supported by videos, guides, examples, and structured delivery</li>
+              <li>A clearer, more persuasive reason to choose one course instead of many disconnected ones</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>Best message</strong>
+            <span>Why buy 11 separate courses when one practical course can cover the same themes and more?</span>
+          </div>
+          <div class="stat">
+            <strong>Best value story</strong>
+            <span>Less fragmentation, less duplication, more practical continuity.</span>
+          </div>
+          <div class="stat">
+            <strong>Best learning story</strong>
+            <span>Videos, guides, examples, peer learning, and wider HR application.</span>
+          </div>
+          <div class="stat">
+            <strong>Best buyer outcome</strong>
+            <span>A more complete, more usable, more confidence-building route into AI for HR.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Choose one practical AI for HR course that covers the field — not 11 disconnected pieces</h2>
+        <p>
+          If the goal is not just to collect course badges but to actually use AI across HR,
+          then the better choice is the course that covers the whole picture:
+          more practical, more connected, more applicable, and easier to prefer.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="https://bsoedu.org/" target="_blank" rel="noopener">Explore our course</a>
+          <a class="btn btn-secondary" href="#comparison">Review the comparison</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML comparison page</div>
+      <div>Path: Articles/ai-in-hr/ai-courses-for-hr-professionals.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
