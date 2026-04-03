@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Risk Framework for HR Professionals | Practical Guide</title>
+  <meta name="description" content="A practical guide to the AI risk framework for HR professionals, including external and internal risk areas, data governance, and a second built-in AI Risk Assessment Framework page." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --amber:#f6e1a4;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.45rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:700px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:2px;
+      font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:900px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+
+    .card,
+    .part-card,
+    .risk-card,
+    .gov-card,
+    .framework-card,
+    .level-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .part-card::before,
+    .risk-card::before,
+    .gov-card::before,
+    .framework-card::before,
+    .level-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,
+    .part-card h3,
+    .risk-card h3,
+    .gov-card h3,
+    .framework-card h3,
+    .level-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .part-card p,
+    .risk-card p,
+    .gov-card p,
+    .framework-card p,
+    .level-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .amber{
+      background:#fff3d5;
+      color:#7a5200;
+      border:1px solid #edd28c;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .framework-page{
+      page-break-before:always;
+      break-before:page;
+    }
+
+    .framework-hero{
+      background:var(--green-950);
+      border-radius:30px;
+      padding:34px 28px;
+      color:#fff;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .framework-hero h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .framework-hero p{
+      margin:0;
+      color:rgba(255,255,255,.90);
+      max-width:900px;
+    }
+
+    .framework-map{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .framework-center{
+      grid-column:1 / -1;
+      border:1px solid #d9e5de;
+      border-radius:26px;
+      padding:22px;
+      background:linear-gradient(180deg,#f9fbfa,#eef5f0);
+    }
+
+    .framework-center h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.12rem;
+    }
+
+    .center-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .center-box{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+      background:#fff;
+    }
+
+    .center-box strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:6px;
+      font-size:.98rem;
+    }
+
+    .center-box span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .level-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .cycle-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .cycle{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .cycle strong{
+      display:block;
+      color:#fff;
+      font-size:1.05rem;
+      margin-bottom:6px;
+    }
+
+    .cycle span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .compare-grid,
+      .framework-map,
+      .level-grid,
+      .cycle-grid,
+      .center-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card,.framework-hero{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#parts">4 Parts</a>
+        <a href="#external">External Risks</a>
+        <a href="#internal">Internal Risks</a>
+        <a href="#framework-page">Framework Page</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • GOVERNANCE, ACCOUNTABILITY AND SAFE ADOPTION</div>
+            <h1>AI Risk Framework for HR Professionals</h1>
+            <p>
+              A practical guide to using an AI risk framework in HR so organizations can move
+              from unclear experimentation to safer, more confident, more sustainable AI adoption.
+              The framework is built around external risk, internal risk, data governance,
+              and a continuous cycle of risk management.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#parts">See the 4 parts</a>
+              <a class="btn btn-secondary" href="#framework-page">Open the framework page</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Guide adoption</strong>
+                <span>Use risk management to move AI from isolated testing to responsible scale.</span>
+              </div>
+              <div class="metric">
+                <strong>Reduce exposure</strong>
+                <span>Address reputational, legal, ethical, privacy, and fairness risks early.</span>
+              </div>
+              <div class="metric">
+                <strong>Strengthen governance</strong>
+                <span>Clarify ownership, controls, and decision-making across HR.</span>
+              </div>
+              <div class="metric">
+                <strong>Keep AI sustainable</strong>
+                <span>Build practices that can be repeated safely over time, not once-off controls.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Risk framework snapshot</div>
+                <div class="dashboard-tag">HR-ready</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>External environment</strong>
+                  <span>Reputation, legislation, transparency, and explainability.</span>
+                </div>
+                <div class="box">
+                  <strong>Internal environment</strong>
+                  <span>Ethics, privacy, confidentiality, bias, and fairness.</span>
+                </div>
+                <div class="box">
+                  <strong>Data governance</strong>
+                  <span>Quality, privacy, lifecycle, collection, traceability, and control.</span>
+                </div>
+                <div class="box">
+                  <strong>Continuous process</strong>
+                  <span>Identify, mitigate, monitor, and audit on an ongoing basis.</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>Simple risk-management flow</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Surface the risks</strong>
+                      <span>Identify where AI is used and where exposure is rising.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Set the controls</strong>
+                      <span>Use governance, policy, and process to reduce known risk.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Review the outcomes</strong>
+                      <span>Track whether the controls are actually working in practice.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Adjust continuously</strong>
+                      <span>Improve the framework as technology, law, and usage change.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY THIS FRAMEWORK IS NEEDED</div>
+          <h2>Risk management is not there to block AI — it is there to help HR adopt AI responsibly</h2>
+          <p>
+            The article explains that many HR teams believe in AI’s potential but still lack clear purpose, clear value, and prioritized use cases. It positions the framework as a strategic tool to guide adoption, monitor exposure, support decision-making, and make AI use safer, more secure, and more sustainable over time. :contentReference[oaicite:2]{index=2}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3>Guide informed decisions</h3>
+            <p>Help HR leaders decide where AI fits, where it does not, and what conditions must exist first.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3>Structure monitoring and mitigation</h3>
+            <p>Provide a clearer picture of where exposure exists in both the external and internal environment.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3>Define how risk should be managed</h3>
+            <p>Turn risk from a vague concern into a defined management process with ownership and action.</p>
+          </div>
+          <div class="card">
+            <div class="icon">04</div>
+            <h3>Support broader AI strategy</h3>
+            <p>Connect safe adoption to organizational value instead of treating risk as a side issue.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>30%</strong>
+            <span>The article says only 30% of HR teams have clear purpose, defined value, and prioritized AI use cases. :contentReference[oaicite:3]{index=3}</span>
+          </div>
+          <div class="stat">
+            <strong>Safe</strong>
+            <span>Use AI in ways that do no harm and do not unfairly exclude or discriminate. :contentReference[oaicite:4]{index=4}</span>
+          </div>
+          <div class="stat">
+            <strong>Secure</strong>
+            <span>Protect confidentiality, privacy, and systems from misuse or compromise. :contentReference[oaicite:5]{index=5}</span>
+          </div>
+          <div class="stat">
+            <strong>Sustainable</strong>
+            <span>Adopt AI practices that can be repeated and scaled responsibly over time. :contentReference[oaicite:6]{index=6}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="parts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">THE 4 PARTS</div>
+          <h2>The framework has four connected parts</h2>
+          <p>
+            The article and your uploaded one-pager align on four connected parts: external environment, internal environment, data governance, and continuous risk management. :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="part-card">
+            <div class="tag">PART 1</div>
+            <h3>External environment</h3>
+            <p>Risks outside the organization’s direct control, including reputation, legislation, and transparency pressure.</p>
+            <span class="note">Often less controllable but highly visible</span>
+          </div>
+
+          <div class="part-card">
+            <div class="tag">PART 2</div>
+            <h3>Internal environment</h3>
+            <p>Risks inside the organization, including ethics, privacy, confidentiality, bias, and fairness.</p>
+            <span class="note">More directly shaped by implementation choices</span>
+          </div>
+
+          <div class="part-card">
+            <div class="tag">PART 3</div>
+            <h3>Data governance</h3>
+            <p>The cornerstone that supports both external and internal risk management through stronger data practice.</p>
+            <span class="note">The foundation beneath both environments</span>
+          </div>
+
+          <div class="part-card">
+            <div class="tag">PART 4</div>
+            <h3>Continuous risk management</h3>
+            <p>An ongoing cycle of identify, mitigate, monitor, and audit instead of a once-off compliance exercise.</p>
+            <span class="note">Risk management must stay active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="external">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">EXTERNAL ENVIRONMENT</div>
+          <h2>Risks outside the organization that HR still needs to manage</h2>
+          <p>
+            The article says external risks are often beyond direct organizational control, but their impact becomes much worse when governance, accountability, and transparency are weak. It specifically highlights reputational issues, legislative challenges, and transparency and explainability concerns. :contentReference[oaicite:9]{index=9}
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="risk-card">
+            <div class="tag amber">EXTERNAL RISK 1</div>
+            <h3>Reputational risk</h3>
+            <p>AI use in hiring, promotion, performance, or employee monitoring can damage trust quickly if people feel decisions are hidden, unfair, or insufficiently human.</p>
+            <ul class="mini-list">
+              <li>How will people perceive this action?</li>
+              <li>How will it affect trust in HR?</li>
+              <li>How does sustainability affect employer reputation?</li>
+            </ul>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag amber">EXTERNAL RISK 2</div>
+            <h3>Legislative risk</h3>
+            <p>As AI regulation expands, especially in people-related processes, HR must keep checking whether AI use complies with evolving legal requirements.</p>
+            <ul class="mini-list">
+              <li>Does this use case fall into a high-risk employment area?</li>
+              <li>Are we meeting fairness and transparency requirements?</li>
+              <li>Do we have oversight in place for employment-related AI use?</li>
+            </ul>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag amber">EXTERNAL RISK 3</div>
+            <h3>Transparency and explainability</h3>
+            <p>If HR cannot explain how AI influences decisions, the organization may face resistance, confusion, and loss of credibility.</p>
+            <ul class="mini-list">
+              <li>Can we explain the logic of this tool clearly?</li>
+              <li>Can employees or candidates understand how AI affects them?</li>
+              <li>Is there a clear accountability point for explaining outcomes?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">?</div>
+            <h3>Questions to ask</h3>
+            <p>The article suggests asking what people will think, how the action affects sustainability goals, and how it may affect communities and customer perception. :contentReference[oaicite:10]{index=10}</p>
+          </div>
+          <div class="card">
+            <div class="icon">!</div>
+            <h3>Why this matters for HR</h3>
+            <p>HR cannot treat external risk as “someone else’s problem” because many high-risk AI use cases sit directly inside recruitment, performance, and reward decisions. :contentReference[oaicite:11]{index=11}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="internal">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">INTERNAL ENVIRONMENT</div>
+          <h2>Risks inside the organization that HR can influence more directly</h2>
+          <p>
+            The article says internal risks often emerge when skills, governance, and behavioral norms lag behind AI adoption. It highlights ethical considerations, privacy and confidentiality, and bias and fairness as the key internal risk areas. :contentReference[oaicite:12]{index=12}
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="risk-card">
+            <div class="tag">INTERNAL RISK 1</div>
+            <h3>Ethical considerations</h3>
+            <p>Organizations need more than legal compliance. They need clear principles about job loss, reskilling, workforce change, and how AI aligns with values and culture.</p>
+            <ul class="mini-list">
+              <li>Is this the right decision for the organization?</li>
+              <li>Will this contradict our values?</li>
+              <li>What effect will this have on culture?</li>
+            </ul>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">INTERNAL RISK 2</div>
+            <h3>Privacy and confidentiality</h3>
+            <p>AI use increases the risk of exposing sensitive employee or organizational information if access, handling, and disclosure controls are weak.</p>
+            <ul class="mini-list">
+              <li>What data is being entered into the tool?</li>
+              <li>Who can access outputs and source data?</li>
+              <li>Are confidentiality expectations explicit and enforced?</li>
+            </ul>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">INTERNAL RISK 3</div>
+            <h3>Bias and fairness</h3>
+            <p>AI systems can reinforce harmful stereotypes or exclude groups unfairly unless model behavior and outcomes are monitored carefully over time.</p>
+            <ul class="mini-list">
+              <li>Do we have controls to monitor known bias?</li>
+              <li>Do we oversee how the model continues to learn?</li>
+              <li>How often do we validate performance against intended purpose?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top:18px;">
+          <div class="compare good">
+            <h3>What HR can influence directly</h3>
+            <ul class="mini-list">
+              <li>Training and AI fluency</li>
+              <li>Guidelines and policy</li>
+              <li>Behavioral expectations</li>
+              <li>Oversight and review routines</li>
+              <li>How AI is embedded into practice</li>
+            </ul>
+          </div>
+          <div class="compare warn">
+            <h3>What happens if HR ignores this</h3>
+            <ul class="mini-list">
+              <li>Well-intentioned AI use can still create unfair outcomes</li>
+              <li>Trust in HR can drop even when tools are technically “working”</li>
+              <li>Behavioral norms can drift faster than formal governance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="governance">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">DATA GOVERNANCE</div>
+          <h2>Data governance is the cornerstone beneath both external and internal risk</h2>
+          <p>
+            Both the article and the uploaded framework position data governance as the supporting foundation for the rest of the model. The article says data governance should cover quality and integrity, collection practices, privacy and security, and lifecycle management. :contentReference[oaicite:13]{index=13} :contentReference[oaicite:14]{index=14}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="gov-card">
+            <div class="tag">GOVERNANCE 1</div>
+            <h3>Data quality and integrity</h3>
+            <p>Ensure data is complete, valid, consistent, and accurate enough to support AI use responsibly.</p>
+          </div>
+
+          <div class="gov-card">
+            <div class="tag">GOVERNANCE 2</div>
+            <h3>Data collection practices</h3>
+            <p>Know where data comes from, how it is labeled, and how bias may enter during collection or preparation.</p>
+          </div>
+
+          <div class="gov-card">
+            <div class="tag">GOVERNANCE 3</div>
+            <h3>Privacy and security</h3>
+            <p>Use anonymization, encryption, access control, and privacy-led practice wherever appropriate.</p>
+          </div>
+
+          <div class="gov-card">
+            <div class="tag">GOVERNANCE 4</div>
+            <h3>Lifecycle management</h3>
+            <p>Manage retention, storage, disposal, traceability, and versioning so models and data can be audited.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cycle">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">CONTINUOUS RISK MANAGEMENT</div>
+          <h2>Risk management should work as a continuous cycle</h2>
+          <p>
+            The article says managing AI-related risk is not a once-off event. It should run as a continuous cycle of identify, mitigate, monitor, and audit. :contentReference[oaicite:15]{index=15}
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>Identify</strong>
+            <span>Recognize existing and emerging risk across the framework.</span>
+          </div>
+          <div class="stat">
+            <strong>Mitigate</strong>
+            <span>Develop and apply strategies to reduce identified risk.</span>
+          </div>
+          <div class="stat">
+            <strong>Monitor</strong>
+            <span>Review risk and check whether mitigation is actually effective.</span>
+          </div>
+          <div class="stat">
+            <strong>Audit</strong>
+            <span>Assess the framework periodically and adjust where needed.</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">POL</div>
+            <h3>What this means in practice</h3>
+            <p>Risk frameworks fail when they stay on paper. The cycle works only when HR builds it into policy, review routines, and operating practice.</p>
+          </div>
+          <div class="card">
+            <div class="icon">HR</div>
+            <h3>What this means for HR credibility</h3>
+            <p>The article’s closing message is that HR’s credibility in an AI-driven future depends not on how fast it adopts AI, but on how responsibly and confidently it enables adoption. :contentReference[oaicite:16]{index=16}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section framework-page" id="framework-page">
+    <div class="container">
+      <div class="framework-hero">
+        <div class="kicker" style="background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.14);">SECOND BUILT-IN PAGE</div>
+        <h2>AI Risk Assessment Framework</h2>
+        <p>
+          This second built-in page is a cleaner, publication-ready framework view based on the uploaded one-page risk framework.
+          It is designed to work as a quick assessment page inside the same HTML file. :contentReference[oaicite:17]{index=17}
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">FRAMEWORK MAP</div>
+          <h2>The assessment framework in one view</h2>
+          <p>
+            The uploaded one-pager defines four connected parts and three levels of management. This section turns that into a cleaner assessment-style layout. :contentReference[oaicite:18]{index=18}
+          </p>
+        </div>
+
+        <div class="framework-map">
+          <div class="framework-card">
+            <div class="tag">1</div>
+            <h3>External environment</h3>
+            <ul class="mini-list">
+              <li>Reputational risk</li>
+              <li>Legislative risk</li>
+              <li>Transparency and explainability</li>
+            </ul>
+            <span class="note">Often harder to control directly</span>
+          </div>
+
+          <div class="framework-card">
+            <div class="tag">2</div>
+            <h3>Internal environment</h3>
+            <ul class="mini-list">
+              <li>Ethical considerations</li>
+              <li>Privacy and confidentiality</li>
+              <li>Bias and fairness</li>
+            </ul>
+            <span class="note">More directly shaped by implementation</span>
+          </div>
+
+          <div class="framework-center">
+            <h3>3. Data governance: the cornerstone</h3>
+            <div class="center-grid">
+              <div class="center-box">
+                <strong>Legal alignment</strong>
+                <span>Keep data handling aligned to changing legal requirements.</span>
+              </div>
+              <div class="center-box">
+                <strong>Ethical data use</strong>
+                <span>Reflect deliberate choices about what data should and should not be used.</span>
+              </div>
+              <div class="center-box">
+                <strong>Trust</strong>
+                <span>Be transparent enough that stakeholders can trust the process.</span>
+              </div>
+              <div class="center-box">
+                <strong>Control</strong>
+                <span>Support both internal and external risk management through stronger governance.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="framework-card full">
+            <div class="tag">4</div>
+            <h3>Continuous AI risk management</h3>
+            <p>Risk management should stay live through a repeating cycle of identify, mitigate, monitor, and audit. :contentReference[oaicite:19]{index=19}</p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:26px;">
+          <div class="kicker">LEVELS OF MANAGEMENT</div>
+          <h2>Three levels HR should address</h2>
+          <p>
+            The one-pager says organizations and HR need to manage AI-related risk at three levels: policy and philosophy, practice/process/systems, and individual behavior. :contentReference[oaicite:20]{index=20}
+          </p>
+        </div>
+
+        <div class="level-grid">
+          <div class="level-card">
+            <div class="tag">LEVEL 1</div>
+            <h3>Policy and philosophy</h3>
+            <p>Set a formal AI policy that explains the organization’s overall governance approach and guides decision-making across all AI adoption.</p>
+          </div>
+
+          <div class="level-card">
+            <div class="tag">LEVEL 2</div>
+            <h3>Practice, process, and systems</h3>
+            <p>Control how AI is embedded in workflows, tools, third-party vendor systems, and operating practice so they stay aligned to internal policy.</p>
+          </div>
+
+          <div class="level-card">
+            <div class="tag">LEVEL 3</div>
+            <h3>Individual behavior</h3>
+            <p>Train employees, give clear guidelines, and make sure people understand their ethical and legal obligations when using AI tools.</p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:26px;">
+          <div class="kicker">ASSESSMENT CYCLE</div>
+          <h2>The 4-step risk cycle</h2>
+          <p>
+            This is the operational rhythm the framework recommends for continuous assessment. :contentReference[oaicite:21]{index=21}
+          </p>
+        </div>
+
+        <div class="cycle-grid">
+          <div class="cycle">
+            <strong>Identify</strong>
+            <span>Recognize existing and emerging risks within the framework.</span>
+          </div>
+          <div class="cycle">
+            <strong>Mitigate</strong>
+            <span>Develop and implement strategies to reduce identified risks.</span>
+          </div>
+          <div class="cycle">
+            <strong>Monitor</strong>
+            <span>Regularly review risks and the effectiveness of mitigation efforts.</span>
+          </div>
+          <div class="cycle">
+            <strong>Audit</strong>
+            <span>Conduct periodic audits to assess framework performance and improve it.</span>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:22px;">
+          <div class="card">
+            <div class="icon">CHK</div>
+            <h3>Quick assessment prompts</h3>
+            <ul class="mini-list">
+              <li>Do we know where AI is used across HR?</li>
+              <li>Do we have a formal policy and defined ownership?</li>
+              <li>Are privacy, fairness, and explainability addressed explicitly?</li>
+              <li>Are employees trained on ethical and legal AI use?</li>
+              <li>Do we review and audit AI risks periodically?</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="icon">OUT</div>
+            <h3>What good looks like</h3>
+            <ul class="mini-list">
+              <li>AI risk is managed as part of strategy, not only compliance</li>
+              <li>Data governance supports both internal and external controls</li>
+              <li>Policies, processes, and behavior align</li>
+              <li>Risk review becomes continuous rather than reactive</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use risk management to move AI forward with more confidence</h2>
+        <p>
+          The strongest approach is practical: know the risk areas, strengthen data governance,
+          assign ownership, keep review continuous, and make sure HR stays both responsible and forward-looking.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#framework-page">Go to framework page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article + framework page s</div>
+      <div>Path: Articles/ai-in-hr/ai-risk-framework-for-hr.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
