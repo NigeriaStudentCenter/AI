@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT Prompts for HR | 21 Practical Prompts to Accelerate Productivity</title>
+  <meta name="description" content="A practical guide to 21 ChatGPT prompts for HR across attraction, recruitment, onboarding, retention, development, and offboarding, with prompt writing tips and safe-use guidance." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --amber:#f8edd0;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.45rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:760px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:2px;
+      font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:920px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card,
+    .tip-card,
+    .prompt-card,
+    .guardrail-card,
+    .stage-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .tip-card::before,
+    .prompt-card::before,
+    .guardrail-card::before,
+    .stage-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,
+    .tip-card h3,
+    .prompt-card h3,
+    .guardrail-card h3,
+    .stage-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .tip-card p,
+    .prompt-card p,
+    .guardrail-card p,
+    .stage-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .amber{
+      background:#fff3d5;
+      color:#7a5200;
+      border:1px solid #edd28c;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .prompt-box{
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f7fbf8;
+      font-size:.9rem;
+      color:#28443a;
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .stage-map{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:14px;
+    }
+
+    .stage-pill{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .stage-pill strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .stage-pill span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .cards-5,
+      .compare-grid,
+      .stage-map{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#start">Before You Start</a>
+        <a href="#prompts">21 Prompts</a>
+        <a href="#guardrails">Guardrails</a>
+        <a href="#takeaways">Takeaways</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • PROMPT WRITING, PRODUCTIVITY AND PRACTICAL USE</div>
+            <h1>ChatGPT Prompts for HR</h1>
+            <p>
+              A practical guide to using ChatGPT across the employee life cycle with stronger prompts,
+              clearer context, and better output quality. This page turns the article’s 21 examples
+              into a cleaner, GitHub-ready layout for HR professionals who want faster drafting,
+              better structure, and more useful first drafts across daily HR work.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#prompts">See all 21 prompts</a>
+              <a class="btn btn-secondary" href="#guardrails">Review safe-use guidance</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Objective</strong>
+                <span>Tell the tool clearly what you want it to produce.</span>
+              </div>
+              <div class="metric">
+                <strong>Context</strong>
+                <span>Give the role, company, audience, and situation so the response is relevant.</span>
+              </div>
+              <div class="metric">
+                <strong>Format</strong>
+                <span>Explain the output structure you want, such as bullets, steps, or email format.</span>
+              </div>
+              <div class="metric">
+                <strong>Refinement</strong>
+                <span>Use follow-up instructions to improve the answer instead of settling for the first draft.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">21 prompt categories</div>
+                <div class="dashboard-tag">HR-wide use</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Attraction</strong>
+                  <span>Job descriptions, career page content, and employer branding ideas.</span>
+                </div>
+                <div class="box">
+                  <strong>Recruitment</strong>
+                  <span>Interview questions, offer emails, and inclusive hiring support.</span>
+                </div>
+                <div class="box">
+                  <strong>Onboarding</strong>
+                  <span>Welcome emails, FAQs, onboarding process ideas, and surveys.</span>
+                </div>
+                <div class="box">
+                  <strong>Retention, development, offboarding</strong>
+                  <span>Engagement surveys, policy drafts, coaching prompts, and exit materials.</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>How to prompt better</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>State the task clearly</strong>
+                      <span>Say exactly what the chatbot should create or analyze.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Add useful context</strong>
+                      <span>Include the role, industry, company type, constraints, or audience.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Specify the format</strong>
+                      <span>Ask for bullets, a checklist, an email, a survey, or any output shape you need.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Refine and review</strong>
+                      <span>Use follow-up prompts, then check every output for accuracy and appropriateness.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>Why prompt quality matters in HR work</h2>
+          <p>
+            The article’s central message is simple: ChatGPT can help HR professionals streamline work and improve results,
+            but the quality of the output depends heavily on the quality of the prompt. It uses objective, context, and format as the three key ingredients of a better prompt and then shows how this applies across HR tasks. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>21 prompts</strong>
+            <span>Organized across 6 employee-life-cycle stages. :contentReference[oaicite:2]{index=2}</span>
+          </div>
+          <div class="stat">
+            <strong>37% faster</strong>
+            <span>The article cites MIT research saying effective prompting can speed up writing work. :contentReference[oaicite:3]{index=3}</span>
+          </div>
+          <div class="stat">
+            <strong>20% higher quality</strong>
+            <span>The same cited study is used to show stronger prompts can improve output quality. :contentReference[oaicite:4]{index=4}</span>
+          </div>
+          <div class="stat">
+            <strong>Human review still matters</strong>
+            <span>The article warns that the tool can still produce incorrect or weak responses. :contentReference[oaicite:5]{index=5}</span>
+          </div>
+        </div>
+
+        <div class="stage-map" style="margin-top:18px;">
+          <div class="stage-pill">
+            <strong>Attraction</strong>
+            <span>3 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Recruitment</strong>
+            <span>4 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Onboarding</strong>
+            <span>4 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Retention & engagement</strong>
+            <span>5 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Development</strong>
+            <span>2 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Offboarding</strong>
+            <span>3 prompts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="start">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">BEFORE YOU START</div>
+          <h2>Three ingredients make a prompt far more useful</h2>
+          <p>
+            The article says better-quality output comes from three input elements:
+            objective, context, and format. It uses a simple shopping-list example to show how adding context and structure improves the answer. :contentReference[oaicite:6]{index=6}
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="tip-card">
+            <div class="tag">1</div>
+            <h3>Objective</h3>
+            <p>Tell the chatbot exactly what task to complete. Example: create, draft, list, summarize, compare, or analyze.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">2</div>
+            <h3>Context</h3>
+            <p>Add the role, company type, industry, audience, location, constraints, or specific focus so the result is more relevant.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">3</div>
+            <h3>Format</h3>
+            <p>Ask for the output style you want, such as bullet points, steps, checklist, email, survey, or comparison table.</p>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="icon">TIP</div>
+            <h3>Good prompt habits</h3>
+            <ul class="mini-list">
+              <li>Be as specific as possible</li>
+              <li>Build on the first answer with follow-up instructions</li>
+              <li>Use prompt chaining for better results</li>
+              <li>Break large requests into smaller parts when needed</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="icon">CHECK</div>
+            <h3>What makes a weak prompt</h3>
+            <ul class="mini-list">
+              <li>Too little context</li>
+              <li>No indication of audience or goal</li>
+              <li>No format instructions</li>
+              <li>Generic wording that invites generic output</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">BETTER PROMPTING</div>
+          <h2>How to improve a basic HR prompt</h2>
+          <p>
+            The article uses an interview-question example to show how a basic prompt can be improved by specifying interview type, interviewer, job description, skills to test, and company or industry context. :contentReference[oaicite:7]{index=7}
+          </p>
+        </div>
+
+        <div class="cards-2">
+          <div class="stage-card">
+            <div class="tag amber">BASIC VERSION</div>
+            <h3>Generic example</h3>
+            <div class="prompt-box">Draft 10 interview questions for a candidate for the role of [role title] at [company name].</div>
+            <span class="note">Usable, but still vague</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag amber">IMPROVED VERSION</div>
+            <h3>Stronger example</h3>
+            <div class="prompt-box">Draft 10 screening interview questions for a recruiter hiring a senior customer success manager in a B2B SaaS company. Focus on stakeholder management, renewals, and leading remote teams. Present the output in bullet points.</div>
+            <span class="note">More context = more useful output</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">21 PRACTICAL HR PROMPTS</div>
+          <h2>Prompt examples across the employee life cycle</h2>
+          <p>
+            The article groups its examples into attraction, recruitment, onboarding, retention and engagement, development, and offboarding. This version keeps that structure while turning it into a cleaner publishing layout. :contentReference[oaicite:8]{index=8}
+          </p>
+        </div>
+
+        <div class="section-head" style="margin-top:0;">
+          <div class="kicker">STAGE 1</div>
+          <h2 style="font-size:1.8rem;">Attraction</h2>
+          <p>Use prompts to build stronger employer-facing content and attract more relevant candidates.</p>
+        </div>
+
+        <div class="cards-3">
+          <div class="prompt-card">
+            <div class="tag amber">1</div>
+            <h3>Write a job description</h3>
+            <p>Create a template job description with role title, responsibilities, and role-specific expectations.</p>
+            <div class="prompt-box">Create a job description for a [insert name of position]. Include [A, B & C] responsibilities.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">2</div>
+            <h3>Develop a career page</h3>
+            <p>Generate the key elements a strong company career page should include.</p>
+            <div class="prompt-box">List 10 important elements of a company career page.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">3</div>
+            <h3>Employer branding messaging</h3>
+            <p>Brainstorm core best practices for employer-brand posts on social media.</p>
+            <div class="prompt-box">List 7 best practices for employer branding posts on the company’s social media.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 2</div>
+          <h2 style="font-size:1.8rem;">Recruitment</h2>
+          <p>Use prompts to support interview preparation, offer communication, and inclusive hiring planning.</p>
+        </div>
+
+        <div class="cards-4">
+          <div class="prompt-card">
+            <div class="tag amber">4</div>
+            <h3>Screening interview questions</h3>
+            <p>Generate a starting list of screening questions for a specific role.</p>
+            <div class="prompt-box">Provide 10 screening interview questions for a [add job title].</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">5</div>
+            <h3>Specific interview questions</h3>
+            <p>Ask for questions tied to a particular skill, plus high-skill and low-skill answer examples.</p>
+            <div class="prompt-box">List 5 interview questions that test someone’s managerial skills. For each question, indicate the answer a highly skilled candidate would give and the answer a low-skilled candidate would give.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">6</div>
+            <h3>Job offer emails</h3>
+            <p>Create a draft offer email including job title, start date, and salary details.</p>
+            <div class="prompt-box">Write a job offer email for a [add job title] with a start date of [insert start date], including a starting salary of [insert starting salary].</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">7</div>
+            <h3>Inclusive hiring practices</h3>
+            <p>Use a two-step prompt to brainstorm inclusive hiring ideas and then explore likely implementation challenges.</p>
+            <div class="prompt-box">List 8 inclusive hiring practices. Based on these inclusive hiring practices, what challenges should HR anticipate?</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 3</div>
+          <h2 style="font-size:1.8rem;">Onboarding</h2>
+          <p>Use prompts to support clearer communication, better welcome experiences, and more structured onboarding.</p>
+        </div>
+
+        <div class="cards-4">
+          <div class="prompt-card">
+            <div class="tag amber">8</div>
+            <h3>Welcome emails</h3>
+            <p>Create new-hire welcome messages aligned to company tone of voice.</p>
+            <div class="prompt-box">Create a new hire welcome email for a [insert type of position] using [insert your company’s name] tone of voice.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">9</div>
+            <h3>Frequently asked questions</h3>
+            <p>Generate likely new-hire questions to strengthen onboarding materials.</p>
+            <div class="prompt-box">List 5 frequently asked questions by new hires.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">10</div>
+            <h3>Onboarding process</h3>
+            <p>Get best-practice ideas for designing or improving onboarding workflows.</p>
+            <div class="prompt-box">List 5 best practices for onboarding a new employee.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">11</div>
+            <h3>Onboarding survey</h3>
+            <p>Create a first-30-days evaluation survey for new employees.</p>
+            <div class="prompt-box">Create an onboarding evaluation survey with 10 questions that the employee will get after their first 30 days.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 4</div>
+          <h2 style="font-size:1.8rem;">Retention and engagement</h2>
+          <p>Use prompts to support engagement, rewards, recognition, policy drafting, and policy planning.</p>
+        </div>
+
+        <div class="cards-5">
+          <div class="prompt-card">
+            <div class="tag amber">12</div>
+            <h3>Employee engagement</h3>
+            <p>Generate focused survey questions around topics like culture or connection.</p>
+            <div class="prompt-box">Create 5 employee engagement survey questions. Focus on company culture and exclude questions about management.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">13</div>
+            <h3>Compensation and benefits</h3>
+            <p>Ask for steps to help structure an early compensation strategy.</p>
+            <div class="prompt-box">List 7 steps HR should follow when creating a compensation strategy.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">14</div>
+            <h3>Employee recognition</h3>
+            <p>Brainstorm non-monetary recognition ideas to strengthen appreciation efforts.</p>
+            <div class="prompt-box">List 10 non-monetary ideas for employee recognition.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">15</div>
+            <h3>Work-from-home policy</h3>
+            <p>Create a structured first draft for handbook policy writing.</p>
+            <div class="prompt-box">Draft a work-from-home policy for an employee handbook.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">16</div>
+            <h3>Core HR policies</h3>
+            <p>Generate a policy list tailored to company size and industry context.</p>
+            <div class="prompt-box">List 10 key HR policies an organization with [insert number] of employees in [insert industry] should have.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 5</div>
+          <h2 style="font-size:1.8rem;">Development</h2>
+          <p>Use prompts to support learning discovery and coaching conversations.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">17</div>
+            <h3>Training programs</h3>
+            <p>Ask for role-relevant learning suggestions and summaries of what each program covers.</p>
+            <div class="prompt-box">List 5 online training programs for HR analytics and summarize each of them.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">18</div>
+            <h3>Coaching questions</h3>
+            <p>Generate targeted employee coaching questions for a particular role.</p>
+            <div class="prompt-box">List 10 employee coaching questions for a [insert job title].</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 6</div>
+          <h2 style="font-size:1.8rem;">Offboarding</h2>
+          <p>Use prompts to support exit administration, interviews, and departure communication.</p>
+        </div>
+
+        <div class="cards-3">
+          <div class="prompt-card">
+            <div class="tag amber">19</div>
+            <h3>Employee exit checklist</h3>
+            <p>Create a practical first draft of exit tasks and sign-off steps for HR.</p>
+            <div class="prompt-box">Create an employee exit checklist for HR.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">20</div>
+            <h3>Employee exit questions</h3>
+            <p>Generate a set of exit interview questions to structure discussions and pattern tracking.</p>
+            <div class="prompt-box">List 7 employee exit interview questions.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">21</div>
+            <h3>Email announcement</h3>
+            <p>Create a departure announcement template that can be refined for tone and personalization.</p>
+            <div class="prompt-box">Create a company email announcing an employee’s departure.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="guardrails">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">SAFE AND SMART USE</div>
+          <h2>Guardrails HR should keep in place</h2>
+          <p>
+            The article repeatedly warns that the model can still produce incorrect or nonsensical output,
+            does not truly understand what it generates, and should never be fed personal or confidential information casually. :contentReference[oaicite:9]{index=9}
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 1</div>
+            <h3>Always review the output</h3>
+            <p>Check accuracy, completeness, legal wording, and brand fit before using any draft in HR practice.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 2</div>
+            <h3>Do not enter confidential information</h3>
+            <p>Keep employee, candidate, or company-sensitive data out of prompts unless your data controls are explicit and appropriate.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 3</div>
+            <h3>Use prompt chaining</h3>
+            <p>Start broad, then refine through follow-up prompts instead of trying to force a perfect first answer.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 4</div>
+            <h3>Break complex tasks down</h3>
+            <p>Large or multi-part requests often improve when separated into smaller, more manageable prompts.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 5</div>
+            <h3>Experiment deliberately</h3>
+            <p>Prompt engineering improves with practice, so test phrasing, tone, and structure to learn what works best.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 6</div>
+            <h3>Use it as a productivity layer</h3>
+            <p>ChatGPT is strongest as a support tool for drafting, brainstorming, and structuring work — not as a substitute for HR judgment.</p>
+          </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top:18px;">
+          <div class="compare warn">
+            <h3>What to avoid</h3>
+            <ul class="mini-list">
+              <li>Generic prompts with little context</li>
+              <li>Unreviewed AI text going straight into HR operations</li>
+              <li>Entering personal or confidential data into prompts</li>
+              <li>Assuming the first answer is always accurate</li>
+            </ul>
+          </div>
+
+          <div class="compare good">
+            <h3>What to aim for</h3>
+            <ul class="mini-list">
+              <li>Clear objective, context, and format</li>
+              <li>Iterative prompting and refinement</li>
+              <li>Human review before practical use</li>
+              <li>Thoughtful use across the employee life cycle</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="takeaways">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">KEY TAKEAWAYS</div>
+          <h2>Prompt quality is a practical HR skill</h2>
+          <p>
+            The article’s closing idea is that using ChatGPT may look simple, but it still requires skill.
+            The quality of the answer depends heavily on the quality of the instruction, which means prompt writing
+            is now a practical productivity skill for HR professionals. :contentReference[oaicite:10]{index=10}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 1</div>
+            <h3>Start with the task</h3>
+            <p>Be clear about the output you need before you start prompting.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 2</div>
+            <h3>Add rich context</h3>
+            <p>Industry, role, company type, and audience usually improve the quality of the response.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 3</div>
+            <h3>Structure the output</h3>
+            <p>Ask for bullets, checklists, surveys, or emails when format matters.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 4</div>
+            <h3>Review before use</h3>
+            <p>Use ChatGPT to accelerate work, but keep HR accuracy, ethics, and confidentiality front and center.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use ChatGPT to speed up HR work without lowering quality</h2>
+        <p>
+          The best approach is practical: write stronger prompts, give the tool enough context,
+          refine the output through follow-ups, and keep human review in place before anything becomes part of real HR work.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#prompts">Review all 21 prompts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article page </div>
+      <div>Path: Articles/ai-in-hr/chatgpt-prompts-for-hr.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
