@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Adoption Personas in HR | Interactive Quiz & Practical Guide</title>
+  <meta name="description" content="Discover your AI adoption persona in HR with this interactive quiz and see why one practical AI training course is the smartest next step for HR professionals." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --gold:#f1d27a;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.55rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+      cursor:pointer;
+      border:none;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:760px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .stack{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .stack h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .stack-grid{
+      display:grid;
+      gap:10px;
+    }
+
+    .stack-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .stack-item strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:4px;
+      font-size:.95rem;
+    }
+
+    .stack-item span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:900px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+
+    .card,
+    .persona-card,
+    .success-card,
+    .benefit-card,
+    .question-card,
+    .result-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .persona-card::before,
+    .success-card::before,
+    .benefit-card::before,
+    .question-card::before,
+    .result-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .preferred{
+      border:1px solid #ead8a0;
+      background:linear-gradient(180deg,#fffdf5,#fbf3dc);
+    }
+
+    .card h3,
+    .persona-card h3,
+    .success-card h3,
+    .benefit-card h3,
+    .question-card h3,
+    .result-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .persona-card p,
+    .success-card p,
+    .benefit-card p,
+    .question-card p,
+    .result-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .gold-tag{
+      background:#f8efd2;
+      color:#6a4d00;
+      border:1px solid #ead8a0;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .quiz-form{
+      display:grid;
+      gap:18px;
+    }
+
+    .question-card h3{
+      font-size:1rem;
+      margin-bottom:14px;
+    }
+
+    .options{
+      display:grid;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .option{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .option:hover{
+      border-color:#b8d3c3;
+      background:#f9fcfa;
+    }
+
+    .option input{
+      margin-top:3px;
+      accent-color:var(--green-900);
+    }
+
+    .option-label{
+      font-weight:700;
+      color:var(--green-950);
+      min-width:20px;
+    }
+
+    .option-text{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .quiz-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+
+    .quiz-btn{
+      padding:14px 18px;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .quiz-btn.primary{
+      background:var(--green-900);
+      color:#fff;
+    }
+
+    .quiz-btn.secondary{
+      background:#eef5f0;
+      color:var(--green-900);
+      border:1px solid var(--line);
+    }
+
+    .quiz-message{
+      color:#8a3b23;
+      font-weight:700;
+      display:none;
+      margin-top:6px;
+    }
+
+    .result-wrap{
+      display:none;
+      margin-top:22px;
+    }
+
+    .result-top{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .score-grid{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .score-row{
+      display:grid;
+      grid-template-columns:170px 1fr 56px;
+      gap:10px;
+      align-items:center;
+    }
+
+    .score-name{
+      font-weight:700;
+      color:var(--green-950);
+      font-size:.92rem;
+    }
+
+    .score-bar{
+      height:12px;
+      background:#edf4ef;
+      border-radius:999px;
+      overflow:hidden;
+      border:1px solid #dce7df;
+    }
+
+    .score-fill{
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,var(--green-700),var(--green-900));
+      border-radius:999px;
+    }
+
+    .score-value{
+      text-align:right;
+      font-weight:700;
+      color:var(--green-900);
+      font-size:.92rem;
+    }
+
+    .result-cta{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .cta-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:999px;
+      font-weight:700;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--green-900);
+    }
+
+    .cta-link.primary{
+      background:var(--green-900);
+      color:#fff;
+      border-color:var(--green-900);
+    }
+
+    .decision-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .decision{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .decision.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .decision.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .decision h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .result-top,
+      .decision-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:760px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+      .score-row{grid-template-columns:1fr}
+      .score-value{text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#personas">4 Personas</a>
+        <a href="#quiz">Take the Quiz</a>
+        <a href="#preferred">Why Our Course</a>
+        <a href="#decision">Next Step</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • PERSONAS, READINESS AND SMARTER ADOPTION</div>
+            <h1>Which AI Adoption Persona Are You in HR?</h1>
+            <p>
+              Not every HR professional adopts AI in the same way. Some avoid it.
+              Some use it only when forced. Some actively explore it. Others champion it.
+              This page helps users understand their AI adoption persona, see what is holding them back,
+              and discover why one practical AI training course is the smartest next step.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#quiz">Take the interactive quiz</a>
+              <a class="btn btn-secondary" href="#preferred">See why our course is preferred</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Mindset matters</strong>
+                <span>AI adoption is shaped by sentiment, exposure, and willingness to learn.</span>
+              </div>
+              <div class="metric">
+                <strong>Role exposure matters</strong>
+                <span>People adopt AI faster when they see it applied in their actual work.</span>
+              </div>
+              <div class="metric">
+                <strong>Strategy matters</strong>
+                <span>AI grows faster when HR and the business treat it as a real priority.</span>
+              </div>
+              <div class="metric">
+                <strong>Learning matters</strong>
+                <span>The right training turns hesitation into confidence and action.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">AI adoption in HR snapshot</div>
+                <div class="dashboard-tag">4 personas</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Skeptical Avoider</strong>
+                  <span>Doubts AI value, avoids discussion, resists learning, and focuses on risk first.</span>
+                </div>
+                <div class="box">
+                  <strong>Reluctant User</strong>
+                  <span>Uses AI only when required, stays cautious, and sticks to basic use.</span>
+                </div>
+                <div class="box">
+                  <strong>Active Explorer</strong>
+                  <span>Experiments, learns, shares ideas, and wants more room to apply AI.</span>
+                </div>
+                <div class="box">
+                  <strong>Adoption Champion</strong>
+                  <span>Advocates for AI, guides others, and helps shape broader adoption.</span>
+                </div>
+              </div>
+
+              <div class="stack">
+                <h3>What successful adoption needs</h3>
+                <div class="stack-grid">
+                  <div class="stack-item">
+                    <strong>AI must be strategic</strong>
+                    <span>Adoption works better when AI is a business and HR priority.</span>
+                  </div>
+                  <div class="stack-item">
+                    <strong>People need exposure</strong>
+                    <span>Adoption grows when AI is part of real work, not only abstract discussion.</span>
+                  </div>
+                  <div class="stack-item">
+                    <strong>Sentiment matters</strong>
+                    <span>Mindset and emotion strongly influence whether people move forward.</span>
+                  </div>
+                  <div class="stack-item">
+                    <strong>Training accelerates change</strong>
+                    <span>The right learning path helps every persona move to the next level.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY THIS MATTERS</div>
+          <h2>AI adoption in HR is still uneven — and personas explain why</h2>
+          <p>
+            The article says HR adoption has been slow and inconsistent, even though AI is already changing workflows.
+            It identifies common barriers such as limited AI use in practice, too much focus on narrow efficiency use cases,
+            and limited exposure to more strategic, company-wide applications. It also says successful adoption depends on AI being a strategic priority,
+            real exposure to AI in the role, and a positive mindset toward AI’s value. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>40%</strong>
+            <span>The article cites IMF analysis saying AI may disrupt nearly 40% of jobs globally. :contentReference[oaicite:2]{index=2}</span>
+          </div>
+          <div class="stat">
+            <strong>One-third</strong>
+            <span>It says only about one-third of HR professionals feel adequately prepared to leverage these technologies. :contentReference[oaicite:3]{index=3}</span>
+          </div>
+          <div class="stat">
+            <strong>Adoption is behavioral</strong>
+            <span>The article ties adoption closely to exposure, curiosity, and sentiment, not just access to tools. :contentReference[oaicite:4]{index=4}</span>
+          </div>
+          <div class="stat">
+            <strong>Progress needs culture</strong>
+            <span>Its final message is that HR needs a culture of learning, collaboration, and experimentation to move forward. :contentReference[oaicite:5]{index=5}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="success-factors">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">KEY SUCCESS FACTORS</div>
+          <h2>What helps HR adopt AI beyond individual experimentation</h2>
+          <p>
+            The article says three things matter most: AI must be a strategic priority for the business and HR, people need exposure to AI in their role,
+            and they need a more positive mindset toward AI’s value and benefits. :contentReference[oaicite:6]{index=6}
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="success-card">
+            <div class="tag">SUCCESS FACTOR 1</div>
+            <h3>Make AI a strategic priority</h3>
+            <p>When AI is not a priority for the business or HR, momentum stays weak and adoption struggles to gain support.</p>
+            <span class="note">Strategy creates momentum</span>
+          </div>
+
+          <div class="success-card">
+            <div class="tag">SUCCESS FACTOR 2</div>
+            <h3>Increase exposure to AI in the role</h3>
+            <p>People adopt AI faster when they actually see how it improves tasks in their own work, not only in theory.</p>
+            <span class="note">Exposure builds confidence</span>
+          </div>
+
+          <div class="success-card">
+            <div class="tag">SUCCESS FACTOR 3</div>
+            <h3>Improve sentiment toward AI</h3>
+            <p>Adoption becomes easier when people understand AI’s value and start to see it as useful rather than threatening.</p>
+            <span class="note">Mindset shapes behavior</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="personas">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">THE 4 PERSONAS</div>
+          <h2>The four AI adoption personas in HR</h2>
+          <p>
+            The article groups HR professionals into four personas: Skeptical Avoider, Reluctant User, Active Explorer, and Adoption Champion.
+            Each persona reflects a different level of sentiment, learning behavior, confidence, and AI usage. :contentReference[oaicite:7]{index=7}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="persona-card">
+            <div class="tag">PERSONA 1</div>
+            <h3>The Skeptical Avoider</h3>
+            <p>Doubts AI’s value, avoids discussion, focuses strongly on risks, and prefers traditional methods.</p>
+            <ul class="mini-list">
+              <li>Needs basic exposure</li>
+              <li>Needs safe, low-risk starting points</li>
+              <li>Needs reassurance and practical examples</li>
+            </ul>
+            <span class="note">Biggest risk: being left behind</span>
+          </div>
+
+          <div class="persona-card">
+            <div class="tag">PERSONA 2</div>
+            <h3>The Reluctant User</h3>
+            <p>Uses AI only when required, stays cautious, and avoids going beyond basic features.</p>
+            <ul class="mini-list">
+              <li>Needs confidence</li>
+              <li>Needs guided use cases</li>
+              <li>Needs proof of practical value</li>
+            </ul>
+            <span class="note">Biggest need: hands-on confidence</span>
+          </div>
+
+          <div class="persona-card">
+            <div class="tag">PERSONA 3</div>
+            <h3>The Active Explorer</h3>
+            <p>Is curious, experiments actively, shares ideas, and wants more opportunity to apply AI in HR.</p>
+            <ul class="mini-list">
+              <li>Needs structure</li>
+              <li>Needs broader HR use cases</li>
+              <li>Needs support to influence others</li>
+            </ul>
+            <span class="note">Biggest opportunity: become a catalyst</span>
+          </div>
+
+          <div class="persona-card">
+            <div class="tag">PERSONA 4</div>
+            <h3>The Adoption Champion</h3>
+            <p>Advocates for AI, leads conversations, promotes learning, and pushes for broader adoption.</p>
+            <ul class="mini-list">
+              <li>Needs leadership-level capability</li>
+              <li>Needs governance and strategy</li>
+              <li>Needs tools to guide others</li>
+            </ul>
+            <span class="note">Biggest opportunity: drive transformation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">INTERACTIVE QUIZ</div>
+          <h2>Find your AI adoption persona</h2>
+          <p>
+            Answer all 15 questions. The quiz scores your answers against the four personas and gives a tailored recommendation, along with a smarter next step into your training offer.
+          </p>
+        </div>
+
+        <form id="aiPersonaQuiz" class="quiz-form"></form>
+
+        <div class="quiz-actions">
+          <button type="button" class="quiz-btn primary" id="submitQuiz">See my result</button>
+          <button type="button" class="quiz-btn secondary" id="resetQuiz">Reset quiz</button>
+        </div>
+
+        <div id="quizMessage" class="quiz-message">Please answer all 15 questions before viewing your result.</div>
+
+        <div id="resultWrap" class="result-wrap">
+          <div class="result-top">
+            <div class="result-card preferred">
+              <div class="tag gold-tag">YOUR RESULT</div>
+              <h3 id="resultTitle">Your AI Adoption Persona</h3>
+              <p id="resultSummary"></p>
+
+              <div class="score-grid">
+                <div class="score-row">
+                  <div class="score-name">Skeptical Avoider</div>
+                  <div class="score-bar"><div id="bar-skeptic" class="score-fill"></div></div>
+                  <div id="score-skeptic" class="score-value">0</div>
+                </div>
+                <div class="score-row">
+                  <div class="score-name">Reluctant User</div>
+                  <div class="score-bar"><div id="bar-reluctant" class="score-fill"></div></div>
+                  <div id="score-reluctant" class="score-value">0</div>
+                </div>
+                <div class="score-row">
+                  <div class="score-name">Active Explorer</div>
+                  <div class="score-bar"><div id="bar-explorer" class="score-fill"></div></div>
+                  <div id="score-explorer" class="score-value">0</div>
+                </div>
+                <div class="score-row">
+                  <div class="score-name">Adoption Champion</div>
+                  <div class="score-bar"><div id="bar-champion" class="score-fill"></div></div>
+                  <div id="score-champion" class="score-value">0</div>
+                </div>
+              </div>
+
+              <div class="result-cta">
+                <a class="cta-link primary" href="https://bsoedu.org/hr-professionals/" target="_blank" rel="noopener">Join our AI training course</a>
+                <a class="cta-link" href="#preferred">Why this course fits your result</a>
+              </div>
+            </div>
+
+            <div class="result-card">
+              <div class="tag">PERSONA FEEDBACK</div>
+              <h3 id="feedbackTitle">What this means</h3>
+              <p id="feedbackText"></p>
+              <span class="note" id="secondaryPersona">Secondary persona: —</span>
+            </div>
+          </div>
+
+          <div class="cards-2">
+            <div class="result-card">
+              <div class="tag">WHAT TO DO NEXT</div>
+              <h3 id="nextStepTitle">Your next best move</h3>
+              <p id="nextStepText"></p>
+            </div>
+            <div class="result-card preferred">
+              <div class="tag gold-tag">MARKETING CONCLUSION</div>
+              <h3 id="courseFitTitle">Why our course is the smarter next step</h3>
+              <p id="courseFitText"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="preferred">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY OUR COURSE IS PREFERRED</div>
+          <h2>One practical course is smarter than piecing AI learning together</h2>
+          <p>
+            From a marketing perspective, the smartest message is simple:
+            instead of leaving HR professionals to struggle alone, experiment blindly, or buy disconnected learning,
+            one practical course can help all four personas move forward faster with more confidence.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 01</div>
+            <h3>It works for all four personas</h3>
+            <p>Skeptical Avoiders need safe introduction, Reluctant Users need guided confidence, Active Explorers need structure, and Adoption Champions need scale and strategy.</p>
+            <span class="note">One course, four persona needs</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 02</div>
+            <h3>It covers all major HR areas</h3>
+            <p>Not just one narrow AI topic. It can position AI across recruitment, L&amp;D, talent management, performance, analytics, operations, governance, and strategy.</p>
+            <span class="note">Broader than isolated learning</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 03</div>
+            <h3>It is practical, not abstract</h3>
+            <p>Videos, guides, examples, implementation ideas, and shared learning help turn curiosity into application.</p>
+            <span class="note">Built for use, not theory only</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 04</div>
+            <h3>It helps people learn with others</h3>
+            <p>Shared learning is often more effective than isolated experimentation because it creates momentum, accountability, and stronger adoption culture.</p>
+            <span class="note">Learning with others supports change</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 05</div>
+            <h3>It gives HR a clearer pathway</h3>
+            <p>Instead of wondering what to learn next, users move through a structured route from foundations to actual HR application.</p>
+            <span class="note">Better sequencing, less confusion</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 06</div>
+            <h3>It supports both individual and team capability</h3>
+            <p>The same learning can help an individual become more confident and help a team build shared AI language and practice.</p>
+            <span class="note">Useful for both solo and team growth</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 07</div>
+            <h3>It turns uncertainty into action</h3>
+            <p>The article’s personas show hesitation is common. A well-designed training offer helps HR professionals move from caution to competence more quickly. :contentReference[oaicite:8]{index=8}</p>
+            <span class="note">Training closes the confidence gap</span>
+          </div>
+
+          <div class="benefit-card preferred">
+            <div class="tag gold-tag">PREFERRED 08</div>
+            <h3>It is easier to prefer and easier to explain</h3>
+            <p>For buyers, teams, and HR leaders, one strong practical course is often easier to justify than fragmented self-teaching with unclear results.</p>
+            <span class="note">Stronger buyer logic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decision">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">FINAL BUYER DECISION</div>
+          <h2>What should happen after the quiz?</h2>
+          <p>
+            The best marketing move is not just to label someone with a persona.
+            It is to show them their next best step and make the path feel clear, practical, and worth choosing.
+          </p>
+        </div>
+
+        <div class="decision-grid">
+          <div class="decision warn">
+            <h3>Without the right learning route</h3>
+            <ul class="mini-list">
+              <li>Skeptics stay skeptical</li>
+              <li>Reluctant users stay hesitant</li>
+              <li>Explorers stay unstructured</li>
+              <li>Champions stay under-supported</li>
+              <li>Adoption remains inconsistent across HR</li>
+            </ul>
+          </div>
+          <div class="decision good">
+            <h3>With the right practical AI course</h3>
+            <ul class="mini-list">
+              <li>Users understand their persona and where they are now</li>
+              <li>They get a clearer route forward</li>
+              <li>They learn through videos, guides, examples, and shared learning</li>
+              <li>They apply AI more confidently across HR work</li>
+              <li>They become easier to convert into meaningful adoption</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>Best message</strong>
+            <span>Discover your AI adoption persona — then choose the course that helps you move forward.</span>
+          </div>
+          <div class="stat">
+            <strong>Best offer logic</strong>
+            <span>One course can support every persona better than leaving people to work it out alone.</span>
+          </div>
+          <div class="stat">
+            <strong>Best conversion point</strong>
+            <span>The quiz result becomes the reason to act now.</span>
+          </div>
+          <div class="stat">
+            <strong>Best CTA</strong>
+            <span>Join the AI training course that turns insight into capability.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Wherever someone starts, the right AI training course should move them forward</h2>
+        <p>
+          Whether they are skeptical, hesitant, curious, or already leading adoption,
+          the strongest next step is practical training that helps them use AI confidently across HR —
+          not just understand it in theory.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="https://bsoedu.org/hr-professionals/" target="_blank" rel="noopener">Start the AI course for HR professionals</a>
+          <a class="btn btn-secondary" href="#quiz">Take the quiz first</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article + quiz page for GitHub Pages</div>
+      <div>Path: Articles/ai-in-hr/ai-adoption-personas.index.html</div>
+    </div>
+  </footer>
+
+  <script>
+    const QUESTIONS = [
+      {
+        id: "q1",
+        question: "1. How do you feel about AI's role in HR?",
+        options: {
+          A: { text: "AI could improve HR significantly", persona: "explorer" },
+          B: { text: "AI is overhyped and brings more risks than benefits", persona: "skeptic" },
+          C: { text: "I'm unsure, but I see some potential", persona: "reluctant" },
+          D: { text: "AI is crucial to HR's future success", persona: "champion" }
+        }
+      },
+      {
+        id: "q2",
+        question: "2. How often do you use AI tools in your daily HR tasks?",
+        options: {
+          A: { text: "Occasionally, I like experimenting", persona: "explorer" },
+          B: { text: "Only when it's mandatory", persona: "reluctant" },
+          C: { text: "Daily, I rely on AI", persona: "champion" },
+          D: { text: "Never, I avoid AI whenever possible", persona: "skeptic" }
+        }
+      },
+      {
+        id: "q3",
+        question: "3. How comfortable are you discussing AI with colleagues?",
+        options: {
+          A: { text: "I enjoy sharing ideas and learning about AI", persona: "explorer" },
+          B: { text: "I lead conversations about AI", persona: "champion" },
+          C: { text: "I avoid talking about AI", persona: "skeptic" },
+          D: { text: "I feel uncomfortable but will discuss if needed", persona: "reluctant" }
+        }
+      },
+      {
+        id: "q4",
+        question: "4. How would you rate your knowledge of AI tools?",
+        options: {
+          A: { text: "I'm learning and exploring AI tools regularly", persona: "explorer" },
+          B: { text: "I stay updated with the latest AI tools and trends", persona: "champion" },
+          C: { text: "Basic understanding but little interest to learn more", persona: "reluctant" },
+          D: { text: "Very limited, I know almost nothing", persona: "skeptic" }
+        }
+      },
+      {
+        id: "q5",
+        question: "5. How do you approach learning about AI?",
+        options: {
+          A: { text: "I'll learn when required but not proactively", persona: "reluctant" },
+          B: { text: "I don't see the need to learn", persona: "skeptic" },
+          C: { text: "I actively pursue formal and informal learning opportunities to build my skills", persona: "champion" },
+          D: { text: "I seek out learning opportunities", persona: "explorer" }
+        }
+      },
+      {
+        id: "q6",
+        question: "6. How do you feel about integrating AI in HR processes?",
+        options: {
+          A: { text: "It could solve many HR challenges", persona: "explorer" },
+          B: { text: "I'd rather stick to manual methods", persona: "reluctant" },
+          C: { text: "It's unnecessary and risky", persona: "skeptic" },
+          D: { text: "It's essential for transforming HR", persona: "champion" }
+        }
+      },
+      {
+        id: "q7",
+        question: "7. Do you use advanced AI features, such as data analytics or AI-based decision-making?",
+        options: {
+          A: { text: "Sometimes, I explore new features as and when I need to", persona: "explorer" },
+          B: { text: "Rarely, I stick to basic tools", persona: "reluctant" },
+          C: { text: "Frequently, I use advanced AI for analysis and decision-making", persona: "champion" },
+          D: { text: "No, I don't trust advanced AI", persona: "skeptic" }
+        }
+      },
+      {
+        id: "q8",
+        question: "8. How interested are you in exploring new AI tools?",
+        options: {
+          A: { text: "I'm constantly looking for new AI innovations", persona: "champion" },
+          B: { text: "Slightly, but I’m hesitant to try", persona: "reluctant" },
+          C: { text: "I'm excited to explore new tools", persona: "explorer" },
+          D: { text: "Not at all, AI isn't relevant to me", persona: "skeptic" }
+        }
+      },
+      {
+        id: "q9",
+        question: "9. What’s your view on AI's impact on HR jobs?",
+        options: {
+          A: { text: "It will change roles for the better", persona: "explorer" },
+          B: { text: "I'm concerned but willing to adapt", persona: "reluctant" },
+          C: { text: "It will replace HR roles and create risks", persona: "skeptic" },
+          D: { text: "It will enhance HR roles and efficiency and create new opportunities for impact", persona: "champion" }
+        }
+      },
+      {
+        id: "q10",
+        question: "10. Do you advocate for AI usage within HR?",
+        options: {
+          A: { text: "I actively promote the use of AI within HR", persona: "champion" },
+          B: { text: "Only if required", persona: "reluctant" },
+          C: { text: "I encourage others to try AI", persona: "explorer" },
+          D: { text: "No, I don't encourage AI adoption", persona: "skeptic" }
+        }
+      },
+      {
+        id: "q11",
+        question: "11. How do you feel about your organization’s current AI adoption level?",
+        options: {
+          A: { text: "I'm okay with slow progress", persona: "reluctant" },
+          B: { text: "I wish AI was adopted faster", persona: "explorer" },
+          C: { text: "I prefer the minimal use of AI", persona: "skeptic" },
+          D: { text: "I’m pushing for more AI integration", persona: "champion" }
+        }
+      },
+      {
+        id: "q12",
+        question: "12. How do you engage with colleagues about AI?",
+        options: {
+          A: { text: "I sometimes like sharing what I learn", persona: "explorer" },
+          B: { text: "I mentor others in using AI tools", persona: "champion" },
+          C: { text: "I don’t talk about AI with colleagues", persona: "skeptic" },
+          D: { text: "I don’t feel confident enough to discuss it", persona: "reluctant" }
+        }
+      },
+      {
+        id: "q13",
+        question: "13. How do you use AI for day-to-day HR tasks?",
+        options: {
+          A: { text: "I actively use AI in most of my tasks", persona: "champion" },
+          B: { text: "I avoid using AI", persona: "skeptic" },
+          C: { text: "I tend to experiment with AI for some of my tasks", persona: "explorer" },
+          D: { text: "I only use AI for simple tasks when necessary", persona: "reluctant" }
+        }
+      },
+      {
+        id: "q14",
+        question: "14. To what extent do you believe AI should be part of the HR strategy?",
+        options: {
+          A: { text: "I don't think AI should be used in strategic HR decisions", persona: "skeptic" },
+          B: { text: "I'm not comfortable using AI for strategic purposes", persona: "reluctant" },
+          C: { text: "I think AI should be core to the HR strategy", persona: "champion" },
+          D: { text: "I believe AI can contribute to strategy", persona: "explorer" }
+        }
+      },
+      {
+        id: "q15",
+        question: "15. How do you see the future of AI in HR?",
+        options: {
+          A: { text: "I’m unsure, but willing to see how it evolves", persona: "reluctant" },
+          B: { text: "I believe AI will be a key part of HR’s future", persona: "champion" },
+          C: { text: "I don’t see a big future for AI in HR", persona: "skeptic" },
+          D: { text: "I can see how AI will completely transform HR", persona: "explorer" }
+        }
+      }
+    ];
+
+    const PERSONAS = {
+      skeptic: {
+        title: "The Skeptical Avoider",
+        short: "Skeptical Avoider",
+        summary: "You are cautious about AI, unconvinced by its value, and more likely to focus on risk than opportunity.",
+        feedback: "You are not behind because you are incapable. You are behind because AI still feels distant, overhyped, or too risky to trust. Your biggest opportunity is not to become an expert overnight. It is to gain safe, practical exposure that helps you see where AI is genuinely useful in HR.",
+        nextStep: "Start with guided, low-risk AI use in areas like drafting, research, and simple HR workflows. The right learning environment should help you build confidence without pressure and show you real HR examples, not hype.",
+        courseFit: "Our course is a strong fit because it does not assume you are already confident. It gives you a practical, structured route into AI in HR with videos, guides, examples, and shared learning so you can move from doubt to informed confidence."
+      },
+      reluctant: {
+        title: "The Reluctant User",
+        short: "Reluctant User",
+        summary: "You can see some value in AI, but you use it cautiously, only when necessary, and without much confidence.",
+        feedback: "You are not rejecting AI completely, but you are not yet comfortable enough to use it consistently or strategically. You likely need proof, structure, and guided practice before AI feels like a tool you can trust in your HR work.",
+        nextStep: "Use AI for simple, practical tasks and build from there. The smartest move is not random experimentation but guided learning that shows where AI adds value and how to use it safely and effectively.",
+        courseFit: "Our course is a strong fit because it helps hesitant users move into confident users. It gives you a practical path across HR, not just isolated tricks, and helps you learn with support rather than guesswork."
+      },
+      explorer: {
+        title: "The Active Explorer",
+        short: "Active Explorer",
+        summary: "You are curious, optimistic, and already experimenting with AI, but you need more structure and broader application.",
+        feedback: "You already see the upside of AI and you are willing to test, learn, and share ideas. Your biggest opportunity is to stop learning in fragments and start building more complete, more strategic capability across the HR function.",
+        nextStep: "Move from curiosity to structure. Build your capability across recruiting, L&D, talent, analytics, operations, governance, and strategy so your experimentation becomes broader, stronger, and more influential.",
+        courseFit: "Our course is a strong fit because it helps explorers become practical leaders. It gives you structure, wider HR coverage, videos, guides, examples, and a more connected path than learning one tool or one use case at a time."
+      },
+      champion: {
+        title: "The Adoption Champion",
+        short: "Adoption Champion",
+        summary: "You are highly positive about AI, actively use it, influence others, and are ready to drive broader change.",
+        feedback: "You are already ahead of most people in terms of adoption mindset and action. Your next challenge is not whether to use AI. It is how to scale AI responsibly, guide others, and connect AI adoption more clearly to HR strategy and business impact.",
+        nextStep: "Deepen your capability in governance, strategy, cross-functional influence, and broader HR transformation. You are ready for structured training that helps you scale AI use, not just apply it personally.",
+        courseFit: "Our course is a strong fit because it helps champions move from personal advocacy to organizational capability. It gives you the language, structure, and broader HR-wide application needed to lead others more effectively."
+      }
+    };
+
+    const personaOrder = ["skeptic", "reluctant", "explorer", "champion"];
+
+    const quizForm = document.getElementById("aiPersonaQuiz");
+    const resultWrap = document.getElementById("resultWrap");
+    const quizMessage = document.getElementById("quizMessage");
+
+    function renderQuiz() {
+      quizForm.innerHTML = QUESTIONS.map((q, index) => {
+        const optionsHtml = Object.entries(q.options).map(([key, value]) => `
+          <label class="option">
+            <input type="radio" name="${q.id}" value="${key}">
+            <span class="option-label">${key}</span>
+            <span class="option-text">${value.text}</span>
+          </label>
+        `).join("");
+
+        return `
+          <div class="question-card">
+            <div class="tag">QUESTION ${index + 1}</div>
+            <h3>${q.question}</h3>
+            <div class="options">${optionsHtml}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function calculateResults() {
+      const scores = { skeptic: 0, reluctant: 0, explorer: 0, champion: 0 };
+      let totalWeight = 0;
+
+      for (const q of QUESTIONS) {
+        const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+        if (!selected) {
+          return null;
+        }
+        const persona = q.options[selected.value].persona;
+        scores[persona] += 1;
+
+        const weightMap = { skeptic: 0, reluctant: 1, explorer: 2, champion: 3 };
+        totalWeight += weightMap[persona];
+      }
+
+      const sorted = [...personaOrder]
+        .map(key => ({ key, score: scores[key] }))
+        .sort((a, b) => b.score - a.score);
+
+      const primary = sorted[0];
+      const secondary = sorted[1];
+      const readinessPercent = Math.round((totalWeight / (QUESTIONS.length * 3)) * 100);
+
+      return { scores, primary, secondary, readinessPercent };
+    }
+
+    function updateBar(id, score) {
+      const pct = Math.round((score / QUESTIONS.length) * 100);
+      document.getElementById(`bar-${id}`).style.width = `${pct}%`;
+      document.getElementById(`score-${id}`).textContent = `${score}/15`;
+    }
+
+    function renderResults(data) {
+      const persona = PERSONAS[data.primary.key];
+      const secondPersona = PERSONAS[data.secondary.key];
+
+      document.getElementById("resultTitle").textContent =
+        `${persona.title} — AI Readiness ${data.readinessPercent}%`;
+
+      document.getElementById("resultSummary").textContent =
+        `${persona.summary} Your second-strongest pattern is ${secondPersona.short}, which means your adoption style has some overlap there too.`;
+
+      document.getElementById("feedbackTitle").textContent = `What being a ${persona.short} means`;
+      document.getElementById("feedbackText").textContent = persona.feedback;
+      document.getElementById("secondaryPersona").textContent = `Secondary persona: ${secondPersona.title}`;
+
+      document.getElementById("nextStepTitle").textContent = `Your best next move as a ${persona.short}`;
+      document.getElementById("nextStepText").textContent = persona.nextStep;
+
+      document.getElementById("courseFitTitle").textContent = `Why our course fits a ${persona.short}`;
+      document.getElementById("courseFitText").textContent =
+        `${persona.courseFit} More importantly, it is positioned to support every stage of the journey — from first exposure to broader HR transformation — through videos, guides, examples, and learning with others.`;
+
+      updateBar("skeptic", data.scores.skeptic);
+      updateBar("reluctant", data.scores.reluctant);
+      updateBar("explorer", data.scores.explorer);
+      updateBar("champion", data.scores.champion);
+
+      resultWrap.style.display = "block";
+      resultWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.getElementById("submitQuiz").addEventListener("click", () => {
+      const data = calculateResults();
+      if (!data) {
+        quizMessage.style.display = "block";
+        return;
+      }
+      quizMessage.style.display = "none";
+      renderResults(data);
+    });
+
+    document.getElementById("resetQuiz").addEventListener("click", () => {
+      document.getElementById("aiPersonaQuiz").reset();
+      resultWrap.style.display = "none";
+      quizMessage.style.display = "none";
+      window.scrollTo({ top: document.getElementById("quiz").offsetTop - 20, behavior: "smooth" });
+    });
+
+    renderQuiz();
+  </script>
+</body>
+</html>
