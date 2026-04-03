@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT for Recruiting | 20 Practical Prompts for Every Hiring Stage</title>
+  <meta name="description" content="A practical guide to using ChatGPT for recruiting, including 20 prompts across preparing, sourcing, screening, hiring, and onboarding, plus responsible-use guardrails for recruiters." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --amber:#f8edd0;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.45rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:760px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:2px;
+      font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:920px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card,
+    .tip-card,
+    .prompt-card,
+    .guardrail-card,
+    .stage-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .tip-card::before,
+    .prompt-card::before,
+    .guardrail-card::before,
+    .stage-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,
+    .tip-card h3,
+    .prompt-card h3,
+    .guardrail-card h3,
+    .stage-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .tip-card p,
+    .prompt-card p,
+    .guardrail-card p,
+    .stage-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .amber{
+      background:#fff3d5;
+      color:#7a5200;
+      border:1px solid #edd28c;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .stage-map{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+    }
+
+    .stage-pill{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .stage-pill strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .stage-pill span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .cards-5,
+      .compare-grid,
+      .stage-map{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#tips">Tips</a>
+        <a href="#prompts">20 Prompts</a>
+        <a href="#guardrails">Guardrails</a>
+        <a href="#takeaways">Takeaways</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • PRACTICAL RECRUITING PROMPTS AND RESPONSIBLE USE</div>
+            <h1>ChatGPT for Recruiting</h1>
+            <p>
+              A practical guide for recruiters and talent acquisition teams using ChatGPT across
+              every stage of hiring — from preparing and sourcing through screening, hiring, and onboarding —
+              while keeping human judgment, privacy, personalization, and employer brand protected.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#prompts">See all 20 prompts</a>
+              <a class="btn btn-secondary" href="#guardrails">Review the guardrails</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Faster drafting</strong>
+                <span>Use ChatGPT to create structured first drafts for common recruiting work.</span>
+              </div>
+              <div class="metric">
+                <strong>Better preparation</strong>
+                <span>Use prompts to clarify roles, improve alignment, and sharpen candidate communication.</span>
+              </div>
+              <div class="metric">
+                <strong>Human review required</strong>
+                <span>AI output should be a starting point, not the final hiring decision.</span>
+              </div>
+              <div class="metric">
+                <strong>Personalization matters</strong>
+                <span>Candidate-facing messages still need a genuine human touch.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">Recruiting workflow snapshot</div>
+                <div class="dashboard-tag">20 prompts</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Preparing</strong>
+                  <span>Draft and improve role definitions, job descriptions, and job ads.</span>
+                </div>
+                <div class="box">
+                  <strong>Sourcing</strong>
+                  <span>Support Boolean search, outreach, posts, and market research.</span>
+                </div>
+                <div class="box">
+                  <strong>Screening</strong>
+                  <span>Create interview materials, scorecards, summaries, and rejection templates.</span>
+                </div>
+                <div class="box">
+                  <strong>Hiring & onboarding</strong>
+                  <span>Draft offers, negotiation emails, onboarding checklists, FAQs, and surveys.</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>How to use it well</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Give context</strong>
+                      <span>Tell the tool the role, industry, level, audience, and objective.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Use it for first drafts</strong>
+                      <span>Let it create structure quickly so recruiters can refine the outcome.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Review everything</strong>
+                      <span>Check accuracy, fairness, tone, legal wording, and brand fit before use.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Keep decisions human</strong>
+                      <span>Use AI for support, not for final selection or sensitive employment decisions.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">AT A GLANCE</div>
+          <h2>Why ChatGPT matters in recruiting</h2>
+          <p>
+            ChatGPT can help recruiters move faster on high-volume drafting and preparation work,
+            including job descriptions, outreach emails, interview questions, feedback summaries,
+            offer emails, and onboarding materials. Used well, it reduces admin clutter so recruiters
+            can focus more on candidate engagement, hiring-manager support, and better decisions.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>20 prompts</strong>
+            <span>Grouped across preparing, sourcing, screening and selecting, hiring, and onboarding.</span>
+          </div>
+          <div class="stat">
+            <strong>5 stages</strong>
+            <span>A full recruiting workflow rather than one isolated use case.</span>
+          </div>
+          <div class="stat">
+            <strong>Start with drafts</strong>
+            <span>Best used to create structure quickly, then improved by a recruiter.</span>
+          </div>
+          <div class="stat">
+            <strong>Keep it human</strong>
+            <span>Candidate experience and final decisions should not be fully automated.</span>
+          </div>
+        </div>
+
+        <div class="stage-map" style="margin-top:18px;">
+          <div class="stage-pill">
+            <strong>Preparing</strong>
+            <span>3 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Sourcing</strong>
+            <span>5 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Screening & selecting</strong>
+            <span>7 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Hiring</strong>
+            <span>2 prompts</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Onboarding</strong>
+            <span>3 prompts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tips">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">HOW TO USE IT WELL</div>
+          <h2>Practical tips for better recruiting prompts</h2>
+          <p>
+            The strongest results come from giving clear instructions, refining outputs,
+            and using ChatGPT as a support layer rather than a replacement for recruiter judgment.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="tip-card">
+            <div class="tag">TIP 1</div>
+            <h3>Be specific</h3>
+            <p>Include the role, seniority level, industry, audience, tone, and desired output so the answer is not too generic.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 2</div>
+            <h3>Give it a role</h3>
+            <p>Framing the tool as a recruiter, sourcer, or hiring partner often improves the relevance of the response.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 3</div>
+            <h3>Iterate and refine</h3>
+            <p>Use follow-up instructions to improve tone, depth, structure, and relevance.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 4</div>
+            <h3>Avoid entering personal candidate data</h3>
+            <p>Protect privacy by keeping identifiable candidate information out of prompts unless your data handling is fully controlled.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 5</div>
+            <h3>Always review and edit</h3>
+            <p>Check accuracy, bias, inclusivity, legal language, and tone before anything goes to a candidate or hiring manager.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 6</div>
+            <h3>Experiment across tasks</h3>
+            <p>Use it for drafting, brainstorming, research support, and question generation to see where it adds real value.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 7</div>
+            <h3>Watch legal and industry terminology</h3>
+            <p>Double-check sensitive hiring language, compliance wording, and technical role terminology.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 8</div>
+            <h3>Decide where it should and should not be used</h3>
+            <p>Use it where structure and speed matter most, but keep final evaluations and decisions with people.</p>
+          </div>
+
+          <div class="tip-card">
+            <div class="tag">TIP 9</div>
+            <h3>Keep candidate-facing content personal</h3>
+            <p>Outreach, offers, and negotiation emails should still feel intentional and human, not mass-generated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">20 PRACTICAL PROMPTS</div>
+          <h2>Prompts for every stage of the hiring process</h2>
+          <p>
+            This section turns the article’s 20 prompts into a cleaner GitHub-ready layout.
+            Each card shows the task, where it fits in the process, and what the prompt is useful for.
+          </p>
+        </div>
+
+        <div class="section-head" style="margin-top:0;">
+          <div class="kicker">STAGE 1</div>
+          <h2 style="font-size:1.8rem;">Preparing</h2>
+          <p>Use ChatGPT to align the role, improve role clarity, and create stronger public-facing hiring copy.</p>
+        </div>
+
+        <div class="cards-3">
+          <div class="prompt-card">
+            <div class="tag amber">1</div>
+            <h3>Write a job description</h3>
+            <p>Create a structured first draft with role overview, responsibilities, qualifications, and team context.</p>
+            <span class="note">Best for recruiter–hiring manager alignment</span>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">2</div>
+            <h3>Analyze a job description</h3>
+            <p>Identify key responsibilities, essential skills, success attributes, vague wording, and opportunities to improve clarity or inclusivity.</p>
+            <span class="note">Best for refining existing role documents</span>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">3</div>
+            <h3>Create a job ad</h3>
+            <p>Turn the role into more compelling candidate-facing copy with a clearer headline, benefits, and inclusive language.</p>
+            <span class="note">Best for discoverability and attraction</span>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 2</div>
+          <h2 style="font-size:1.8rem;">Sourcing</h2>
+          <p>Use ChatGPT to expand search logic, widen talent pools, and improve outbound recruiting communication.</p>
+        </div>
+
+        <div class="cards-5">
+          <div class="prompt-card">
+            <div class="tag amber">4</div>
+            <h3>Boolean string generation</h3>
+            <p>Generate a draft Boolean string to narrow search results faster for specific skills and experience combinations.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">5</div>
+            <h3>Alternative job titles</h3>
+            <p>Surface title variations for similar roles so you can reach a wider pool of qualified candidates.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">6</div>
+            <h3>Candidate outreach emails</h3>
+            <p>Create a strong outreach structure quickly, then personalize it with genuine candidate-specific detail.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">7</div>
+            <h3>LinkedIn posts</h3>
+            <p>Draft engaging social posts that promote an open role while still sounding authentic to your employer brand.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">8</div>
+            <h3>Job market research</h3>
+            <p>Generate a starting view of salary trends, talent availability, sourcing channels, and competitor activity.</p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 3</div>
+          <h2 style="font-size:1.8rem;">Screening and selecting</h2>
+          <p>Use ChatGPT to support preparation, question design, evaluation structure, candidate communication, and feedback organization.</p>
+        </div>
+
+        <div class="cards-4">
+          <div class="prompt-card">
+            <div class="tag amber">9</div>
+            <h3>Pre-interview briefings</h3>
+            <p>Draft supportive candidate emails that explain interview stages, focus areas, and logistics clearly.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">10</div>
+            <h3>Behavioral interview questions</h3>
+            <p>Generate role-specific behavioral questions to assess teamwork, pressure handling, and problem-solving.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">11</div>
+            <h3>Technical interview questions</h3>
+            <p>Create technical questions tailored to the role, function, and required tools or capabilities.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">12</div>
+            <h3>Evaluation criteria</h3>
+            <p>Build scorecards, rubrics, or objective criteria to support more consistent candidate comparison.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">13</div>
+            <h3>Summarize interview feedback</h3>
+            <p>Turn structured interviewer notes into strengths, concerns, ratings, and a clearer summary.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">14</div>
+            <h3>Work test check</h3>
+            <p>Pressure-test candidate tasks by seeing whether the exercise is too easy for GenAI to complete without real effort.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">15</div>
+            <h3>Rejection emails</h3>
+            <p>Create respectful, empathetic rejection templates that can be validated internally and used more consistently.</p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 4</div>
+          <h2 style="font-size:1.8rem;">Hiring</h2>
+          <p>Use ChatGPT to draft candidate-facing offer and negotiation emails more quickly while preserving a strong human tone.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">16</div>
+            <h3>Offer email</h3>
+            <p>Create a structured offer email draft covering excitement, key terms, and next steps for acceptance.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">17</div>
+            <h3>Salary negotiation email</h3>
+            <p>Draft a professional and empathetic response when candidates ask for a higher offer.</p>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 5</div>
+          <h2 style="font-size:1.8rem;">Onboarding</h2>
+          <p>Use ChatGPT to create prototype onboarding materials that internal teams can complete and personalize.</p>
+        </div>
+
+        <div class="cards-3">
+          <div class="prompt-card">
+            <div class="tag amber">18</div>
+            <h3>Onboarding checklist</h3>
+            <p>Create a first-week or first-month onboarding checklist covering setup, paperwork, introductions, and training.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">19</div>
+            <h3>New hire FAQ</h3>
+            <p>Generate a practical starting FAQ covering benefits, systems, contacts, culture, and time-off basics.</p>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">20</div>
+            <h3>New hire survey questions</h3>
+            <p>Draft onboarding survey questions to help HR improve orientation, support, clarity, and early employee experience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="guardrails">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">RESPONSIBLE USE</div>
+          <h2>Guardrails recruiters should keep in place</h2>
+          <p>
+            The value of ChatGPT in recruiting rises sharply when teams are disciplined about privacy,
+            accuracy, personalization, legal review, and human accountability.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 1</div>
+            <h3>Don’t use it for final selection decisions</h3>
+            <p>Use ChatGPT to support communication and structure, but keep final hiring judgments and adverse decisions human-led.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 2</div>
+            <h3>Check local hiring and AI rules</h3>
+            <p>Hiring-related AI use may be subject to local notice, fairness, audit, or bias-review requirements.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 3</div>
+            <h3>Protect candidate privacy</h3>
+            <p>Do not paste personal candidate information into tools unless your data handling is compliant and controlled.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 4</div>
+            <h3>Validate legal wording</h3>
+            <p>Have sensitive templates such as offer and rejection emails reviewed internally before repeated use.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 5</div>
+            <h3>Personalize candidate-facing messages</h3>
+            <p>Messages that feel obviously generic can weaken response rates and damage employer brand perception.</p>
+          </div>
+
+          <div class="guardrail-card">
+            <div class="tag">GUARDRAIL 6</div>
+            <h3>Use broader collaboration</h3>
+            <p>Recruiting use of ChatGPT is strongest when HR, legal, IT, and hiring stakeholders align on proper use.</p>
+          </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top:18px;">
+          <div class="compare warn">
+            <h3>What to avoid</h3>
+            <ul class="mini-list">
+              <li>Sending unedited AI-generated candidate communication</li>
+              <li>Using candidate data carelessly in prompts</li>
+              <li>Letting the tool make final ranking or selection decisions</li>
+              <li>Assuming one generic prompt works for every role</li>
+            </ul>
+          </div>
+
+          <div class="compare good">
+            <h3>What to aim for</h3>
+            <ul class="mini-list">
+              <li>Structured first drafts with careful human refinement</li>
+              <li>Role-specific, context-rich prompts</li>
+              <li>Candidate communication that still feels personal</li>
+              <li>Recruiting processes that stay efficient without losing judgment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="takeaways">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">KEY TAKEAWAYS</div>
+          <h2>Use ChatGPT to reduce admin clutter, not to remove recruiter judgment</h2>
+          <p>
+            The strongest recruiting use case for ChatGPT is not replacing recruiters.
+            It is clearing repetitive drafting work so recruiters can spend more time
+            engaging candidates, supporting hiring managers, improving process quality,
+            and making better-informed hiring decisions.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 1</div>
+            <h3>Use it as a starting point</h3>
+            <p>Let ChatGPT produce structure and speed. Let recruiters provide judgment, context, and quality.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 2</div>
+            <h3>Apply it across the full workflow</h3>
+            <p>Its usefulness is broader than sourcing alone. It can support every hiring stage when used carefully.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 3</div>
+            <h3>Protect the employer brand</h3>
+            <p>Because much recruiting activity is externally visible, poor AI use becomes visible quickly too.</p>
+          </div>
+
+          <div class="stage-card">
+            <div class="tag">TAKEAWAY 4</div>
+            <h3>Keep the human touch visible</h3>
+            <p>Candidate experience, fairness, and final decisions all still need people at the center.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use ChatGPT to make recruiting faster without making it colder</h2>
+        <p>
+          The best approach is practical: use strong prompts, protect privacy,
+          personalize what candidates see, keep final decisions human,
+          and let AI remove administrative friction so recruiters can focus on people.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#prompts">Review all 20 prompts</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article Pages</div>
+      <div>Path: Articles/ai-in-hr/chatgpt-for-recruiting.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
