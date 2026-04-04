@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT for HR Guide | What It Can and Can’t Do for HR</title>
+  <meta name="description" content="A practical guide to ChatGPT for HR, including 7 HR use cases, prompt examples, what AI cannot replace, key limitations and risks, and best practices for responsible use." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --soft:#eef5f0;
+      --warm:#fff7ef;
+      --amber:#f8edd0;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --radius:24px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background:var(--green-50);
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.92);
+      background:var(--green-950);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:#fff;
+      font-size:.94rem;
+      background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:26px 0 34px;
+      background:var(--green-950);
+    }
+
+    .hero-card{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+    }
+
+    .hero-copy,
+    .hero-visual{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--green-950);
+    }
+
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:820px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      font-size:1.08rem;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      color:var(--muted);
+      font-size:.9rem;
+      display:block;
+    }
+
+    .flow{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#f8fbf9,#edf6f0);
+      padding:14px;
+    }
+
+    .flow h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:var(--green-950);
+    }
+
+    .flow-steps{
+      display:grid;
+      gap:10px;
+    }
+
+    .flow-step{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px;
+    }
+
+    .flow-step .num{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:var(--green-900);
+      color:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:2px;
+      font-size:.94rem;
+    }
+
+    .flow-step span{
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,59,49,.06);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:920px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.18px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.5rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg,#0e4035,#145142);
+      color:#fff;
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .stat strong{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      display:block;
+      color:rgba(255,255,255,.86);
+      font-size:.9rem;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5,.cards-6{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+    .cards-6{grid-template-columns:repeat(6,1fr)}
+
+    .card,
+    .use-card,
+    .prompt-card,
+    .no-card,
+    .risk-card,
+    .ethic-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .use-card::before,
+    .prompt-card::before,
+    .no-card::before,
+    .risk-card::before,
+    .ethic-card::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,
+    .use-card h3,
+    .prompt-card h3,
+    .no-card h3,
+    .risk-card h3,
+    .ethic-card h3{
+      margin:0 0 10px;
+      font-size:1.06rem;
+      color:var(--green-950);
+      position:relative;
+      z-index:1;
+    }
+
+    .card p,
+    .use-card p,
+    .prompt-card p,
+    .no-card p,
+    .risk-card p,
+    .ethic-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#dff3e8,#9ad0b2);
+      color:var(--green-950);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-weight:800;
+      font-size:.78rem;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .amber{
+      background:#fff3d5;
+      color:#7a5200;
+      border:1px solid #edd28c;
+    }
+
+    .note{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-weight:700;
+      font-size:.82rem;
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .prompt-box{
+      position:relative;
+      z-index:1;
+      margin-top:12px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f7fbf8;
+      font-size:.9rem;
+      color:#28443a;
+    }
+
+    .compare-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compare{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+    }
+
+    .compare.good{background:linear-gradient(180deg,#ffffff,#f5fbf7)}
+    .compare.warn{background:linear-gradient(180deg,#ffffff,#fffaf5)}
+
+    .compare h3{
+      margin:0 0 12px;
+      color:var(--green-950);
+      font-size:1.08rem;
+    }
+
+    .stage-map{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:14px;
+    }
+
+    .stage-pill{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f8fbf9);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .stage-pill strong{
+      display:block;
+      color:var(--green-950);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .stage-pill span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .cta{padding:10px 0 50px}
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{
+      color:#fff;
+      margin-bottom:10px;
+    }
+
+    .cta-card p{
+      color:rgba(255,255,255,.90);
+      margin:0 0 18px;
+      max-width:760px;
+    }
+
+    .footer{
+      padding:10px 0 42px;
+      color:#dce9e1;
+      font-size:.92rem;
+      background:var(--green-950);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,
+      .stats-grid,
+      .cards-2,
+      .cards-3,
+      .cards-4,
+      .cards-5,
+      .cards-6,
+      .compare-grid,
+      .stage-map{
+        grid-template-columns:1fr;
+      }
+
+      .hero-metrics,
+      .dashboard-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI in HR Library</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#overview">Overview</a>
+        <a href="#uses">7 Uses</a>
+        <a href="#prompts">Prompt Examples</a>
+        <a href="#limits">Limits & Risks</a>
+        <a href="#ethics">Responsible Use</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI IN HR • WHAT CHATGPT CAN DO, WHAT IT CAN’T DO, AND HOW TO USE IT WELL</div>
+            <h1>ChatGPT for HR Guide</h1>
+            <p>
+              A practical guide for HR professionals using ChatGPT to save time, draft content,
+              support recruiting, improve onboarding, and summarize information — while keeping
+              empathy, judgment, privacy, and human accountability at the center of HR work.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#uses">See the 7 HR uses</a>
+              <a class="btn btn-secondary" href="#ethics">Review responsible-use best practices</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Draft faster</strong>
+                <span>Use ChatGPT to speed up routine HR writing and content creation.</span>
+              </div>
+              <div class="metric">
+                <strong>Support decisions</strong>
+                <span>Use it to summarize, compare, and surface options more quickly.</span>
+              </div>
+              <div class="metric">
+                <strong>Keep humans in charge</strong>
+                <span>Use AI as support, not as a substitute for HR judgment and empathy.</span>
+              </div>
+              <div class="metric">
+                <strong>Protect trust</strong>
+                <span>Privacy, fairness, policy, and transparency still need active management.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">ChatGPT for HR snapshot</div>
+                <div class="dashboard-tag">Guide view</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Admin support</strong>
+                  <span>Draft emails, policies, handbooks, contracts, and common employee responses.</span>
+                </div>
+                <div class="box">
+                  <strong>Talent support</strong>
+                  <span>Write job descriptions, screen inputs, create questions, and support scheduling.</span>
+                </div>
+                <div class="box">
+                  <strong>Insight support</strong>
+                  <span>Summarize feedback, spot patterns in surveys, and support policy research.</span>
+                </div>
+                <div class="box">
+                  <strong>Human limits remain</strong>
+                  <span>Culture, strategy, conflict, leadership judgment, and ethics still require people.</span>
+                </div>
+              </div>
+
+              <div class="flow">
+                <h3>How HR should use ChatGPT</h3>
+                <div class="flow-steps">
+                  <div class="flow-step">
+                    <div class="num">1</div>
+                    <div>
+                      <strong>Use it for support</strong>
+                      <span>Start with drafting, summarizing, research support, and repetitive tasks.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">2</div>
+                    <div>
+                      <strong>Check the output</strong>
+                      <span>Review for accuracy, bias, tone, legal risk, and fit for your context.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">3</div>
+                    <div>
+                      <strong>Protect privacy</strong>
+                      <span>Avoid entering sensitive employee or candidate information casually.</span>
+                    </div>
+                  </div>
+                  <div class="flow-step">
+                    <div class="num">4</div>
+                    <div>
+                      <strong>Keep people accountable</strong>
+                      <span>Let HR own the final judgment, not the tool.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHAT IT IS</div>
+          <h2>ChatGPT can boost HR efficiency, but it is not a plug-and-play replacement for HR expertise</h2>
+          <p>
+            ChatGPT is described in the source article as an AI-powered chatbot that can generate and manipulate text and other media to answer questions, complete tasks, and solve problems. The guide positions it as useful for high-volume admin work, drafting, analysis support, and employee-facing communication, while also stressing that complex HR work still needs human context, ethical judgment, and empathy. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>40%+</strong>
+            <span>The article cites research saying at least 40% of HR functions in international companies already use AI applications. :contentReference[oaicite:2]{index=2}</span>
+          </div>
+          <div class="stat">
+            <strong>7 HR use cases</strong>
+            <span>The guide organizes practical usage around seven different HR applications. :contentReference[oaicite:3]{index=3}</span>
+          </div>
+          <div class="stat">
+            <strong>Prompt quality matters</strong>
+            <span>The guide says objective, context, and preferred format are the main ingredients of better prompts. :contentReference[oaicite:4]{index=4}</span>
+          </div>
+          <div class="stat">
+            <strong>Human oversight stays essential</strong>
+            <span>The article repeatedly says human judgment is still essential for sensitive or high-stakes HR work. :contentReference[oaicite:5]{index=5}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="uses">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">HOW TO USE CHATGPT FOR HR</div>
+          <h2>7 practical use cases the guide highlights</h2>
+          <p>
+            The article says ChatGPT can support HR by handling repetitive tasks, accelerating talent search, identifying causes of turnover, enriching employee engagement, automating onboarding and personalized learning, supporting policy research and benchmarking, and assisting with prompt-driven HR work more broadly. :contentReference[oaicite:6]{index=6}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="use-card">
+            <div class="tag amber">USE 1</div>
+            <h3>Handle repetitive tasks</h3>
+            <p>Answer common questions, update records, draft documents, edit contracts and handbooks, frame sensitive messages, and generate or analyze surveys. :contentReference[oaicite:7]{index=7}</p>
+            <span class="note">Best for time-saving admin work</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 2</div>
+            <h3>Accelerate the search for talent</h3>
+            <p>Support screening, shortlisting, job description writing, matching candidate profiles, creating interview questions, and scheduling support. :contentReference[oaicite:8]{index=8}</p>
+            <span class="note">Best for recruitment support</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 3</div>
+            <h3>Identify causes of employee turnover</h3>
+            <p>Analyze qualitative data like exit interviews, surveys, and feedback to surface common themes and improvement areas. :contentReference[oaicite:9]{index=9}</p>
+            <span class="note">Best for pattern spotting</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 4</div>
+            <h3>Enrich employee engagement</h3>
+            <p>Provide more personalized employee responses, explain policies and benefits, and support engagement surveys or recognition initiatives. :contentReference[oaicite:10]{index=10}</p>
+            <span class="note">Best for service quality support</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 5</div>
+            <h3>Automate onboarding and customize learning</h3>
+            <p>Guide new hires, answer onboarding questions, and support personalized learning paths based on roles and needs. :contentReference[oaicite:11]{index=11}</p>
+            <span class="note">Best for onboarding consistency</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 6</div>
+            <h3>Assist in policy research and benchmarking</h3>
+            <p>Research local labor topics, compare policies to industry standards, and summarize long policy documents. :contentReference[oaicite:12]{index=12}</p>
+            <span class="note">Best for policy support</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">USE 7</div>
+            <h3>Support prompt-led HR productivity</h3>
+            <p>Use targeted prompts across the employee life cycle to draft faster and structure routine work more effectively. :contentReference[oaicite:13]{index=13}</p>
+            <span class="note">Best for broad HR productivity</span>
+          </div>
+
+          <div class="use-card">
+            <div class="tag amber">HR VIEW</div>
+            <h3>What ties these use cases together</h3>
+            <p>Across all seven examples, the tool is strongest where structure, speed, summarization, and first-draft support matter most. :contentReference[oaicite:14]{index=14}</p>
+            <span class="note">Use it to assist, not replace</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prompts">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">PROMPT EXAMPLES FOR HR</div>
+          <h2>Prompt examples across the employee life cycle</h2>
+          <p>
+            The guide gives examples in talent attraction, recruitment, onboarding, development, retention and engagement, and offboarding. It also says better prompts include the objective, context, and preferred format. :contentReference[oaicite:15]{index=15}
+          </p>
+        </div>
+
+        <div class="stage-map">
+          <div class="stage-pill">
+            <strong>Attraction</strong>
+            <span>2 prompt examples</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Recruitment</strong>
+            <span>2 prompt examples</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Onboarding</strong>
+            <span>2 prompt examples</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Development</strong>
+            <span>2 prompt examples</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Retention & engagement</strong>
+            <span>2 prompt examples</span>
+          </div>
+          <div class="stage-pill">
+            <strong>Offboarding</strong>
+            <span>2 prompt examples</span>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 1</div>
+          <h2 style="font-size:1.8rem;">Talent attraction</h2>
+          <p>Use prompts to create stronger attraction materials and employer-branding ideas.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">1</div>
+            <h3>Job descriptions</h3>
+            <p>Draft a role-specific job description with clear responsibilities and qualifications.</p>
+            <div class="prompt-box">Write a job description for a [title] position at an [industry] organization. Include the following responsibilities and qualifications: [A, B, C, etc.].</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">2</div>
+            <h3>Employer branding on social media</h3>
+            <p>Generate post ideas that communicate company culture and employee sentiment more clearly.</p>
+            <div class="prompt-box">List 5 employer branding post ideas for Instagram and LinkedIn that convey company culture and employee sentiment. Explain how these ideas engage job seekers.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 2</div>
+          <h2 style="font-size:1.8rem;">Recruitment</h2>
+          <p>Use prompts to speed up candidate evaluation materials and hiring communication.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">3</div>
+            <h3>Interview questions</h3>
+            <p>Ask for targeted questions plus examples of strong and weak candidate answers.</p>
+            <div class="prompt-box">List 4 interview questions that assess a person’s interpersonal communication skills. For each question, provide example answers that a highly skilled candidate and a low-skilled candidate would give.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">4</div>
+            <h3>Job offer template</h3>
+            <p>Create a structured, welcoming offer email draft that can be reviewed and personalized.</p>
+            <div class="prompt-box">Write a professional, welcoming job offer email to a candidate named [name] for a [job title] position at [company name]. Include the start date of [date], a starting salary of [salary], and next steps for accepting the offer.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 3</div>
+          <h2 style="font-size:1.8rem;">Onboarding</h2>
+          <p>Use prompts to structure onboarding tasks, guidance, and new-hire feedback collection.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">5</div>
+            <h3>Onboarding checklist</h3>
+            <p>Build a more complete onboarding checklist for hybrid or role-specific onboarding.</p>
+            <div class="prompt-box">Create an onboarding checklist and best practices for onboarding a new [job role] working a hybrid schedule. Include preboarding preparations, first day/week activities, role-specific training path, resources for ongoing support, and strategies for integrating new hires into their team and the company culture.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">6</div>
+            <h3>Onboarding survey</h3>
+            <p>Draft a 30-day survey that checks clarity, training quality, manager communication, and improvement opportunities.</p>
+            <div class="prompt-box">Formulate a 10-question onboarding evaluation survey to collect feedback from new hires after 30 days of employment. Use multiple-choice questions to rate clarity of onboarding, quality of training and resources, understanding of duties, communication from managers and team members, and suggestions for improvement.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 4</div>
+          <h2 style="font-size:1.8rem;">Development</h2>
+          <p>Use prompts to explore learning options and support manager coaching.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">7</div>
+            <h3>Training resources</h3>
+            <p>Ask for role-relevant learning options and summarized course value.</p>
+            <div class="prompt-box">Find 5 online training programs for a [job title] to learn about [topic] and summarize each course’s offerings and participant reviews.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">8</div>
+            <h3>Coaching support</h3>
+            <p>Draft questions a manager can use during a more coaching-based performance review conversation.</p>
+            <div class="prompt-box">Provide 10 questions a manager can pose to take a coaching approach to the performance review of a [job title].</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 5</div>
+          <h2 style="font-size:1.8rem;">Retention and engagement</h2>
+          <p>Use prompts to support recognition ideas and employee listening efforts.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">9</div>
+            <h3>Employee recognition</h3>
+            <p>Generate non-monetary recognition ideas for different workplace contexts.</p>
+            <div class="prompt-box">Find 7 creative ideas for employee recognition that go beyond monetary rewards. They should be suitable for different work environments, including both remote and in-person teams.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">10</div>
+            <h3>Employee engagement survey</h3>
+            <p>Create a stronger engagement survey draft with a mix of multiple-choice and open-ended questions.</p>
+            <div class="prompt-box">Generate 12 employee engagement survey questions that will measure how satisfied, motivated, and connected employees feel at work. The questions should be concise and have a friendly tone. Include both multiple-choice and open-ended questions that cover work environment, professional growth, perception of leadership, and work-life balance.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">STAGE 6</div>
+          <h2 style="font-size:1.8rem;">Offboarding</h2>
+          <p>Use prompts to support structured exits and respectful departure communication.</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="prompt-card">
+            <div class="tag amber">11</div>
+            <h3>Exit checklist</h3>
+            <p>Create a more complete offboarding checklist with placeholders for employee details and key actions.</p>
+            <div class="prompt-box">Develop a customized employee offboarding checklist with space for inserting the employee’s name, department, and last workday. Include activities such as collection of company property, notifications to relevant departments, records updates, disabling accounts, and final pay/benefits instructions.</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="tag amber">12</div>
+            <h3>Exit announcement</h3>
+            <p>Draft a respectful company-wide message that acknowledges contribution and future wishes.</p>
+            <div class="prompt-box">Compose a company-wide email to announce an employee’s departure. Use a respectful and upbeat tone and include farewell wishes that show appreciation for the employee’s contributions and support for their next steps.</div>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:28px;">
+          <div class="kicker">EXTRA USE CASE</div>
+          <h2 style="font-size:1.8rem;">ChatGPT for Excel in HR</h2>
+          <p>The guide also highlights Excel support use cases such as formulas, debugging, sample HR data, and explaining spreadsheet issues. :contentReference[oaicite:16]{index=16}</p>
+        </div>
+
+        <div class="cards-2">
+          <div class="card">
+            <div class="icon">XL</div>
+            <h3>What it can help with</h3>
+            <ul class="mini-list">
+              <li>Writing formulas</li>
+              <li>Fixing errors</li>
+              <li>Generating sample HR data</li>
+              <li>Explaining spreadsheet issues like #REF! errors</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="icon">HR</div>
+            <h3>Why this matters for HR</h3>
+            <p>For headcount trends, training-hour tracking, and spreadsheet troubleshooting, prompt-led help can save time and reduce guesswork. :contentReference[oaicite:17]{index=17}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cannot">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHAT CHATGPT CANNOT REPLACE</div>
+          <h2>Some HR work still depends on human judgment, context, and trust</h2>
+          <p>
+            The article says ChatGPT is not a substitute for human judgment, empathy, or strategic thinking. It specifically names complex employee relations, strategy and change, culture shaping, and leadership development and succession planning as areas where human involvement remains essential. :contentReference[oaicite:18]{index=18}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="no-card">
+            <div class="tag amber">CAN’T REPLACE 1</div>
+            <h3>Complex employee relations</h3>
+            <p>Conflict, misconduct, bias awareness, and sensitive employee issues still require empathy, discretion, and ethical oversight. :contentReference[oaicite:19]{index=19}</p>
+          </div>
+
+          <div class="no-card">
+            <div class="tag amber">CAN’T REPLACE 2</div>
+            <h3>Strategy and change leadership</h3>
+            <p>AI can support outlines or communications, but it cannot fully create and implement strategy or lead change with human trust. :contentReference[oaicite:20]{index=20}</p>
+          </div>
+
+          <div class="no-card">
+            <div class="tag amber">CAN’T REPLACE 3</div>
+            <h3>Organizational culture</h3>
+            <p>Culture still depends on human influence, ownership, alignment, and accountability across managers and teams. :contentReference[oaicite:21]{index=21}</p>
+          </div>
+
+          <div class="no-card">
+            <div class="tag amber">CAN’T REPLACE 4</div>
+            <h3>Leadership development and succession</h3>
+            <p>Potential, motivation, long-term fit, and coaching judgment go beyond what a text model can truly assess. :contentReference[oaicite:22]{index=22}</p>
+          </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top:18px;">
+          <div class="compare warn">
+            <h3>What AI lacks</h3>
+            <ul class="mini-list">
+              <li>Real-world situational context</li>
+              <li>Emotional nuance</li>
+              <li>Ethical judgment in human situations</li>
+              <li>Authentic trust-building relationships</li>
+            </ul>
+          </div>
+
+          <div class="compare good">
+            <h3>Where HR still leads</h3>
+            <ul class="mini-list">
+              <li>Human judgment and discretion</li>
+              <li>Culture and leadership influence</li>
+              <li>Conflict handling and sensitive conversations</li>
+              <li>Strategic choices balancing people and business needs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="limits">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">LIMITATIONS AND RISKS</div>
+          <h2>What HR needs to watch out for</h2>
+          <p>
+            The guide highlights several limitations: hallucinations, biased answers, lack of source transparency, and outdated information. It says these limitations can lead to real-world risks such as biased decisions, inaccurate HR guidance, and data privacy or cybersecurity exposure if they are not managed well. :contentReference[oaicite:23]{index=23}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="risk-card">
+            <div class="tag">LIMIT 1</div>
+            <h3>Hallucinations</h3>
+            <p>ChatGPT can produce confident-sounding answers that are still factually wrong. :contentReference[oaicite:24]{index=24}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">LIMIT 2</div>
+            <h3>Bias</h3>
+            <p>The model can reflect biased patterns in training data and produce biased or skewed outputs. :contentReference[oaicite:25]{index=25}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">LIMIT 3</div>
+            <h3>Lack of source transparency</h3>
+            <p>Outputs may not include reliable references, and cited sources can be fabricated or misattributed. :contentReference[oaicite:26]{index=26}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">LIMIT 4</div>
+            <h3>Outdated information</h3>
+            <p>Without current grounding or verification, policy, legal, or best-practice guidance may be stale. :contentReference[oaicite:27]{index=27}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">RISK 1</div>
+            <h3>Bias in decision-making</h3>
+            <p>If unchecked, AI use can reinforce unfair outcomes in HR processes. :contentReference[oaicite:28]{index=28}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">RISK 2</div>
+            <h3>Inaccurate HR guidance</h3>
+            <p>Incorrect outputs can lead to poor decisions, compliance issues, or legal exposure. :contentReference[oaicite:29]{index=29}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">RISK 3</div>
+            <h3>Data privacy and cybersecurity</h3>
+            <p>Employees may enter confidential information without oversight unless clear usage policies exist. :contentReference[oaicite:30]{index=30}</p>
+          </div>
+
+          <div class="risk-card">
+            <div class="tag">HR TIP</div>
+            <h3>Treat the output as a draft</h3>
+            <p>The guide explicitly recommends treating outputs as drafts and applying human oversight before decisions. :contentReference[oaicite:31]{index=31}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ethics">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">RESPONSIBLE USE</div>
+          <h2>7 best practices for using ChatGPT responsibly in HR</h2>
+          <p>
+            The article lays out seven practical best practices: make a plan, test the tool, do due diligence, avoid sharing sensitive information, be transparent, create a policy, and get professional advice. :contentReference[oaicite:32]{index=32}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="ethic-card">
+            <div class="tag amber">1</div>
+            <h3>Make a plan</h3>
+            <p>Define purpose, appropriate use cases, and tasks where AI can and cannot be used. :contentReference[oaicite:33]{index=33}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">2</div>
+            <h3>Test drive the tool</h3>
+            <p>Experiment before deeper integration and decide where the tool adds value to the HR team. :contentReference[oaicite:34]{index=34}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">3</div>
+            <h3>Do due diligence</h3>
+            <p>Fact-check and research outputs before using them in HR processes or decisions. :contentReference[oaicite:35]{index=35}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">4</div>
+            <h3>Avoid sharing sensitive information</h3>
+            <p>Do not input sensitive employee or candidate data unless you fully understand data handling and controls. :contentReference[oaicite:36]{index=36}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">5</div>
+            <h3>Be transparent</h3>
+            <p>Communicate how AI is used in HR processes and how employee data is handled and protected. :contentReference[oaicite:37]{index=37}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">6</div>
+            <h3>Create a policy</h3>
+            <p>Develop explicit guidelines for appropriate use, restrictions, and approvals related to AI tools. :contentReference[oaicite:38]{index=38}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">7</div>
+            <h3>Get professional advice</h3>
+            <p>Work with IT, Legal, and cybersecurity or other specialists before scaling use further. :contentReference[oaicite:39]{index=39}</p>
+          </div>
+
+          <div class="ethic-card">
+            <div class="tag amber">OVERALL</div>
+            <h3>Use it thoughtfully</h3>
+            <p>The article’s conclusion is that ChatGPT is useful, but only when supported by oversight, policy, and safeguards. :contentReference[oaicite:40]{index=40}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="takeaways">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">KEY TAKEAWAYS</div>
+          <h2>ChatGPT can lighten HR workloads, but it should not remove human responsibility</h2>
+          <p>
+            The strongest message in the guide is practical: use ChatGPT to generate content, answer common questions, summarize information, and reduce repetitive work, but build its use around clear oversight, policies, privacy protection, and human judgment. :contentReference[oaicite:41]{index=41}
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="icon">1</div>
+            <h3>Use it for support</h3>
+            <p>Drafting, summarizing, and repetitive admin work are strong starting points.</p>
+          </div>
+          <div class="card">
+            <div class="icon">2</div>
+            <h3>Check everything important</h3>
+            <p>Accuracy, fairness, and legal fit still need human review.</p>
+          </div>
+          <div class="card">
+            <div class="icon">3</div>
+            <h3>Protect privacy</h3>
+            <p>Confidential data and employee information need special care.</p>
+          </div>
+          <div class="card">
+            <div class="icon">4</div>
+            <h3>Keep HR human</h3>
+            <p>Strategy, culture, trust, conflict, and leadership still depend on people.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Use ChatGPT to make HR work faster without making HR less human</h2>
+        <p>
+          The best approach is practical: use the tool for first drafts and repetitive tasks,
+          review the outputs carefully, protect privacy, and keep human judgment at the center
+          of every sensitive or high-impact HR decision.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0">
+          <a class="btn btn-primary" href="#overview">Back to top</a>
+          <a class="btn btn-secondary" href="#ethics">Review the 7 best practices</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone HTML article page</div>
+      <div>Path: Articles/ai-in-hr/chatgpt-for-hr-guide.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
