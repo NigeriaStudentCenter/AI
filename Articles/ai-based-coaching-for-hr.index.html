@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Based Coaching for HR | Scalable Coaching With Human Oversight</title>
+  <meta name="description" content="A conversion-focused page on AI-based coaching for HR leaders, showing how organizations can scale coaching with the right blend of AI, human support, and business alignment." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--green-50);
+      color:var(--ink);
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      background:var(--green-950);
+      color:#fff;
+      padding:18px 0;
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-size:.94rem;
+    }
+
+    .hero{
+      background:var(--green-950);
+      padding:26px 0 34px;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+    }
+
+    .hero-copy,.hero-visual{position:relative;z-index:1}
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+    }
+
+    .btn-primary{background:#fff;color:var(--green-950)}
+    .btn-secondary{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background:transparent;
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      color:#fff;
+      margin-bottom:4px;
+      font-size:1rem;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:760px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      border:1px solid rgba(10,59,49,.06);
+      box-shadow:var(--shadow);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:920px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .video-wrap{
+      margin-top:18px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:#000;
+    }
+
+    .video-frame{
+      position:relative;
+      width:100%;
+      padding-top:56.25%;
+    }
+
+    .video-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .cards-2,.cards-3,.cards-4,.cards-5{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+    .cards-5{grid-template-columns:repeat(5,1fr)}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      right:-30px;top:-30px;
+      width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,.card p,.card ul,.card .tag,.card .note{position:relative;z-index:1}
+    .card h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.06rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-size:.78rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .note{
+      display:inline-block;
+      margin-top:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .cta{
+      padding:10px 0 50px;
+    }
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{color:#fff}
+    .cta-card p{color:rgba(255,255,255,.90);max-width:760px}
+
+    .footer{
+      background:var(--green-950);
+      color:#dce9e1;
+      padding:10px 0 42px;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,.cards-2,.cards-3,.cards-4,.cards-5{grid-template-columns:1fr}
+      .hero-metrics,.dashboard-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI Coaching for HR</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#video">Watch Video</a>
+        <a href="#models">3 Models</a>
+        <a href="#checks">5 Checks</a>
+        <a href="#why-bsoe">Why BSOE</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI COACHING FOR HR • SCALABLE, STRUCTURED, HUMAN-CENTERED</div>
+            <h1>Scale coaching without losing human judgment</h1>
+            <p>
+              AI-based coaching gives HR leaders a smarter way to extend development beyond a small group of senior leaders.
+              Instead of keeping coaching slow, expensive, and limited, you can use AI to improve access, continuity,
+              reflection, and development support — while keeping trust, ethics, and people outcomes in view.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#video">Watch the video</a>
+              <a class="btn btn-secondary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Visit www.bsoedu.org</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>More access</strong>
+                <span>Make coaching available to more employees, not only executives.</span>
+              </div>
+              <div class="metric">
+                <strong>More continuity</strong>
+                <span>Keep development moving between formal sessions.</span>
+              </div>
+              <div class="metric">
+                <strong>More structure</strong>
+                <span>Use AI to support practice, reflection, and guided growth.</span>
+              </div>
+              <div class="metric">
+                <strong>More business impact</strong>
+                <span>Connect coaching to real capability and leadership outcomes.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">AI Coaching at a glance</div>
+                <div class="dashboard-tag">Built to scale</div>
+              </div>
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Support growth better</strong>
+                  <span>Use AI to strengthen development, not just add another tool.</span>
+                </div>
+                <div class="box">
+                  <strong>Widen access</strong>
+                  <span>Support more people across leadership and workforce levels.</span>
+                </div>
+                <div class="box">
+                  <strong>Blend human + AI</strong>
+                  <span>Use the right model for the right level of complexity.</span>
+                </div>
+                <div class="box">
+                  <strong>Protect trust</strong>
+                  <span>Keep boundaries, oversight, and transparency visible.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="video">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WATCH THE VIDEO</div>
+          <h2>See the AI coaching conversation in action</h2>
+          <p>
+            Use this video as a practical entry point into the AI coaching model and the future of scalable coaching.
+          </p>
+        </div>
+        <div class="video-wrap">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/ECfDLJm-vhE"
+              title="AI Coaching Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="models">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">3 AI COACHING MODELS</div>
+          <h2>Use the right coaching model for the right need</h2>
+          <p>
+            AI coaching is strongest when HR does not treat every situation the same.
+            Different levels of complexity require different levels of human oversight.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="card">
+            <div class="tag">MODEL 1</div>
+            <h3>AI-supported coaching</h3>
+            <p>Human coach first, AI in support. Use AI for reflection prompts, assessment support, and coaching preparation.</p>
+            <span class="note">Best for higher-complexity and higher-risk contexts</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">MODEL 2</div>
+            <h3>AI-augmented coaching</h3>
+            <p>Human coach plus AI between sessions. Use AI to extend continuity, track focus areas, and guide action.</p>
+            <span class="note">Best for scalable development with visible support</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">MODEL 3</div>
+            <h3>AI-as-the-coach</h3>
+            <p>AI provides the main coaching experience for narrower, lower-risk development needs.</p>
+            <span class="note">Best where access and scale matter most</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="checks">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">5 HR CHECKS</div>
+          <h2>How to adopt AI coaching responsibly</h2>
+          <p>
+            AI coaching should be implemented as a deliberate people-development model, not as a random experiment.
+          </p>
+        </div>
+
+        <div class="cards-5">
+          <div class="card">
+            <div class="tag">CHECK 1</div>
+            <h3>Define the purpose</h3>
+            <p>Be clear on what coaching is supposed to improve and for whom.</p>
+          </div>
+          <div class="card">
+            <div class="tag">CHECK 2</div>
+            <h3>Assess complexity</h3>
+            <p>Match the coaching model to the level of risk and human sensitivity involved.</p>
+          </div>
+          <div class="card">
+            <div class="tag">CHECK 3</div>
+            <h3>Set controls</h3>
+            <p>Clarify awareness, escalation, privacy, and acceptable use.</p>
+          </div>
+          <div class="card">
+            <div class="tag">CHECK 4</div>
+            <h3>Validate the model</h3>
+            <p>Make sure the coaching logic, design, and outputs can be explained clearly.</p>
+          </div>
+          <div class="card">
+            <div class="tag">CHECK 5</div>
+            <h3>Link to wider development</h3>
+            <p>Position AI coaching inside your larger leadership and workforce strategy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why-bsoe">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY BSOE</div>
+          <h2>Why this is a strong next step for HR buyers</h2>
+          <p>
+            Most organizations do not need more disconnected AI tools. They need a practical coaching model that helps people grow,
+            helps leaders develop, and helps HR scale support responsibly. That is where BSOE becomes the smarter next step.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="tag">BSOE 1</div>
+            <h3>Position AI coaching as access + quality</h3>
+            <p>Not just automation. A stronger way to widen development access without losing structure.</p>
+          </div>
+          <div class="card">
+            <div class="tag">BSOE 2</div>
+            <h3>Support leadership and workforce development</h3>
+            <p>Use AI coaching to strengthen growth journeys across different talent levels.</p>
+          </div>
+          <div class="card">
+            <div class="tag">BSOE 3</div>
+            <h3>Blend digital and human support</h3>
+            <p>Use AI where it improves reach and continuity while keeping people central where nuance matters most.</p>
+          </div>
+          <div class="card">
+            <div class="tag">BSOE 4</div>
+            <h3>Move from interest to implementation</h3>
+            <p>Help HR turn the AI coaching conversation into a practical, usable model.</p>
+          </div>
+        </div>
+
+        <div class="hero-actions" style="margin-top:24px;">
+          <a class="btn btn-primary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Start with BSOE</a>
+          <a class="btn btn-secondary" href="https://www.bsoedu.org/" target="_blank" rel="noopener" style="color:var(--green-900);background:#fff;border-color:var(--line);">Visit www.bsoedu.org</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>AI coaching is not about replacing development. It is about scaling it.</h2>
+        <p>
+          If your HR team wants coaching to become more accessible, more continuous, and more practical across the organization,
+          AI coaching is a model worth adopting with the right purpose, the right controls, and the right partner.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0;">
+          <a class="btn btn-primary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Visit BSOE</a>
+          <a class="btn btn-secondary" href="#video">Play the video</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalones</div>
+      <div>Path: Articles/ai-in-hr/ai-based-coaching-for-hr.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
