@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Coaching for Students | Build Employability, AI Skills, and Career Confidence</title>
+  <meta name="description" content="A conversion-focused student landing page introducing AI Coaching as a practical model for employability, AI certification, entrepreneurial skills, research, scholarships, project completion, and job readiness while still in school." />
+  <style>
+    :root{
+      --green-950:#082c24;
+      --green-900:#0c3b31;
+      --green-850:#115142;
+      --green-800:#16624f;
+      --green-700:#1d7a61;
+      --green-600:#2b8a70;
+      --green-100:#e6efe8;
+      --green-50:#f5f8f4;
+      --ink:#183028;
+      --muted:#5c7268;
+      --line:#d7e3db;
+      --white:#ffffff;
+      --shadow:0 16px 40px rgba(8,44,36,.10);
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--green-50);
+      color:var(--ink);
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      background:var(--green-950);
+      color:#fff;
+      padding:18px 0;
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#dff3e8,#7fc8a3);
+      color:var(--green-950);
+      font-weight:800;
+    }
+
+    .mini-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-size:.94rem;
+    }
+
+    .hero{
+      background:var(--green-950);
+      padding:26px 0 34px;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg, rgba(12,59,49,.96), rgba(17,81,66,.94));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+    }
+
+    .hero-copy,.hero-visual{position:relative;z-index:1}
+
+    .hero-copy{
+      padding:48px 40px 42px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.84rem;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3.35rem);
+      line-height:1.06;
+      color:#fff;
+    }
+
+    .hero-copy p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.90);
+      font-size:1.05rem;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+    }
+
+    .btn-primary{background:#fff;color:var(--green-950)}
+    .btn-secondary{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background:transparent;
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .metric{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .metric strong{
+      display:block;
+      color:#fff;
+      margin-bottom:4px;
+      font-size:1rem;
+    }
+
+    .metric span{
+      display:block;
+      color:rgba(255,255,255,.84);
+      font-size:.88rem;
+    }
+
+    .hero-visual{
+      min-height:820px;
+      padding:30px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(159,223,194,.28), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(255,255,255,.10), transparent 20%),
+        linear-gradient(180deg,#0b332a,#0f4a3d);
+    }
+
+    .dashboard{
+      width:min(560px,100%);
+      background:rgba(255,255,255,.97);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 46px rgba(0,0,0,.16);
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .dashboard-title{
+      font-weight:800;
+      color:var(--green-950);
+    }
+
+    .dashboard-tag{
+      font-size:.78rem;
+      font-weight:700;
+      color:var(--green-800);
+      background:#eaf5ef;
+      border-radius:999px;
+      padding:8px 10px;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .box{
+      background:var(--green-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .box strong{
+      display:block;
+      color:var(--green-900);
+      margin-bottom:4px;
+    }
+
+    .box span{
+      display:block;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .section{padding:28px 0}
+
+    .panel{
+      background:#fff;
+      border-radius:28px;
+      border:1px solid rgba(10,59,49,.06);
+      box-shadow:var(--shadow);
+      padding:34px 28px;
+    }
+
+    .section-head{
+      max-width:920px;
+      margin-bottom:26px;
+    }
+
+    .kicker{
+      display:inline-block;
+      background:#eaf5ef;
+      color:var(--green-900);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem,3vw,2.45rem);
+      line-height:1.15;
+      color:var(--green-950);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .video-wrap{
+      margin-top:18px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:#000;
+    }
+
+    .video-frame{
+      position:relative;
+      width:100%;
+      padding-top:56.25%;
+    }
+
+    .video-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .cards-2,.cards-3,.cards-4{
+      display:grid;
+      gap:18px;
+    }
+
+    .cards-2{grid-template-columns:repeat(2,1fr)}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .cards-4{grid-template-columns:repeat(4,1fr)}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:linear-gradient(180deg,#fff,#f8fbf9);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      right:-30px;top:-30px;
+      width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle, rgba(28,108,88,.12), transparent 70%);
+    }
+
+    .card h3,.card p,.card ul,.card .tag,.card .note{position:relative;z-index:1}
+    .card h3{
+      margin:0 0 10px;
+      color:var(--green-950);
+      font-size:1.06rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:#eef6f1;
+      color:var(--green-900);
+      font-size:.78rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .note{
+      display:inline-block;
+      margin-top:12px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eaf5ef;
+      color:var(--green-800);
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .mini-list li+li{margin-top:8px}
+
+    .cta{
+      padding:10px 0 50px;
+    }
+
+    .cta-card{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h2{color:#fff}
+    .cta-card p{color:rgba(255,255,255,.90);max-width:780px}
+
+    .footer{
+      background:var(--green-950);
+      color:#dce9e1;
+      padding:10px 0 42px;
+      font-size:.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:18px;
+    }
+
+    @media (max-width:1180px){
+      .hero-grid,.cards-2,.cards-3,.cards-4{grid-template-columns:1fr}
+      .hero-metrics,.dashboard-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:720px){
+      .hero-copy,.panel,.cta-card{padding:24px 18px}
+      .hero-metrics,.dashboard-grid{grid-template-columns:1fr}
+      .mini-nav{width:100%}
+      .mini-nav a{flex:1 1 auto;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>AI Coaching for Students</div>
+      </div>
+      <nav class="mini-nav">
+        <a href="#video">Watch Video</a>
+        <a href="#benefits">What You Get</a>
+        <a href="#platform">Platform</a>
+        <a href="#join">Join Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">AI COACHING FOR STUDENTS • EMPLOYABILITY, AI SKILLS, PROJECTS, OPPORTUNITY</div>
+            <h1>Turn AI into your personal coaching advantage while you are still in school</h1>
+            <p>
+              AI Coaching is not just about using tools. It is about having a smarter growth system around you.
+              With the right AI coaching platform, students can build employability skills, gain AI certification,
+              strengthen entrepreneurial thinking, improve research, find scholarships, complete projects better,
+              and prepare for jobs while still in school.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#video">Watch the video</a>
+              <a class="btn btn-secondary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Visit www.bsoedu.org</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>Become job-ready early</strong>
+                <span>Prepare for opportunities before graduation, not after.</span>
+              </div>
+              <div class="metric">
+                <strong>Learn AI with purpose</strong>
+                <span>Use AI to build real-world skills and confidence.</span>
+              </div>
+              <div class="metric">
+                <strong>Complete stronger projects</strong>
+                <span>Use AI coaching to plan, research, draft, and improve better.</span>
+              </div>
+              <div class="metric">
+                <strong>Grow beyond the classroom</strong>
+                <span>Build confidence, initiative, and entrepreneurial thinking.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="dashboard">
+              <div class="dashboard-top">
+                <div class="dashboard-title">What AI Coaching can help you do</div>
+                <div class="dashboard-tag">Student growth</div>
+              </div>
+
+              <div class="dashboard-grid">
+                <div class="box">
+                  <strong>Become job-ready earlier</strong>
+                  <span>Get support for CVs, applications, interviews, and confidence.</span>
+                </div>
+                <div class="box">
+                  <strong>Build AI capability</strong>
+                  <span>Use AI more strategically for study, work, and opportunity.</span>
+                </div>
+                <div class="box">
+                  <strong>Research and scholarship support</strong>
+                  <span>Search smarter and prepare better for opportunities.</span>
+                </div>
+                <div class="box">
+                  <strong>Grow entrepreneurial skills</strong>
+                  <span>Use AI to shape ideas, plans, and communication better.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="video">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WATCH THE VIDEO</div>
+          <h2>See the AI coaching idea in action</h2>
+          <p>
+            Watch this video as an introduction to the AI coaching model and why it matters for student growth, confidence, and future opportunity.
+          </p>
+        </div>
+        <div class="video-wrap">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/ECfDLJm-vhE"
+              title="AI Coaching for Students Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="benefits">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHAT STUDENTS GET</div>
+          <h2>AI Coaching helps you grow in the areas that matter most</h2>
+          <p>
+            This page is designed to convert students by showing that AI Coaching is not random AI use.
+            It is guided growth for school, skills, and career opportunity.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="tag">BENEFIT 1</div>
+            <h3>Employability certification support</h3>
+            <p>Build the confidence, language, and readiness that strengthen your employability while still in school.</p>
+            <span class="note">Become opportunity-ready earlier</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 2</div>
+            <h3>AI certification growth</h3>
+            <p>Move from casual AI use to practical AI skill-building you can apply and demonstrate.</p>
+            <span class="note">Turn AI into real capability</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 3</div>
+            <h3>Entrepreneurial skills</h3>
+            <p>Use AI coaching to improve idea development, planning, messaging, and action.</p>
+            <span class="note">Think like a creator, not only a learner</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 4</div>
+            <h3>Research support</h3>
+            <p>Structure research better, improve your direction, and work with more clarity.</p>
+            <span class="note">Research smarter</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 5</div>
+            <h3>Scholarship search support</h3>
+            <p>Find, compare, and prepare for scholarships and academic opportunities more effectively.</p>
+            <span class="note">Search better, apply stronger</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 6</div>
+            <h3>Project completion support</h3>
+            <p>Break down assignments, plan timelines, improve drafts, and finish projects with less confusion.</p>
+            <span class="note">Move from stuck to done</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 7</div>
+            <h3>Job search support</h3>
+            <p>Improve CVs, applications, interview preparation, and readiness for internships or jobs.</p>
+            <span class="note">Increase your chances of real opportunities</span>
+          </div>
+
+          <div class="card">
+            <div class="tag">BENEFIT 8</div>
+            <h3>Career confidence</h3>
+            <p>Use coaching-style AI support to reflect, prepare, set goals, and take better next steps.</p>
+            <span class="note">Growth becomes more intentional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="platform">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">WHY THIS PLATFORM WORKS</div>
+          <h2>Students do better when support is practical, continuous, and available</h2>
+          <p>
+            AI Coaching lowers the barrier to growth. Instead of waiting for a rare mentoring opportunity,
+            students can keep learning, reflecting, and improving step by step.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <div class="card">
+            <div class="tag">MODEL 1</div>
+            <h3>Always available</h3>
+            <p>Get support when you need it — before a project, before an interview, before an application, or during planning.</p>
+          </div>
+          <div class="card">
+            <div class="tag">MODEL 2</div>
+            <h3>Coaching-style guidance</h3>
+            <p>Use AI for reflection, planning, accountability, and clearer next-step thinking.</p>
+          </div>
+          <div class="card">
+            <div class="tag">MODEL 3</div>
+            <h3>Built for real outcomes</h3>
+            <p>The goal is not just using AI. The goal is becoming more capable, confident, and opportunity-ready.</p>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px;">
+          <div class="card">
+            <h3>What students often struggle with</h3>
+            <ul class="mini-list">
+              <li>Not knowing where to start</li>
+              <li>Feeling overwhelmed by information</li>
+              <li>Using AI without strategy</li>
+              <li>Leaving employability preparation too late</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What AI Coaching changes</h3>
+            <ul class="mini-list">
+              <li>Gives structure</li>
+              <li>Builds confidence</li>
+              <li>Supports school and career growth together</li>
+              <li>Turns AI into a real development advantage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <div class="container">
+      <div class="panel">
+        <div class="section-head">
+          <div class="kicker">JOIN NOW</div>
+          <h2>Do not wait until after graduation to become opportunity-ready</h2>
+          <p>
+            If you can build employability, AI confidence, entrepreneurial skill, and project strength while still in school,
+            you give yourself a real future advantage. That is the invitation: join an AI Coaching platform that helps you grow now, not later.
+          </p>
+        </div>
+
+        <div class="cards-4">
+          <div class="card">
+            <div class="tag">JOIN 1</div>
+            <h3>Start early</h3>
+            <p>Prepare for jobs, internships, and opportunities before your final year.</p>
+          </div>
+          <div class="card">
+            <div class="tag">JOIN 2</div>
+            <h3>Use AI with purpose</h3>
+            <p>Move beyond random prompts and use AI as a real coaching tool for growth.</p>
+          </div>
+          <div class="card">
+            <div class="tag">JOIN 3</div>
+            <h3>Build visible capability</h3>
+            <p>Strengthen the kind of outputs and confidence that make opportunity providers take notice.</p>
+          </div>
+          <div class="card">
+            <div class="tag">JOIN 4</div>
+            <h3>Join BSOE</h3>
+            <p>Use BSOE as your next step if you want practical AI coaching for school, skills, and career growth.</p>
+          </div>
+        </div>
+
+        <div class="hero-actions" style="margin-top:24px;">
+          <a class="btn btn-primary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Join our AI Coaching Platform</a>
+          <a class="btn btn-secondary" href="https://www.bsoedu.org/" target="_blank" rel="noopener" style="color:var(--green-900);background:#fff;border-color:var(--line);">Visit www.bsoedu.org</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>AI Coaching can help students turn school years into career-building years</h2>
+        <p>
+          Use AI not just to answer questions, but to build employability, strengthen projects,
+          improve research, develop entrepreneurial confidence, and prepare for real opportunities while you are still in school.
+        </p>
+        <div class="hero-actions" style="margin-bottom:0;">
+          <a class="btn btn-primary" href="https://www.bsoedu.org/" target="_blank" rel="noopener">Start with BSOE</a>
+          <a class="btn btn-secondary" href="#video">Play the video</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Standalone</div>
+      <div>Path: Articles/ai-in-hr/ai-coaching-for-students.index.html</div>
+    </div>
+  </footer>
+
+</body>
+</html>
