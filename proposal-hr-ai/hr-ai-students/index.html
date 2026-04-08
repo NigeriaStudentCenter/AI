@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where HR Goes Next | AI Readiness & Certification for HR Students</title>
+  <meta name="description" content="A persuasive landing page for HR students to watch the video, take the AI Readiness Assessment, and join the AI certification programme." />
+  <style>
+    :root{
+      --green-950:#08261f;
+      --green-900:#0d3b31;
+      --green-800:#145041;
+      --green-700:#1b6a57;
+      --green-600:#2a8a72;
+      --mint-100:#edf7f3;
+      --mint-50:#f7fbf9;
+      --cream:#fcfbf7;
+      --text:#18322b;
+      --muted:#5f756f;
+      --line:#d8e6df;
+      --white:#ffffff;
+      --accent:#f3c96a;
+      --accent-dark:#c69123;
+      --shadow:0 18px 50px rgba(6, 34, 28, 0.14);
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:14px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--green-950) 0%, #0f4337 18%, #f4faf7 18%, #f4faf7 100%);
+      line-height:1.58;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto;}
+
+    .topbar{
+      padding:18px 0;
+      color:rgba(255,255,255,.88);
+      font-size:14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand-mark{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--green-600),#81c8b0);
+      display:grid;
+      place-items:center;
+      color:#083126;
+      font-weight:800;
+      box-shadow:0 10px 28px rgba(0,0,0,.15);
+    }
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      font-weight:700;
+    }
+
+    .hero-shell{
+      padding:16px 0 54px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:26px;
+      align-items:stretch;
+      background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:32px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-copy{
+      color:var(--white);
+      padding:8px 6px 8px 4px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.24px;
+      text-transform:uppercase;
+      color:#dff3ea;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(34px,5.4vw,62px);
+      line-height:1.04;
+      color:var(--white);
+      letter-spacing:-1.4px;
+    }
+
+    .hero-copy p{
+      margin:0 0 16px;
+      font-size:clamp(17px,2vw,21px);
+      color:rgba(255,255,255,.9);
+      max-width:720px;
+    }
+
+    .highlight{
+      color:#fff7d9;
+      font-weight:800;
+    }
+
+    .bullet-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 24px;
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#edf8f4;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15px;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#ffd889);
+      color:#2d2205;
+      box-shadow:0 18px 35px rgba(243,201,106,.25);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.1);
+      color:var(--white);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-card{
+      background:var(--cream);
+      border-radius:26px;
+      padding:16px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      min-height:100%;
+    }
+
+    .video-wrap{
+      position:relative;
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      background:#071611;
+      aspect-ratio:16 / 9;
+    }
+
+    .video-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .card-title{
+      margin:2px 0 0;
+      font-size:20px;
+      color:var(--green-900);
+      line-height:1.2;
+    }
+
+    .card-sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .score-box{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:6px;
+    }
+
+    .score-item{
+      background:var(--mint-50);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .score-item strong{
+      display:block;
+      font-size:22px;
+      line-height:1;
+      color:var(--green-900);
+      margin-bottom:6px;
+    }
+
+    .score-item span{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    main{padding-bottom:56px;}
+
+    .section{
+      padding:24px 0;
+    }
+
+    .panel{
+      background:var(--cream);
+      border-radius:var(--radius-xl);
+      padding:30px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(11,64,50,.06);
+    }
+
+    .section-head{
+      max-width:760px;
+      margin-bottom:22px;
+    }
+
+    .section-head .mini{
+      color:var(--green-700);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      display:inline-block;
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size:clamp(28px,4vw,44px);
+      line-height:1.08;
+      color:var(--green-900);
+      letter-spacing:-1px;
+    }
+
+    .lead{
+      margin:0;
+      font-size:18px;
+      color:var(--muted);
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--mint-50);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      height:100%;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.15;
+      color:var(--green-900);
+    }
+
+    .card p, .card li{
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#d9f1e8,#b8e5d4);
+      color:var(--green-900);
+      font-size:24px;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    ul.clean{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:12px;
+    }
+
+    ul.clean li{
+      position:relative;
+      padding-left:18px;
+      margin:0;
+    }
+
+    ul.clean li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.62em;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green-600);
+    }
+
+    .band{
+      background:linear-gradient(135deg,var(--green-900),#0f4a3c);
+      color:var(--white);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .band h2, .band h3{color:var(--white)}
+    .band p, .band li{color:rgba(255,255,255,.88)}
+    .band .lead{color:rgba(255,255,255,.82)}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .step{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .step-num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:#f7d98e;
+      color:#2f2608;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .quote{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:0 12px 30px rgba(11,64,50,.08);
+    }
+
+    .quote p{
+      margin:0 0 12px;
+      font-size:18px;
+      color:var(--green-900);
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .quote small{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .faq{
+      display:grid;
+      gap:14px;
+    }
+
+    details{
+      background:var(--mint-50);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px 20px;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:800;
+      color:var(--green-900);
+      font-size:17px;
+    }
+
+    summary::-webkit-details-marker{display:none}
+
+    details p{
+      margin:12px 0 0;
+      color:var(--muted);
+    }
+
+    .final-cta{
+      position:sticky;
+      bottom:14px;
+      z-index:15;
+      margin-top:12px;
+    }
+
+    .final-cta .inner{
+      background:rgba(8,38,31,.94);
+      color:var(--white);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      box-shadow:0 16px 45px rgba(6,34,28,.25);
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      backdrop-filter:blur(10px);
+    }
+
+    .final-cta strong{display:block;font-size:17px}
+    .final-cta span{display:block;font-size:13px;color:rgba(255,255,255,.74)}
+
+    footer{
+      padding:24px 0 50px;
+      color:#d5ede5;
+      font-size:13px;
+    }
+
+    footer a{color:#f2dfac;text-decoration:underline}
+
+    @media (max-width: 1060px){
+      .hero{grid-template-columns:1fr}
+      .grid-3,.steps{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 760px){
+      body{background:linear-gradient(180deg,var(--green-950) 0%, #0f4337 11%, #f4faf7 11%, #f4faf7 100%)}
+      .container{width:min(var(--max), calc(100% - 18px));}
+      .hero,.panel,.band{padding:20px}
+      .grid-3,.grid-2,.steps,.score-box{grid-template-columns:1fr}
+      .final-cta .inner{flex-direction:column;align-items:flex-start}
+      .btn{width:100%}
+      .cta-row{display:grid;grid-template-columns:1fr}
+      .nav-cta{width:100%;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <!--
+    REPLACE THESE PLACEHOLDERS BEFORE PUBLISHING:
+    1) https://www.youtube.com/embed/dn1pwfas-Wc -> YouTube embed link, e.g. https://www.youtube.com/embed/VIDEO_ID
+    2) https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?prevorigin=shell&origin=NeoPortalPage&subpage=design&id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFURjFaRFBPNFZBWENKWVE1OTdPTEJDUVpQWS4u -> your assessment link
+    3) https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFUOFYxNjg1QUhIUEhZQ1BZSURaSExXWENIQS4u -> your programme landing / payment / enrolment link
+  -->
+
+  <header class="topbar">
+    <div class="container brand">
+      <div class="brand-mark">
+        <div class="brand-badge">AI</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;">AI for HR Students</div>
+          <div style="font-size:12px;opacity:.78;">Skills • Readiness • Certification • Career Growth</div>
+        </div>
+      </div>
+      <a class="nav-cta" href="https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?prevorigin=shell&origin=NeoPortalPage&subpage=design&id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFURjFaRFBPNFZBWENKWVE1OTdPTEJDUVpQWS4u">Take the AI Readiness Assessment</a>
+    </div>
+  </header>
+
+  <section class="hero-shell">
+    <div class="container hero">
+      <div class="hero-copy">
+        <div class="eyebrow">For HR Students Who Want an Edge</div>
+        <h1>Where HR Goes Next:<br>Skills, AI, and the Power of Being Human</h1>
+        <p>
+          HR is changing fast. The students who stand out next will not just know policy — they will know how to use <span class="highlight">AI with confidence</span>, think with clarity, and bring the human skills employers cannot automate.
+        </p>
+        <p>
+          Watch the video, assess your AI readiness, and start your path into an <span class="highlight">AI certification programme built for the future of HR</span>.
+        </p>
+
+        <div class="bullet-row">
+          <span class="pill">Built for students and early-career HR talent</span>
+          <span class="pill">Practical AI skills for real HR work</span>
+          <span class="pill">Confidence, readiness, and certification</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?prevorigin=shell&origin=NeoPortalPage&subpage=design&id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFURjFaRFBPNFZBWENKWVE1OTdPTEJDUVpQWS4u">Start the AI Readiness Assessment</a>
+          <a class="btn btn-secondary" href="#video">Watch the video first</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" id="video">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/dn1pwfas-Wc" title="Where HR Goes Next video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <h2 class="card-title">Watch the message that changes how you see your HR future</h2>
+        <p class="card-sub">A direct, student-friendly video on where HR is going, why AI matters now, and how to position yourself before the market moves further ahead.</p>
+
+        <div class="score-box">
+          <div class="score-item">
+            <strong>Step 1</strong>
+            <span>Watch the video</span>
+          </div>
+          <div class="score-item">
+            <strong>Step 2</strong>
+            <span>Complete the assessment</span>
+          </div>
+          <div class="score-item">
+            <strong>Step 3</strong>
+            <span>Join the certification path</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">Why this matters now</span>
+          <h2>HR students who understand AI early will walk into the job market stronger</h2>
+          <p class="lead">The future of HR is moving toward skills, AI fluency, better decisions, safer use of data, and more human-centered leadership. This is the moment to prepare before graduation becomes pressure.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">1</div>
+            <h3>Stand out beyond your degree</h3>
+            <p>Employers are looking for students who can show practical value — not just theory. Learn how AI supports recruitment, people analytics, learning, operations, and HR decision-making.</p>
+          </div>
+          <div class="card">
+            <div class="icon">2</div>
+            <h3>Build confidence before the interview</h3>
+            <p>Know how to talk about AI in HR interviews, explain modern HR trends, and show that you are ready for the workplace that is already emerging.</p>
+          </div>
+          <div class="card">
+            <div class="icon">3</div>
+            <h3>Keep the human edge</h3>
+            <p>AI can automate tasks. It cannot replace empathy, judgment, communication, ethics, and trust. You need both digital skill and human strength.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container band">
+        <div class="section-head" style="margin-bottom:10px;max-width:860px;">
+          <span class="mini" style="color:#d5efe6;">Take the next step</span>
+          <h2>Complete your AI Readiness Assessment and get a clearer path forward</h2>
+          <p class="lead">Your assessment should do more than score you. It should show you where you stand, what to improve next, and how to move toward AI skills and certification with confidence.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Assess</h3>
+            <p>Discover your current level of AI readiness for HR and identify your strongest areas and biggest gaps.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Get feedback</h3>
+            <p>Use your result to understand what support, practice, and learning you need next.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Advance</h3>
+            <p>Move into a certification programme that helps you build practical AI capability for the future of HR work.</p>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:22px;">
+          <a class="btn btn-primary" href="https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?prevorigin=shell&origin=NeoPortalPage&subpage=design&id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFURjFaRFBPNFZBWENKWVE1OTdPTEJDUVpQWS4u">Complete the Assessment Now</a>
+          <a class="btn btn-secondary" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFUOFYxNjg1QUhIUEhZQ1BZSURaSExXWENIQS4u">View the Certification Path</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">What you can learn</span>
+          <h2>What this certification journey should help HR students master</h2>
+          <p class="lead">Designed to move you from interest to ability — so you can use AI in ways that actually matter in HR.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Practical AI for everyday HR work</h3>
+            <ul class="clean">
+              <li>Use AI to support job descriptions, interview questions, candidate communication, and HR content.</li>
+              <li>Understand how AI improves efficiency, insight, and productivity across HR workflows.</li>
+              <li>Learn prompt design and structured thinking so you get better outputs, faster.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Responsible and career-smart AI use</h3>
+            <ul class="clean">
+              <li>Understand privacy, ethics, bias, and safe use of AI in people-related work.</li>
+              <li>Learn how to review outputs instead of trusting AI blindly.</li>
+              <li>Build interview-ready confidence by speaking clearly about AI in HR.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Skills that employers notice</h3>
+            <ul class="clean">
+              <li>Problem-solving, communication, adaptability, digital confidence, and human judgment.</li>
+              <li>The ability to combine AI tools with empathy, clarity, and professionalism.</li>
+              <li>A stronger story for your CV, LinkedIn profile, internship applications, and job interviews.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Visible proof that you are serious</h3>
+            <ul class="clean">
+              <li>A certification pathway that signals you are investing in the future of HR.</li>
+              <li>A more confident answer to: “How are you preparing for AI in the workplace?”</li>
+              <li>A competitive edge as HR roles shift toward skills, systems, data, and transformation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">Who this is for</span>
+          <h2>This page is built for the student who knows HR is changing</h2>
+          <p class="lead">You do not need to wait until you feel behind. Start now if any of these sound like you.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>You are studying HR or a related course</h3>
+            <p>You want to understand where the profession is going and how to prepare for it before graduation.</p>
+          </div>
+          <div class="card">
+            <h3>You want more than theory</h3>
+            <p>You want modern, practical, career-relevant skills that make you more employable and more confident.</p>
+          </div>
+          <div class="card">
+            <h3>You want an edge in the job market</h3>
+            <p>You want to stand out with an AI-readiness mindset, stronger language, better skills, and a certification path.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">Your journey</span>
+          <h2>A simple student path from curiosity to capability</h2>
+          <p class="lead">This page is designed to move visitors in a clear, low-friction sequence.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">▶</div>
+            <h3>Watch</h3>
+            <p>Start with the video so the student immediately understands why AI, skills, and the human side of HR now matter together.</p>
+          </div>
+          <div class="card">
+            <div class="icon">✓</div>
+            <h3>Assess</h3>
+            <p>Use the AI Readiness Assessment to create urgency, self-discovery, and a reason to act now rather than later.</p>
+          </div>
+          <div class="card">
+            <div class="icon">★</div>
+            <h3>Join</h3>
+            <p>Present the certification as the next natural step: not hype, but a structured way to build the skills employers will reward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">Student-focused proof</span>
+          <h2>What your visitors need to feel before they click</h2>
+          <p class="lead">The strongest landing pages reduce fear, build clarity, and make action feel worth it.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="quote">
+            <p>“I do not want to wait until graduation to discover that HR has changed and I did not change with it.”</p>
+            <small>Use this block as a student insight / testimonial area later.</small>
+          </div>
+          <div class="quote">
+            <p>“I want to leave this page knowing where I stand, what to do next, and how to build skills employers will actually respect.”</p>
+            <small>Use this block for your real testimonials once available.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <span class="mini">Frequently asked</span>
+          <h2>Questions students are likely to ask</h2>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Do I need technical experience before I start?</summary>
+            <p>No. This page is positioned for HR students and early-career learners. The messaging is designed to make AI feel accessible, practical, and relevant to HR work.</p>
+          </details>
+          <details>
+            <summary>Why start with the AI Readiness Assessment?</summary>
+            <p>Because self-awareness drives action. The assessment gives visitors a reason to engage now, not later, and creates a smoother path into your programme.</p>
+          </details>
+          <details>
+            <summary>What kind of outcomes should the programme promise?</summary>
+            <p>Confidence, practical HR use cases, safer and more responsible use of AI, stronger employability language, and a clearer certification pathway.</p>
+          </details>
+          <details>
+            <summary>Can I change the buttons once you send the real links?</summary>
+            <p>Yes. Replace the placeholder video URL, assessment URL, and certification enrolment URL at the top of the file and the page is ready to publish.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="container final-cta">
+      <div class="inner">
+        <div>
+          <strong>Ready to see where you stand?</strong>
+          <span>Watch the video. Take the assessment. Start building AI skills for the future of HR.</span>
+        </div>
+        <div class="cta-row" style="margin:0;">
+          <a class="btn btn-primary" href="https://forms.cloud.microsoft/Pages/DesignPageV2.aspx?prevorigin=shell&origin=NeoPortalPage&subpage=design&id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFURjFaRFBPNFZBWENKWVE1OTdPTEJDUVpQWS4u">Take the Assessment</a>
+          <a class="btn btn-secondary" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=iBFpdp2b7ke7Wir-xS9NXkpgLZIEiUNDtHJNCjHCrCFUOFYxNjg1QUhIUEhZQ1BZSURaSExXWENIQS4u">Join the Programme</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+  AI certification offer
+    </div>
+  </footer>
+</body>
+</html>
