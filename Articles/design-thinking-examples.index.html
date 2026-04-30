@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Thinking in Action</title>
+  <meta name="description" content="A clean, original HTML redesign explaining design thinking through practical business examples." />
+  <style>
+    :root{
+      --green-950:#0a2f27;
+      --green-900:#114236;
+      --green-800:#1a5a49;
+      --green-700:#25705d;
+      --green-200:#dceae5;
+      --green-100:#eef6f3;
+      --ink:#13211d;
+      --muted:#54665f;
+      --line:#d7e5df;
+      --card:#fbfdfc;
+      --accent:#b7e6d8;
+      --accent-2:#cfeee4;
+      --white:#ffffff;
+      --shadow:0 14px 40px rgba(10,47,39,.12);
+      --radius:24px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--green-950) 0 420px,var(--green-100) 420px 100%);
+      line-height:1.6;
+    }
+
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:0 auto}
+
+    .hero{
+      padding:44px 0 42px;
+      color:var(--white);
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:32px;
+      padding:34px;
+      box-shadow:0 20px 60px rgba(0,0,0,.18);
+      backdrop-filter: blur(6px);
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:.9rem;
+      letter-spacing:.02em;
+    }
+
+    h1,h2,h3{margin:0 0 14px}
+    h1{
+      font-size:clamp(2.3rem,5vw,4.4rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+      color:#fff;
+      margin-top:18px;
+    }
+    .hero p{
+      margin:0;
+      font-size:1.05rem;
+      max-width:62ch;
+      color:rgba(255,255,255,.88);
+    }
+
+    .hero-visual{
+      min-height:320px;
+      position:relative;
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.18), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(183,230,216,.65), transparent 16%),
+        radial-gradient(circle at 72% 76%, rgba(255,255,255,.12), transparent 18%),
+        linear-gradient(160deg,#184c40,#0d3028);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .hero-visual:before,
+    .hero-visual:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      filter:blur(2px);
+    }
+    .hero-visual:before{width:220px;height:220px;left:-40px;bottom:-40px}
+    .hero-visual:after{width:160px;height:160px;right:-30px;top:-20px}
+
+    .panel{
+      position:absolute;
+      background:rgba(255,255,255,.9);
+      color:var(--ink);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(17,66,54,.07);
+    }
+    .panel-a{left:22px;top:26px;width:58%;padding:16px 16px 12px}
+    .panel-b{right:18px;top:70px;width:34%;padding:14px}
+    .panel-c{left:46px;bottom:24px;width:65%;padding:15px 16px}
+    .mini-line{height:10px;border-radius:999px;background:var(--green-200);margin:8px 0}
+    .mini-line.short{width:62%}
+    .mini-line.tiny{width:42%}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .pill{padding:7px 10px;border-radius:999px;background:var(--green-100);font-size:.78rem;color:var(--green-900);font-weight:700}
+    .chart{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:end;height:90px;margin-top:8px}
+    .bar{background:linear-gradient(180deg,var(--green-700),var(--green-200));border-radius:10px 10px 4px 4px}
+    .bar:nth-child(1){height:44%}.bar:nth-child(2){height:68%}.bar:nth-child(3){height:56%}.bar:nth-child(4){height:82%}
+
+    main{padding:18px 0 60px}
+
+    .section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      margin:20px 0;
+    }
+
+    .lead-grid,
+    .case-grid,
+    .playbook-grid{
+      display:grid;
+      gap:18px;
+    }
+    .lead-grid{grid-template-columns:1.1fr .9fr}
+    .case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .playbook-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+    }
+
+    h2{
+      font-size:clamp(1.65rem,3vw,2.5rem);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    h3{
+      font-size:1.2rem;
+      line-height:1.2;
+    }
+    .muted{color:var(--muted)}
+
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .stat{
+      background:linear-gradient(180deg,var(--green-100),#fff);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+    .stat strong{display:block;font-size:1.55rem;line-height:1.05;color:var(--green-900);margin-bottom:8px}
+
+    .principles{display:grid;gap:14px}
+    .principle{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px 0;
+      border-top:1px solid var(--line);
+    }
+    .principle:first-child{border-top:0;padding-top:0}
+    .num{
+      flex:0 0 42px;
+      width:42px;height:42px;
+      border-radius:14px;
+      display:grid;place-items:center;
+      font-weight:800;
+      color:var(--green-900);
+      background:var(--accent);
+    }
+
+    .case{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height:100%;
+    }
+    .tag{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:var(--green-100);
+      color:var(--green-900);
+      font-size:.78rem;
+      font-weight:700;
+      width:max-content;
+    }
+    .learn{
+      margin-top:auto;
+      padding-top:14px;
+      border-top:1px dashed var(--line);
+      color:var(--green-900);
+      font-weight:700;
+    }
+
+    .play{
+      background:linear-gradient(180deg,#fff,var(--green-100));
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+    .play strong{display:block;color:var(--green-900);margin-bottom:8px}
+
+    .footer-note{
+      background:linear-gradient(135deg,var(--green-900),var(--green-800));
+      color:#fff;
+      border-radius:30px;
+      padding:28px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .footer-note p{margin:0;color:rgba(255,255,255,.9)}
+
+    ul{margin:10px 0 0 18px;padding:0}
+    li{margin:6px 0}
+
+    @media (max-width: 980px){
+      .hero-card,.lead-grid,.case-grid,.playbook-grid{grid-template-columns:1fr}
+      .hero-visual{min-height:290px}
+    }
+
+    @media (max-width: 640px){
+      body{background:linear-gradient(180deg,var(--green-950) 0 360px,var(--green-100) 360px 100%)}
+      .wrap{width:min(var(--max),calc(100% - 18px))}
+      .hero{padding-top:20px}
+      .hero-card,.section,.footer-note{padding:22px}
+      .panel-a{width:68%}
+      .panel-b{width:42%}
+      .panel-c{left:20px;width:74%}
+      .stat-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div>
+          <span class="eyebrow">Human-centered problem solving</span>
+          <h1>Design Thinking in Action</h1>
+          <p>
+            A clean, original redesign of the topic of design thinking examples in business—showing how strong teams solve real problems by starting with people, testing ideas early, and improving fast.
+          </p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="panel panel-a">
+            <div class="mini-line short"></div>
+            <div class="mini-line"></div>
+            <div class="mini-line tiny"></div>
+            <div class="pill-row">
+              <span class="pill">Empathize</span>
+              <span class="pill">Prototype</span>
+              <span class="pill">Test</span>
+            </div>
+          </div>
+          <div class="panel panel-b">
+            <div class="chart">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="panel panel-c">
+            <div class="mini-line"></div>
+            <div class="mini-line short"></div>
+            <div class="mini-line tiny"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="section">
+        <div class="lead-grid">
+          <div>
+            <h2>What design thinking really means</h2>
+            <p class="muted">
+              Design thinking is a practical way to solve messy business problems. Instead of starting with internal assumptions, teams begin with people: what they struggle with, what matters to them, and where friction shows up. From there, they define the problem clearly, generate ideas, build lightweight prototypes, and test before scaling.
+            </p>
+            <div class="stat-grid">
+              <div class="stat"><strong>Start with people</strong><span class="muted">Understand real needs before designing solutions.</span></div>
+              <div class="stat"><strong>Build small</strong><span class="muted">Prototype early so weak ideas fail cheaply.</span></div>
+              <div class="stat"><strong>Improve fast</strong><span class="muted">Use feedback and iteration to sharpen value.</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Core moves</h3>
+            <div class="principles">
+              <div class="principle"><div class="num">1</div><div><strong>Empathy</strong><br><span class="muted">Observe users in context and uncover the real emotional or functional problem.</span></div></div>
+              <div class="principle"><div class="num">2</div><div><strong>Reframing</strong><br><span class="muted">Turn a vague challenge into a focused problem worth solving.</span></div></div>
+              <div class="principle"><div class="num">3</div><div><strong>Experimentation</strong><br><span class="muted">Test promising ideas quickly instead of debating them for too long.</span></div></div>
+              <div class="principle"><div class="num">4</div><div><strong>Iteration</strong><br><span class="muted">Keep refining the experience until it becomes useful, clear, and easy to adopt.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Five business examples, reworked into a modern overview</h2>
+        <p class="muted">
+          These examples show that design thinking is not only for product design. It can improve healthcare environments, consumer devices, digital platforms, and service operations by reducing fear, friction, or complexity.
+        </p>
+        <div class="case-grid">
+          <article class="card case">
+            <span class="tag">Healthcare experience</span>
+            <h3>GE HealthCare</h3>
+            <p class="muted">Instead of treating pediatric imaging as only a technical procedure, the team redesigned the environment around the child. The result was a themed imaging experience that made scans feel more inviting and less intimidating.</p>
+            <div class="learn">Lesson: solve the emotional experience, not just the functional task.</div>
+          </article>
+
+          <article class="card case">
+            <span class="tag">Product simplification</span>
+            <h3>Oral-B</h3>
+            <p class="muted">When upgrading an electric toothbrush, the more powerful answer was not to pile on more features. User-centered thinking pushed the concept toward a simpler, clearer, and more helpful experience.</p>
+            <div class="learn">Lesson: more technology is not always better; better usability wins.</div>
+          </article>
+
+          <article class="card case">
+            <span class="tag">Convenience innovation</span>
+            <h3>Netflix</h3>
+            <p class="muted">Netflix kept removing pain points from the viewing journey—first by making movie access more convenient, then by continuing to improve how people discover and watch content.</p>
+            <div class="learn">Lesson: repeated user insight can keep a business relevant through major shifts.</div>
+          </article>
+
+          <article class="card case">
+            <span class="tag">Trust and conversion</span>
+            <h3>Airbnb</h3>
+            <p class="muted">By observing listings more closely, the founders realized the experience was being damaged by weak photos and poor presentation. Improving those details quickly improved trust and booking performance.</p>
+            <div class="learn">Lesson: sometimes the growth blocker is a small user-experience signal.</div>
+          </article>
+
+          <article class="card case" style="grid-column:1 / -1">
+            <span class="tag">Service design at scale</span>
+            <h3>Uber Eats</h3>
+            <p class="muted">The team used direct customer exposure and in-market immersion to understand the realities of local delivery, restaurant workflows, and customer expectations. That helped shape improvements grounded in real context rather than guesswork.</p>
+            <div class="learn">Lesson: distance from the user creates blind spots; immersion sharpens decisions.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What strong teams can copy from these examples</h2>
+        <div class="playbook-grid">
+          <div class="play"><strong>1. Watch first</strong><span class="muted">Go where the experience happens. Sit with users, customers, patients, or employees and observe the friction directly.</span></div>
+          <div class="play"><strong>2. Define the real problem</strong><span class="muted">Avoid solving the surface symptom. Ask what is confusing, stressful, slow, or emotionally difficult underneath.</span></div>
+          <div class="play"><strong>3. Test before rollout</strong><span class="muted">Pilot small versions of the idea. Use live feedback to improve the concept before investing heavily.</span></div>
+          <div class="play"><strong>4. Design for adoption</strong><span class="muted">The best idea is the one people will actually use. Clarity, ease, and trust matter as much as innovation.</span></div>
+        </div>
+      </section>
+
+      <section class="footer-note">
+        <h2 style="color:#fff;margin-bottom:10px">Bottom line</h2>
+        <p>
+          Design thinking becomes powerful when teams stop guessing and start learning from people in context. The businesses that win are often the ones that notice friction sooner, prototype faster, and turn insight into experiences that feel simpler, safer, and more human.
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
