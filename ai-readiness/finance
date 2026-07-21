@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI in Finance — The Executive Playbook | AI Finance Academy</title>
+<meta name="description" content="The practical AI course for finance professionals: 6 modules, 132 video lessons, 24 hands-on activities, and your own measured results. Take the free 3-minute self-assessment."/>
+<style>
+  :root {
+    --dark:#1B4332; --deep:#12291F; --mid:#4F6F52; --bg:#FAFAF8;
+    --accent:#B08D57; --accent-soft:#E7D9C4; --card:#FFFFFF; --line:#DDE5DE; --soft:#E8EFE9; --ink:#22302A;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--ink); line-height: 1.62; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+
+  /* ===== HERO ===== */
+  .hero { background: linear-gradient(165deg, var(--dark) 0%, var(--deep) 100%); color:#fff; padding: 74px 0 66px; position: relative; overflow: hidden; text-align: center; }
+  .hero::after { content:""; position:absolute; right:-90px; top:-90px; width:300px; height:300px; border-radius:50%; background:rgba(176,141,87,.12); }
+  .hero::before { content:""; position:absolute; left:-70px; bottom:-100px; width:250px; height:250px; border-radius:50%; background:rgba(255,255,255,.045); }
+  .hero .container { position: relative; z-index: 1; }
+  .eyebrow { font-family: Arial, sans-serif; letter-spacing: 3px; font-size: 12px; color:#9FB8A8; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(30px, 6.4vw, 52px); margin: 16px 0 14px; line-height: 1.15; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero .lead { font-size: clamp(16px, 3.6vw, 20px); color:#CDE3D6; max-width: 660px; margin: 0 auto 30px; font-style: italic; }
+  .btn { display:inline-block; background: var(--accent); color:#1B2E24; font-family: Arial, sans-serif; font-weight: bold; text-decoration: none; padding: 15px 36px; border-radius: 999px; font-size: 16.5px; margin: 6px 8px; border: 0; cursor: pointer; }
+  .btn.ghost { background: transparent; color:#fff; border: 2px solid var(--accent); }
+  .hero .micro { font-family: Arial, sans-serif; font-size: 13px; color:#9FB8A8; margin-top: 14px; }
+
+  /* ===== VIDEO (9:16 portrait) ===== */
+  .video-wrap { padding: 40px 20px 6px; text-align: center; background: var(--bg); }
+  .video-label { font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 14px; }
+  .phone-frame {
+    width: min(92vw, 400px); aspect-ratio: 9 / 16; margin: 0 auto;
+    border-radius: 22px; overflow: hidden; background: #000;
+    box-shadow: 0 18px 44px rgba(27,67,50,.28), 0 0 0 6px var(--dark);
+  }
+  .phone-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-caption { font-family: Arial, sans-serif; font-size: 13.5px; color: var(--mid); margin-top: 12px; font-style: italic; }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 54px 0; }
+  .kicker { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); font-weight: bold; }
+  h2 { color: var(--dark); font-size: clamp(24px, 5vw, 34px); margin: 8px 0 18px; line-height: 1.22; }
+  p.big { font-size: clamp(17px, 3.8vw, 20px); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; box-shadow: 0 3px 14px rgba(27,67,50,.05); }
+
+  /* problem section */
+  .split { display:grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .split { grid-template-columns: 1fr 1fr; } }
+  .truth { border-left: 5px solid var(--accent); }
+  .truth h3 { color: var(--dark); font-size: 19px; margin-bottom: 8px; }
+
+  /* quote band */
+  .quoteband { background: linear-gradient(165deg, var(--dark), var(--deep)); color:#fff; text-align:center; padding: 56px 22px; }
+  .quoteband blockquote { font-size: clamp(20px, 4.6vw, 30px); font-style: italic; max-width: 760px; margin: 0 auto; line-height: 1.45; }
+  .quoteband blockquote strong { color: var(--accent); font-style: normal; }
+
+  /* stats */
+  .stats { display:grid; gap: 14px; grid-template-columns: repeat(2, 1fr); margin-top: 22px; }
+  @media (min-width: 700px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; text-align:center; padding: 20px 12px; }
+  .stat .n { font-size: 34px; color: var(--accent); font-weight: bold; }
+  .stat .t { font-family: Arial, sans-serif; font-size: 13px; color: var(--mid); margin-top: 4px; }
+
+  /* ===== COURSE OUTLINE ===== */
+  .modules { display: grid; gap: 16px; margin-top: 24px; }
+  .module { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 92px 1fr; }
+  .module .badge { background: var(--dark); color: #fff; display:flex; flex-direction: column; align-items:center; justify-content:center; padding: 14px 8px; }
+  .module .badge .m { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1.5px; color:#9FB8A8; }
+  .module .badge .num { font-size: 30px; font-weight: bold; color: var(--accent); }
+  .module .body { padding: 18px 22px; }
+  .module h3 { color: var(--dark); font-size: 19px; margin-bottom: 6px; }
+  .module .meta { font-family: Arial, sans-serif; font-size: 12.5px; color: var(--mid); letter-spacing: .5px; margin-bottom: 8px; }
+  .module p { font-size: 15px; margin: 0; }
+  .module .tags { margin-top: 10px; }
+  .tag { display:inline-block; background: var(--soft); color: var(--dark); font-family: Arial, sans-serif; font-size: 12px; border-radius: 999px; padding: 4px 12px; margin: 3px 4px 0 0; }
+
+  /* what you get */
+  ul.gets { list-style:none; padding:0; margin-top: 14px; }
+  ul.gets li { padding: 10px 0 10px 34px; position: relative; border-bottom: 1px dashed var(--line); }
+  ul.gets li:last-child { border-bottom: 0; }
+  ul.gets li::before { content:"✓"; position:absolute; left: 4px; top: 10px; color: var(--accent); font-weight: bold; font-size: 18px; }
+
+  /* ===== ASSESSMENT ===== */
+  .assess { background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .qcard { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin: 16px 0; }
+  .qcard .qnum { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 2px; color: var(--accent); font-weight: bold; text-transform: uppercase; }
+  .qcard h4 { color: var(--dark); font-size: 17.5px; margin: 6px 0 14px; line-height: 1.4; }
+  .opt { display: block; border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 16px 12px 44px; margin: 8px 0; cursor: pointer; position: relative; font-size: 15px; transition: border-color .15s, background .15s; font-family: Arial, sans-serif; }
+  .opt:hover { border-color: var(--mid); }
+  .opt input { position: absolute; left: 14px; top: 15px; accent-color: var(--dark); transform: scale(1.15); }
+  .opt.selected { border-color: var(--dark); background: #F2F7F3; }
+  .progressline { font-family: Arial, sans-serif; font-size: 13.5px; color: var(--mid); margin: 14px 0 4px; }
+  .pbar { height: 10px; background: #DCE6DE; border-radius: 5px; overflow: hidden; }
+  .pbar > div { height: 100%; width: 0%; background: linear-gradient(90deg, var(--mid), var(--dark)); transition: width .25s; }
+  .assess-cta { text-align: center; margin-top: 22px; }
+  .warnmsg { color: #B03A2E; font-family: Arial, sans-serif; font-size: 14px; margin-top: 10px; display: none; text-align:center; }
+
+  /* result */
+  #result { display: none; margin-top: 28px; }
+  .result-card { border-radius: 16px; overflow: hidden; border: 2px solid var(--dark); background: var(--card); }
+  .result-head { background: linear-gradient(165deg, var(--dark), var(--deep)); color: #fff; padding: 30px 26px; text-align: center; }
+  .result-head .cat { font-family: Arial, sans-serif; letter-spacing: 3px; font-size: 12px; color: #9FB8A8; text-transform: uppercase; }
+  .result-head h3 { font-size: clamp(24px, 5vw, 32px); margin: 8px 0 4px; color: var(--accent); }
+  .result-head .scoreline { font-family: Arial, sans-serif; font-size: 14px; color:#CDE3D6; }
+  .result-body { padding: 26px 28px; }
+  .result-body h4 { color: var(--dark); font-size: 16px; font-family: Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; margin: 18px 0 8px; }
+  .result-body h4:first-child { margin-top: 0; }
+  .result-body ul { padding-left: 20px; }
+  .result-body li { margin: 6px 0; }
+  .result-body li::marker { color: var(--accent); }
+  .result-cta { background: var(--soft); border-radius: 12px; padding: 20px 22px; margin-top: 20px; text-align: center; }
+  .result-cta p { font-size: 15.5px; margin-bottom: 14px; }
+
+  /* final cta */
+  .final { background: linear-gradient(165deg, var(--dark), var(--deep)); color: #fff; text-align: center; }
+  .final h2 { color: #fff; }
+  .final p { color: #CDE3D6; max-width: 620px; margin: 0 auto 24px; }
+
+  footer { background: var(--deep); color:#9FB8A8; text-align:center; padding: 30px 20px; font-family: Arial, sans-serif; font-size: 13.5px; line-height: 1.8; }
+  footer a { color:#CDE3D6; }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow">AI Finance Academy • Dr. John Aikeremiokha</div>
+    <h1>AI Will Not Replace Finance Professionals.<br/><em>Finance Professionals Who Use AI Well Will.</em></h1>
+    <p class="lead">The practical, no-hype course that turns you from an AI spectator into the person your team turns to — in six modules, with your own measured results as proof.</p>
+    <a class="btn" href="#assessment">Take the Free 3-Minute Self-Assessment</a>
+    <a class="btn ghost" href="#outline">See the Course Outline</a>
+    <div class="micro">No signup needed for the assessment • Instant, personalised result</div>
+  </div>
+</div>
+
+<!-- ================= VIDEO (9:16, phone-first) ================= -->
+<div class="video-wrap">
+  <div class="video-label">▶ Watch: Why This Course, Why Now</div>
+  <div class="phone-frame">
+    <iframe src="https://www.youtube.com/embed/X1ewgcqH_fI" title="AI in Finance — The Executive Playbook" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <div class="video-caption">3 minutes • Best viewed on mobile</div>
+</div>
+
+<!-- ================= THE UNCOMFORTABLE TRUTH ================= -->
+<section>
+  <div class="container">
+    <div class="kicker">The Uncomfortable Truth</div>
+    <h2>Right Now, Someone With Your Exact Job Title Is Getting Faster Than You. Every Single Week.</h2>
+    <p class="big">Not because they're smarter. Not because they work longer hours. But because they started using AI properly six months ago — and the gap between you and them compounds every quarter, quietly, like interest on a debt you didn't know you owed.</p>
+    <br/>
+    <div class="split">
+      <div class="card truth">
+        <h3>The trap most professionals fall into</h3>
+        <p>They've "tried ChatGPT." Asked it a question or two, got a mediocre answer, and concluded AI is overhyped. What they actually discovered is that <strong>unstructured prompts produce unstructured results</strong> — and then they stopped one step before the skill that changes everything.</p>
+      </div>
+      <div class="card truth">
+        <h3>The opposite trap</h3>
+        <p>Others trust AI completely — pasting its confident answers straight into reports. Here's what they don't know: <strong>AI can be confidently, fluently wrong</strong>, and its tone gives no warning at all. One unverified number in a board pack is all it takes to learn this lesson the expensive way.</p>
+      </div>
+    </div>
+    <br/>
+    <p class="big"><strong>This course exists for the third path:</strong> professionals who use AI to move dramatically faster — and verify everything, so their speed never costs them their credibility. That combination is rare. It is also completely learnable.</p>
+  </div>
+</section>
+
+<!-- ================= QUOTE BAND ================= -->
+<div class="quoteband">
+  <blockquote>"More than <strong>40%</strong> of routine finance work is automatable with the AI tools available today. Standing still isn't a neutral choice — while one team debates, another team is already doing it."</blockquote>
+</div>
+
+<!-- ================= WHY THIS COURSE ================= -->
+<section>
+  <div class="container">
+    <div class="kicker">Why This Course Is Different</div>
+    <h2>You Don't Watch This Course. You Do It — and You Measure It.</h2>
+    <p class="big">Most AI courses hand you theory and a certificate. This one hands you a spreadsheet with three overspends deliberately hidden inside it — and challenges you to make your AI find them. It sets traps that tempt your AI to invent data, so you catch it doing so <em>before</em> it ever happens with real numbers. And in the very first module, you time one of your own boring weekly tasks… then beat that time later with AI, and calculate your own personal saving. Your proof. Your number. Nobody can argue with it.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">6</div><div class="t">Video modules</div></div>
+      <div class="stat"><div class="n">132</div><div class="t">Focused video lessons</div></div>
+      <div class="stat"><div class="n">24</div><div class="t">Hands-on activities</div></div>
+      <div class="stat"><div class="n">100%</div><div class="t">Practical — zero fluff</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COURSE OUTLINE ================= -->
+<section id="outline" style="background: var(--soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="kicker">The Course Outline</div>
+    <h2>Six Modules. One Transformation.</h2>
+
+    <div class="modules">
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">0</span></div>
+        <div class="body">
+          <h3>Introduction — Your Starting Line</h3>
+          <div class="meta">7 lessons • 2 activities • ~30 min</div>
+          <p>Set up your AI toolkit and time one real task from your own job — the baseline you'll beat later with your own hands.</p>
+          <div class="tags"><span class="tag">Tool setup</span><span class="tag">Personal baseline</span><span class="tag">Why AI matters now</span></div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">1</span></div>
+        <div class="body">
+          <h3>AI Foundations — How AI Really Works (and How to Talk to It)</h3>
+          <div class="meta">26 lessons • 5 activities • ~2 hrs</div>
+          <p>Why AI isn't a calculator, which of the four major AI tools fits which task, and the prompting frameworks — CSI, FBI, chunking, master prompts — that separate reliable output from guesswork.</p>
+          <div class="tags"><span class="tag">CSI &amp; FBI prompting</span><span class="tag">ChatGPT · Copilot · Gemini · Claude</span><span class="tag">Chunking</span><span class="tag">Master prompts</span><span class="tag">Audit everything</span></div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">2</span></div>
+        <div class="body">
+          <h3>Data &amp; Numbers — AI on Real Finance Work</h3>
+          <div class="meta">33 lessons • 6 activities • ~3 hrs</div>
+          <p>The treasure hunt: find three overspends we planted in real sample data. Then AI-written Excel formulas, Power Query cleanup, financial ratios verified to the cent — and your first Python program, run in the browser with zero installation.</p>
+          <div class="tags"><span class="tag">Variance analysis</span><span class="tag">Forecasting</span><span class="tag">Excel + AI</span><span class="tag">Power Query</span><span class="tag">Python in Colab</span><span class="tag">Dashboards</span></div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">3</span></div>
+        <div class="body">
+          <h3>Prompt Engineering — Making AI Think Harder (and Argue Back)</h3>
+          <div class="meta">22 lessons • 4 activities • ~1.5 hrs</div>
+          <p>Five magic words that make AI show its reasoning. Make AI improve your own prompts, attack your forecast before your boss does, and impersonate a full panel of tough reviewers — so no real meeting ever surprises you again.</p>
+          <div class="tags"><span class="tag">Chain of thought</span><span class="tag">Meta prompting</span><span class="tag">Devil's advocate</span><span class="tag">Panel simulation</span></div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">4</span></div>
+        <div class="body">
+          <h3>Custom AI — Build Your Own AI Team Member</h3>
+          <div class="meta">17 lessons • 3 activities • ~1.5 hrs</div>
+          <p>Build a custom assistant that knows your templates and follows your rules — then trap-test it to prove it refuses to invent data, stress-test it with 12 questions, and document its ownership like a professional.</p>
+          <div class="tags"><span class="tag">Custom GPTs &amp; Gems</span><span class="tag">Knowledge bases</span><span class="tag">The trap test</span><span class="tag">AI governance</span></div>
+        </div>
+      </div>
+
+      <div class="module">
+        <div class="badge"><span class="m">MODULE</span><span class="num">5</span></div>
+        <div class="body">
+          <h3>The AI CFO — From Skills to Leadership</h3>
+          <div class="meta">27 lessons • 4 activities • ~2 hrs</div>
+          <p>Assemble everything into a leadership plan: an honest maturity rating, KPIs with real measured baselines, a one-page AI policy drafted in 30 minutes, and a dated 30-day roadmap you share with a real person.</p>
+          <div class="tags"><span class="tag">AI maturity model</span><span class="tag">KPIs with receipts</span><span class="tag">One-page policy</span><span class="tag">30-day roadmap</span></div>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="card">
+      <div class="kicker">What You Walk Away With</div>
+      <ul class="gets">
+        <li><strong>Your own measured time saving</strong> — a before/after number from your real work, not a statistic from a slide</li>
+        <li><strong>A tested custom AI assistant</strong> — with the test log and ownership register that prove it's trustworthy</li>
+        <li><strong>A growing prompt library</strong> of proven, reusable master prompts</li>
+        <li><strong>A drafted one-page AI policy</strong> ready to route for approval</li>
+        <li><strong>A dated 30-day roadmap</strong> — shared, scheduled, and already in motion</li>
+        <li><strong>The verification habit</strong> that protects your credibility for the rest of your career</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SELF ASSESSMENT ================= -->
+<section id="assessment" class="assess">
+  <div class="container">
+    <div class="kicker">Free Self-Assessment</div>
+    <h2>Where Do You Actually Stand? Find Out in 3 Minutes.</h2>
+    <p class="big">Nine honest questions, drawn directly from the course curriculum. No email required, no tricks — answer truthfully and get an instant, personalised reading of where you are on the AI-in-finance journey, and exactly what your next step should be.</p>
+
+    <div class="progressline"><span id="ptext">0 of 9 answered</span></div>
+    <div class="pbar"><div id="pfill"></div></div>
+
+    <form id="quiz">
+
+      <div class="qcard" data-q="1">
+        <div class="qnum">Question 1 · Foundations</div>
+        <h4>An AI tool gives you a confident, well-written answer containing several figures. What's your honest, usual next move?</h4>
+        <label class="opt"><input type="radio" name="q1" value="1"/> I generally trust it — it sounds right, and AI is usually accurate</label>
+        <label class="opt"><input type="radio" name="q1" value="2"/> I check the figures if the task feels important, but not always</label>
+        <label class="opt"><input type="radio" name="q1" value="3"/> I verify every figure against source data before using it — confident tone means nothing</label>
+      </div>
+
+      <div class="qcard" data-q="2">
+        <div class="qnum">Question 2 · Foundations</div>
+        <h4>How do you typically write a prompt when you need something from an AI tool?</h4>
+        <label class="opt"><input type="radio" name="q2" value="1"/> I type a quick question, like a search engine, and hope for the best</label>
+        <label class="opt"><input type="radio" name="q2" value="2"/> I add some context and detail, but with no consistent structure</label>
+        <label class="opt"><input type="radio" name="q2" value="3"/> I use a structured framework — context, specifics, intent, format — and it shows in my results</label>
+      </div>
+
+      <div class="qcard" data-q="3">
+        <div class="qnum">Question 3 · Foundations</div>
+        <h4>Do you keep reusable "master prompts" for tasks you repeat every week or month?</h4>
+        <label class="opt"><input type="radio" name="q3" value="1"/> No — I write each prompt fresh, from scratch, every time</label>
+        <label class="opt"><input type="radio" name="q3" value="2"/> I sometimes reuse old prompts if I can find them in my chat history</label>
+        <label class="opt"><input type="radio" name="q3" value="3"/> Yes — I maintain a saved prompt library with tested templates</label>
+      </div>
+
+      <div class="qcard" data-q="4">
+        <div class="qnum">Question 4 · Data &amp; Numbers</div>
+        <h4>A messy data export lands on your desk: duplicate rows, three date formats, missing values. What happens next?</h4>
+        <label class="opt"><input type="radio" name="q4" value="1"/> I clean it by hand, cell by cell — it takes as long as it takes</label>
+        <label class="opt"><input type="radio" name="q4" value="2"/> I use some Excel tricks to speed it up, but it's still largely manual each time</label>
+        <label class="opt"><input type="radio" name="q4" value="3"/> I build a repeatable cleanup (e.g. Power Query), often AI-guided — next month it's one click</label>
+      </div>
+
+      <div class="qcard" data-q="5">
+        <div class="qnum">Question 5 · Data &amp; Numbers</div>
+        <h4>Could you run a simple Python analysis on a transactions file — today, if asked?</h4>
+        <label class="opt"><input type="radio" name="q5" value="1"/> No — I don't code, and I wouldn't know where to begin</label>
+        <label class="opt"><input type="radio" name="q5" value="2"/> Possibly, with a lot of googling and time I don't really have</label>
+        <label class="opt"><input type="radio" name="q5" value="3"/> Yes — I'd have AI write the script and run it in the browser (e.g. Colab), then spot-check the output</label>
+      </div>
+
+      <div class="qcard" data-q="6">
+        <div class="qnum">Question 6 · Prompt Engineering</div>
+        <h4>Before a forecast or proposal goes to leadership, how does it get stress-tested?</h4>
+        <label class="opt"><input type="radio" name="q6" value="1"/> It doesn't, really — the first hard questions come in the actual meeting</label>
+        <label class="opt"><input type="radio" name="q6" value="2"/> I ask a colleague to look it over when there's time</label>
+        <label class="opt"><input type="radio" name="q6" value="3"/> I make AI attack it first — devil's-advocate and simulated-panel reviews before any human sees it</label>
+      </div>
+
+      <div class="qcard" data-q="7">
+        <div class="qnum">Question 7 · Custom AI</div>
+        <h4>Have you ever built a custom AI assistant (a custom GPT or Gem) configured with your own instructions and documents?</h4>
+        <label class="opt"><input type="radio" name="q7" value="1"/> No — I didn't know that was something non-programmers could do</label>
+        <label class="opt"><input type="radio" name="q7" value="2"/> I've experimented with one, but nothing I'd rely on for real work</label>
+        <label class="opt"><input type="radio" name="q7" value="3"/> Yes — and I've tested it deliberately, including trying to make it invent data</label>
+      </div>
+
+      <div class="qcard" data-q="8">
+        <div class="qnum">Question 8 · Governance</div>
+        <h4>Does your team (or you personally) have written rules for AI use — approved tools, forbidden data, a named contact?</h4>
+        <label class="opt"><input type="radio" name="q8" value="1"/> No — everyone quietly does their own thing</label>
+        <label class="opt"><input type="radio" name="q8" value="2"/> There's informal understanding, but nothing written down</label>
+        <label class="opt"><input type="radio" name="q8" value="3"/> Yes — a written policy (even one page) exists, with an owner</label>
+      </div>
+
+      <div class="qcard" data-q="9">
+        <div class="qnum">Question 9 · Measurement</div>
+        <h4>If your manager asked, "how much time is AI actually saving you?" — what could you honestly answer?</h4>
+        <label class="opt"><input type="radio" name="q9" value="1"/> I'd have to guess — I've never measured it</label>
+        <label class="opt"><input type="radio" name="q9" value="2"/> I have a rough feel for it, but no real numbers</label>
+        <label class="opt"><input type="radio" name="q9" value="3"/> I could give a measured before/after figure on at least one real task</label>
+      </div>
+
+      <div class="assess-cta">
+        <button type="button" class="btn" id="submitBtn">Reveal My Result</button>
+        <div class="warnmsg" id="warnmsg">Please answer all 9 questions to get an accurate result.</div>
+      </div>
+    </form>
+
+    <!-- ===== RESULT PANEL ===== -->
+    <div id="result">
+      <div class="result-card">
+        <div class="result-head">
+          <div class="cat">Your Assessment Result</div>
+          <h3 id="r-title"></h3>
+          <div class="scoreline" id="r-score"></div>
+        </div>
+        <div class="result-body">
+          <h4>Where you are right now</h4>
+          <p id="r-desc"></p>
+          <h4>Your real strengths</h4>
+          <ul id="r-strengths"></ul>
+          <h4>What's quietly costing you</h4>
+          <ul id="r-gaps"></ul>
+          <div class="result-cta">
+            <p id="r-cta"></p>
+            <a class="btn" href="mailto:john@nigeriastudentambassador.com?subject=Enrol%20me%20—%20AI%20in%20Finance%20Course">Enrol in the Full Course</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final">
+  <div class="container">
+    <h2>Six Months From Now, You'll Be One of Two People.</h2>
+    <p>The one still saying "I really should learn this properly" — or the one with a tested AI assistant, a measured time saving, a governance policy with their name on it, and a team that comes to them for answers. The course is the same six modules either way. The only variable is when you start.</p>
+    <a class="btn" href="mailto:john@nigeriastudentambassador.com?subject=Enrol%20me%20—%20AI%20in%20Finance%20Course">Start the Course</a>
+    <a class="btn ghost" href="#assessment">Take the Self-Assessment First</a>
+  </div>
+</section>
+
+<footer>
+  <strong>AI Finance Academy</strong> — AI in Finance: The Executive Playbook<br/>
+  Dr. John Aikeremiokha • Principal Consultant, British School of Outdoor Education<br/>
+  ✉ <a href="mailto:john@nigeriastudentambassador.com">john@nigeriastudentambassador.com</a> • 🌐 <a href="https://www.nigeriastudentambassador.com" target="_blank" rel="noopener">www.nigeriastudentambassador.com</a>
+</footer>
+
+<script>
+(function(){
+  var TOTAL = 9;
+  var form = document.getElementById('quiz');
+  var ptext = document.getElementById('ptext');
+  var pfill = document.getElementById('pfill');
+  var warn = document.getElementById('warnmsg');
+
+  // option selection styling + progress
+  form.addEventListener('change', function(e){
+    if (e.target && e.target.type === 'radio') {
+      var card = e.target.closest('.qcard');
+      card.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('selected'); });
+      e.target.closest('.opt').classList.add('selected');
+      updateProgress();
+    }
+  });
+
+  function answeredCount(){
+    var n = 0;
+    for (var i = 1; i <= TOTAL; i++) {
+      if (form.querySelector('input[name="q'+i+'"]:checked')) n++;
+    }
+    return n;
+  }
+
+  function updateProgress(){
+    var n = answeredCount();
+    ptext.textContent = n + ' of ' + TOTAL + ' answered';
+    pfill.style.width = (100*n/TOTAL) + '%';
+    if (n === TOTAL) warn.style.display = 'none';
+  }
+
+  var results = {
+    observer: {
+      title: 'The AI Observer',
+      range: 'Stage 1 of 3',
+      desc: "You're watching the AI shift happen from the sidelines — aware it matters, but not yet equipped to act on it. You're in the majority, and here's the honest truth: this is actually the best position to start from, because you haven't built any bad habits that need unlearning. Every technique in the course will be a clean first impression. What you cannot afford is to stay here another six months, because the professionals around you are not waiting.",
+      strengths: [
+        "Honesty — you answered truthfully instead of inflating, which is precisely the mindset this field rewards",
+        "A clean slate — no half-learned habits to unlearn, no overconfidence to correct",
+        "Awareness — you're here, taking this assessment, which already puts you ahead of colleagues who haven't looked up yet"
+      ],
+      gaps: [
+        "Every AI answer you accept unverified is a credibility risk you can't see yet — the course's very first activity fixes this",
+        "Unstructured prompts are giving you mediocre results and false conclusions about what AI can do",
+        "Hours of automatable work are leaving your week, every week, unmeasured and unrecovered"
+      ],
+      cta: "The course was built for exactly where you're standing. Module 0 starts from absolute zero — creating your accounts, sending your first message — and by the end of Module 2 you'll have run a real variance analysis, fixed Excel formulas with AI, and executed your first Python program. No experience assumed. No step skipped."
+    },
+    experimenter: {
+      title: 'The AI Experimenter',
+      range: 'Stage 2 of 3',
+      desc: "You've genuinely started — you use AI tools, you get real value on good days, and you've seen glimpses of what's possible. But your results are inconsistent, your methods are improvised, and if you're honest, you couldn't prove your gains to a skeptical manager. You're at the most common — and most dangerous — plateau: good enough to feel progress, not structured enough to compound it. The difference between you and a practitioner isn't talent. It's system.",
+      strengths: [
+        "Real hands-on experience — you've moved past curiosity into actual use",
+        "Working intuition for what AI does well, built from genuine trial and error",
+        "Momentum — the hardest step (starting) is already behind you"
+      ],
+      gaps: [
+        "No prompt library means you rebuild your best work from scratch and your quality swings day to day",
+        "Verification is situational, not systematic — which means it fails exactly when you're busiest",
+        "Nothing is measured, so your gains are invisible — to your manager, and honestly, to you",
+        "No custom tools or governance yet, which caps how far your current approach can scale"
+      ],
+      cta: "You'll move fast through the course's foundations and hit your growth edge quickly: master prompts and chunking in Module 1, the full data workflow in Module 2, and then the modules that separate experimenters from practitioners — advanced prompting, your own tested custom assistant, and KPIs with real baselines. Most experimenters describe Module 3 onward as 'the course I didn't know I needed.'"
+    },
+    practitioner: {
+      title: 'The AI Practitioner',
+      range: 'Stage 3 of 3',
+      desc: "You're ahead of the curve — structured prompting, verification discipline, possibly even a custom tool of your own. Genuinely well done; few professionals reach this honestly. So here's the challenge worthy of you: individual skill is a career advantage, but it has a ceiling of one. The next level isn't using AI better yourself — it's leading adoption for others: governance that scales, KPIs that convince boards, policies with your name on them, and a team that moves at your speed. That is a different skill, and it's the one that gets people promoted.",
+      strengths: [
+        "Verification discipline — the rarest and most valuable habit in the field",
+        "Structured technique that produces repeatable, defensible results",
+        "Builder instincts — you've moved from consuming AI to shaping it"
+      ],
+      gaps: [
+        "Your expertise likely lives in your head — undocumented, unshared, and invisible to leadership",
+        "Without measured KPIs and a governance framework, your skill reads as enthusiasm, not strategy",
+        "One skilled person is a bottleneck; a led team is a capability — the transition needs a playbook"
+      ],
+      cta: "For you, the course is a leadership accelerator. Modules 1–3 will sharpen and systematise what you do instinctively — most practitioners still find gaps in their trap-testing and stress-testing technique — and Modules 4–5 hand you the full governance stack: the 12-question test protocol, the tool register, the KPI sheet with a stop-condition, the one-page policy, and the 30-day rollout roadmap. Finish it, and you're not the person who's good with AI. You're the person who runs it."
+    }
+  };
+
+  document.getElementById('submitBtn').addEventListener('click', function(){
+    var n = answeredCount();
+    if (n < TOTAL) {
+      warn.style.display = 'block';
+      // scroll to first unanswered
+      for (var i = 1; i <= TOTAL; i++) {
+        if (!form.querySelector('input[name="q'+i+'"]:checked')) {
+          document.querySelector('.qcard[data-q="'+i+'"]').scrollIntoView({behavior:'smooth', block:'center'});
+          break;
+        }
+      }
+      return;
+    }
+    var score = 0;
+    for (var j = 1; j <= TOTAL; j++) {
+      score += parseInt(form.querySelector('input[name="q'+j+'"]:checked').value, 10);
+    }
+    // 9–27 range: 9–14 observer, 15–21 experimenter, 22–27 practitioner
+    var r = (score <= 14) ? results.observer : (score <= 21) ? results.experimenter : results.practitioner;
+
+    document.getElementById('r-title').textContent = r.title;
+    document.getElementById('r-score').textContent = 'Score: ' + score + ' of 27 • ' + r.range;
+    document.getElementById('r-desc').textContent = r.desc;
+
+    var s = document.getElementById('r-strengths'); s.innerHTML = '';
+    r.strengths.forEach(function(x){ var li = document.createElement('li'); li.textContent = x; s.appendChild(li); });
+
+    var g = document.getElementById('r-gaps'); g.innerHTML = '';
+    r.gaps.forEach(function(x){ var li = document.createElement('li'); li.textContent = x; g.appendChild(li); });
+
+    document.getElementById('r-cta').textContent = r.cta;
+
+    var panel = document.getElementById('result');
+    panel.style.display = 'block';
+    panel.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+
+</body>
+</html>
